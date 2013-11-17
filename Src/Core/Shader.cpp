@@ -6,94 +6,97 @@
 
 #include "Shader.h"
 
-namespace Shader
+namespace glz
 {
-	GLuint loadShader(const char *filename, GLenum shaderType)
+	namespace Shader
 	{
-		GLuint result = 0;
-		FILE *file;
-		char *data;
-		size_t filesize;
-		
-
-		file = fopen(filename, "rb");
-
-		if (!file)
-			return 0;
-
-		fseek(file, 0, SEEK_END);
-		filesize = ftell(file);
-		fseek(file, 0, SEEK_SET);
-
-		data = new char[filesize + 1];
-
-		if (!data)
-			return result;
-
-		fread(data, 1, filesize, file);
-		data[filesize] = 0;
-		fclose(file);
-
-		result = glCreateShader(shaderType);
-
-		if (!result)
-			return result;
-
-		glShaderSource(result, 1, &data, NULL);
-		delete[] data;
-
-		glCompileShader(result);
-
-
-		//check for errors
-		GLint status = 0;
-		glGetShaderiv(result, GL_COMPILE_STATUS, &status);
-
-		if (!status)
+		GLuint loadShader(const char *filename, GLenum shaderType)
 		{
-			char buffer[8192];
-			glGetShaderInfoLog(result, 8192, NULL, buffer);
-
-			std::cout << filename << ":" << buffer << std::endl;
-
-			glDeleteShader(result);
-		}
-
-		return result;
-	}
+			GLuint result = 0;
+			FILE *file;
+			char *data;
+			size_t filesize;
 
 
+			file = fopen(filename, "rb");
 
-	GLuint linkFromShaders(const GLuint *shaders, int shaderCount)
-	{
-		GLuint program;
-		program = glCreateProgram();
+			if (!file)
+				return 0;
 
-		for (int n = 0; n < shaderCount; n++)
-			glAttachShader(program, shaders[n]);
+			fseek(file, 0, SEEK_END);
+			filesize = ftell(file);
+			fseek(file, 0, SEEK_SET);
 
-		glLinkProgram(program);
+			data = new char[filesize + 1];
+
+			if (!data)
+				return result;
+
+			fread(data, 1, filesize, file);
+			data[filesize] = 0;
+			fclose(file);
+
+			result = glCreateShader(shaderType);
+
+			if (!result)
+				return result;
+
+			glShaderSource(result, 1, &data, NULL);
+			delete[] data;
+
+			glCompileShader(result);
 
 
-		//check for errors
-		GLint status;
-		glGetProgramiv(program, GL_LINK_STATUS, &status);
+			//check for errors
+			GLint status = 0;
+			glGetShaderiv(result, GL_COMPILE_STATUS, &status);
 
-		if (!status)
-		{
-			char buffer[8192];
-			glGetProgramInfoLog(program, 8192, NULL, buffer);
-			std::cout << buffer << std::endl;
+			if (!status)
+			{
+				char buffer[8192];
+				glGetShaderInfoLog(result, 8192, NULL, buffer);
 
-			glDeleteProgram(program);
-			return 0;
+				std::cout << filename << ":" << buffer << std::endl;
+
+				glDeleteShader(result);
+			}
+
+			return result;
 		}
 
 
-		//delete shaders
-		for (int n = 0; n < shaderCount; n++)
-			glDeleteShader(shaders[n]);
 
-		return program;
-	}
+		GLuint linkFromShaders(const GLuint *shaders, int shaderCount)
+		{
+			GLuint program;
+			program = glCreateProgram();
+
+			for (int n = 0; n < shaderCount; n++)
+				glAttachShader(program, shaders[n]);
+
+			glLinkProgram(program);
+
+
+			//check for errors
+			GLint status;
+			glGetProgramiv(program, GL_LINK_STATUS, &status);
+
+			if (!status)
+			{
+				char buffer[8192];
+				glGetProgramInfoLog(program, 8192, NULL, buffer);
+				std::cout << buffer << std::endl;
+
+				glDeleteProgram(program);
+				return 0;
+			}
+
+
+			//delete shaders
+			for (int n = 0; n < shaderCount; n++)
+				glDeleteShader(shaders[n]);
+
+			return program;
+		}
+	};
 };

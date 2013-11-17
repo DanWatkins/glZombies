@@ -10,26 +10,27 @@
 #include "Main.h"
 #include "OpenGLApplication.h"
 
-
-class glZombies : public OpenGLApplication
+namespace glz
 {
-private:
-	GLuint mProgram;
+	class glZombies : public OpenGLApplication
+	{
+	private:
+		GLuint mProgram;
 
-public:
-	glZombies();
+	public:
+		glZombies();
 
 
-private:
-	//virtual from OpenGLApplication
-	void startup();
-	void render(double currentTime);
-	void terminate();
+	private:
+		//virtual from OpenGLApplication
+		void startup();
+		void render(double currentTime);
+		void terminate();
 
-	//general
-	void loadShaders();
+		//general
+		void loadShaders();
+	};
 };
-
 
 #endif
 

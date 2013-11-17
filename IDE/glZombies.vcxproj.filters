@@ -36,4 +36,7 @@
       <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\History.txt" />
+  </ItemGroup>
 </Project>

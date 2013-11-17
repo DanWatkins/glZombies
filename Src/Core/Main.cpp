@@ -7,6 +7,8 @@
 #include "Main.h"
 #include "glZombies.h"
 
+using namespace glz;
+
 int main()
 {
 	glZombies *app = new glZombies;

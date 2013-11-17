@@ -9,17 +9,19 @@
 
 #include "Main.h"
 
-class OpenGLApplication
+namespace glz
 {
-public:
-	int init();
+	class OpenGLApplication
+	{
+	public:
+		int init();
 
-protected:
-	virtual void startup() = 0;
-	virtual void render(double currentTime) = 0;
-	virtual void terminate() = 0;
+	protected:
+		virtual void startup() = 0;
+		virtual void render(double currentTime) = 0;
+		virtual void terminate() = 0;
+	};
 };
-
 
 #endif
 

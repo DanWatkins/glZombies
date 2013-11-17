@@ -9,12 +9,14 @@
 
 #include "Main.h"
 
-namespace Shader
+namespace glz
 {
-	GLuint loadShader(const char *filename, GLenum shaderType = GL_FRAGMENT_SHADER, bool checkErrors = true);
-	GLuint linkFromShaders(const GLuint *shaders, int shaderCount, bool checkErrors = true);
-}
-
+	namespace Shader
+	{
+		GLuint loadShader(const char *filename, GLenum shaderType = GL_FRAGMENT_SHADER, bool checkErrors = true);
+		GLuint linkFromShaders(const GLuint *shaders, int shaderCount, bool checkErrors = true);
+	};
+};
 
 #endif
 
