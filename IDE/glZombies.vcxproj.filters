@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{dca36744-732c-4986-b8c4-6dc9d31f7dec}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\Core\gl3w.c">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Core\glZombies.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Core\Main.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Core\OpenGLApplication.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Core\Shader.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\Core\glZombies.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Core\Main.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Core\OpenGLApplication.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Core\Shader.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
