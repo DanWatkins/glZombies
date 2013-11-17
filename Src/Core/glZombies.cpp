@@ -20,9 +20,9 @@ namespace glz
 	}
 
 
-	void glZombies::render(double currentTime)
+	void glZombies::render(Double currentTime)
 	{
-		static const GLfloat clearColor[] = { 1.0f, 1.0f, 0.9f, 1.0f };
+		static const Float clearColor[] = { 1.0f, 1.0f, 0.9f, 1.0f };
 		glClearBufferfv(GL_COLOR, 0, clearColor);
 	}
 

@@ -13,8 +13,8 @@ namespace glz
 {
 	namespace Shader
 	{
-		GLuint loadShader(const char *filename, GLenum shaderType = GL_FRAGMENT_SHADER, bool checkErrors = true);
-		GLuint linkFromShaders(const GLuint *shaders, int shaderCount, bool checkErrors = true);
+		Uint loadShader(const char *filename, GLenum shaderType = GL_FRAGMENT_SHADER, Bool checkErrors = true);
+		Uint linkFromShaders(const Uint *shaders, Int shaderCount, Bool checkErrors = true);
 	};
 };
 

@@ -15,7 +15,7 @@ namespace glz
 	class glZombies : public OpenGLApplication
 	{
 	private:
-		GLuint mProgram;
+		Uint mProgram;
 
 	public:
 		glZombies();
@@ -24,7 +24,7 @@ namespace glz
 	private:
 		//virtual from OpenGLApplication
 		void startup();
-		void render(double currentTime);
+		void render(Double currentTime);
 		void terminate();
 
 		//general

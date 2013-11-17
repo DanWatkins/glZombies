@@ -12,7 +12,7 @@ namespace glz
 	{
 		GLuint loadShader(const char *filename, GLenum shaderType)
 		{
-			GLuint result = 0;
+			Uint result = 0;
 			FILE *file;
 			char *data;
 			size_t filesize;
@@ -48,7 +48,7 @@ namespace glz
 
 
 			//check for errors
-			GLint status = 0;
+			Int status = 0;
 			glGetShaderiv(result, GL_COMPILE_STATUS, &status);
 
 			if (!status)
@@ -66,9 +66,9 @@ namespace glz
 
 
 
-		GLuint linkFromShaders(const GLuint *shaders, int shaderCount)
+		Uint linkFromShaders(const Uint *shaders, Int shaderCount)
 		{
-			GLuint program;
+			Uint program;
 			program = glCreateProgram();
 
 			for (int n = 0; n < shaderCount; n++)
@@ -78,7 +78,7 @@ namespace glz
 
 
 			//check for errors
-			GLint status;
+			Int status;
 			glGetProgramiv(program, GL_LINK_STATUS, &status);
 
 			if (!status)

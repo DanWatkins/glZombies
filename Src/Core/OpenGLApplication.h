@@ -13,8 +13,12 @@ namespace glz
 {
 	class OpenGLApplication
 	{
+	private:
+
+
+
 	public:
-		int init();
+		int32 init();
 
 	protected:
 		virtual void startup() = 0;

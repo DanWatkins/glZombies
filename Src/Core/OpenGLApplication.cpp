@@ -8,7 +8,7 @@
 
 namespace glz
 {
-	int OpenGLApplication::init()
+	int32 OpenGLApplication::init()
 	{
 		GLFWwindow* window;
 
