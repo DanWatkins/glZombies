@@ -12,22 +12,40 @@
 
 namespace glz
 {
+	//============================================================================|
+	// The actual glZombies main window class.
+	//============================================================================|
 	class glZombies : public OpenGLApplication
 	{
 	private:
 		Uint mProgram;
+
 
 	public:
 		glZombies();
 
 
 	private:
-		//virtual from OpenGLApplication
+		//==================================================================|
+		// -Called after the window has been fully initialized
+		//==================================================================|
 		void startup();
-		void render(Double currentTime);
+
+		//==================================================================|
+		// -Called at the start of the window's update loop
+		// -GLFW swaps buffers after this (double buffering)
+		// -GLFW polls input events after this
+		//==================================================================|
+		void update(Double currentTime);
+
+		//==================================================================|
+		// -Called when the window closes or encounters an error
+		//==================================================================|
 		void terminate();
 
-		//general
+		//==================================================================|
+		// -Loads, compiles, and links certain shaders into @mProgram
+		//==================================================================|
 		void loadShaders();
 	};
 };

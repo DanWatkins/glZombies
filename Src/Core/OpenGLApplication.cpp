@@ -8,6 +8,7 @@
 
 namespace glz
 {
+	//==================================================================|
 	OpenGLApplication::OpenGLApplication()
 	{
 		mWidth = gDefaultWindowWidth;
@@ -16,6 +17,7 @@ namespace glz
 	}
 
 
+	//==================================================================|
 	Int OpenGLApplication::init(Int width, Int height, String title)
 	{
 		mWidth = width;
@@ -45,7 +47,7 @@ namespace glz
 
 		while (!glfwWindowShouldClose(window))
 		{
-			render(0.0); //TODO get a time value for this call
+			update(0.0); //TODO get a time value for this call
 
 			glfwSwapBuffers(window);
 			glfwPollEvents();
