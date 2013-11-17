@@ -7,7 +7,7 @@
 #ifndef _OPENGL_WINDOW_H
 #define _OPENGL_WINDOW_H
 
-#include "Main.h"
+#include "../Main.h"
 
 namespace glz
 {

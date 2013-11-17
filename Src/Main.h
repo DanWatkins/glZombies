@@ -64,7 +64,7 @@ typedef GLboolean			Bool;
 
 typedef std::string			String;
 
-#include "../Constants.h"
+#include "Constants.h"
 
 #endif
 

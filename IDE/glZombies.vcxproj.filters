@@ -12,21 +12,16 @@
     <ClCompile Include="..\Src\Core\glZombies.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\Core\Main.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="..\Src\Core\Shader.cpp">
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="..\Src\Core\OpenGLWindow.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Core\glZombies.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\Core\Main.h">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\Core\Shader.h">
@@ -36,6 +31,7 @@
     <ClInclude Include="..\Src\Core\OpenGLWindow.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\Src\Main.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\History.txt" />

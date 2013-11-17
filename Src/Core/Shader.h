@@ -7,7 +7,7 @@
 #ifndef _SHADER_H
 #define _SHADER_H
 
-#include "Main.h"
+#include "../Main.h"
 
 namespace glz
 {

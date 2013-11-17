@@ -7,7 +7,7 @@
 #ifndef _GL_ZOMBIES_H
 #define _GL_ZOMBIES_H
 
-#include "Main.h"
+#include "../Main.h"
 #include "OpenGLWindow.h"
 
 namespace glz

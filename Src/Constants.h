@@ -7,7 +7,7 @@
 #ifndef _CONSTANTS_H
 #define _CONSTANTS_H
 
-#include "./Core/Main.h"
+#include "Main.h"
 
 
 const Int			gDefaultWindowWidth				= 800;

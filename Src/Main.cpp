@@ -5,7 +5,7 @@
 //=======================================================================================================================|
 
 #include "Main.h"
-#include "glZombies.h"
+#include "./Core/glZombies.h"
 
 using namespace glz;
 
