@@ -5,6 +5,7 @@
 //=======================================================================================================================|
 
 #include "glZombies.h"
+#include "Shader.h"
 
 namespace glz
 {
@@ -19,6 +20,9 @@ namespace glz
 	void glZombies::startup()
 	{
 		loadShaders();
+
+		mMeshes.push_back(Mesh2D());
+		mMeshes.front().load();
 	}
 
 
@@ -27,6 +31,8 @@ namespace glz
 	{
 		static const Float clearColor[] = { 1.0f, 1.0f, 0.9f, 1.0f };
 		glClearBufferfv(GL_COLOR, 0, clearColor);
+
+		mMeshes.front().draw(mProgram);
 	}
 
 
@@ -39,5 +45,10 @@ namespace glz
 	//==================================================================|
 	void glZombies::loadShaders()
 	{
+		Uint shaders[2];
+		shaders[0] = Shader::loadShader("standard.vert", GL_VERTEX_SHADER);
+		shaders[1] = Shader::loadShader("standard.frag", GL_FRAGMENT_SHADER);
+
+		mProgram = Shader::linkFromShaders(shaders, 2);
 	}
 };

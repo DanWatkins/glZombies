@@ -1,30 +1,48 @@
 //=======================================================================================================================|
-// Created 2013.11.16 by Daniel L. Watkins
+// Created 2013.11.17 by Daniel L. Watkins
 //
 // Copyright (C) 2013 Daniel L. Watkins
 //=======================================================================================================================|
 
-#ifndef _SHADER_H
-#define _SHADER_H
+#ifndef _glz_MESH_2D_H
+#define _glz_MESH_2D_H
 
-#include "../Main.h"
+#include "..\Main.h"
+
+#define UNBIND_PROGRAM_AFTER_DRAW 1
 
 namespace glz
 {
-	namespace Shader
+	class Mesh2D
 	{
-		//==================================================================|
-		// -Loads a GLSL shader from a text file, compiles as @shaderType,
-		//  and returns a shader id
-		//==================================================================|
-		Uint loadShader(const char *filename, GLenum shaderType);
+	private:
+		GLuint mVbo, mVao;
+
+		GLenum mDrawMode;
+		std::vector<Float> mVertexData;
+
+	public:
+		Mesh2D();
 
 		//==================================================================|
-		// -Links an array of shaders and returns a program id
+		// -
 		//==================================================================|
-		Uint linkFromShaders(const Uint *shaders, Int shaderCount);
+		void load();
+
+		//==================================================================|
+		// -
+		//==================================================================|
+		void draw(GLuint &program);
+
+
+	private:
+		//==================================================================|
+		// -
+		//==================================================================|
+		void generateVertexData();
 	};
 };
+
 
 #endif
 

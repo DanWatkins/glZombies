@@ -9,6 +9,7 @@
 
 #include "../Main.h"
 #include "OpenGLWindow.h"
+#include "Mesh2D.h"
 
 namespace glz
 {
@@ -19,7 +20,7 @@ namespace glz
 	{
 	private:
 		Uint mProgram;
-
+		std::vector<Mesh2D> mMeshes;
 
 	public:
 		glZombies();

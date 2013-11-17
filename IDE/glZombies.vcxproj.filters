@@ -4,6 +4,9 @@
     <Filter Include="Core">
       <UniqueIdentifier>{dca36744-732c-4986-b8c4-6dc9d31f7dec}</UniqueIdentifier>
     </Filter>
+    <Filter Include=".Bin">
+      <UniqueIdentifier>{c93d5b14-7382-4ed0-a7d3-94ea35c21567}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\Core\gl3w.c">
@@ -19,6 +22,9 @@
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="..\Src\Main.cpp" />
+    <ClCompile Include="..\Src\Core\Mesh2D.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Core\glZombies.h">
@@ -32,8 +38,16 @@
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\Main.h" />
+    <ClInclude Include="..\Src\Core\Mesh2D.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\History.txt" />
+    <None Include="..\Bin\standard.frag">
+      <Filter>.Bin</Filter>
+    </None>
+    <None Include="..\Bin\standard.vert">
+      <Filter>.Bin</Filter>
+    </None>
   </ItemGroup>
 </Project>
