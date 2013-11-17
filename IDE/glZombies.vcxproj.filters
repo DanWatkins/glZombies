@@ -15,10 +15,10 @@
     <ClCompile Include="..\Src\Core\Main.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\Core\OpenGLApplication.cpp">
+    <ClCompile Include="..\Src\Core\Shader.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\Core\Shader.cpp">
+    <ClCompile Include="..\Src\Core\OpenGLWindow.cpp">
       <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,13 +29,13 @@
     <ClInclude Include="..\Src\Core\Main.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\Core\OpenGLApplication.h">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="..\Src\Core\Shader.h">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\Constants.h" />
+    <ClInclude Include="..\Src\Core\OpenGLWindow.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\History.txt" />

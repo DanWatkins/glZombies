@@ -4,14 +4,14 @@
 // Copyright (C) 2013 Daniel L. Watkins
 //=======================================================================================================================|
 
-#ifndef _OPENGL_APPLICATION_H
-#define _OPENGL_APPLICATION_H
+#ifndef _OPENGL_WINDOW_H
+#define _OPENGL_WINDOW_H
 
 #include "Main.h"
 
 namespace glz
 {
-	class OpenGLApplication
+	class OpenGLWindow
 	{
 	private:
 		Int mWidth, mHeight;
@@ -19,7 +19,7 @@ namespace glz
 
 
 	public:
-		OpenGLApplication();
+		OpenGLWindow();
 		Int init(Int width=gDefaultWindowWidth, Int height=gDefaultWindowHeight, String title=gDefaultWindowTitle);
 
 

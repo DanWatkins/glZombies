@@ -4,12 +4,12 @@
 // Copyright (C) 2013 Daniel L. Watkins
 //=======================================================================================================================|
 
-#include "OpenGLApplication.h"
+#include "OpenGLWindow.h"
 
 namespace glz
 {
 	//==================================================================|
-	OpenGLApplication::OpenGLApplication()
+	OpenGLWindow::OpenGLWindow()
 	{
 		mWidth = gDefaultWindowWidth;
 		mHeight = gDefaultWindowHeight;
@@ -18,7 +18,7 @@ namespace glz
 
 
 	//==================================================================|
-	Int OpenGLApplication::init(Int width, Int height, String title)
+	Int OpenGLWindow::init(Int width, Int height, String title)
 	{
 		mWidth = width;
 		mHeight = height;

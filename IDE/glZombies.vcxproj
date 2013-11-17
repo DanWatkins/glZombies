@@ -14,14 +14,14 @@
     <ClCompile Include="..\Src\Core\gl3w.c" />
     <ClCompile Include="..\Src\Core\glZombies.cpp" />
     <ClCompile Include="..\Src\Core\Main.cpp" />
-    <ClCompile Include="..\Src\Core\OpenGLApplication.cpp" />
+    <ClCompile Include="..\Src\Core\OpenGLWindow.cpp" />
     <ClCompile Include="..\Src\Core\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Constants.h" />
     <ClInclude Include="..\Src\Core\glZombies.h" />
     <ClInclude Include="..\Src\Core\Main.h" />
-    <ClInclude Include="..\Src\Core\OpenGLApplication.h" />
+    <ClInclude Include="..\Src\Core\OpenGLWindow.h" />
     <ClInclude Include="..\Src\Core\Shader.h" />
   </ItemGroup>
   <ItemGroup>

@@ -8,14 +8,14 @@
 #define _GL_ZOMBIES_H
 
 #include "Main.h"
-#include "OpenGLApplication.h"
+#include "OpenGLWindow.h"
 
 namespace glz
 {
 	//============================================================================|
 	// The actual glZombies main window class.
 	//============================================================================|
-	class glZombies : public OpenGLApplication
+	class glZombies : public OpenGLWindow
 	{
 	private:
 		Uint mProgram;

@@ -1,6 +1,7 @@
 
 ### Current version
 
+[REFACTORED] Renamed OpenGLApplication to OpenGLWindow (2013.11.16)
 [ADDED] New method/class naming conventions (2013.11.16)
 [ADDED] Screen size and title can be set for OpenGLApplication istances. Added Constants.h for contstants (2013.11.16)
 [CHANGED] All primitive types are now typedef'ed around OpenGL types. Meaning GLboolean is now Bool, GLbyte is now Int8 (2013.11.16)
