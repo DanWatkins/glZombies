@@ -48,7 +48,7 @@
 #include "GL/gl3w.h"
 
 
-//typedef OpenGL primitives with de-branded names
+//typedef common types
 typedef GLbyte				Int8;
 typedef GLubyte				Uint8;
 typedef GLshort				Int16;
@@ -62,8 +62,9 @@ typedef GLfloat				Float;
 typedef GLdouble			Double;
 typedef GLboolean			Bool;
 
+typedef std::string			String;
 
-
+#include "../Constants.h"
 
 #endif
 

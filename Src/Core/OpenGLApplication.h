@@ -14,16 +14,23 @@ namespace glz
 	class OpenGLApplication
 	{
 	private:
-
+		Int mWidth, mHeight;
+		String mTitle;
 
 
 	public:
-		int32 init();
+		OpenGLApplication();
+		Int init(Int width=gDefaultWindowWidth, Int height=gDefaultWindowHeight, String title=gDefaultWindowTitle);
 
 	protected:
 		virtual void startup() = 0;
-		virtual void render(double currentTime) = 0;
+		virtual void render(Double currentTime) = 0;
 		virtual void terminate() = 0;
+
+	public:
+		Int getWidth() { return mWidth; }
+		Int getHeight() { return mHeight; }
+		String getTitle() { return mTitle; }
 	};
 };
 

@@ -35,6 +35,7 @@
     <ClInclude Include="..\Src\Core\Shader.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\Src\Constants.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\History.txt" />

@@ -1,6 +1,7 @@
 
 ### Current version
 
+[ADDED] Screen size and title can be set for OpenGLApplication istances. Added Constants.h for contstants (2013.11.16)
 [CHANGED] All primitive types are now typedef'ed around OpenGL types. Meaning GLboolean is now Bool, GLbyte is now Int8 (2013.11.16)
 [CHANGED] Everything resides in the glz namespace now (2013.11.16)
 [ADDED] Base code (2013.11.16)

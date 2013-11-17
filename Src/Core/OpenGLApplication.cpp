@@ -8,14 +8,26 @@
 
 namespace glz
 {
-	int32 OpenGLApplication::init()
+	OpenGLApplication::OpenGLApplication()
 	{
+		mWidth = gDefaultWindowWidth;
+		mHeight = gDefaultWindowHeight;
+		mTitle = gDefaultWindowTitle;
+	}
+
+
+	Int OpenGLApplication::init(Int width, Int height, String title)
+	{
+		mWidth = width;
+		mHeight = height;
+		mTitle = title;
+
 		GLFWwindow* window;
 
 		if (!glfwInit())
 			return -1;
 
-		window = glfwCreateWindow(800, 600, "OpenGL Application", NULL, NULL);
+		window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
 		if (!window)
 		{
 			terminate();

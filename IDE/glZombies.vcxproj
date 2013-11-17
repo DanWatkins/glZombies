@@ -18,6 +18,7 @@
     <ClCompile Include="..\Src\Core\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Src\Constants.h" />
     <ClInclude Include="..\Src\Core\glZombies.h" />
     <ClInclude Include="..\Src\Core\Main.h" />
     <ClInclude Include="..\Src\Core\OpenGLApplication.h" />
