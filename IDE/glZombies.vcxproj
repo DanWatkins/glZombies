@@ -24,6 +24,7 @@
     <ClInclude Include="..\Src\Core\Mesh2D.h" />
     <ClInclude Include="..\Src\Core\OpenGLWindow.h" />
     <ClInclude Include="..\Src\Core\Shader.h" />
+    <ClInclude Include="..\Src\Core\Vec2.h" />
     <ClInclude Include="..\Src\Main.h" />
   </ItemGroup>
   <ItemGroup>
