@@ -18,12 +18,20 @@ namespace glz
 	{
 	private:
 		GLuint mVbo, mVao;
-
 		GLenum mDrawMode;
 		std::vector<Float> mVertexData;
 
+		Vec2<Float> mNdcPos;					//position in NDC-space
+
+
 	public:
 		Mesh2D();
+
+		void setDrawMode(GLenum drawMode) { mDrawMode = drawMode; }
+		GLenum getDrawMode() { return mDrawMode; }
+
+		void setNdcPos(const Vec2<Float> &ndcPos) { mNdcPos = ndcPos; }
+		Vec2<Float> getNdcPos() { return mNdcPos; }
 
 		//==================================================================|
 		// -

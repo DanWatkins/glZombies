@@ -40,6 +40,8 @@ namespace glz
 		glUseProgram(program);
 		glBindVertexArray(mVao);
 
+		glUniform4f(glGetUniformLocation(program, "offset"), mNdcPos.x, mNdcPos.y, 1.0, 1.0);
+
 		glDrawArrays(mDrawMode, 0, mVertexData.size());
 
 		glBindVertexArray(0);

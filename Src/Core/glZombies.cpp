@@ -23,6 +23,7 @@ namespace glz
 
 		mMeshes.push_back(Mesh2D());
 		mMeshes.front().load();
+		mMeshes.front().setNdcPos(Vec2<Float>(0.6, 0.6));
 	}
 
 
