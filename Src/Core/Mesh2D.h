@@ -20,11 +20,12 @@ namespace glz
 	class Mesh2D
 	{
 	private:
-		GLuint mVbo, mVao;
+		Uint mVbo, mVao;
 		GLenum mDrawMode;
 		std::vector<Float> mVertexData;
 
 		Vec2<Float> mNdcPos;					//position in NDC-space
+		Float mRotation;						//rotation value in radians
 
 	public:
 		Mesh2D();
@@ -45,6 +46,11 @@ namespace glz
 		// -Expects load from file to have been called.
 		//==================================================================|
 		void draw(GLuint &program);
+
+
+		void setRotation(Float angleInRadians) { mRotation = angleInRadians; }
+		void addRotation(Float angleInRadians) { mRotation += angleInRadians; }
+		Float getRotation() { return mRotation; }
 
 
 	private:

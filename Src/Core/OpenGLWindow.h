@@ -22,6 +22,9 @@ namespace glz
 		OpenGLWindow();
 		Int init(Int width=gDefaultWindowWidth, Int height=gDefaultWindowHeight, String title=gDefaultWindowTitle);
 
+		Int getWidth() { return mWidth; }
+		Int getHeight() { return mHeight; }
+		String getTitle() { return mTitle; }
 
 	protected:
 		//==================================================================|
@@ -36,16 +39,11 @@ namespace glz
 		//==================================================================|
 		virtual void update(Double currentTime) = 0;
 
+
 		//==================================================================|
 		// -Called when the window closes or encounters an error
 		//==================================================================|
 		virtual void terminate() = 0;
-
-
-	public:
-		Int getWidth() { return mWidth; }
-		Int getHeight() { return mHeight; }
-		String getTitle() { return mTitle; }
 	};
 };
 

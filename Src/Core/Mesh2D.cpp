@@ -46,6 +46,7 @@ namespace glz
 		glBindVertexArray(mVao);
 
 		glUniform4f(glGetUniformLocation(program, "offset"), mNdcPos.x, mNdcPos.y, 1.0, 1.0);
+		glUniform1f(glGetUniformLocation(program, "rotation"), mRotation);
 
 		glDrawArrays(mDrawMode, 0, mVertexData.size());
 
