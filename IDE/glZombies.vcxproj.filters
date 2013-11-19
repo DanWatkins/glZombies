@@ -7,6 +7,9 @@
     <Filter Include=".Bin">
       <UniqueIdentifier>{c93d5b14-7382-4ed0-a7d3-94ea35c21567}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{1783a654-31da-443c-8620-cc7bf0a55620}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\Core\gl3w.c">
@@ -25,6 +28,9 @@
     <ClCompile Include="..\Src\Core\Mesh2D.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\Utility\Helper.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Core\glZombies.h">
@@ -41,8 +47,11 @@
     <ClInclude Include="..\Src\Core\Mesh2D.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\Core\Vec2.h">
-      <Filter>Core</Filter>
+    <ClInclude Include="..\src\utility\Vec2.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Utility\Helper.h">
+      <Filter>Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +59,9 @@
       <Filter>.Bin</Filter>
     </None>
     <None Include="..\Bin\standard.vert">
+      <Filter>.Bin</Filter>
+    </None>
+    <None Include="..\Bin\zombie.m2">
       <Filter>.Bin</Filter>
     </None>
   </ItemGroup>

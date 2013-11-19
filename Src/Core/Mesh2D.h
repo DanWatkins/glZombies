@@ -7,8 +7,8 @@
 #ifndef _glz_MESH_2D_H
 #define _glz_MESH_2D_H
 
-#include "..\Main.h"
-#include "Vec2.h"
+#include "../Main.h"
+#include "../Utility/Vec2.h"
 
 #define UNBIND_PROGRAM_AFTER_DRAW 1
 

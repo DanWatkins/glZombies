@@ -15,7 +15,8 @@
 #include <fstream>
 #include <istream>
 #include <vector>
-#include <string.h>
+#include <string>
+#include <sstream>
 
 #include <cstdlib>
 #include <ctime>

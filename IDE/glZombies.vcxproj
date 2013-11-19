@@ -17,6 +17,7 @@
     <ClCompile Include="..\Src\Core\OpenGLWindow.cpp" />
     <ClCompile Include="..\Src\Core\Shader.cpp" />
     <ClCompile Include="..\Src\Main.cpp" />
+    <ClCompile Include="..\Src\Utility\Helper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Constants.h" />
@@ -24,12 +25,14 @@
     <ClInclude Include="..\Src\Core\Mesh2D.h" />
     <ClInclude Include="..\Src\Core\OpenGLWindow.h" />
     <ClInclude Include="..\Src\Core\Shader.h" />
-    <ClInclude Include="..\Src\Core\Vec2.h" />
     <ClInclude Include="..\Src\Main.h" />
+    <ClInclude Include="..\Src\Utility\Helper.h" />
+    <ClInclude Include="..\src\utility\Vec2.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Bin\standard.frag" />
     <None Include="..\Bin\standard.vert" />
+    <None Include="..\Bin\zombie.m2" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DB963AF4-49A3-4D23-B569-72107DF1E12E}</ProjectGuid>
