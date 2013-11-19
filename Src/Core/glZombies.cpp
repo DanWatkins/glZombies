@@ -22,7 +22,7 @@ namespace glz
 		loadShaders();
 
 		mMeshes.push_back(Mesh2D());
-		mMeshes.front().load();
+		mMeshes.front().loadFromFile("zombie.m2");
 		mMeshes.front().setNdcPos(Vec2<Float>(0.6, 0.6));
 	}
 

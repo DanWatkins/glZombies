@@ -11,14 +11,17 @@ namespace glz
 	//==================================================================|
 	Mesh2D::Mesh2D()
 	{
-		mDrawMode = GL_TRIANGLES;
+		mDrawMode	= GL_TRIANGLES;
+		mVbo		= -1;
+		mVao		= -1;
 	}
 
 
 	//==================================================================|
-	void Mesh2D::load()
+	bool Mesh2D::loadFromFile(String filepath)
 	{
-		generateVertexData();
+		if (!loadM2VertexDataFromFile(filepath))
+			return false;
 
 		glGenVertexArrays(1, &mVao);
 		glBindVertexArray(mVao);
@@ -31,6 +34,8 @@ namespace glz
 		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
 
 		glBindVertexArray(0);
+
+		return true;
 	}
 
 
@@ -50,15 +55,29 @@ namespace glz
 
 
 	//==================================================================|
-	void Mesh2D::generateVertexData()
+	bool Mesh2D::loadM2VertexDataFromFile(String filepath)
 	{
-		Float data[6] =
-		{
-			0.2f, 0.0f,
-			0.0f, 0.2f,
-			-0.2f, 0.0f
-		};
+		std::ifstream file(filepath);
 
-		mVertexData.assign(data, data+6);
+		if (!file.is_open())
+		{
+			std::cout << "Unable to read vertex data from " << filepath.c_str() << std::endl;
+			return false;
+		}
+
+		//read draw mode
+		file >> mDrawMode;
+
+		//read vertex data
+		Float token;
+		mVertexData.clear();
+		
+		while (!file.eof())
+		{
+			file >> token;
+			mVertexData.push_back(token);
+		}
+
+		return true;
 	}
 };

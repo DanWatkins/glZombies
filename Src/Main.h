@@ -13,6 +13,7 @@
 #include <algorithm>
 
 #include <fstream>
+#include <istream>
 #include <vector>
 #include <string.h>
 

@@ -14,6 +14,9 @@
 
 namespace glz
 {
+	typedef std::vector<Float> VertexData;
+	typedef Int Error;
+
 	class Mesh2D
 	{
 	private:
@@ -22,7 +25,6 @@ namespace glz
 		std::vector<Float> mVertexData;
 
 		Vec2<Float> mNdcPos;					//position in NDC-space
-
 
 	public:
 		Mesh2D();
@@ -34,21 +36,22 @@ namespace glz
 		Vec2<Float> getNdcPos() { return mNdcPos; }
 
 		//==================================================================|
-		// -
+		// -Loads data from a M2 file and configures the vbo and vao states.
 		//==================================================================|
-		void load();
+		bool loadFromFile(String filepath);
 
 		//==================================================================|
-		// -
+		// -Draws @mVertexData using the specified mode, vbo, and vao.
+		// -Expects load from file to have been called.
 		//==================================================================|
 		void draw(GLuint &program);
 
 
 	private:
 		//==================================================================|
-		// -
+		// -Loads the actual data from a M2 file.
 		//==================================================================|
-		void generateVertexData();
+		bool loadM2VertexDataFromFile(String filepath);
 	};
 };
 
