@@ -27,14 +27,21 @@ namespace glz
 		Vec2<Float> mNdcPos;					//position in NDC-space
 		Float mRotation;						//rotation value in radians
 
+
 	public:
 		Mesh2D();
 
+		//accessor and mutators
 		void setDrawMode(GLenum drawMode) { mDrawMode = drawMode; }
 		GLenum getDrawMode() { return mDrawMode; }
 
 		void setNdcPos(const Vec2<Float> &ndcPos) { mNdcPos = ndcPos; }
 		Vec2<Float> getNdcPos() { return mNdcPos; }
+
+		void setRotation(Float angleInRadians) { mRotation = angleInRadians; }
+		void addRotation(Float angleInRadians) { mRotation += angleInRadians; }
+		Float getRotation() { return mRotation; }
+
 
 		//==================================================================|
 		// -Loads data from a M2 file and configures the vbo and vao states.
@@ -46,11 +53,6 @@ namespace glz
 		// -Expects load from file to have been called.
 		//==================================================================|
 		void draw(GLuint &program);
-
-
-		void setRotation(Float angleInRadians) { mRotation = angleInRadians; }
-		void addRotation(Float angleInRadians) { mRotation += angleInRadians; }
-		Float getRotation() { return mRotation; }
 
 
 	private:

@@ -14,6 +14,7 @@ namespace glz
 		mWidth = gDefaultWindowWidth;
 		mHeight = gDefaultWindowHeight;
 		mTitle = gDefaultWindowTitle;
+
 	}
 
 
@@ -42,6 +43,9 @@ namespace glz
 
 		//if (gl3wIsSupported(4, 4) == false)
 		//	printf("Bad OpenGL version.\n");
+		GLFWInput::instance();
+		glfwSetKeyCallback(window, reinterpret_cast<GLFWkeyfun>(GLFWInput::keyboardCallback));
+		GLFWInput::instance().addWindow(this);
 
 		startup();
 

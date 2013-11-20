@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\Core\gl3w.c" />
+    <ClCompile Include="..\Src\Core\GLFWInput.cpp" />
     <ClCompile Include="..\Src\Core\glZombies.cpp" />
     <ClCompile Include="..\Src\Core\Mesh2D.cpp" />
     <ClCompile Include="..\Src\Core\OpenGLWindow.cpp" />
@@ -21,6 +22,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Constants.h" />
+    <ClInclude Include="..\Src\Core\GLFWInput.h" />
     <ClInclude Include="..\Src\Core\glZombies.h" />
     <ClInclude Include="..\Src\Core\Mesh2D.h" />
     <ClInclude Include="..\Src\Core\OpenGLWindow.h" />

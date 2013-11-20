@@ -22,30 +22,40 @@ namespace glz
 		Uint mProgram;
 		std::vector<Mesh2D> mMeshes;
 
+
 	public:
 		glZombies();
 
 
 	private:
 		//==================================================================|
+		// -virtual from OpenGLWindow
 		// -Called after the window has been fully initialized
 		//==================================================================|
 		void startup();
 
 		//==================================================================|
+		// -virtual from OpenGLWindow
 		// -Called at the start of the window's update loop
 		// -GLFW swaps buffers after this (double buffering)
 		// -GLFW polls input events after this
 		//==================================================================|
 		void update(Double currentTime);
 
-
 		//==================================================================|
+		// -virtual from OpenGLWindow
 		// -Called when the window closes or encounters an error
 		//==================================================================|
 		void terminate();
 
 		//==================================================================|
+		// -virtual from OpenGLWindow
+		// -Called whenever a keyboard event occurs by GLFW
+		//==================================================================|
+		void onKey(int key, int action);
+
+		//==================================================================|
+		// -virtual from OpenGLWindow
 		// -Loads, compiles, and links certain shaders into @mProgram
 		//==================================================================|
 		void loadShaders();

@@ -14,6 +14,8 @@ namespace glz
 		mDrawMode	= GL_TRIANGLES;
 		mVbo		= -1;
 		mVao		= -1;
+
+		mRotation	= 0.0f;
 	}
 
 
@@ -23,6 +25,7 @@ namespace glz
 		if (!loadM2VertexDataFromFile(filepath))
 			return false;
 
+		//set up vertex buffer object and vertex array object
 		glGenVertexArrays(1, &mVao);
 		glBindVertexArray(mVao);
 
@@ -48,7 +51,7 @@ namespace glz
 		glUniform4f(glGetUniformLocation(program, "offset"), mNdcPos.x, mNdcPos.y, 1.0, 1.0);
 		glUniform1f(glGetUniformLocation(program, "rotation"), mRotation);
 
-		glDrawArrays(mDrawMode, 0, mVertexData.size());
+		glDrawArrays(mDrawMode, 0, 3);
 
 		glBindVertexArray(0);
 		glUseProgram(0);

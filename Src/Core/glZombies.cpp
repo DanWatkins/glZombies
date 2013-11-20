@@ -38,6 +38,30 @@ namespace glz
 
 
 	//==================================================================|
+	void glZombies::onKey(int key, int action)
+	{
+		switch (key)
+		{
+			case GLFW_KEY_ESCAPE:
+			{
+				exit(0);  //TODO do better with this lol
+			}
+
+			case GLFW_KEY_LEFT:
+			{
+				mMeshes.front().addRotation(-0.025f);
+				break;
+			}
+			case GLFW_KEY_RIGHT:
+			{
+				mMeshes.front().addRotation(0.025f);
+				break;
+			}
+		}
+	}
+
+
+	//==================================================================|
 	void glZombies::terminate()
 	{
 	}
