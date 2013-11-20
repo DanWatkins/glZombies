@@ -22,19 +22,19 @@ namespace glz
 			return false;
 
 		//set up vertex buffer object and vertex array object for each component
-		for (int n=0; n<mComponents.size(); n++)
+		for (Uint n=0; n<mParts.size(); n++)
 		{
-			Component *cmp = &mComponents[n];
+			Part *part = &mParts[n];
 			
-			glGenVertexArrays(1, &cmp->vao);
-			glBindVertexArray(cmp->vao);
+			glGenVertexArrays(1, &part->vao);
+			glBindVertexArray(part->vao);
 
-			glGenBuffers(1, &cmp->vbo);
-			glBindBuffer(GL_ARRAY_BUFFER, cmp->vbo);
+			glGenBuffers(1, &part->vbo);
+			glBindBuffer(GL_ARRAY_BUFFER, part->vbo);
 
 			glBufferData(	GL_ARRAY_BUFFER,
-							cmp->vertexData.size()*sizeof(Float),
-							&cmp->vertexData[0],
+							part->vertexData.size()*sizeof(Float),
+							&part->vertexData[0],
 							GL_STREAM_DRAW);
 
 			glEnableVertexAttribArray(0);
@@ -52,16 +52,16 @@ namespace glz
 	{
 		glUseProgram(program);
 
-		for (int n=0; n<mComponents.size(); n++)
+		for (Uint n=0; n<mParts.size(); n++)
 		{
-			Component *cmp = &mComponents[n];
+			Part *part = &mParts[n];
 
-			glBindVertexArray(cmp->vao);
+			glBindVertexArray(part->vao);
 
 			glUniform4f(glGetUniformLocation(program, "offset"), mNdcPos.x, mNdcPos.y, 0.0, 0.0);
 			glUniform1f(glGetUniformLocation(program, "rotation"), mRotation);
 
-			glDrawArrays(cmp->drawMode, 0, cmp->vertexData.size()/gValuesPerPoint);
+			glDrawArrays(part->drawMode, 0, part->vertexData.size()/gValuesPerPoint);
 		}
 
 		glBindVertexArray(0);
@@ -88,33 +88,33 @@ namespace glz
 
 			if (strcmp(token,"<lines>") == 0)
 			{
-				Component newComponent;
-				newComponent.drawMode = GL_LINE_STRIP;
+				Part newPart;
+				newPart.drawMode = GL_LINE_STRIP;
 
 				file >> token;
 
 				while (!file.eof()  &&  strcmp(token,"</lines>") != 0)
 				{
-					newComponent.vertexData.push_back(toFloat(token));
+					newPart.vertexData.push_back(toFloat(token));
 					file >> token;
 				}
 
-				mComponents.push_back(newComponent);
+				mParts.push_back(newPart);
 			}
 			else if (strcmp(token,"<triangle>") == 0)
 			{
-				Component newComponent;
-				newComponent.drawMode = GL_TRIANGLES;
+				Part newPart;
+				newPart.drawMode = GL_TRIANGLES;
 
 				file >> token;
 
 				while (!file.eof()  &&  strcmp(token,"</triangle>") != 0)
 				{
-					newComponent.vertexData.push_back(toFloat(token));
+					newPart.vertexData.push_back(toFloat(token));
 					file >> token;
 				}
 
-				mComponents.push_back(newComponent);
+				mParts.push_back(newPart);
 			}
 		}
 

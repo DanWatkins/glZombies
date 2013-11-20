@@ -1,3 +1,9 @@
+//=======================================================================================================================|
+// Created 2013.11.19 by Daniel L. Watkins
+//
+// Copyright (C) 2013 Daniel L. Watkins
+//=======================================================================================================================|
+
 #include "GLFWInput.h"
 
 namespace glz
@@ -17,7 +23,7 @@ namespace glz
 	void GLFWInput::addWindow(OpenGLWindow *window)
 	{
 		//ensure @window is not already a registered window
-		for (int n=0; n<mWindows.size(); n++)
+		for (Uint n=0; n<mWindows.size(); n++)
 		{
 			if (window == mWindows[n])
 				return;

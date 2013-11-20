@@ -34,6 +34,11 @@ namespace glz
 
 		#undef OVERLOAD
 	};
+
+
+	typedef Vec2<Int> Vec2i;
+	typedef Vec2<Float> Vec2f;
+	typedef Vec2<Double> Vec2d;
 };
 
 #endif

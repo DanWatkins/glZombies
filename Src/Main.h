@@ -68,6 +68,7 @@ typedef std::string			String;
 
 #include "Constants.h"
 #include "./Utility/Helper.h"
+#include "./Utility/Vec2.h"
 
 #endif
 

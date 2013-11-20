@@ -22,7 +22,7 @@ namespace glz
 	class Mesh2D
 	{
 	private:
-		struct Component
+		struct Part
 		{
 		public:
 			Uint vbo, vao;
@@ -32,7 +32,7 @@ namespace glz
 
 
 	private:
-		std::vector<Component> mComponents;
+		std::vector<Part> mParts;
 		Vec2<Float> mNdcPos;					//position in NDC-space
 		Float mRotation;						//rotation value in radians
 
