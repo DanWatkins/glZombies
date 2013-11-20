@@ -4,6 +4,9 @@
 // Copyright (C) 2013 Daniel L. Watkins
 //=======================================================================================================================|
 
+#ifndef _glz_VEC2_H
+#define _glz_VEC2_H
+
 #include "..\Main.h"
 
 namespace glz
@@ -32,3 +35,6 @@ namespace glz
 		#undef OVERLOAD
 	};
 };
+
+#endif
+

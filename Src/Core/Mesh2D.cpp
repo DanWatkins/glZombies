@@ -11,10 +11,6 @@ namespace glz
 	//==================================================================|
 	Mesh2D::Mesh2D()
 	{
-		mDrawMode	= GL_TRIANGLES;
-		mVbo		= -1;
-		mVao		= -1;
-
 		mRotation	= 0.0f;
 	}
 
@@ -22,19 +18,28 @@ namespace glz
 	//==================================================================|
 	bool Mesh2D::loadFromFile(String filepath)
 	{
-		if (!loadM2VertexDataFromFile(filepath))
+		if (!loadComponentsFromGLZM2File(filepath))
 			return false;
 
-		//set up vertex buffer object and vertex array object
-		glGenVertexArrays(1, &mVao);
-		glBindVertexArray(mVao);
+		//set up vertex buffer object and vertex array object for each component
+		for (int n=0; n<mComponents.size(); n++)
+		{
+			Component *cmp = &mComponents[n];
+			
+			glGenVertexArrays(1, &cmp->vao);
+			glBindVertexArray(cmp->vao);
 
-		glGenBuffers(1, &mVbo);
-		glBindBuffer(GL_ARRAY_BUFFER, mVbo);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(mVertexData), &mVertexData[0], GL_STATIC_DRAW);
+			glGenBuffers(1, &cmp->vbo);
+			glBindBuffer(GL_ARRAY_BUFFER, cmp->vbo);
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
+			glBufferData(	GL_ARRAY_BUFFER,
+							cmp->vertexData.size()*sizeof(Float),
+							&cmp->vertexData[0],
+							GL_STREAM_DRAW);
+
+			glEnableVertexAttribArray(0);
+			glVertexAttribPointer(0, gValuesPerPoint, GL_FLOAT, GL_FALSE, 0, 0);
+		}
 
 		glBindVertexArray(0);
 
@@ -46,12 +51,18 @@ namespace glz
 	void Mesh2D::draw(GLuint &program)
 	{
 		glUseProgram(program);
-		glBindVertexArray(mVao);
 
-		glUniform4f(glGetUniformLocation(program, "offset"), mNdcPos.x, mNdcPos.y, 1.0, 1.0);
-		glUniform1f(glGetUniformLocation(program, "rotation"), mRotation);
+		for (int n=0; n<mComponents.size(); n++)
+		{
+			Component *cmp = &mComponents[n];
 
-		glDrawArrays(mDrawMode, 0, 3);
+			glBindVertexArray(cmp->vao);
+
+			glUniform4f(glGetUniformLocation(program, "offset"), mNdcPos.x, mNdcPos.y, 0.0, 0.0);
+			glUniform1f(glGetUniformLocation(program, "rotation"), mRotation);
+
+			glDrawArrays(cmp->drawMode, 0, cmp->vertexData.size()/gValuesPerPoint);
+		}
 
 		glBindVertexArray(0);
 		glUseProgram(0);
@@ -59,9 +70,9 @@ namespace glz
 
 
 	//==================================================================|
-	bool Mesh2D::loadM2VertexDataFromFile(String filepath)
+	bool Mesh2D::loadComponentsFromGLZM2File(String filepath)
 	{
-		std::ifstream file(filepath);
+		std::ifstream file(filepath, std::ifstream::in);
 
 		if (!file.is_open())
 		{
@@ -69,17 +80,42 @@ namespace glz
 			return false;
 		}
 
-		//read draw mode
-		file >> mDrawMode;
+		char token[64];
 
-		//read vertex data
-		Float token;
-		mVertexData.clear();
-		
 		while (!file.eof())
 		{
 			file >> token;
-			mVertexData.push_back(token);
+
+			if (strcmp(token,"<lines>") == 0)
+			{
+				Component newComponent;
+				newComponent.drawMode = GL_LINE_STRIP;
+
+				file >> token;
+
+				while (!file.eof()  &&  strcmp(token,"</lines>") != 0)
+				{
+					newComponent.vertexData.push_back(toFloat(token));
+					file >> token;
+				}
+
+				mComponents.push_back(newComponent);
+			}
+			else if (strcmp(token,"<triangle>") == 0)
+			{
+				Component newComponent;
+				newComponent.drawMode = GL_TRIANGLES;
+
+				file >> token;
+
+				while (!file.eof()  &&  strcmp(token,"</triangle>") != 0)
+				{
+					newComponent.vertexData.push_back(toFloat(token));
+					file >> token;
+				}
+
+				mComponents.push_back(newComponent);
+			}
 		}
 
 		return true;

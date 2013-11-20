@@ -17,13 +17,22 @@ namespace glz
 	typedef std::vector<Float> VertexData;
 	typedef Int Error;
 
+	const Int gValuesPerPoint = 2;
+
 	class Mesh2D
 	{
 	private:
-		Uint mVbo, mVao;
-		GLenum mDrawMode;
-		std::vector<Float> mVertexData;
+		struct Component
+		{
+		public:
+			Uint vbo, vao;
+			GLenum drawMode;
+			std::vector<Float> vertexData;
+		};
 
+
+	private:
+		std::vector<Component> mComponents;
 		Vec2<Float> mNdcPos;					//position in NDC-space
 		Float mRotation;						//rotation value in radians
 
@@ -32,9 +41,6 @@ namespace glz
 		Mesh2D();
 
 		//accessor and mutators
-		void setDrawMode(GLenum drawMode) { mDrawMode = drawMode; }
-		GLenum getDrawMode() { return mDrawMode; }
-
 		void setNdcPos(const Vec2<Float> &ndcPos) { mNdcPos = ndcPos; }
 		Vec2<Float> getNdcPos() { return mNdcPos; }
 
@@ -59,7 +65,7 @@ namespace glz
 		//==================================================================|
 		// -Loads the actual data from a M2 file.
 		//==================================================================|
-		bool loadM2VertexDataFromFile(String filepath);
+		bool loadComponentsFromGLZM2File(String filepath);
 	};
 };
 

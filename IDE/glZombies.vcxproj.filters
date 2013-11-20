@@ -65,7 +65,7 @@
     <None Include="..\Bin\standard.vert">
       <Filter>.Bin</Filter>
     </None>
-    <None Include="..\Bin\zombie.m2">
+    <None Include="..\Bin\zombie.glzm2">
       <Filter>.Bin</Filter>
     </None>
   </ItemGroup>
