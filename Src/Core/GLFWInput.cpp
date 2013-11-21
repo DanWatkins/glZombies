@@ -36,7 +36,7 @@ namespace glz
 	//==================================================================|
 	void GLFWInput::keyboardCallback(int action, int key, int a, int b, int c)
 	{
-		for (int n=0; n<mWindows.size(); n++)
+		for (Uint n=0; n<mWindows.size(); n++)
 			mWindows[n]->onKey(key, action);
 	}
 };

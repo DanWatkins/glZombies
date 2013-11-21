@@ -31,7 +31,9 @@
     <ClInclude Include="..\Src\Main.h" />
     <ClInclude Include="..\Src\Utility\Helper.h" />
     <ClInclude Include="..\src\utility\Vec2.h" />
+    <ClInclude Include="..\src\world\Components\Drawable.h" />
     <ClInclude Include="..\Src\World\Entity.h" />
+    <ClInclude Include="..\Src\World\Component.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Bin\standard.frag" />

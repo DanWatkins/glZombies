@@ -13,6 +13,9 @@
     <Filter Include="World">
       <UniqueIdentifier>{45891465-28f4-42df-b0ad-c6c891b01865}</UniqueIdentifier>
     </Filter>
+    <Filter Include="World\Components">
+      <UniqueIdentifier>{5654c9ba-8527-4f19-8d9c-3aa9784b6e9f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\Core\gl3w.c">
@@ -67,6 +70,12 @@
     </ClInclude>
     <ClInclude Include="..\Src\World\Entity.h">
       <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\World\Component.h">
+      <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\world\Components\Drawable.h">
+      <Filter>World\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

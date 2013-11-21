@@ -4,36 +4,28 @@
 // Copyright (C) 2013 Daniel L. Watkins
 //=======================================================================================================================|
 
-#ifndef _glz_ENTITY_H
-#define _glz_ENTITY_H
+#ifndef _glz_DRAWABLE_H
+#define _glz_DRAWABLE_H
 
-#include "../Main.h"
-#include "Component.h"
+#include "../../Main.h"
+#include "../Component.h"
+#include "../../Core/Mesh2D.h"
 
 namespace glz
 {
 	namespace world
 	{
-		typedef std::vector<Component> ComponentVector;
-
-		class Entity
+		class Drawable : public Component
 		{
 		private:
-			Vec2d mPos;			//position in world space
-			ComponentVector mComponents;
+			Mesh2D mMesh;
 
 		public:
-			Entity() {}
-
-			//accessor and mutator
-			void setPos(Vec2d pos) { mPos = pos; }
-			Vec2d getPos() { return mPos; }
-
-			void addComponent(Component component);
+			Drawable() {}
+			~Drawable() {}
 		};
-	}
+	};
 };
-
 
 #endif
 

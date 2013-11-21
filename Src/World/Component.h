@@ -4,36 +4,37 @@
 // Copyright (C) 2013 Daniel L. Watkins
 //=======================================================================================================================|
 
-#ifndef _glz_ENTITY_H
-#define _glz_ENTITY_H
+#ifndef _glz_COMPONENT_H
+#define _glz_COMPONENT_H
 
 #include "../Main.h"
-#include "Component.h"
+
 
 namespace glz
 {
 	namespace world
 	{
-		typedef std::vector<Component> ComponentVector;
+		class Entity;
 
-		class Entity
+		class Component
 		{
 		private:
-			Vec2d mPos;			//position in world space
-			ComponentVector mComponents;
+			Entity *mHost;
+
 
 		public:
-			Entity() {}
+			friend Entity;
 
-			//accessor and mutator
-			void setPos(Vec2d pos) { mPos = pos; }
-			Vec2d getPos() { return mPos; }
+			Component() {}
+			virtual ~Component() {}
 
-			void addComponent(Component component);
+
+		protected:
+			void setHost(Entity *host) { mHost = host; }
+			Entity *getHost() { return mHost; }
 		};
-	}
+	};
 };
-
 
 #endif
 
