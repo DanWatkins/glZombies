@@ -28,8 +28,11 @@ namespace glz
 			Component() {}
 			virtual ~Component() {}
 
+			virtual void update() = 0;
+
 
 		protected:
+			//accessor and mutator
 			void setHost(Entity *host) { mHost = host; }
 			Entity *getHost() { return mHost; }
 		};
