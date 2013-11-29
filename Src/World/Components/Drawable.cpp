@@ -10,6 +10,7 @@ namespace glz
 {
 	namespace world
 	{
+		//==================================================================|
 		Drawable::Drawable(String meshFilepath, Uint meshProgram)
 		{
 			mMesh.loadFromFile(meshFilepath);
@@ -17,6 +18,7 @@ namespace glz
 		}
 
 
+		//==================================================================|
 		void Drawable::update()
 		{
 			mMesh.draw(mProgram);

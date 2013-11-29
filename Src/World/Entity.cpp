@@ -10,11 +10,20 @@ namespace glz
 {
 	namespace world
 	{
-		void Entity::addComponent(Component component)
+		Entity::~Entity()
+		{
+			//delete all components
+			for (Int n=0; n<mComponents.size(); n++)
+				delete mComponents[n];
+		}
+
+
+		void Entity::addComponent(Component *component)
 		{
 			//TODO eventually there may be a way to check uniqueness of components
 
-			component.setHost(this);
+
+			component->setHost(this);
 			mComponents.push_back(component);
 		}
 	};

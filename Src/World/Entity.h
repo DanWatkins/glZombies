@@ -14,22 +14,32 @@ namespace glz
 {
 	namespace world
 	{
-		typedef std::vector<Component> ComponentVector;
+		class World;
+		typedef std::vector<Component*> ComponentVector;
 
 		class Entity
 		{
 		private:
+			friend World;
+
+			String mId;
 			Vec2d mPos;			//position in world space
 			ComponentVector mComponents;
 
+
+			Entity(String id) { mId = id; }
+			
+			void addComponent(Component *component);
+
+
 		public:
-			Entity() {}
+			~Entity();
 
 			//accessor and mutator
+			String getId() { return mId; }
+
 			void setPos(Vec2d pos) { mPos = pos; }
 			Vec2d getPos() { return mPos; }
-
-			void addComponent(Component component);
 		};
 	}
 };
