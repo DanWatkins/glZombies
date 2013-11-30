@@ -46,7 +46,9 @@
     <ClCompile Include="..\Src\World\Components\Drawable.cpp">
       <Filter>World\Components</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\World\World.cpp" />
+    <ClCompile Include="..\Src\World\World.cpp">
+      <Filter>World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Core\glZombies.h">

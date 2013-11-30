@@ -17,6 +17,11 @@ namespace glz
 		class World;
 		typedef std::vector<Component*> ComponentVector;
 
+
+		//============================================================================|
+		// -Represents a thing that can be instantiated only inside of World instances
+		// -Every component is updated when the Entity is updated
+		//============================================================================|
 		class Entity
 		{
 		private:
@@ -27,9 +32,6 @@ namespace glz
 			ComponentVector mComponents;
 
 
-			Entity(String id) { mId = id; }
-			
-			void addComponent(Component *component);
 
 
 		public:
@@ -40,6 +42,23 @@ namespace glz
 
 			void setPos(Vec2d pos) { mPos = pos; }
 			Vec2d getPos() { return mPos; }
+
+
+		private:
+			Entity();
+			
+			void setId(String id) { mId = id; }
+
+
+			//============================================================================|
+			// Updates the Entity and all components
+			//============================================================================|
+			void update();
+
+			//============================================================================|
+			// Adds a new Component to the Entity
+			//============================================================================|
+			void addComponent(Component *component);
 		};
 	}
 };

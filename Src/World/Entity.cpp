@@ -10,14 +10,30 @@ namespace glz
 {
 	namespace world
 	{
+		//==================================================================|
+		Entity::Entity()
+		{
+		}
+
+
+		//==================================================================|
 		Entity::~Entity()
 		{
 			//delete all components
-			for (Int n=0; n<mComponents.size(); n++)
+			for (Uint n=0; n<mComponents.size(); n++)
 				delete mComponents[n];
 		}
 
 
+		//==================================================================|
+		void Entity::update()
+		{
+			for (Uint n=0; n<mComponents.size(); n++)
+				mComponents.at(n)->update();
+		}
+
+
+		//==================================================================|
 		void Entity::addComponent(Component *component)
 		{
 			//TODO eventually there may be a way to check uniqueness of components

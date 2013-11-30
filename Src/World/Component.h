@@ -16,6 +16,9 @@ namespace glz
 	{
 		class Entity;
 
+		//============================================================================|
+		// Represents a functionality component for Entity objects
+		//============================================================================|
 		class Component
 		{
 		private:
@@ -27,7 +30,6 @@ namespace glz
 
 			Component() {}
 			virtual ~Component() {}
-
 			virtual void update() = 0;
 
 
