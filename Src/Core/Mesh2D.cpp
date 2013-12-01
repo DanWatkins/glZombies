@@ -16,7 +16,7 @@ namespace glz
 
 
 	//==================================================================|
-	bool Mesh2D::loadFromFile(String filepath)
+	Bool Mesh2D::loadFromFile(String filepath)
 	{
 		if (!loadComponentsFromGLZM2File(filepath))
 			return false;
@@ -70,7 +70,7 @@ namespace glz
 
 
 	//==================================================================|
-	bool Mesh2D::loadComponentsFromGLZM2File(String filepath)
+	Bool Mesh2D::loadComponentsFromGLZM2File(String filepath)
 	{
 		std::ifstream file(filepath, std::ifstream::in);
 

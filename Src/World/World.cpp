@@ -5,6 +5,7 @@
 //=======================================================================================================================|
 
 #include "World.h"
+#include <dirent.h>
 #include "Components\Drawable.h"
 
 namespace glz
@@ -15,6 +16,21 @@ namespace glz
 		World::World()
 		{
 			mIdTrack = 0;
+		}
+
+
+		//==================================================================|
+		void World::init(Uint currentRenderingProgram)
+		{
+			loadTemplateEntities();
+		}
+
+
+		//==================================================================|
+		void World::update()
+		{
+			for (Uint n=0; n<mEntities.size(); n++)
+				mEntities.at(n).update();
 		}
 
 
@@ -45,17 +61,35 @@ namespace glz
 
 
 		//==================================================================|
-		bool World::loadTemplateEntity(String filepath)
+		void World::loadTemplateEntities()
+		{
+			DIR *dir;
+			struct dirent *ent;
+			std::vector<String> files;
+			if ((dir = opendir ("./Data/Entities/")) != NULL)
+			{
+				while ((ent = readdir (dir)) != NULL)
+				{
+					files.push_back(String("./Data/Entities/") + String(ent->d_name));
+					loadTemplateEntity(ent->d_name);
+				}
+				closedir (dir);
+			}
+		}
+
+
+		//==================================================================|
+		void World::loadTemplateEntity(String filepath)
 		{
 			std::ifstream file(filepath, std::ifstream::in);
 
 			if (!file.is_open())
 			{
 				std::cout << "Unable to read entity data from " << filepath.c_str() << std::endl;
-				return false;
+				return;
 			}
 
-			char token[64];
+			Char token[64];
 			Entity templateEntity;
 
 			while (!file.eof())
@@ -69,7 +103,7 @@ namespace glz
 				}
 			}
 
-			return true;
+			mTemplateEntities.push_back(templateEntity);
 		}
 
 

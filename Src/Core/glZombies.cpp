@@ -6,6 +6,7 @@
 
 #include "glZombies.h"
 #include "Shader.h"
+#include "../World/World.h"
 
 namespace glz
 {
@@ -24,6 +25,9 @@ namespace glz
 		mMeshes.push_back(Mesh2D());
 		mMeshes.front().loadFromFile("zombie.glzm2");
 		//mMeshes.front().setNdcPos(Vec2<Float>(-1.0, -1.0));
+
+		world::World world;
+		world.init(mProgram);
 	}
 
 

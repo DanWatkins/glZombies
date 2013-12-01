@@ -29,10 +29,9 @@ namespace glz
 
 		public:
 			World();
-
-			void setCurrentRenderProgram(Uint currentRenderProgram) { mCurrentRenderProgram = currentRenderProgram; }
-
-
+			
+			void init(Uint currentRenderProgram);
+			void update();
 
 		private:
 			//============================================================================|
@@ -47,7 +46,9 @@ namespace glz
 			Entity *getEntity(String id);
 
 
-			bool loadTemplateEntity(String filepath);
+
+			void loadTemplateEntities();
+			void loadTemplateEntity(String filepath);
 
 
 			//============================================================================|

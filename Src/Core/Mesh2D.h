@@ -52,7 +52,7 @@ namespace glz
 		//==================================================================|
 		// -Loads data from a M2 file and configures the vbo and vao states.
 		//==================================================================|
-		bool loadFromFile(String filepath);
+		Bool loadFromFile(String filepath);
 
 		//==================================================================|
 		// -Draws @mVertexData using the specified mode, vbo, and vao.
@@ -65,7 +65,7 @@ namespace glz
 		//==================================================================|
 		// -Loads the actual data from a M2 file.
 		//==================================================================|
-		bool loadComponentsFromGLZM2File(String filepath);
+		Bool loadComponentsFromGLZM2File(String filepath);
 	};
 };
 

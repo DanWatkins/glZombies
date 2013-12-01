@@ -39,6 +39,8 @@ namespace glz
     Double radToDeg(Double rad);
     Float radToDeg(Float rad);
     Int radToDeg(Int rad);
+
+
 };
 
 
