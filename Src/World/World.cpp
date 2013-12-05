@@ -22,7 +22,37 @@ namespace glz
 		//==================================================================|
 		void World::init(Uint currentRenderingProgram)
 		{
+			mCurrentRenderProgram = currentRenderingProgram;
+
 			loadTemplateEntities();
+		}
+
+
+		//==================================================================|
+		void World::loadWorldFile(String filepath)
+		{
+			std::ifstream file(filepath, std::ifstream::in);
+
+			if (!file.is_open())
+			{
+				std::cout << "Unable to read world data from " << filepath.c_str() << std::endl;
+				return;
+			}
+
+			Char token[64];
+			Entity templateEntity;
+
+			while (!file.eof())
+			{
+				file >> token;
+
+				//add a mesh to the entity?
+				if (String(token) == "#entity")
+				{
+					file >> token;
+					createEntityFromTemplate(token);
+				}
+			}
 		}
 
 
@@ -71,7 +101,7 @@ namespace glz
 				while ((ent = readdir (dir)) != NULL)
 				{
 					files.push_back(String("./Data/Entities/") + String(ent->d_name));
-					loadTemplateEntity(ent->d_name);
+					loadTemplateEntity(String("./Data/Entities/") + String(ent->d_name));
 				}
 				closedir (dir);
 			}
@@ -96,7 +126,9 @@ namespace glz
 			{
 				file >> token;
 
-				if (token == "#mesh")
+
+				//add a mesh to the entity?
+				if (String(token) == "#mesh")
 				{
 					file >> token;
 					templateEntity.addComponent(new Drawable(filepath, mCurrentRenderProgram));

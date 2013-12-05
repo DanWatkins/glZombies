@@ -31,6 +31,7 @@ namespace glz
 			World();
 			
 			void init(Uint currentRenderProgram);
+			void loadWorldFile(String filepath);
 			void update();
 
 		private:
@@ -49,6 +50,8 @@ namespace glz
 
 			void loadTemplateEntities();
 			void loadTemplateEntity(String filepath);
+
+			
 
 
 			//============================================================================|

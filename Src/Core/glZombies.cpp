@@ -28,6 +28,7 @@ namespace glz
 
 		world::World world;
 		world.init(mProgram);
+		world.loadWorldFile("main.world");
 	}
 
 
