@@ -31,6 +31,7 @@ namespace glz
 			Component() {}
 			virtual ~Component() {}
 			virtual void update() = 0;
+			virtual Component *clone() = 0;
 
 
 		protected:

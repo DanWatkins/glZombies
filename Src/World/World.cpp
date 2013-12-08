@@ -60,7 +60,7 @@ namespace glz
 		void World::update()
 		{
 			for (Uint n=0; n<mEntities.size(); n++)
-				mEntities.at(n).update();
+				mEntities.at(n)->update();
 		}
 
 
@@ -120,7 +120,7 @@ namespace glz
 			}
 
 			Char token[64];
-			Entity templateEntity;
+			Shared<Entity> templateEntity(new Entity);
 
 			while (!file.eof())
 			{
@@ -132,12 +132,12 @@ namespace glz
 				{
 					file >> token;
 					Shared<Drawable> drawable(new Drawable(filepath, mCurrentRenderProgram));
-					templateEntity.addComponent(drawable);
+					templateEntity->addComponent(drawable);
 				}
 				else if (String(token) == "#name")
 				{
 					file >> token;
-					templateEntity.setName(token);
+					templateEntity->setName(token);
 				}
 			}
 
@@ -151,7 +151,7 @@ namespace glz
 			Shared<Entity> templateEntity = getTemplateEntity(templateName);
 
 			mIdTrack++;
-			Shared<Entity> newEntity = templateEntity;
+			Shared<Entity> newEntity(templateEntity->clone());
 			//TODO //newEntity.setId(toString(mIdTrack));
 			mEntities.push_back(newEntity);
 		}

@@ -28,6 +28,7 @@ namespace glz
 			~Drawable() {}
 
 			void update();
+			Component *clone();
 		};
 	};
 };

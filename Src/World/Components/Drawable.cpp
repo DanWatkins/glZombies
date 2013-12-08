@@ -23,5 +23,12 @@ namespace glz
 		{
 			mMesh.draw(mProgram);
 		}
+
+
+		//==================================================================|
+		Component *Drawable::clone()
+		{
+			return new Drawable(*this);
+		}
 	};
 };

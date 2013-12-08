@@ -36,18 +36,20 @@ namespace glz
 		}
 
 
+		//==================================================================|
 		Entity *Entity::clone()
 		{
-			Entity *clone = new Entity(this);
+			Entity *clone = new Entity(*this);
 
 			clone->mComponents.clear();
 
-			for (int n=0; n<mComponents.size(); n++)
+			for (Uint n=0; n<mComponents.size(); n++)
 			{
-				Shared<Component> componentClone(
+				Shared<Component> componentClone(mComponents[n]->clone());
+				clone->addComponent(componentClone);
 			}
 
-			return NULL;
+			return clone;
 		}
 	};
 };
