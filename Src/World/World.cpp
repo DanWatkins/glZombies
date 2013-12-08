@@ -65,12 +65,12 @@ namespace glz
 
 
 		//==================================================================|
-		Entity *World::getTemplateEntity(String id)
+		Shared<Entity> World::getTemplateEntity(String name)
 		{
 			for (Uint n=0; n<mTemplateEntities.size(); n++)
 			{
-				if (mTemplateEntities.at(n).getId() == id)
-					return &mTemplateEntities.at(n);
+				if (mTemplateEntities.at(n)->getName() == name)
+					return mTemplateEntities.at(n);
 			}
 
 			return NULL;
@@ -78,12 +78,12 @@ namespace glz
 
 
 		//==================================================================|
-		Entity *World::getEntity(String id)
+		Shared<Entity> World::getEntity(String id)
 		{
 			for (Uint n=0; n<mEntities.size(); n++)
 			{
-				if (mEntities.at(n).getId() == id)
-					return &mEntities.at(n);
+				if (mEntities.at(n)->getId() == id)
+					return mEntities.at(n);
 			}
 
 			return NULL;
@@ -131,7 +131,13 @@ namespace glz
 				if (String(token) == "#mesh")
 				{
 					file >> token;
-					templateEntity.addComponent(new Drawable(filepath, mCurrentRenderProgram));
+					Shared<Drawable> drawable(new Drawable(filepath, mCurrentRenderProgram));
+					templateEntity.addComponent(drawable);
+				}
+				else if (String(token) == "#name")
+				{
+					file >> token;
+					templateEntity.setName(token);
 				}
 			}
 
@@ -140,12 +146,12 @@ namespace glz
 
 
 		//==================================================================|
-		void World::createEntityFromTemplate(String templateId)
+		void World::createEntityFromTemplate(String templateName)
 		{
-			Entity *templateEntity = getTemplateEntity(templateId);
+			Shared<Entity> templateEntity = getTemplateEntity(templateName);
 
 			mIdTrack++;
-			Entity newEntity;
+			Shared<Entity> newEntity = templateEntity;
 			//TODO //newEntity.setId(toString(mIdTrack));
 			mEntities.push_back(newEntity);
 		}

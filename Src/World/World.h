@@ -15,14 +15,17 @@ namespace glz
 {
 	namespace world
 	{
+		typedef std::vector<Shared<Entity>> EntityVector;
+
+
 		//============================================================================|
 		// Represents a global container for all the entities being processed
 		//============================================================================|
 		class World
 		{
 		private:
-			std::vector<Entity> mTemplateEntities;
-			std::vector<Entity> mEntities;
+			EntityVector mTemplateEntities;
+			EntityVector mEntities;
 			Int mIdTrack;
 
 			Uint mCurrentRenderProgram;
@@ -36,15 +39,15 @@ namespace glz
 
 		private:
 			//============================================================================|
-			// Searches for and returns an Entity in @mTemplateEntities with a matching id
+			// Searches for and returns an Entity in @mTemplateEntities with a matching name
 			//============================================================================|
-			Entity *getTemplateEntity(String id);
+			Shared<Entity> getTemplateEntity(String name);
 
 
 			//============================================================================|
 			// Searches for and returns an Entity in @mEntities with a matching id
 			//============================================================================|
-			Entity *getEntity(String id);
+			Shared<Entity> getEntity(String id);
 
 
 
@@ -55,10 +58,10 @@ namespace glz
 
 
 			//============================================================================|
-			// Creates a new Entity instance based on template Entity with @templateId and
-			// adds it to @mEntities
+			// Creates a new Entity instance based on template Entity with @templateName
+			// and adds it to @mEntities
 			//============================================================================|
-			void createEntityFromTemplate(String templateId);
+			void createEntityFromTemplate(String templateName);
 
 
 		

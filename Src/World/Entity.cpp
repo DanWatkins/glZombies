@@ -13,15 +13,8 @@ namespace glz
 		//==================================================================|
 		Entity::Entity()
 		{
-		}
-
-
-		//==================================================================|
-		Entity::~Entity()
-		{
-			//delete all components
-			for (Uint n=0; n<mComponents.size(); n++)
-				delete mComponents[n];
+			mId		= "NULL";
+			mName	= "NULL";
 		}
 
 
@@ -34,13 +27,27 @@ namespace glz
 
 
 		//==================================================================|
-		void Entity::addComponent(Component *component)
+		void Entity::addComponent(Shared<Component> component)
 		{
 			//TODO eventually there may be a way to check uniqueness of components
 
-
 			component->setHost(this);
 			mComponents.push_back(component);
+		}
+
+
+		Entity *Entity::clone()
+		{
+			Entity *clone = new Entity(this);
+
+			clone->mComponents.clear();
+
+			for (int n=0; n<mComponents.size(); n++)
+			{
+				Shared<Component> componentClone(
+			}
+
+			return NULL;
 		}
 	};
 };

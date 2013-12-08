@@ -68,6 +68,19 @@ typedef GLboolean			Bool;
 
 typedef std::string			String;
 
+
+#ifdef WIN32
+
+#include <memory>
+
+#endif
+
+
+#define Shared std::shared_ptr
+#define Weak std::weak_ptr
+#define Unique std::unique_ptr
+
+
 #include "Constants.h"
 #include "./Utility/Helper.h"
 #include "./Utility/Vec2.h"

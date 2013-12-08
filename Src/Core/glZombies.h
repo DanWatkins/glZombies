@@ -10,6 +10,7 @@
 #include "../Main.h"
 #include "OpenGLWindow.h"
 #include "Mesh2D.h"
+#include "../World/World.h"
 
 namespace glz
 {
@@ -20,8 +21,7 @@ namespace glz
 	{
 	private:
 		Uint mProgram;
-		std::vector<Mesh2D> mMeshes;
-
+		world::World mWorld;
 
 	public:
 		glZombies();
@@ -52,7 +52,7 @@ namespace glz
 		// -virtual from OpenGLWindow
 		// -Called whenever a keyboard event occurs by GLFW
 		//==================================================================|
-		void onKey(int key, int action);
+		void onKey(Int key, Int action);
 
 		//==================================================================|
 		// -virtual from OpenGLWindow

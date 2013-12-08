@@ -22,13 +22,8 @@ namespace glz
 	{
 		loadShaders();
 
-		mMeshes.push_back(Mesh2D());
-		mMeshes.front().loadFromFile("zombie.glzm2");
-		//mMeshes.front().setNdcPos(Vec2<Float>(-1.0, -1.0));
-
-		world::World world;
-		world.init(mProgram);
-		world.loadWorldFile("main.world");
+		mWorld.init(mProgram);
+		mWorld.loadWorldFile("main.world");
 	}
 
 
@@ -38,7 +33,7 @@ namespace glz
 		static const Float clearColor[] = { 1.0f, 1.0f, 0.9f, 1.0f };
 		glClearBufferfv(GL_COLOR, 0, clearColor);
 
-		mMeshes.front().draw(mProgram);
+		mWorld.update();
 	}
 
 
@@ -50,17 +45,6 @@ namespace glz
 			case GLFW_KEY_ESCAPE:
 			{
 				exit(0);  //TODO do better with this lol
-			}
-
-			case GLFW_KEY_LEFT:
-			{
-				mMeshes.front().addRotation(-0.025f);
-				break;
-			}
-			case GLFW_KEY_RIGHT:
-			{
-				mMeshes.front().addRotation(0.025f);
-				break;
 			}
 		}
 	}

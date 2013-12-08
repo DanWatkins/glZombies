@@ -53,7 +53,7 @@ namespace glz
 		//==================================================================|
 		// -Called whenever a keyboard event occurs by GLFW
 		//==================================================================|
-		virtual void onKey(int key, int action) {}
+		virtual void onKey(Int key, Int action) {}
 
 		//==================================================================|
 		// -Called when the window closes or encounters an error

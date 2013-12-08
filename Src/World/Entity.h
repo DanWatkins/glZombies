@@ -15,7 +15,7 @@ namespace glz
 	namespace world
 	{
 		class World;
-		typedef std::vector<Component*> ComponentVector;
+		typedef std::vector<Shared<Component>> ComponentVector;
 
 
 		//============================================================================|
@@ -27,18 +27,17 @@ namespace glz
 		private:
 			friend World;
 
-			String mId;
+			String mId, mName;
 			Vec2d mPos;			//position in world space
 			ComponentVector mComponents;
 
 
-
-
 		public:
-			~Entity();
-
 			//accessor and mutator
 			String getId() { return mId; }
+
+			void setName(String name) { mName = name; }
+			String getName() { return mName; }
 
 			void setPos(Vec2d pos) { mPos = pos; }
 			Vec2d getPos() { return mPos; }
@@ -58,7 +57,9 @@ namespace glz
 			//============================================================================|
 			// Adds a new Component to the Entity
 			//============================================================================|
-			void addComponent(Component *component);
+			void addComponent(Shared<Component> component);
+
+			Entity *clone();
 		};
 	}
 };
