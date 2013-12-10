@@ -61,7 +61,7 @@ namespace glz
 			// Creates a new Entity instance based on template Entity with @templateName
 			// and adds it to @mEntities
 			//============================================================================|
-			void createEntityFromTemplate(String templateName);
+			Shared<Entity> createEntityFromTemplate(String templateName);
 
 
 		

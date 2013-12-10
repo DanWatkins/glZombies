@@ -50,7 +50,12 @@ namespace glz
 				if (String(token) == "#entity")
 				{
 					file >> token;
-					createEntityFromTemplate(token);
+					Shared<Entity> entity = createEntityFromTemplate(token);
+
+					Vec2d pos;
+					file >> token; pos.x = toInt(token);
+					file >> token; pos.y = toInt(token);
+					entity->setPos(pos);
 				}
 			}
 		}
@@ -131,7 +136,7 @@ namespace glz
 				if (String(token) == "#mesh")
 				{
 					file >> token;
-					Shared<Drawable> drawable(new Drawable(filepath, mCurrentRenderProgram));
+					Shared<Drawable> drawable(new Drawable(token, mCurrentRenderProgram));
 					templateEntity->addComponent(drawable);
 				}
 				else if (String(token) == "#name")
@@ -146,7 +151,7 @@ namespace glz
 
 
 		//==================================================================|
-		void World::createEntityFromTemplate(String templateName)
+		Shared<Entity> World::createEntityFromTemplate(String templateName)
 		{
 			Shared<Entity> templateEntity = getTemplateEntity(templateName);
 
@@ -154,6 +159,8 @@ namespace glz
 			Shared<Entity> newEntity(templateEntity->clone());
 			//TODO //newEntity.setId(toString(mIdTrack));
 			mEntities.push_back(newEntity);
+
+			return newEntity;
 		}
 	};
 };

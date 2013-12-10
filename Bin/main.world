@@ -1,1 +1,3 @@
-#entity zombie
+#entity zombie 50 50
+#entity zombie 30 30
+#entity zombie 30 65
