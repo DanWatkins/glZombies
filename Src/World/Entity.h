@@ -28,7 +28,7 @@ namespace glz
 			friend World;
 
 			String mId, mName;
-			Vec2d mPos;			//position in world space
+			Vec2f mPos;			//position in world space
 			ComponentVector mComponents;
 
 
@@ -39,8 +39,8 @@ namespace glz
 			void setName(String name) { mName = name; }
 			String getName() { return mName; }
 
-			void setPos(Vec2d pos) { mPos = pos; }
-			Vec2d getPos() { return mPos; }
+			void setPos(Vec2f pos) { mPos = pos; }
+			Vec2f getPos() { return mPos; }
 
 
 		private:

@@ -6,6 +6,7 @@
 
 #include "Drawable.h"
 
+
 namespace glz
 {
 	namespace world
@@ -21,6 +22,7 @@ namespace glz
 		//==================================================================|
 		void Drawable::update()
 		{
+			mMesh.setNdcPos(getHost()->getPos());
 			mMesh.draw(mProgram);
 		}
 

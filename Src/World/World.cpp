@@ -46,15 +46,15 @@ namespace glz
 			{
 				file >> token;
 
-				//add a mesh to the entity?
+				//create a new entity instance?
 				if (String(token) == "#entity")
 				{
 					file >> token;
 					Shared<Entity> entity = createEntityFromTemplate(token);
 
-					Vec2d pos;
-					file >> token; pos.x = toInt(token);
-					file >> token; pos.y = toInt(token);
+					Vec2f pos;
+					file >> token; pos.x = toFloat(token);
+					file >> token; pos.y = toFloat(token);
 					entity->setPos(pos);
 				}
 			}
