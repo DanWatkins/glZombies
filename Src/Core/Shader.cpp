@@ -72,7 +72,7 @@ namespace glz
 			Uint program;
 			program = glCreateProgram();
 
-			for (int n = 0; n < shaderCount; n++)
+			for (Int n = 0; n < shaderCount; n++)
 				glAttachShader(program, shaders[n]);
 
 			glLinkProgram(program);
@@ -94,7 +94,7 @@ namespace glz
 
 
 			//delete shaders
-			for (int n = 0; n < shaderCount; n++)
+			for (Int n = 0; n < shaderCount; n++)
 				glDeleteShader(shaders[n]);
 
 			return program;

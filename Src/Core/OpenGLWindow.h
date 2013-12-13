@@ -25,6 +25,7 @@ namespace glz
 	private:
 		Int mWidth, mHeight;
 		String mTitle;
+		GLFWwindow *mWindow;
 
 	public:
 		friend GLFWInput;
@@ -36,29 +37,36 @@ namespace glz
 		Int getHeight() { return mHeight; }
 		String getTitle() { return mTitle; }
 
+		Bool isWindow(GLFWwindow *window) { return window == mWindow; }
 
 	protected:
 		//==================================================================|
 		// -Called after the window has been fully initialized
 		//==================================================================|
-		virtual void startup() = 0;
+		virtual void onStartup() {}
 
 		//==================================================================|
 		// -Called at the start of the window's update loop
 		// -GLFW swaps buffers after this (double buffering)
 		// -GLFW polls input events after this
 		//==================================================================|
-		virtual void update(Double currentTime) = 0;
+		virtual void onUpdate(Double currentTime) {}
 
 		//==================================================================|
 		// -Called whenever a keyboard event occurs by GLFW
 		//==================================================================|
 		virtual void onKey(Int key, Int action) {}
 
+
+		//==================================================================|
+		// -Called whenever the window is resized by GLFW
+		//==================================================================|
+		virtual void onResize(Int width, Int height) {}
+
 		//==================================================================|
 		// -Called when the window closes or encounters an error
 		//==================================================================|
-		virtual void terminate() = 0;
+		virtual void onTerminate() {}
 	};
 };
 

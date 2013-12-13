@@ -14,7 +14,7 @@ namespace glz
 		mWidth = gDefaultWindowWidth;
 		mHeight = gDefaultWindowHeight;
 		mTitle = gDefaultWindowTitle;
-
+		mWindow = NULL;
 	}
 
 
@@ -25,39 +25,38 @@ namespace glz
 		mHeight = height;
 		mTitle = title;
 
-		GLFWwindow* window;
-
 		if (!glfwInit())
 			return -1;
 
-		window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
-		if (!window)
+		mWindow = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
+		if (!mWindow)
 		{
 			terminate();
 			glfwTerminate();
 			return -1;
 		}
 
-		glfwMakeContextCurrent(window);
+		glfwMakeContextCurrent(mWindow);
 		gl3wInit();
 
 		//if (gl3wIsSupported(4, 4) == false)
 		//	printf("Bad OpenGL version.\n");
 		GLFWInput::instance();
-		glfwSetKeyCallback(window, reinterpret_cast<GLFWkeyfun>(GLFWInput::keyboardCallback));
+		glfwSetKeyCallback(mWindow, reinterpret_cast<GLFWkeyfun>(GLFWInput::keyboardCallback));
+		glfwSetWindowSizeCallback(mWindow, GLFWInput::windowResizeCallback);
 		GLFWInput::instance().addWindow(this);
 
-		startup();
+		onStartup();
 
-		while (!glfwWindowShouldClose(window))
+		while (!glfwWindowShouldClose(mWindow))
 		{
-			update(0.0); //TODO get a time value for this call
+			onUpdate(0.0); //TODO get a time value for this call
 
-			glfwSwapBuffers(window);
+			glfwSwapBuffers(mWindow);
 			glfwPollEvents();
 		}
 
-		terminate();
+		onTerminate();
 		glfwTerminate();
 
 		return 0;

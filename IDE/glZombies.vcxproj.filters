@@ -4,9 +4,6 @@
     <Filter Include="Core">
       <UniqueIdentifier>{dca36744-732c-4986-b8c4-6dc9d31f7dec}</UniqueIdentifier>
     </Filter>
-    <Filter Include=".Bin">
-      <UniqueIdentifier>{c93d5b14-7382-4ed0-a7d3-94ea35c21567}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Utility">
       <UniqueIdentifier>{1783a654-31da-443c-8620-cc7bf0a55620}</UniqueIdentifier>
     </Filter>
@@ -86,16 +83,5 @@
     <ClInclude Include="..\Src\World\World.h">
       <Filter>World</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Bin\standard.frag">
-      <Filter>.Bin</Filter>
-    </None>
-    <None Include="..\Bin\standard.vert">
-      <Filter>.Bin</Filter>
-    </None>
-    <None Include="..\Bin\zombie.glzm2">
-      <Filter>.Bin</Filter>
-    </None>
   </ItemGroup>
 </Project>

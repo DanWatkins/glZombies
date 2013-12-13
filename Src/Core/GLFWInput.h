@@ -46,7 +46,14 @@ namespace glz
 		// -Called by GLFW whenever a keyboard message occurs
 		// -Relays the message to all subscriber windows
 		//==================================================================|
-		static void keyboardCallback(int action, int key, int a, int b, int c);
+		static void keyboardCallback(Int action, Int key, Int a, Int b, Int c);
+
+
+		//==================================================================|
+		// -Called by GLFW whenever a window is resized
+		// -Relays the message to the window that was resized
+		//==================================================================|
+		static void windowResizeCallback(GLFWwindow *window, Int width, Int height);
 	};
 };
 

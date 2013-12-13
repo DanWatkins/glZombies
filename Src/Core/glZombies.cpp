@@ -18,7 +18,7 @@ namespace glz
 
 
 	//==================================================================|
-	void glZombies::startup()
+	void glZombies::onStartup()
 	{
 		loadShaders();
 
@@ -28,7 +28,7 @@ namespace glz
 
 
 	//==================================================================|
-	void glZombies::update(Double currentTime)
+	void glZombies::onUpdate(Double currentTime)
 	{
 		static const Float clearColor[] = { 1.0f, 1.0f, 0.9f, 1.0f };
 		glClearBufferfv(GL_COLOR, 0, clearColor);
@@ -38,7 +38,7 @@ namespace glz
 
 
 	//==================================================================|
-	void glZombies::onKey(int key, int action)
+	void glZombies::onKey(Int key, Int action)
 	{
 		switch (key)
 		{
@@ -51,8 +51,9 @@ namespace glz
 
 
 	//==================================================================|
-	void glZombies::terminate()
+	void glZombies::onResize(Int width, Int height)
 	{
+		glViewport(0, 0, (GLsizei)width, (GLsizei)height);
 	}
 
 

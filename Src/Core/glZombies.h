@@ -29,33 +29,14 @@ namespace glz
 
 	private:
 		//==================================================================|
-		// -virtual from OpenGLWindow
-		// -Called after the window has been fully initialized
+		// -OpenGLWindow virtuals
 		//==================================================================|
-		void startup();
-
-		//==================================================================|
-		// -virtual from OpenGLWindow
-		// -Called at the start of the window's update loop
-		// -GLFW swaps buffers after this (double buffering)
-		// -GLFW polls input events after this
-		//==================================================================|
-		void update(Double currentTime);
-
-		//==================================================================|
-		// -virtual from OpenGLWindow
-		// -Called when the window closes or encounters an error
-		//==================================================================|
-		void terminate();
-
-		//==================================================================|
-		// -virtual from OpenGLWindow
-		// -Called whenever a keyboard event occurs by GLFW
-		//==================================================================|
+		void onStartup();
+		void onUpdate(Double currentTime);
 		void onKey(Int key, Int action);
+		void onResize(Int width, Int height);
 
 		//==================================================================|
-		// -virtual from OpenGLWindow
 		// -Loads, compiles, and links certain shaders into @mProgram
 		//==================================================================|
 		void loadShaders();

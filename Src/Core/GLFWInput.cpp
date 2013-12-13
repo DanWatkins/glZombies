@@ -34,9 +34,24 @@ namespace glz
 
 
 	//==================================================================|
-	void GLFWInput::keyboardCallback(int action, int key, int a, int b, int c)
+	void GLFWInput::keyboardCallback(Int action, Int key, Int a, Int b, Int c)
 	{
 		for (Uint n=0; n<mWindows.size(); n++)
 			mWindows[n]->onKey(key, action);
+	}
+
+
+	//==================================================================|
+	void GLFWInput::windowResizeCallback(GLFWwindow *window, Int width, Int height)
+	{
+		//only tell the window that matches @window there was a resize
+		for (Uint n=0; n<mWindows.size(); n++)
+		{
+			if (mWindows[n]->isWindow(window))
+			{
+				mWindows[n]->onResize(width, height);
+				return;
+			}
+		}
 	}
 };
