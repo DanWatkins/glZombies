@@ -46,6 +46,9 @@
     <ClCompile Include="..\Src\World\World.cpp">
       <Filter>World</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\Core\Circle.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Core\glZombies.h">
@@ -82,6 +85,9 @@
     </ClInclude>
     <ClInclude Include="..\Src\World\World.h">
       <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Core\Circle.h">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

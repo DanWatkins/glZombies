@@ -14,6 +14,23 @@ namespace glz
 		mRotation	= 0.0f;
 	}
 
+	void Mesh2D::Part::configure()
+	{
+		glGenVertexArrays(1, &this->vao);
+		glBindVertexArray(this->vao);
+
+		glGenBuffers(1, &this->vbo);
+		glBindBuffer(GL_ARRAY_BUFFER, this->vbo);
+
+		glBufferData(	GL_ARRAY_BUFFER,
+						this->vertexData.size()*sizeof(Float),
+						&this->vertexData[0],
+						GL_STREAM_DRAW);
+
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, gValuesPerPoint, GL_FLOAT, GL_FALSE, 0, 0);
+	}
+
 
 	//==================================================================|
 	Bool Mesh2D::loadFromFile(String filepath)
@@ -23,23 +40,7 @@ namespace glz
 
 		//set up vertex buffer object and vertex array object for each component
 		for (Uint n=0; n<mParts.size(); n++)
-		{
-			Part *part = &mParts[n];
-			
-			glGenVertexArrays(1, &part->vao);
-			glBindVertexArray(part->vao);
-
-			glGenBuffers(1, &part->vbo);
-			glBindBuffer(GL_ARRAY_BUFFER, part->vbo);
-
-			glBufferData(	GL_ARRAY_BUFFER,
-							part->vertexData.size()*sizeof(Float),
-							&part->vertexData[0],
-							GL_STREAM_DRAW);
-
-			glEnableVertexAttribArray(0);
-			glVertexAttribPointer(0, gValuesPerPoint, GL_FLOAT, GL_FALSE, 0, 0);
-		}
+			(&mParts[n])->configure();
 
 		glBindVertexArray(0);
 

@@ -20,13 +20,15 @@ namespace glz
 
 	class Mesh2D
 	{
-	private:
+	protected:
 		struct Part
 		{
 		public:
 			Uint vbo, vao;
 			GLenum drawMode;
 			std::vector<Float> vertexData;
+
+			void configure();
 		};
 
 
@@ -58,6 +60,11 @@ namespace glz
 		// -Expects load from file to have been called.
 		//==================================================================|
 		void draw(OpenGLWindow *window);
+
+
+	protected:
+		void clearParts() { mParts.clear(); }
+		void addPart(Part part) { mParts.push_back(part); }
 
 
 	private:

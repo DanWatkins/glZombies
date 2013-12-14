@@ -50,6 +50,9 @@ namespace glz
 
 		onStartup();
 
+		//get the aspect scale adjusted
+		_onResize(mWidth, mHeight);
+
 		while (!glfwWindowShouldClose(mWindow))
 		{
 			onUpdate(0.0); //TODO get a time value for this call
@@ -68,7 +71,7 @@ namespace glz
 	//==================================================================|
 	void OpenGLWindow::_onResize(Int width, Int height)
 	{
-		mAspectScale = Vec2f(800.0f/width, 600.0f/height);
+		mAspectScale = Vec2f(500.0f/width, 500.0f/height);
 		mWidth = width;
 		mHeight = height;
 
