@@ -11,10 +11,12 @@ namespace glz
 	//==================================================================|
 	OpenGLWindow::OpenGLWindow()
 	{
+		mProgram = -1;
 		mWidth = gDefaultWindowWidth;
 		mHeight = gDefaultWindowHeight;
 		mTitle = gDefaultWindowTitle;
 		mWindow = NULL;
+		mAspectScale = Vec2f(1.0f, 1.0f);
 	}
 
 
@@ -60,5 +62,16 @@ namespace glz
 		glfwTerminate();
 
 		return 0;
+	}
+
+
+	//==================================================================|
+	void OpenGLWindow::_onResize(Int width, Int height)
+	{
+		mAspectScale = Vec2f(800.0f/width, 600.0f/height);
+		mWidth = width;
+		mHeight = height;
+
+		onResize(width, height);
 	}
 };

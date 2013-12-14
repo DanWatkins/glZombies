@@ -19,12 +19,12 @@ namespace glz
 		{
 		private:
 			Mesh2D mMesh;
-			Uint mProgram;
+			OpenGLWindow *mWindow;
 
-			Drawable() {}
+			Drawable() { }
 
 		public:
-			Drawable(String meshFilepath, Uint meshProgram);
+			Drawable(String meshFilepath, OpenGLWindow *window);
 			~Drawable() {}
 
 			void update();

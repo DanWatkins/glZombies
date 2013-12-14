@@ -20,7 +20,6 @@ namespace glz
 	class glZombies : public OpenGLWindow
 	{
 	private:
-		Uint mProgram;
 		world::World mWorld;
 
 	public:
@@ -35,6 +34,7 @@ namespace glz
 		void onUpdate(Double currentTime);
 		void onKey(Int key, Int action);
 		void onResize(Int width, Int height);
+		void onTerminate() {}
 
 		//==================================================================|
 		// -Loads, compiles, and links certain shaders into @mProgram

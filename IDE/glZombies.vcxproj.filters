@@ -84,4 +84,8 @@
       <Filter>World</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Bin\standard.frag" />
+    <None Include="..\Bin\standard.vert" />
+  </ItemGroup>
 </Project>

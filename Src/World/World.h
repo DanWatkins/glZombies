@@ -9,7 +9,7 @@
 
 #include "../Main.h"
 #include "Entity.h"
-
+#include "../Core/OpenGLWindow.h"
 
 namespace glz
 {
@@ -28,12 +28,13 @@ namespace glz
 			EntityVector mEntities;
 			Int mIdTrack;
 
-			Uint mCurrentRenderProgram;
+			OpenGLWindow *mWindow;
+			World() {}
 
 		public:
-			World();
+			World(OpenGLWindow *window);
 			
-			void init(Uint currentRenderProgram);
+			void init();
 			void loadWorldFile(String filepath);
 			void update();
 

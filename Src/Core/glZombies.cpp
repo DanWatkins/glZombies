@@ -11,9 +11,8 @@
 namespace glz
 {
 	//==================================================================|
-	glZombies::glZombies()
+	glZombies::glZombies() : mWorld(this)
 	{
-		mProgram = -1;
 	}
 
 
@@ -22,7 +21,7 @@ namespace glz
 	{
 		loadShaders();
 
-		mWorld.init(mProgram);
+		mWorld.init();
 		mWorld.loadWorldFile("main.world");
 	}
 

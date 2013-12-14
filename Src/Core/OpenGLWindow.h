@@ -26,6 +26,11 @@ namespace glz
 		Int mWidth, mHeight;
 		String mTitle;
 		GLFWwindow *mWindow;
+		Vec2f mAspectScale;
+
+	protected:
+		Uint mProgram;
+
 
 	public:
 		friend GLFWInput;
@@ -33,40 +38,48 @@ namespace glz
 		OpenGLWindow();
 		Int init(Int width=gDefaultWindowWidth, Int height=gDefaultWindowHeight, String title=gDefaultWindowTitle);
 
+		Uint getProgram() { return mProgram; }
+
 		Int getWidth() { return mWidth; }
 		Int getHeight() { return mHeight; }
 		String getTitle() { return mTitle; }
 
 		Bool isWindow(GLFWwindow *window) { return window == mWindow; }
 
+		Vec2f getAspectScale() { return mAspectScale; }
+
 	protected:
 		//==================================================================|
 		// -Called after the window has been fully initialized
 		//==================================================================|
-		virtual void onStartup() {}
+		virtual void onStartup() = 0;
 
 		//==================================================================|
 		// -Called at the start of the window's update loop
 		// -GLFW swaps buffers after this (double buffering)
 		// -GLFW polls input events after this
 		//==================================================================|
-		virtual void onUpdate(Double currentTime) {}
+		virtual void onUpdate(Double currentTime) = 0;
 
 		//==================================================================|
 		// -Called whenever a keyboard event occurs by GLFW
 		//==================================================================|
-		virtual void onKey(Int key, Int action) {}
+		virtual void onKey(Int key, Int action) = 0;
 
 
 		//==================================================================|
 		// -Called whenever the window is resized by GLFW
 		//==================================================================|
-		virtual void onResize(Int width, Int height) {}
+		virtual void onResize(Int width, Int height) = 0;
 
 		//==================================================================|
 		// -Called when the window closes or encounters an error
 		//==================================================================|
-		virtual void onTerminate() {}
+		virtual void onTerminate() = 0;
+
+
+	private:
+		void _onResize(Int width, Int height);
 	};
 };
 

@@ -9,14 +9,13 @@
 
 #include "../Main.h"
 #include "../Utility/Vec2.h"
+#include "../Core/OpenGLWindow.h"
 
 #define UNBIND_PROGRAM_AFTER_DRAW 1
 
 namespace glz
 {
 	typedef std::vector<Float> VertexData;
-	typedef Int Error;
-
 	const Int gValuesPerPoint = 2;
 
 	class Mesh2D
@@ -58,7 +57,7 @@ namespace glz
 		// -Draws @mVertexData using the specified mode, vbo, and vao.
 		// -Expects load from file to have been called.
 		//==================================================================|
-		void draw(GLuint &program);
+		void draw(OpenGLWindow *window);
 
 
 	private:

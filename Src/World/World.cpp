@@ -13,17 +13,16 @@ namespace glz
 	namespace world
 	{
 		//==================================================================|
-		World::World()
+		World::World(OpenGLWindow *window)
 		{
+			mWindow = window;
 			mIdTrack = 0;
 		}
 
 
 		//==================================================================|
-		void World::init(Uint currentRenderingProgram)
+		void World::init()
 		{
-			mCurrentRenderProgram = currentRenderingProgram;
-
 			loadTemplateEntities();
 		}
 
@@ -136,7 +135,7 @@ namespace glz
 				if (String(token) == "#mesh")
 				{
 					file >> token;
-					Shared<Drawable> drawable(new Drawable(token, mCurrentRenderProgram));
+					Shared<Drawable> drawable(new Drawable(token, mWindow));
 					templateEntity->addComponent(drawable);
 				}
 				else if (String(token) == "#name")

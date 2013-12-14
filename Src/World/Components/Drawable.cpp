@@ -12,10 +12,10 @@ namespace glz
 	namespace world
 	{
 		//==================================================================|
-		Drawable::Drawable(String meshFilepath, Uint meshProgram)
+		Drawable::Drawable(String meshFilepath, OpenGLWindow *window)
 		{
 			mMesh.loadFromFile(meshFilepath);
-			mProgram = meshProgram;
+			mWindow = window;
 		}
 
 
@@ -23,7 +23,7 @@ namespace glz
 		void Drawable::update()
 		{
 			mMesh.setNdcPos(getHost()->getPos());
-			mMesh.draw(mProgram);
+			mMesh.draw(mWindow);
 		}
 
 

@@ -48,8 +48,9 @@ namespace glz
 
 
 	//==================================================================|
-	void Mesh2D::draw(GLuint &program)
+	void Mesh2D::draw(OpenGLWindow *window)
 	{
+		Uint program = window->getProgram();
 		glUseProgram(program);
 
 		for (Uint n=0; n<mParts.size(); n++)
@@ -58,6 +59,9 @@ namespace glz
 
 			glBindVertexArray(part->vao);
 
+			Vec2f aspectScale = window->getAspectScale();
+
+			glUniform4f(glGetUniformLocation(program, "aspectScale"), aspectScale.x, aspectScale.y, 1.0f, 1.0f);
 			glUniform4f(glGetUniformLocation(program, "offset"), mNdcPos.x, mNdcPos.y, 0.0, 0.0);
 			glUniform1f(glGetUniformLocation(program, "rotation"), mRotation);
 

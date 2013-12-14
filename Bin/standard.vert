@@ -2,6 +2,7 @@
 
 layout (location = 0) in vec4 position;
 
+uniform vec4 aspectScale;
 uniform vec4 offset;
 uniform float rotation;
 
@@ -12,5 +13,5 @@ void main()
 								0.0,			0.0,				1.0,	0.0,
 								0.0,			0.0,				0.0,	1.0);
 	
-	gl_Position = (rotationMatrix * position) + offset;
+	gl_Position = ((rotationMatrix * position) + offset) * aspectScale;
 }

@@ -49,7 +49,7 @@ namespace glz
 		{
 			if (mWindows[n]->isWindow(window))
 			{
-				mWindows[n]->onResize(width, height);
+				mWindows[n]->_onResize(width, height);
 				return;
 			}
 		}
