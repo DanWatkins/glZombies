@@ -7,12 +7,9 @@
 #include "glZombies.h"
 #include "Shader.h"
 #include "../World/World.h"
-#include "Circle.h"
 
 namespace glz
 {
-	Circle circle;
-
 	//==================================================================|
 	glZombies::glZombies() : mWorld(this)
 	{
@@ -26,8 +23,6 @@ namespace glz
 
 		mWorld.init();
 		mWorld.loadWorldFile("main.world");
-
-		circle.init(1.0f);
 	}
 
 
@@ -38,7 +33,6 @@ namespace glz
 		glClearBufferfv(GL_COLOR, 0, clearColor);
 
 		mWorld.update();
-		circle.draw(this);
 	}
 
 

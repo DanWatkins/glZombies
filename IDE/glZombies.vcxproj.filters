@@ -49,6 +49,9 @@
     <ClCompile Include="..\Src\Core\Circle.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\Core\Rectangle.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Core\glZombies.h">
@@ -87,6 +90,9 @@
       <Filter>World</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\Core\Circle.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Core\Rectangle.h">
       <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
