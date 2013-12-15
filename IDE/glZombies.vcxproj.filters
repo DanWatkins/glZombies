@@ -13,12 +13,12 @@
     <Filter Include="World\Components">
       <UniqueIdentifier>{5654c9ba-8527-4f19-8d9c-3aa9784b6e9f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Render">
+      <UniqueIdentifier>{f8a11f38-7968-451d-b1a5-4e53eef97992}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\Core\gl3w.c">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Src\Core\glZombies.cpp">
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="..\Src\Core\Shader.cpp">
@@ -28,9 +28,6 @@
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="..\Src\Main.cpp" />
-    <ClCompile Include="..\Src\Core\Mesh2D.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="..\Src\Utility\Helper.cpp">
       <Filter>Utility</Filter>
     </ClCompile>
@@ -46,17 +43,18 @@
     <ClCompile Include="..\Src\World\World.cpp">
       <Filter>World</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\Core\Circle.cpp">
-      <Filter>Core</Filter>
+    <ClCompile Include="..\src\render\Circle.cpp">
+      <Filter>Render</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\Core\Rectangle.cpp">
-      <Filter>Core</Filter>
+    <ClCompile Include="..\src\render\Mesh2D.cpp">
+      <Filter>Render</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\render\Rectangle.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\glZombies.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Src\Core\glZombies.h">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="..\Src\Core\Shader.h">
       <Filter>Core</Filter>
     </ClInclude>
@@ -65,9 +63,6 @@
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\Main.h" />
-    <ClInclude Include="..\Src\Core\Mesh2D.h">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\utility\Vec2.h">
       <Filter>Utility</Filter>
     </ClInclude>
@@ -89,10 +84,20 @@
     <ClInclude Include="..\Src\World\World.h">
       <Filter>World</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\Core\Circle.h">
-      <Filter>Core</Filter>
+    <ClInclude Include="..\src\render\Circle.h">
+      <Filter>Render</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\Core\Rectangle.h">
+    <ClInclude Include="..\src\render\Mesh2D.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\render\Rectangle.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\glZombies.h" />
+    <ClInclude Include="..\src\render\Render.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Core\Core.h">
       <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>

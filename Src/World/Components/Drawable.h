@@ -9,7 +9,7 @@
 
 #include "../../Main.h"
 #include "../Component.h"
-#include "../../Core/Mesh2D.h"
+#include "../../Render/Render.h"
 
 namespace glz
 {

@@ -7,10 +7,7 @@
 #ifndef _glz_GLFWINPUT_H
 #define _glz_GLFWINPUT_H
 
-#include "../Main.h"
-#include "OpenGLWindow.h"
-
-
+#include "Core.h"
 
 namespace glz
 {

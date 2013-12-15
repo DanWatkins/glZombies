@@ -7,10 +7,10 @@
 #ifndef _GL_ZOMBIES_H
 #define _GL_ZOMBIES_H
 
-#include "../Main.h"
-#include "OpenGLWindow.h"
-#include "Mesh2D.h"
-#include "../World/World.h"
+#include "Main.h"
+#include "./Core/OpenGLWindow.h"
+#include "./Render/Render.h"
+#include "./World/World.h"
 
 namespace glz
 {

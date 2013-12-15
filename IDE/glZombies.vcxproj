@@ -13,13 +13,13 @@
   <ItemGroup>
     <ClCompile Include="..\Src\Core\gl3w.c" />
     <ClCompile Include="..\Src\Core\GLFWInput.cpp" />
-    <ClCompile Include="..\Src\Core\glZombies.cpp" />
-    <ClCompile Include="..\Src\Core\Mesh2D.cpp" />
     <ClCompile Include="..\Src\Core\OpenGLWindow.cpp" />
-    <ClCompile Include="..\Src\Core\Circle.cpp" />
-    <ClCompile Include="..\Src\Core\Rectangle.cpp" />
     <ClCompile Include="..\Src\Core\Shader.cpp" />
+    <ClCompile Include="..\src\glZombies.cpp" />
     <ClCompile Include="..\Src\Main.cpp" />
+    <ClCompile Include="..\src\render\Circle.cpp" />
+    <ClCompile Include="..\src\render\Mesh2D.cpp" />
+    <ClCompile Include="..\src\render\Rectangle.cpp" />
     <ClCompile Include="..\Src\Utility\Helper.cpp" />
     <ClCompile Include="..\Src\World\Components\Drawable.cpp" />
     <ClCompile Include="..\Src\World\Entity.cpp" />
@@ -27,14 +27,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Constants.h" />
+    <ClInclude Include="..\Src\Core\Core.h" />
     <ClInclude Include="..\Src\Core\GLFWInput.h" />
-    <ClInclude Include="..\Src\Core\glZombies.h" />
-    <ClInclude Include="..\Src\Core\Mesh2D.h" />
     <ClInclude Include="..\Src\Core\OpenGLWindow.h" />
-    <ClInclude Include="..\Src\Core\Circle.h" />
-    <ClInclude Include="..\Src\Core\Rectangle.h" />
     <ClInclude Include="..\Src\Core\Shader.h" />
+    <ClInclude Include="..\src\glZombies.h" />
     <ClInclude Include="..\Src\Main.h" />
+    <ClInclude Include="..\src\render\Circle.h" />
+    <ClInclude Include="..\src\render\Mesh2D.h" />
+    <ClInclude Include="..\src\render\Rectangle.h" />
+    <ClInclude Include="..\src\render\Render.h" />
     <ClInclude Include="..\Src\Utility\Helper.h" />
     <ClInclude Include="..\src\utility\Vec2.h" />
     <ClInclude Include="..\src\world\Components\Drawable.h" />

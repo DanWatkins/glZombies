@@ -13,7 +13,7 @@ namespace glz
 	{
 		clearParts();
 
-		Float theta = 2.0f * glz::PI / (Float)segments;
+		Float theta = 2.0f * (float)glz::PI / (Float)segments;
 		Float cs = std::cosf(theta);
 		Float sn = std::sinf(theta);
 		Float t = 0.0f;

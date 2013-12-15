@@ -1,16 +1,22 @@
 //=======================================================================================================================|
-// Created 2013.11.16 by Daniel L. Watkins
+// Created 2013.12.14 by Daniel L. Watkins
 //
 // Copyright (C) 2013 Daniel L. Watkins
 //=======================================================================================================================|
 
-#include "Main.h"
-#include "glZombies.h"
+#ifndef _glz_RECTANGLE_H
+#define _glz_RECTANGLE_H
 
-using namespace glz;
+#include "Render.h"
 
-int main()
+namespace glz
 {
-	glZombies *app = new glZombies;
-	return app->init();
-}
+	class Rectangle : public Mesh2D
+	{
+	public:
+		void init(Vec2f pos1, Vec2f pos2);
+	};
+};
+
+#endif
+

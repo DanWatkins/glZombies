@@ -5,8 +5,8 @@
 //=======================================================================================================================|
 
 #include "glZombies.h"
-#include "Shader.h"
-#include "../World/World.h"
+#include "./Core/Core.h"
+#include "./World/World.h"
 
 namespace glz
 {

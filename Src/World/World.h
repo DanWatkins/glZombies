@@ -7,9 +7,8 @@
 #ifndef _glz_WORLD_H
 #define _glz_WORLD_H
 
-#include "../Main.h"
+#include "../Core/Core.h"
 #include "Entity.h"
-#include "../Core/OpenGLWindow.h"
 
 namespace glz
 {

@@ -4,21 +4,14 @@
 // Copyright (C) 2013 Daniel L. Watkins
 //=======================================================================================================================|
 
-#ifndef _glz_CIRCLE_H
-#define _glz_CIRCLE_H
+#ifndef _glz_RENDER_H
+#define _glz_RENDER_H
 
-#include "../Main.h"
+#include "../Core/Core.h"
+
 #include "Mesh2D.h"
-
-namespace glz
-{
-	class Circle : public Mesh2D
-	{
-	public:
-		void init(Float radius, Int segments=60);
-	};
-};
-
+#include "Circle.h"
+#include "Rectangle.h"
 
 #endif
 

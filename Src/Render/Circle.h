@@ -4,20 +4,20 @@
 // Copyright (C) 2013 Daniel L. Watkins
 //=======================================================================================================================|
 
-#ifndef _glz_RECTANGLE_H
-#define _glz_RECTANGLE_H
+#ifndef _glz_CIRCLE_H
+#define _glz_CIRCLE_H
 
-#include "../Main.h"
-#include "Mesh2D.h"
+#include "Render.h"
 
 namespace glz
 {
-	class Rectangle : public Mesh2D
+	class Circle : public Mesh2D
 	{
 	public:
-		void init(Vec2f pos1, Vec2f pos2);
+		void init(Float radius, Int segments=60);
 	};
 };
+
 
 #endif
 
