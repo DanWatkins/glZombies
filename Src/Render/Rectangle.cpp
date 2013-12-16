@@ -9,26 +9,64 @@
 namespace glz
 {
 	//==================================================================|
-	void Rectangle::init(Vec2f pos1, Vec2f pos2)
+	void Rectangle::init(Vec2f pos1, Vec2f pos2, Bool filled)
 	{
 		clearParts();
 
-		Part part;
+		if (filled)
+		{
+			//triangle 1
+			Part part1;
 
-		part.vertexData.push_back(pos1.x);
-		part.vertexData.push_back(pos1.y);
+			part1.vertexData.push_back(pos1.x);
+			part1.vertexData.push_back(pos1.y);
 
-		part.vertexData.push_back(pos2.x);
-		part.vertexData.push_back(pos1.y);
+			part1.vertexData.push_back(pos2.x);
+			part1.vertexData.push_back(pos1.y);
 
-		part.vertexData.push_back(pos2.x);
-		part.vertexData.push_back(pos2.y);
+			part1.vertexData.push_back(pos1.x);
+			part1.vertexData.push_back(pos2.y);
 
-		part.vertexData.push_back(pos1.x);
-		part.vertexData.push_back(pos2.y);
+			part1.drawMode = GL_TRIANGLES;
+			part1.configure();
+			addPart(part1);
 
-		part.drawMode = GL_LINE_LOOP;
-		part.configure();
-		addPart(part);
+
+			//triangle 2
+			Part part2;
+
+			part2.vertexData.push_back(pos2.x);
+			part2.vertexData.push_back(pos2.y);
+
+			part2.vertexData.push_back(pos2.x);
+			part2.vertexData.push_back(pos1.y);
+
+			part2.vertexData.push_back(pos1.x);
+			part2.vertexData.push_back(pos2.y);
+
+			part2.drawMode = GL_TRIANGLES;
+			part2.configure();
+			addPart(part2);
+		}
+		else
+		{
+			Part part;
+
+			part.vertexData.push_back(pos1.x);
+			part.vertexData.push_back(pos1.y);
+
+			part.vertexData.push_back(pos2.x);
+			part.vertexData.push_back(pos1.y);
+
+			part.vertexData.push_back(pos2.x);
+			part.vertexData.push_back(pos2.y);
+
+			part.vertexData.push_back(pos1.x);
+			part.vertexData.push_back(pos2.y);
+
+			part.drawMode = GL_LINE_LOOP;
+			part.configure();
+			addPart(part);
+		}
 	}
 };

@@ -14,7 +14,7 @@ namespace glz
 	class Rectangle : public Mesh2D
 	{
 	public:
-		void init(Vec2f pos1, Vec2f pos2);
+		void init(Vec2f pos1, Vec2f pos2, Bool filled=false);
 	};
 };
 
