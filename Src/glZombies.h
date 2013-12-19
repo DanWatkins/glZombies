@@ -21,6 +21,7 @@ namespace glz
 	{
 	private:
 		world::World mWorld;
+		world::Camera mCamera;
 
 	public:
 		glZombies();

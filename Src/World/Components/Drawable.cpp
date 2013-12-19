@@ -20,9 +20,9 @@ namespace glz
 
 
 		//==================================================================|
-		void Drawable::update()
+		void Drawable::draw(Float x, Float y)
 		{
-			mMesh.setNdcPos(getHost()->getPos());
+			mMesh.setNdcPos(Vec2f(x,y));
 			mMesh.draw(mWindow);
 		}
 

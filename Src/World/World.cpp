@@ -15,8 +15,10 @@ namespace glz
 		//==================================================================|
 		World::World(OpenGLWindow *window)
 		{
-			mWindow = window;
 			mIdTrack = 0;
+			mWidth = 2;
+			mHeight = 2;
+			mWindow = window;
 		}
 
 
@@ -51,10 +53,10 @@ namespace glz
 					file >> token;
 					Shared<Entity> entity = createEntityFromTemplate(token);
 
-					Vec2f pos;
+					Vec2d pos;
 					file >> token; pos.x = toFloat(token);
 					file >> token; pos.y = toFloat(token);
-					entity->setPos(pos);
+					entity->setWorldPos(pos);
 				}
 			}
 		}

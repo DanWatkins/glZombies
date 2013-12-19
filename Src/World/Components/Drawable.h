@@ -7,7 +7,6 @@
 #ifndef _glz_DRAWABLE_H
 #define _glz_DRAWABLE_H
 
-#include "../../Main.h"
 #include "../Component.h"
 #include "../../Render/Render.h"
 
@@ -27,7 +26,8 @@ namespace glz
 			Drawable(String meshFilepath, OpenGLWindow *window);
 			~Drawable() {}
 
-			void update();
+			void update() {}
+			void draw(Float x, Float y);
 			Component *clone();
 		};
 	};

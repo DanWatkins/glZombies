@@ -53,6 +53,9 @@
       <Filter>Render</Filter>
     </ClCompile>
     <ClCompile Include="..\src\glZombies.cpp" />
+    <ClCompile Include="..\Src\World\Camera.cpp">
+      <Filter>World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Core\Shader.h">
@@ -99,6 +102,9 @@
     </ClInclude>
     <ClInclude Include="..\Src\Core\Core.h">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\World\Camera.h">
+      <Filter>World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

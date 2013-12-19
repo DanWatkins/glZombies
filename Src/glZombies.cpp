@@ -11,7 +11,7 @@
 namespace glz
 {
 	//==================================================================|
-	glZombies::glZombies() : mWorld(this)
+	glZombies::glZombies() : mWorld(this), mCamera(&mWorld)
 	{
 	}
 
@@ -33,6 +33,7 @@ namespace glz
 		glClearBufferfv(GL_COLOR, 0, clearColor);
 
 		mWorld.update();
+		mCamera.draw();
 	}
 
 
@@ -44,6 +45,26 @@ namespace glz
 			case GLFW_KEY_ESCAPE:
 			{
 				exit(0);  //TODO do better with this lol
+			}
+			case GLFW_KEY_A:
+			{
+				mCamera.move(-0.1, 0.0);
+				break;
+			}
+			case GLFW_KEY_W:
+			{
+				mCamera.move(-0.0, -0.1);
+				break;
+			}
+			case GLFW_KEY_D:
+			{
+				mCamera.move(0.1, 0.0);
+				break;
+			}
+			case GLFW_KEY_S:
+			{
+				mCamera.move(0.0, 0.1);
+				break;
 			}
 		}
 	}

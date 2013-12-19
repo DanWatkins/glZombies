@@ -7,7 +7,7 @@
 #ifndef _glz_ENTITY_H
 #define _glz_ENTITY_H
 
-#include "../Main.h"
+#include "World.h"
 #include "Component.h"
 
 namespace glz
@@ -15,7 +15,7 @@ namespace glz
 	namespace world
 	{
 		class World;
-		typedef std::vector<Shared<Component>> ComponentVector;
+		typedef std::vector<Shared<Component>> ComponentVector;  //TODO this could probably just be a raw pointer
 
 
 		//============================================================================|
@@ -28,7 +28,7 @@ namespace glz
 			friend World;
 
 			String mId, mName;
-			Vec2f mPos;			//position in world space
+			Vec2d mWorldPos;
 			ComponentVector mComponents;
 
 
@@ -39,11 +39,12 @@ namespace glz
 			void setName(String name) { mName = name; }
 			String getName() { return mName; }
 
-			void setPos(Vec2f pos) { mPos = pos; }
-			Vec2f getPos() { return mPos; }
+			void setWorldPos(Vec2d worldPos) { mWorldPos = worldPos; }
+			Vec2d getWorldPos() { return mWorldPos; }
 
 
 		private:
+			friend Camera;
 			Entity();
 			
 			void setId(String id) { mId = id; }

@@ -8,12 +8,15 @@
 #define _glz_WORLD_H
 
 #include "../Core/Core.h"
-#include "Entity.h"
 
 namespace glz
 {
 	namespace world
 	{
+		class Entity;
+		class Component;
+		class Camera;
+
 		typedef std::vector<Shared<Entity>> EntityVector;
 
 
@@ -27,15 +30,23 @@ namespace glz
 			EntityVector mEntities;
 			Int mIdTrack;
 
+			Uint mWidth, mHeight;
+
 			OpenGLWindow *mWindow;
 			World() {}
 
 		public:
+			friend Camera;
+
 			World(OpenGLWindow *window);
 			
 			void init();
 			void loadWorldFile(String filepath);
 			void update();
+
+
+			Uint getWidth() { return mWidth; }
+			Uint getHeight() { return mHeight; }
 
 		private:
 			//============================================================================|
@@ -56,18 +67,17 @@ namespace glz
 
 			
 
-
 			//============================================================================|
 			// Creates a new Entity instance based on template Entity with @templateName
 			// and adds it to @mEntities
 			//============================================================================|
 			Shared<Entity> createEntityFromTemplate(String templateName);
-
-
-		
 		};
 	};
 };
+
+#include "Entity.h"
+#include "Camera.h"
 
 
 #endif

@@ -7,8 +7,7 @@
 #ifndef _glz_COMPONENT_H
 #define _glz_COMPONENT_H
 
-#include "../Main.h"
-
+#include "World.h"
 
 namespace glz
 {
@@ -43,7 +42,7 @@ namespace glz
 };
 
 
-#include "Entity.h"
+#include "./Components/Drawable.h"
 
 #endif
 
