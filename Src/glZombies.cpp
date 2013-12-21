@@ -16,6 +16,7 @@ namespace glz
 	}
 
 
+
 	//==================================================================|
 	void glZombies::onStartup()
 	{
@@ -24,6 +25,7 @@ namespace glz
 		mWorld.init();
 		mWorld.loadWorldFile("main.world");
 	}
+
 
 
 	//==================================================================|

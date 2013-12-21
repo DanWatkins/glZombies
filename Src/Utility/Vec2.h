@@ -17,22 +17,26 @@ namespace glz
 	public:
 		T x, y;
 
-
-		#define OVERLOAD(type, name, body) \
-			type name(T x, T y) { body } \
-			template <class C> \
-			type name(const Vec2<C> &vec2) { name(vec2.x, vec2.y); } \
-
+	public:
 		Vec2() { set(0.0, 0.0); }
+		Vec2(T x, T y) { set(x, y); }
 
-		OVERLOAD(, Vec2, this->x = x; this->y = y;)
-		OVERLOAD(void, set, this->x = x; this->y = y;)
-		OVERLOAD(void, add, this->x += x; this->y += y;)
-		OVERLOAD(Double, distanct, return std::sqrt((this->x-x)*(this->x-x) + (this->y-y)*(this->y-y));)
-		OVERLOAD(T, dot, return x*this->x + y*this->y;)
-		OVERLOAD(Double, angle, return std::atan2((y-this->y), (x-this->x));)
+		void set(T x, T y) { this->x = x; this->y = y; }
+		void set(const Vec2<T> &vec) { x = vec.x; y = vec.y; }
 
-		#undef OVERLOAD
+		void add(T x, T y) { this->x += x; this->y += y; }
+		void add(const Vec2<T> &vec) { x += vec.x; y += vec.y; }
+
+		Double distance(T x, T y) { return std::sqrt((this->x-x)*(this->x-x) + (this->y-y)*(this->y-y)); }
+		Double distance(const Vec2<T> &vec) { distance(vec.x, vec.y); }
+
+		T dot(T x, T y) { return x*this->x + y*this->y; }
+		T dot(const Vec2<T> &vec) { return dot(vec.x, vec.y); }
+
+		Double angle(T x, T y) { return std::atan2((y-this->y), (x-this->x)); }
+		Double angle(const Vec2<T> &vec) { return angle(vec.x, vec.y); }
+
+
 	};
 
 
