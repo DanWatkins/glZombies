@@ -40,7 +40,8 @@ namespace glz
     Float radToDeg(Float rad);
     Int radToDeg(Int rad);
 
-
+	Bool isEqual(Float a, Float b);
+	Bool isEqual(Double a, Double b);
 };
 
 

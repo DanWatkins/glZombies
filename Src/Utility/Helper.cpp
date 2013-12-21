@@ -174,4 +174,22 @@ namespace glz
     {
         return round((Double)rad*PI_UNDER_180);
     }
+
+
+	//==================================================================|
+	Bool isEqual(Float a, Float b)
+	{
+		return fabs(a-b) < 1E-12;
+		/*if (fabs(a-b) < 1E-12)
+			return true;
+
+		return false;*/
+	}
+
+
+	//==================================================================|
+	Bool isEqual(Double a, Double b)
+	{
+		return fabs(a-b) < 1E-12;
+	}
 };
