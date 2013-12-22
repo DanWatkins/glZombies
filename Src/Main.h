@@ -84,6 +84,7 @@ typedef std::string			String;
 #include "Constants.h"
 #include "./Utility/Helper.h"
 #include "./Utility/Vec2.h"
+#include "./Utility/Timer.h"
 
 #endif
 

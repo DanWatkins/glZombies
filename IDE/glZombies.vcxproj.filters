@@ -56,6 +56,7 @@
     <ClCompile Include="..\Src\World\Camera.cpp">
       <Filter>World</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\Utility\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Core\Shader.h">
@@ -105,6 +106,9 @@
     </ClInclude>
     <ClInclude Include="..\Src\World\Camera.h">
       <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Utility\Timer.h">
+      <Filter>Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

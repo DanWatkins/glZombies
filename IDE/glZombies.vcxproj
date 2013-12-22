@@ -21,6 +21,7 @@
     <ClCompile Include="..\src\render\Mesh2D.cpp" />
     <ClCompile Include="..\src\render\Rectangle.cpp" />
     <ClCompile Include="..\Src\Utility\Helper.cpp" />
+    <ClCompile Include="..\Src\Utility\Timer.cpp" />
     <ClCompile Include="..\Src\World\Camera.cpp" />
     <ClCompile Include="..\Src\World\Components\Drawable.cpp" />
     <ClCompile Include="..\Src\World\Entity.cpp" />
@@ -39,6 +40,7 @@
     <ClInclude Include="..\src\render\Rectangle.h" />
     <ClInclude Include="..\src\render\Render.h" />
     <ClInclude Include="..\Src\Utility\Helper.h" />
+    <ClInclude Include="..\Src\Utility\Timer.h" />
     <ClInclude Include="..\src\utility\Vec2.h" />
     <ClInclude Include="..\Src\World\Camera.h" />
     <ClInclude Include="..\src\world\Components\Drawable.h" />
