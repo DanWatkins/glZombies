@@ -7,7 +7,7 @@
 #ifndef _glz_DRAWABLE_H
 #define _glz_DRAWABLE_H
 
-#include "../Component.h"
+#include "Component.h"
 #include "../../Render/Render.h"
 
 namespace glz

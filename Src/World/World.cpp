@@ -6,7 +6,6 @@
 
 #include "World.h"
 #include <dirent.h>
-#include "Components\Drawable.h"
 
 namespace glz
 {
@@ -19,6 +18,9 @@ namespace glz
 			mWidth = 2;
 			mHeight = 2;
 			mWindow = window;
+
+			mSpatialSystem = Shared<SpatialSystem>(new SpatialSystem);
+			mDrawableSystem = Shared<DrawableSystem>(new DrawableSystem(mWindow));
 		}
 
 
@@ -41,7 +43,6 @@ namespace glz
 			}
 
 			Char token[64];
-			Entity templateEntity;
 
 			while (!file.eof())
 			{
@@ -49,14 +50,17 @@ namespace glz
 
 				//create a new entity instance?
 				if (String(token) == "#entity")
-				{
+				{	
 					file >> token;
-					Shared<Entity> entity = createEntityFromTemplate(token);
+					Shared<Entity> entity = getTemplateEntity(token);
 
 					Vec2d pos;
 					file >> token; pos.x = toFloat(token);
 					file >> token; pos.y = toFloat(token);
-					entity->setWorldPos(pos);
+					
+					mIdTrack++;
+					mSpatialSystem->createSpatial(mIdTrack, pos);
+					mDrawableSystem->createDrawable(mIdTrack, entity->meshFilepath);
 				}
 			}
 		}
@@ -65,31 +69,17 @@ namespace glz
 		//==================================================================|
 		void World::update()
 		{
-			for (Uint n=0; n<mEntities.size(); n++)
-				mEntities.at(n)->update();
+			
 		}
 
 
 		//==================================================================|
 		Shared<Entity> World::getTemplateEntity(String name)
 		{
-			for (Uint n=0; n<mTemplateEntities.size(); n++)
+			for (int n=0; n<mTemplateEntities.size(); n++)
 			{
-				if (mTemplateEntities.at(n)->getName() == name)
-					return mTemplateEntities.at(n);
-			}
-
-			return NULL;
-		}
-
-
-		//==================================================================|
-		Shared<Entity> World::getEntity(String id)
-		{
-			for (Uint n=0; n<mEntities.size(); n++)
-			{
-				if (mEntities.at(n)->getId() == id)
-					return mEntities.at(n);
+				if (mTemplateEntities[n]->name == name)
+					return mTemplateEntities[n];
 			}
 
 			return NULL;
@@ -137,31 +127,16 @@ namespace glz
 				if (String(token) == "#mesh")
 				{
 					file >> token;
-					Shared<Drawable> drawable(new Drawable(token, mWindow));
-					templateEntity->addComponent(drawable);
+					templateEntity->meshFilepath = token;
 				}
 				else if (String(token) == "#name")
 				{
 					file >> token;
-					templateEntity->setName(token);
+					templateEntity->name = token;
 				}
 			}
 
 			mTemplateEntities.push_back(templateEntity);
-		}
-
-
-		//==================================================================|
-		Shared<Entity> World::createEntityFromTemplate(String templateName)
-		{
-			Shared<Entity> templateEntity = getTemplateEntity(templateName);
-
-			mIdTrack++;
-			Shared<Entity> newEntity(templateEntity->clone());
-			//TODO //newEntity.setId(toString(mIdTrack));
-			mEntities.push_back(newEntity);
-
-			return newEntity;
 		}
 	};
 };

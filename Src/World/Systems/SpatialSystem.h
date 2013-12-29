@@ -1,25 +1,28 @@
 //=======================================================================================================================|
-// Created 2013.11.20 by Daniel L. Watkins
+// Created 2013.12.24 by Daniel L. Watkins
 //
 // Copyright (C) 2013 Daniel L. Watkins
 //=======================================================================================================================|
 
-#ifndef _glz_ENTITY_H
-#define _glz_ENTITY_H
+#ifndef _glz_SPATIAL_SYSTEM_H
+#define _glz_SPATIAL_SYSTEM_H
 
-#include "World.h"
+#include "System.h"
+#include "../Components/Spatial.h"
 
 namespace glz
 {
 	namespace world
 	{
-		struct Entity
+		class SpatialSystem : public System
 		{
-			Vec2d worldPos;
-			String name;
-			String meshFilepath;
+		public:
+			SpatialSystem() {}
+			void createSpatial(Int entity, Vec2d pos);
+
+			Shared<Spatial> getSpatialForEntity(Int entity);
 		};
-	}
+	};
 };
 
 

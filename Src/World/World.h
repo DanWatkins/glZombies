@@ -9,15 +9,18 @@
 
 #include "../Core/Core.h"
 
+#include "Camera.h"
+#include "./Components/Component.h"
+#include "./Systems/System.h"
+#include "Entity.h"
+
 namespace glz
 {
 	namespace world
 	{
-		class Entity;
 		class Component;
+		class System;
 		class Camera;
-
-		typedef std::vector<Shared<Entity>> EntityVector;
 
 
 		//============================================================================|
@@ -26,13 +29,15 @@ namespace glz
 		class World
 		{
 		private:
-			EntityVector mTemplateEntities;
-			EntityVector mEntities;
 			Int mIdTrack;
-
 			Uint mWidth, mHeight;
-
 			OpenGLWindow *mWindow;
+			std::vector<Shared<Entity>> mTemplateEntities;
+
+			//systems
+			Shared<SpatialSystem> mSpatialSystem;
+			Shared<DrawableSystem> mDrawableSystem;
+
 			World() {}
 
 		public:
@@ -44,24 +49,12 @@ namespace glz
 			void loadWorldFile(String filepath);
 			void update();
 
+			Shared<Entity> getTemplateEntity(String name);
 
 			Uint getWidth() { return mWidth; }
 			Uint getHeight() { return mHeight; }
 
 		private:
-			//============================================================================|
-			// Searches for and returns an Entity in @mTemplateEntities with a matching name
-			//============================================================================|
-			Shared<Entity> getTemplateEntity(String name);
-
-
-			//============================================================================|
-			// Searches for and returns an Entity in @mEntities with a matching id
-			//============================================================================|
-			Shared<Entity> getEntity(String id);
-
-
-
 			void loadTemplateEntities();
 			void loadTemplateEntity(String filepath);
 
@@ -71,14 +64,10 @@ namespace glz
 			// Creates a new Entity instance based on template Entity with @templateName
 			// and adds it to @mEntities
 			//============================================================================|
-			Shared<Entity> createEntityFromTemplate(String templateName);
+			Int createEntityFromTemplate(String templateName);
 		};
 	};
 };
-
-#include "Entity.h"
-#include "Camera.h"
-
 
 #endif
 

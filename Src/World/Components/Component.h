@@ -7,42 +7,29 @@
 #ifndef _glz_COMPONENT_H
 #define _glz_COMPONENT_H
 
-#include "World.h"
+#include "../../Main.h"
 
 namespace glz
 {
 	namespace world
 	{
-		class Entity;
-
-		//============================================================================|
-		// Represents a functionality component for Entity objects
-		//============================================================================|
 		class Component
 		{
 		private:
-			Entity *mHost;
+			Int mHost;
 
 
 		public:
-			friend Entity;
-
 			Component() {}
 			virtual ~Component() {}
-			virtual void update() = 0;
-			virtual Component *clone() = 0;
 
-
-		protected:
-			//accessor and mutator
-			void setHost(Entity *host) { mHost = host; }
-			Entity *getHost() { return mHost; }
+			void setHost(Int host) { mHost = host; }
+			Int getHost() { return mHost; }			
 		};
 	};
 };
 
-
-#include "./Components/Drawable.h"
+#include "Drawable.h"
 
 #endif
 

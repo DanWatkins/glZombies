@@ -9,16 +9,19 @@
 
 #include "World.h"
 
+
 namespace glz
 {
 	namespace world
 	{
+		class World;
+
 		class Camera
 		{
 		private:
 			Vec2d mWorldPos;
 			World *mWorld;
-			Weak<Entity> mTarget;
+			Int mTarget;
 
 		public:
 			Camera(World *world) { mWorld = world; }
@@ -30,8 +33,8 @@ namespace glz
 			void setWorldPos(Vec2d worldPos) { mWorldPos = worldPos; }
 			Vec2d getWorldPos() { return mWorldPos; }
 
-			void setTarget(Weak<Entity> target) { mTarget = target; }
-			Weak<Entity> getTarget() { return mTarget; }
+			void setTarget(Int target) { mTarget = target; }
+			Int getTarget() { return mTarget; }
 		};
 	};
 };

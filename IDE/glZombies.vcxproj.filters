@@ -16,6 +16,9 @@
     <Filter Include="Render">
       <UniqueIdentifier>{f8a11f38-7968-451d-b1a5-4e53eef97992}</UniqueIdentifier>
     </Filter>
+    <Filter Include="World\Systems">
+      <UniqueIdentifier>{de9eb7a0-a290-489d-beac-1ee482676958}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\Core\gl3w.c">
@@ -33,9 +36,6 @@
     </ClCompile>
     <ClCompile Include="..\Src\Core\GLFWInput.cpp">
       <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Src\World\Entity.cpp">
-      <Filter>World</Filter>
     </ClCompile>
     <ClCompile Include="..\Src\World\Components\Drawable.cpp">
       <Filter>World\Components</Filter>
@@ -56,7 +56,15 @@
     <ClCompile Include="..\Src\World\Camera.cpp">
       <Filter>World</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\Utility\Timer.cpp" />
+    <ClCompile Include="..\Src\Utility\Timer.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\World\Systems\DrawableSystem.cpp">
+      <Filter>World\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\World\Systems\SpatialSystem.cpp">
+      <Filter>World\Systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Core\Shader.h">
@@ -75,12 +83,6 @@
     </ClInclude>
     <ClInclude Include="..\Src\Core\GLFWInput.h">
       <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\World\Entity.h">
-      <Filter>World</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\World\Component.h">
-      <Filter>World</Filter>
     </ClInclude>
     <ClInclude Include="..\src\world\Components\Drawable.h">
       <Filter>World\Components</Filter>
@@ -109,6 +111,24 @@
     </ClInclude>
     <ClInclude Include="..\Src\Utility\Timer.h">
       <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\World\Systems\System.h">
+      <Filter>World\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\world\components\Component.h">
+      <Filter>World\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\World\Entity.h">
+      <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\World\Systems\DrawableSystem.h">
+      <Filter>World\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\World\Systems\SpatialSystem.h">
+      <Filter>World\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\World\Components\Spatial.h">
+      <Filter>World\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

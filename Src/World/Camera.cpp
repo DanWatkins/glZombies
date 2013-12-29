@@ -16,21 +16,21 @@ namespace glz
 			background.init(Vec2f(-mWorldPos.x, mWorldPos.y), Vec2f(mWorld->mWidth - mWorldPos.x, mWorldPos.y - mWorld->mHeight));
 			background.draw(mWorld->mWindow);
 
-			//draw every Entity that has something to draw
-			for (Uint n=0; n<mWorld->mEntities.size(); n++)
-			{
-				Entity *entity = mWorld->mEntities[n].get();
-				Float screenX = Float(entity->getWorldPos().x - mWorldPos.x);
-				Float screenY = -Float(entity->getWorldPos().y - mWorldPos.y);
+			ComponentList components = mWorld->mSpatialSystem->mComponents;
+			ComponentList::iterator iter = components.begin();
 
-				//draw every component that is a Drawable
-				for (Uint m=0; m<entity->mComponents.size(); m++)
-				{
-					Component *component = entity->mComponents[m].get();
-					
-					if (Drawable *drawable = dynamic_cast<Drawable*>(component))
-						drawable->draw(screenX, screenY);
-				}
+			//draw every Entity that has something to draw
+			while (iter != components.end())
+			{
+				//Entity *entity = mWorld->mEntities[n].get();
+				Shared<Spatial> spatial = std::dynamic_pointer_cast<Spatial>(*iter);
+				Float screenX = Float(spatial->getPos().x - mWorldPos.x);
+				Float screenY = -Float(spatial->getPos().y - mWorldPos.y);
+
+				Shared<Drawable> drawable = mWorld->mDrawableSystem->getDrawableForEntity(spatial->getHost());
+				drawable->draw(screenX, screenY);
+
+				++iter;
 			}
 		}
 	};

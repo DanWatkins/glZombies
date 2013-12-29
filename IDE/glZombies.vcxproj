@@ -24,7 +24,8 @@
     <ClCompile Include="..\Src\Utility\Timer.cpp" />
     <ClCompile Include="..\Src\World\Camera.cpp" />
     <ClCompile Include="..\Src\World\Components\Drawable.cpp" />
-    <ClCompile Include="..\Src\World\Entity.cpp" />
+    <ClCompile Include="..\Src\World\Systems\DrawableSystem.cpp" />
+    <ClCompile Include="..\Src\World\Systems\SpatialSystem.cpp" />
     <ClCompile Include="..\Src\World\World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -43,9 +44,13 @@
     <ClInclude Include="..\Src\Utility\Timer.h" />
     <ClInclude Include="..\src\utility\Vec2.h" />
     <ClInclude Include="..\Src\World\Camera.h" />
+    <ClInclude Include="..\src\world\components\Component.h" />
     <ClInclude Include="..\src\world\Components\Drawable.h" />
+    <ClInclude Include="..\Src\World\Components\Spatial.h" />
     <ClInclude Include="..\Src\World\Entity.h" />
-    <ClInclude Include="..\Src\World\Component.h" />
+    <ClInclude Include="..\Src\World\Systems\DrawableSystem.h" />
+    <ClInclude Include="..\Src\World\Systems\SpatialSystem.h" />
+    <ClInclude Include="..\Src\World\Systems\System.h" />
     <ClInclude Include="..\Src\World\World.h" />
   </ItemGroup>
   <ItemGroup>

@@ -14,9 +14,11 @@
 
 #include <fstream>
 #include <istream>
-#include <vector>
 #include <string>
 #include <sstream>
+
+#include <vector>
+#include <list>
 
 #include <cstdlib>
 #include <ctime>
