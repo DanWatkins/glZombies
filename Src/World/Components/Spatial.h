@@ -20,10 +20,22 @@ namespace glz
 		 {
 		 private:
 			 Vec2d mPos;
+			 Vec2d mVelocity;
+			 Vec2d mHeading;
+			 Vec2d mSide;
+
+			 Double mMass;
+			 Double mMaxSpeed;
+			 Double mMaxForce;
+			 Double mMaxTurnRate;
+
 
 		 public:
-			 Spatial(Vec2d pos) { mPos = pos; }
+			 Spatial(Vec2d pos, Vec2d heading, Double mass, Double maxSpeed, Double maxForce, Double maxTurnRate);
 			 
+			 Bool rotateToHeading(Vec2d pos);
+			 Bool setHeading(Vec2d heading);
+
 			 void setPos(Vec2d pos) { mPos = pos; }
 			 void addPos(Vec2d pos) { mPos += pos; }
 			 Vec2d getPos() { return mPos; }

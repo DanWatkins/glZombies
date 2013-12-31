@@ -24,6 +24,7 @@
     <ClCompile Include="..\Src\Utility\Timer.cpp" />
     <ClCompile Include="..\Src\World\Camera.cpp" />
     <ClCompile Include="..\Src\World\Components\Drawable.cpp" />
+    <ClCompile Include="..\Src\World\Components\Spatial.cpp" />
     <ClCompile Include="..\Src\World\Systems\DrawableSystem.cpp" />
     <ClCompile Include="..\Src\World\Systems\SpatialSystem.cpp" />
     <ClCompile Include="..\Src\World\Systems\System.cpp" />
