@@ -14,11 +14,11 @@ namespace glz
 	class GLFWInput;
 
 
-	//==================================================================|
+	
 	// -Creates a cross-platform OpenGL 4.x rendering context
 	// -Provides a runtime loop and keyboard input callbacks
 	// -Class is intended to be inherited from by client applications
-	//==================================================================|
+	
 	class OpenGLWindow
 	{
 	private:
@@ -48,32 +48,32 @@ namespace glz
 		Vec2f getAspectScale() { return mAspectScale; }
 
 	protected:
-		//==================================================================|
+		
 		// -Called after the window has been fully initialized
-		//==================================================================|
+		
 		virtual void onStartup() = 0;
 
-		//==================================================================|
+		
 		// -Called at the start of the window's update loop
 		// -GLFW swaps buffers after this (double buffering)
 		// -GLFW polls input events after this
-		//==================================================================|
+		
 		virtual void onUpdate(Double currentTime) = 0;
 
-		//==================================================================|
+		
 		// -Called whenever a keyboard event occurs by GLFW
-		//==================================================================|
+		
 		virtual void onKey(Int key, Int action) = 0;
 
 
-		//==================================================================|
+		
 		// -Called whenever the window is resized by GLFW
-		//==================================================================|
+		
 		virtual void onResize(Int width, Int height) = 0;
 
-		//==================================================================|
+		
 		// -Called when the window closes or encounters an error
-		//==================================================================|
+		
 		virtual void onTerminate() = 0;
 
 

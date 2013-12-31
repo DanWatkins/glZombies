@@ -35,6 +35,11 @@ namespace glz
 		Vec2<Float> mNdcPos;					//position in NDC-space
 		Float mRotation;						//rotation value in radians
 
+		Bool loadComponentsFromGLZM2File(String filepath);
+
+	protected:
+		void clearParts() { mParts.clear(); }
+		void addPart(Part part) { mParts.push_back(part); }
 
 	public:
 		Mesh2D();
@@ -47,29 +52,8 @@ namespace glz
 		void addRotation(Float angleInRadians) { mRotation += angleInRadians; }
 		Float getRotation() { return mRotation; }
 
-
-		//==================================================================|
-		// -Loads data from a M2 file and configures the vbo and vao states.
-		//==================================================================|
 		Bool loadFromFile(String filepath);
-
-		//==================================================================|
-		// -Draws @mVertexData using the specified mode, vbo, and vao.
-		// -Expects load from file to have been called.
-		//==================================================================|
 		void draw(OpenGLWindow *window);
-
-
-	protected:
-		void clearParts() { mParts.clear(); }
-		void addPart(Part part) { mParts.push_back(part); }
-
-
-	private:
-		//==================================================================|
-		// -Loads the actual data from a M2 file.
-		//==================================================================|
-		Bool loadComponentsFromGLZM2File(String filepath);
 	};
 };
 

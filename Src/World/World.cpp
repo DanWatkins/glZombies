@@ -11,7 +11,6 @@ namespace glz
 {
 	namespace world
 	{
-		//==================================================================|
 		World::World(OpenGLWindow *window)
 		{
 			mIdTrack = 0;
@@ -24,14 +23,12 @@ namespace glz
 		}
 
 
-		//==================================================================|
 		void World::init()
 		{
 			loadTemplateEntities();
 		}
 
-
-		//==================================================================|
+		
 		void World::loadWorldFile(String filepath)
 		{
 			std::ifstream file(filepath, std::ifstream::in);
@@ -66,17 +63,15 @@ namespace glz
 		}
 
 
-		//==================================================================|
 		void World::update()
 		{
 			
 		}
 
-
-		//==================================================================|
+		
 		Shared<Entity> World::getTemplateEntity(String name)
 		{
-			for (int n=0; n<mTemplateEntities.size(); n++)
+			for (Uint n=0; n<mTemplateEntities.size(); n++)
 			{
 				if (mTemplateEntities[n]->name == name)
 					return mTemplateEntities[n];
@@ -85,8 +80,7 @@ namespace glz
 			return NULL;
 		}
 
-
-		//==================================================================|
+		
 		void World::loadTemplateEntities()
 		{
 			DIR *dir;
@@ -103,8 +97,7 @@ namespace glz
 			}
 		}
 
-
-		//==================================================================|
+		
 		void World::loadTemplateEntity(String filepath)
 		{
 			std::ifstream file(filepath, std::ifstream::in);

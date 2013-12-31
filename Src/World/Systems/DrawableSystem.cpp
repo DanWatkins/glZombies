@@ -20,11 +20,5 @@ namespace glz
 		{
 			addComponent(entity, Shared<Drawable>(new Drawable(meshFilepath, mWindow)));
 		}
-
-
-		Shared<Drawable> DrawableSystem::getDrawableForEntity(Int entity)
-		{
-			return std::dynamic_pointer_cast<Drawable>(getComponentForEntity(entity));
-		}
 	};
 };

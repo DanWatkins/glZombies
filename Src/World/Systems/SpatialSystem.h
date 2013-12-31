@@ -14,13 +14,14 @@ namespace glz
 {
 	namespace world
 	{
+		/**
+		 * Represents a spatial system that manages the spatial positioning of bodies and applies
+		 * simple physics to them.
+		 */
 		class SpatialSystem : public System
 		{
 		public:
-			SpatialSystem() {}
 			void createSpatial(Int entity, Vec2d pos);
-
-			Shared<Spatial> getSpatialForEntity(Int entity);
 		};
 	};
 };

@@ -14,21 +14,23 @@ namespace glz
 {
 	namespace world
 	{
+		/**
+		 * Represents a Component to visualize something using a Mesh2D
+		 */
 		class Drawable : public Component
 		{
 		private:
 			Mesh2D mMesh;
 			OpenGLWindow *mWindow;
 
-			Drawable() { }
+			Drawable() {}
 
 		public:
 			Drawable(String meshFilepath, OpenGLWindow *window);
 			~Drawable() {}
 
-			void update() {}
 			void draw(Float x, Float y);
-			Component *clone();
+			void draw(Float x, Float y, OpenGLWindow *window);
 		};
 	};
 };

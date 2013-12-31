@@ -14,33 +14,25 @@
 
 namespace glz
 {
-	//============================================================================|
-	// The actual glZombies main window class.
-	//============================================================================|
+	/**
+	 * Represents the main application
+	 */
 	class glZombies : public OpenGLWindow
 	{
 	private:
 		world::World mWorld;
 		world::Camera mCamera;
 
-	public:
-		glZombies();
-
-
-	private:
-		//==================================================================|
-		// -OpenGLWindow virtuals
-		//==================================================================|
 		void onStartup();
 		void onUpdate(Double currentTime);
 		void onKey(Int key, Int action);
 		void onResize(Int width, Int height);
 		void onTerminate() {}
 
-		//==================================================================|
-		// -Loads, compiles, and links certain shaders into @mProgram
-		//==================================================================|
 		void loadShaders();
+
+	public:
+		glZombies();
 	};
 };
 

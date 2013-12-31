@@ -14,11 +14,5 @@ namespace glz
 		{
 			addComponent(entity, Shared<Spatial>(new Spatial(pos)));
 		}
-
-
-		Shared<Spatial> SpatialSystem::getSpatialForEntity(Int entity)
-		{
-			return std::dynamic_pointer_cast<Spatial>(getComponentForEntity(entity));
-		}
 	};
 };

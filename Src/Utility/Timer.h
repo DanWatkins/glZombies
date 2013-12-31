@@ -11,6 +11,9 @@
 
 namespace glz
 {
+	/**
+	 * Represents a high-precision timer.
+	 */
 	class Timer
 	{
 	private:

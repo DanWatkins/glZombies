@@ -8,7 +8,6 @@
 
 namespace glz
 {
-	//==================================================================|
 	Double toDouble(String text)
     {
         Double n;
@@ -16,8 +15,7 @@ namespace glz
         return n;
     }
 
-
-	//==================================================================|
+	
     Float toFloat(String text)
     {
         Float n;
@@ -25,8 +23,7 @@ namespace glz
         return n;
     }
 
-
-	//==================================================================|
+	
     Int toInt(String text)
     {
         Int n;
@@ -34,8 +31,7 @@ namespace glz
         return n;
     }
 
-
-	//==================================================================|
+	
     Bool toBool(String text)
     {
 		if (text == "0")
@@ -50,8 +46,7 @@ namespace glz
         return false;
     }
 
-
-	//==================================================================|
+	
     Double divideD(Double a, Double b)
     {
         if (b != 0.0)
@@ -60,8 +55,7 @@ namespace glz
         return 0.0;
     }
 
-
-	//==================================================================|
+	
     Float divideF(Float a, Float b)
     {
         if (b != 0.0f)
@@ -70,18 +64,16 @@ namespace glz
         return 0.0f;
     }
 
-
-	//==================================================================|
+	
     Int divideI(Int a, Int b)
     {
         if (b == 0)
             return 0;
 
         return a/b;
-    }
+	}
 
-
-	//==================================================================|
+	
     Int round(Double n)
     {
         Double result = 0.0;
@@ -99,84 +91,72 @@ namespace glz
     }
 
 
-	//==================================================================|
     Int round(Float n)
     {
         return (Int)round((Double)n);
     }
 
 
-	//==================================================================|
     Int roundUp(Double n)
     {
         return (Int)std::ceil(n);
     }
 
-
-	//==================================================================|
+	
     Int roundUp(Float n)
     {
         return (Int)std::ceil(n);
     }
+	
 
-
-	//==================================================================|
     Int roundDown(Double n)
     {
         return (Int)std::floor(n);
     }
 
-
-	//==================================================================|
+	
     Int roundDown(Float n)
     {
         return (Int)std::floor(n);
     }
 
-
-	//==================================================================|
+	
     Double degToRad(Double deg)
     {
         return deg*PI_OVER_180;
     }
 
-
-	//==================================================================|
+	
     Float degToRad(Float deg)
     {
         return deg*(Float)PI_OVER_180;
     }
 
-
-	//==================================================================|
+	
     Int degToRad(Int deg)
     {
         return round((Double)deg*PI_OVER_180);
     }
+	
 
-
-	//==================================================================|
     Double radToDeg(Double rad)
     {
         return rad*PI_UNDER_180;
-    }
+	}
 
-
-	//==================================================================|
+	
     Float radToDeg(Float rad)
     {
         return rad*(Float)PI_UNDER_180;
     }
 
 
-	//==================================================================|
     Int radToDeg(Int rad)
     {
         return round((Double)rad*PI_UNDER_180);
-    }
+	}
 
-
-	//==================================================================|
+	
 	Bool isEqual(Float a, Float b)
 	{
 		return fabs(a-b) < 1E-12;
@@ -186,8 +166,7 @@ namespace glz
 		return false;*/
 	}
 
-
-	//==================================================================|
+	
 	Bool isEqual(Double a, Double b)
 	{
 		return fabs(a-b) < 1E-12;

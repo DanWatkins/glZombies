@@ -11,7 +11,6 @@ namespace glz
 {
 	namespace world
 	{
-		//==================================================================|
 		Drawable::Drawable(String meshFilepath, OpenGLWindow *window)
 		{
 			mMesh.loadFromFile(meshFilepath);
@@ -19,7 +18,6 @@ namespace glz
 		}
 
 
-		//==================================================================|
 		void Drawable::draw(Float x, Float y)
 		{
 			mMesh.setNdcPos(Vec2f(x,y));
@@ -27,10 +25,10 @@ namespace glz
 		}
 
 
-		//==================================================================|
-		Component *Drawable::clone()
+		void Drawable::draw(Float x, Float y, OpenGLWindow *window)
 		{
-			return new Drawable(*this);
+			mMesh.setNdcPos(Vec2f(x,y));
+			mMesh.draw(window);
 		}
 	};
 };

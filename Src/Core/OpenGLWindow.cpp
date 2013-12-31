@@ -8,7 +8,7 @@
 
 namespace glz
 {
-	//==================================================================|
+	
 	OpenGLWindow::OpenGLWindow()
 	{
 		mProgram = -1;
@@ -20,7 +20,7 @@ namespace glz
 	}
 
 
-	//==================================================================|
+	
 	Int OpenGLWindow::init(Int width, Int height, String title)
 	{
 		mWidth = width;
@@ -68,7 +68,7 @@ namespace glz
 	}
 
 
-	//==================================================================|
+	
 	void OpenGLWindow::_onResize(Int width, Int height)
 	{
 		mAspectScale = Vec2f(500.0f/width, 500.0f/height);

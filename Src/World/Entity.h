@@ -13,6 +13,9 @@ namespace glz
 {
 	namespace world
 	{
+		/**
+		 * Represents a template for creating entity instances
+		 */
 		struct Entity
 		{
 			Vec2d worldPos;

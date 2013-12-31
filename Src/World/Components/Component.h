@@ -13,14 +13,18 @@ namespace glz
 {
 	namespace world
 	{
+		/**
+		 * Represents a component or module that resides in a System instance.
+		 * Game entities are represented by various Components inside of System instances.
+		 * There is no entity class, so entities are a "concept" established by Components
+		 * with @mHost refering to the entity they represent.
+		 */
 		class Component
 		{
 		private:
 			Int mHost;
 
-
 		public:
-			Component() {}
 			virtual ~Component() {}
 
 			void setHost(Int host) { mHost = host; }

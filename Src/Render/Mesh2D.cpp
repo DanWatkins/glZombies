@@ -8,11 +8,11 @@
 
 namespace glz
 {
-	//==================================================================|
 	Mesh2D::Mesh2D()
 	{
 		mRotation	= 0.0f;
 	}
+
 
 	void Mesh2D::Part::configure()
 	{
@@ -32,7 +32,6 @@ namespace glz
 	}
 
 
-	//==================================================================|
 	Bool Mesh2D::loadFromFile(String filepath)
 	{
 		if (!loadComponentsFromGLZM2File(filepath))
@@ -47,8 +46,7 @@ namespace glz
 		return true;
 	}
 
-
-	//==================================================================|
+	
 	void Mesh2D::draw(OpenGLWindow *window)
 	{
 		Uint program = window->getProgram();
@@ -74,7 +72,6 @@ namespace glz
 	}
 
 
-	//==================================================================|
 	Bool Mesh2D::loadComponentsFromGLZM2File(String filepath)
 	{
 		std::ifstream file(filepath, std::ifstream::in);

@@ -22,10 +22,13 @@ namespace glz
 		class System;
 		class Camera;
 
-
-		//============================================================================|
-		// Represents a global container for all the entities being processed
-		//============================================================================|
+		/**
+		 * Represents a game world manager. Template entities are used to create entity instances
+		 * which are represented through a registration in the various systems. There is no central
+		 * location which stores the entities. An entity cannot be directly referenced either. When
+		 * an entity instance is created, each system is told to create a component to represent
+		 * part of the entity. Each component stores an id value for the entity it is to represent.
+		 */
 		class World
 		{
 		private:
@@ -34,11 +37,15 @@ namespace glz
 			OpenGLWindow *mWindow;
 			std::vector<Shared<Entity>> mTemplateEntities;
 
-			//systems
 			Shared<SpatialSystem> mSpatialSystem;
 			Shared<DrawableSystem> mDrawableSystem;
 
 			World() {}
+
+			void loadTemplateEntities();
+			void loadTemplateEntity(String filepath);
+
+			Int createEntityFromTemplate(String templateName);
 
 		public:
 			friend Camera;
@@ -53,18 +60,6 @@ namespace glz
 
 			Uint getWidth() { return mWidth; }
 			Uint getHeight() { return mHeight; }
-
-		private:
-			void loadTemplateEntities();
-			void loadTemplateEntity(String filepath);
-
-			
-
-			//============================================================================|
-			// Creates a new Entity instance based on template Entity with @templateName
-			// and adds it to @mEntities
-			//============================================================================|
-			Int createEntityFromTemplate(String templateName);
 		};
 	};
 };

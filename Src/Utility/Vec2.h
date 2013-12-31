@@ -11,7 +11,10 @@
 
 namespace glz
 {
-	template <class T>
+	/**
+	 * Represents a 2 component vector which is templated to support essentially every scalar type.
+	 */
+	template <typename T>
 	class Vec2
 	{
 	public:

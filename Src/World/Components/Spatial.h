@@ -13,21 +13,20 @@ namespace glz
 {
 	namespace world
 	{
+		/**
+		 * Represents a Component that keeps track of a spatial body.
+		 */
 		 class Spatial : public Component
 		 {
 		 private:
-			 Vec2d mPos;		//position in world space
-			 //Rect mBody;		//bounds (may not need mPos, idk)
+			 Vec2d mPos;
 
 		 public:
 			 Spatial(Vec2d pos) { mPos = pos; }
 			 
-			 
 			 void setPos(Vec2d pos) { mPos = pos; }
 			 void addPos(Vec2d pos) { mPos += pos; }
 			 Vec2d getPos() { return mPos; }
-
-			 
 		 };
 	};
 };

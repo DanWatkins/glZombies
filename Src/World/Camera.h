@@ -16,6 +16,11 @@ namespace glz
 	{
 		class World;
 
+		/**
+		 * Represents a camera that can visualize a portion of a World. The camera can either track
+		 * a target entity or move around with its own world-space coordinates. It centers itself
+		 * on the position.
+		 */
 		class Camera
 		{
 		private:
@@ -29,7 +34,6 @@ namespace glz
 			void draw();
 			void move(Double x, Double y) { mWorldPos.add(x, y); }
 
-			//accessor and mutator
 			void setWorldPos(Vec2d worldPos) { mWorldPos = worldPos; }
 			Vec2d getWorldPos() { return mWorldPos; }
 

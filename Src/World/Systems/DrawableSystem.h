@@ -15,20 +15,23 @@ namespace glz
 {
 	namespace world
 	{
+		/**
+		 * Represents a drawable system that manages Drawable components which can be drawn by
+		 * a Camera instance.
+		 */
 		class DrawableSystem : public System
 		{
 		private:
-			glz::OpenGLWindow *mWindow;  //TODO the glz:: should not be necessary
+			OpenGLWindow *mWindow;
 
 		protected:
 			DrawableSystem() {}
 
 
 		public:
+			friend Camera;
 			DrawableSystem(OpenGLWindow *window);
 			void createDrawable(Int entity, String meshFilepath);
-
-			Shared<Drawable> getDrawableForEntity(Int entity);
 		};
 	};
 };

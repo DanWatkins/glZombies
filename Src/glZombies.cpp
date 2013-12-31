@@ -9,12 +9,12 @@
 #include "./World/World.h"
 
 namespace glz
-{	//==================================================================|
+{	
 	glZombies::glZombies() : mWorld(this), mCamera(&mWorld)
 	{
 	}
 
-	//==================================================================|
+	
 	void glZombies::onStartup()
 	{
 		loadShaders();
@@ -23,8 +23,7 @@ namespace glz
 		mWorld.loadWorldFile("main.world");
 	}
 
-
-	//==================================================================|
+	
 	void glZombies::onUpdate(Double currentTime)
 	{
 		static const Float clearColor[] = { 1.0f, 1.0f, 0.9f, 1.0f };
@@ -35,7 +34,6 @@ namespace glz
 	}
 
 
-	//==================================================================|
 	void glZombies::onKey(Int key, Int action)
 	{
 		switch (key)
@@ -67,15 +65,13 @@ namespace glz
 		}
 	}
 
-
-	//==================================================================|
+	
 	void glZombies::onResize(Int width, Int height)
 	{
 		glViewport(0, 0, (GLsizei)width, (GLsizei)height);
 	}
 
 
-	//==================================================================|
 	void glZombies::loadShaders()
 	{
 		Uint shaders[2];

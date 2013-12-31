@@ -10,7 +10,7 @@ namespace glz
 {
 	namespace Shader
 	{
-		//==================================================================|
+		
 		GLuint loadShader(const char *filename, GLenum shaderType)
 		{
 			Uint result = 0;
@@ -66,7 +66,7 @@ namespace glz
 		}
 
 
-		//==================================================================|
+		
 		Uint linkFromShaders(const Uint *shaders, Int shaderCount)
 		{
 			Uint program;

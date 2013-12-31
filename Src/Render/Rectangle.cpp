@@ -8,7 +8,6 @@
 
 namespace glz
 {
-	//==================================================================|
 	void Rectangle::init(Vec2f pos1, Vec2f pos2, Bool filled)
 	{
 		clearParts();

@@ -10,7 +10,7 @@ namespace glz
 {
 	std::vector<OpenGLWindow*> GLFWInput::mWindows;
 
-	//==================================================================|
+	
 	GLFWInput& GLFWInput::instance()
 	{
 		static GLFWInput instance;
@@ -19,7 +19,7 @@ namespace glz
 	}
 
 
-	//==================================================================|
+	
 	void GLFWInput::addWindow(OpenGLWindow *window)
 	{
 		//ensure @window is not already a registered window
@@ -33,7 +33,7 @@ namespace glz
 	}
 
 
-	//==================================================================|
+	
 	void GLFWInput::keyboardCallback(Int action, Int key, Int a, Int b, Int c)
 	{
 		for (Uint n=0; n<mWindows.size(); n++)
@@ -41,7 +41,7 @@ namespace glz
 	}
 
 
-	//==================================================================|
+	
 	void GLFWInput::windowResizeCallback(GLFWwindow *window, Int width, Int height)
 	{
 		//only tell the window that matches @window there was a resize

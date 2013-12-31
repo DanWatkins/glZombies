@@ -16,36 +16,26 @@ namespace glz
 		class Camera;
 		typedef std::list<Shared<Component>> ComponentList;
 
+		/**
+		 * Represents a component manager that is supposed to be derived to provide
+		 * specific functionality and to store specialized Component objects.
+		 * 
+		 * Note: derived classes should provide a method for creating their
+		 * specialized type of Component in the form of this:
+		 *   void createSpecificComponentName(Type attribute);
+		 */
 		class System
 		{
 		private:
 			ComponentList mComponents;
 
-
 		protected:
-			void addComponent(Int entity, Shared<Component> component)
-			{
-				component->setHost(entity);
-				mComponents.push_back(component);
-			}
-
+			void addComponent(Int entity, Shared<Component> component);
 
 		public:
 			friend Camera;
 
-			Shared<Component> getComponentForEntity(Int entity)
-			{
-				ComponentList::iterator iter = mComponents.begin();
-				while (iter != mComponents.end())
-				{
-					if ((*iter)->getHost() == entity)
-						return *iter;
-
-					++iter;
-				}
-
-				return Shared<Component>();
-			}
+			Shared<Component> getComponentForEntity(Int entity);
 		};
 	};
 };

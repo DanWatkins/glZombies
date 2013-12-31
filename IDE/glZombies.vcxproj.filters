@@ -65,6 +65,9 @@
     <ClCompile Include="..\Src\World\Systems\SpatialSystem.cpp">
       <Filter>World\Systems</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\World\Systems\System.cpp">
+      <Filter>World\Systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Core\Shader.h">

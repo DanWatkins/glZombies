@@ -8,7 +8,6 @@
 
 namespace glz
 {
-	//==================================================================|
 	void Circle::init(Float radius, Int segments)
 	{
 		clearParts();

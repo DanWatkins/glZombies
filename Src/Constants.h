@@ -9,7 +9,6 @@
 
 #include "Main.h"
 
-
 const Int			gDefaultWindowWidth				= 800;
 const Int			gDefaultWindowHeight			= 600;
 const String		gDefaultWindowTitle				= "glZombies";
