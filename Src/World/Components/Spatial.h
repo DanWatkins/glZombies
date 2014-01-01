@@ -31,10 +31,11 @@ namespace glz
 
 
 		 public:
+			 Spatial(Vec2d pos);
 			 Spatial(Vec2d pos, Vec2d heading, Double mass, Double maxSpeed, Double maxForce, Double maxTurnRate);
 			 
 			 Bool rotateToHeading(Vec2d pos);
-			 Bool setHeading(Vec2d heading);
+			 void setHeading(Vec2d heading);
 
 			 void setPos(Vec2d pos) { mPos = pos; }
 			 void addPos(Vec2d pos) { mPos += pos; }

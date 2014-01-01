@@ -92,6 +92,13 @@ namespace glz
 
 			multiply(mat);
 		}
+
+
+		void transformVec2d(Vec2d &point)
+		{
+			point.x = (_11*point.x) + (_21*point.y) + _31;
+			point.y = (_12*point.x) + (_22*point.y) + _32;
+		}
 	};
 
 	typedef Mat3<Float> Mat3f;
