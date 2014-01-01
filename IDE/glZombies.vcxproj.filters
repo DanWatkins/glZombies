@@ -136,6 +136,9 @@
     <ClInclude Include="..\Src\World\Components\Spatial.h">
       <Filter>World\Components</Filter>
     </ClInclude>
+    <ClInclude Include="..\Src\Utility\Mat3.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Bin\standard.frag" />
