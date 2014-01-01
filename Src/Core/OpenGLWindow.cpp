@@ -1,14 +1,14 @@
 //=======================================================================================================================|
 // Created 2013.11.16 by Daniel L. Watkins
 //
-// Copyright (C) 2013 Daniel L. Watkins
+// Copyright (C) 2013-2014 Daniel L. Watkins
+// This file is licensed under the MIT License.
 //=======================================================================================================================|
 
 #include "OpenGLWindow.h"
 
 namespace glz
 {
-	
 	OpenGLWindow::OpenGLWindow()
 	{
 		mProgram = -1;
@@ -18,7 +18,6 @@ namespace glz
 		mWindow = NULL;
 		mAspectScale = Vec2f(1.0f, 1.0f);
 	}
-
 
 	
 	Int OpenGLWindow::init(Int width, Int height, String title)
@@ -66,7 +65,6 @@ namespace glz
 
 		return 0;
 	}
-
 
 	
 	void OpenGLWindow::_onResize(Int width, Int height)

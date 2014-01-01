@@ -1,7 +1,8 @@
 //=======================================================================================================================|
 // Created 2013.11.19 by Daniel L. Watkins
 //
-// Copyright (C) 2013 Daniel L. Watkins
+// Copyright (C) 2013-2014 Daniel L. Watkins
+// This file is licensed under the MIT License.
 //=======================================================================================================================|
 
 #include "GLFWInput.h"
@@ -10,14 +11,13 @@ namespace glz
 {
 	std::vector<OpenGLWindow*> GLFWInput::mWindows;
 
-	
+
 	GLFWInput& GLFWInput::instance()
 	{
 		static GLFWInput instance;
 
 		return instance;
 	}
-
 
 	
 	void GLFWInput::addWindow(OpenGLWindow *window)
@@ -32,14 +32,12 @@ namespace glz
 		mWindows.push_back(window);
 	}
 
-
 	
 	void GLFWInput::keyboardCallback(Int action, Int key, Int a, Int b, Int c)
 	{
 		for (Uint n=0; n<mWindows.size(); n++)
 			mWindows[n]->onKey(key, action);
 	}
-
 
 	
 	void GLFWInput::windowResizeCallback(GLFWwindow *window, Int width, Int height)
