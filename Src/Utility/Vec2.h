@@ -22,7 +22,7 @@ namespace glz
 
 		Vec2() { set(0.0, 0.0); }
 		Vec2(T x, T y) { set(x, y); }
-
+		Vec2(T v) { set(v, v); }
 
 		/**
 		 * Moddification methods
@@ -37,6 +37,11 @@ namespace glz
 		{
 			x = vec.x;
 			y = vec.y;
+		}
+
+		void clear()
+		{
+			x = T(0); y = T(0);
 		}
 
 		void add(T x, T y)

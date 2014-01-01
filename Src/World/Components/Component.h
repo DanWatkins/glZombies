@@ -27,6 +27,8 @@ namespace glz
 		public:
 			virtual ~Component() {}
 
+			virtual void update(Double timeDelta) = 0;
+
 			void setHost(Int host) { mHost = host; }
 			Int getHost() { return mHost; }			
 		};

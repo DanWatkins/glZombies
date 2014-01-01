@@ -23,23 +23,36 @@ namespace glz
 			 Vec2d mVelocity;
 			 Vec2d mHeading;
 			 Vec2d mSide;
+			 Vec2d mSteeringForce;
 
 			 Double mMass;
 			 Double mMaxSpeed;
 			 Double mMaxForce;
 			 Double mMaxTurnRate;
 
+			 Double mTimeDelta;
 
 		 public:
 			 Spatial(Vec2d pos);
 			 Spatial(Vec2d pos, Vec2d heading, Double mass, Double maxSpeed, Double maxForce, Double maxTurnRate);
 			 
+			 void update(Double timeDelta);
 			 Bool rotateToHeading(Vec2d pos);
 			 void setHeading(Vec2d heading);
 
 			 void setPos(Vec2d pos) { mPos = pos; }
 			 void addPos(Vec2d pos) { mPos += pos; }
 			 Vec2d getPos() { return mPos; }
+			 Vec2d getVelocity() { return mVelocity; }
+			 Vec2d getHeading() { return mHeading; }
+			 Vec2d getSide() { return mSide; }
+			 void addSteeringForce(Vec2d steeringForce) { mSteeringForce += steeringForce; }
+			 Vec2d getSteeringForce() { return mSteeringForce; }
+
+			 Double getMass() { return mMass; }
+			 Double getMaxSpeed() { return mMaxSpeed; }
+			 Double getMaxForce() { return mMaxForce; }
+			 Double getMaxTurnRate() { return mMaxTurnRate; }
 		 };
 	};
 };

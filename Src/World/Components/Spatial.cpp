@@ -13,14 +13,34 @@ namespace glz
 		Spatial::Spatial(Vec2d pos)
 		: mPos(pos), mMass(10.0), mMaxSpeed(2.0), mMaxForce(1.0), mMaxTurnRate(1.0)
 		{
-
+			mTimeDelta = 0.0;
 		}
 
 
 		Spatial::Spatial(Vec2d pos, Vec2d heading, Double mass, Double maxSpeed, Double maxForce, Double maxTurnRate)
 			: mPos(pos), mHeading(heading), mMass(mass), mMaxSpeed(maxSpeed), mMaxForce(maxForce), mMaxTurnRate(maxTurnRate)
 		{
+			mTimeDelta = 0.0;
+		}
 
+
+		void Spatial::update(Double timeDelta)
+		{
+			mTimeDelta = timeDelta;
+
+			Vec2d acceleration = mSteeringForce / mMass;
+			mVelocity += acceleration * mTimeDelta;
+			mVelocity.truncate(mMaxSpeed);
+			mPos += mVelocity * mTimeDelta;
+
+			if (mVelocity.lengthSq() > 0.00000001)
+			{
+				Vec2d velocityNorm = mVelocity;
+				velocityNorm.normalize();
+				setHeading(velocityNorm);
+			}
+
+			mSteeringForce.clear();
 		}
 
 
