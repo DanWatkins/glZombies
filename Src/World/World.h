@@ -12,7 +12,9 @@
 
 #include "Camera.h"
 #include "./Components/Component.h"
-#include "./Systems/System.h"
+#include "./Systems/AISystem.h"
+#include "./Systems/DrawableSystem.h"
+#include "./Systems/SpatialSystem.h"
 #include "Entity.h"
 
 namespace glz
@@ -38,6 +40,7 @@ namespace glz
 			OpenGLWindow *mWindow;
 			std::vector<Shared<Entity>> mTemplateEntities;
 
+			Shared<AISystem> mAISystem;
 			Shared<SpatialSystem> mSpatialSystem;
 			Shared<DrawableSystem> mDrawableSystem;
 

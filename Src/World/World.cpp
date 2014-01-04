@@ -20,6 +20,7 @@ namespace glz
 			mWindow = window;
 
 			mSpatialSystem = Shared<SpatialSystem>(new SpatialSystem);
+			mAISystem = Shared<AISystem>(new AISystem(mSpatialSystem));
 			mDrawableSystem = Shared<DrawableSystem>(new DrawableSystem(mWindow));
 		}
 

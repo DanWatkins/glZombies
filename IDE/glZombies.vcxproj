@@ -27,6 +27,7 @@
     <ClCompile Include="..\Src\World\Components\Drawable.cpp" />
     <ClCompile Include="..\Src\World\Components\Spatial.cpp" />
     <ClCompile Include="..\Src\World\Components\SteeringBehaviors.cpp" />
+    <ClCompile Include="..\Src\World\Systems\AISystem.cpp" />
     <ClCompile Include="..\Src\World\Systems\DrawableSystem.cpp" />
     <ClCompile Include="..\Src\World\Systems\SpatialSystem.cpp" />
     <ClCompile Include="..\Src\World\Systems\System.cpp" />
@@ -55,6 +56,7 @@
     <ClInclude Include="..\Src\World\Components\Spatial.h" />
     <ClInclude Include="..\Src\World\Components\SteeringBehaviors.h" />
     <ClInclude Include="..\Src\World\Entity.h" />
+    <ClInclude Include="..\Src\World\Systems\AISystem.h" />
     <ClInclude Include="..\Src\World\Systems\DrawableSystem.h" />
     <ClInclude Include="..\Src\World\Systems\SpatialSystem.h" />
     <ClInclude Include="..\Src\World\Systems\System.h" />

@@ -77,6 +77,7 @@
     <ClCompile Include="..\Src\World\Components\SteeringBehaviors.cpp">
       <Filter>World\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\World\Systems\AISystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Core\Shader.h">
@@ -150,6 +151,9 @@
     </ClInclude>
     <ClInclude Include="..\Src\World\Components\SteeringBehaviors.h">
       <Filter>World\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\World\Systems\AISystem.h">
+      <Filter>World\Systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
