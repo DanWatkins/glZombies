@@ -33,11 +33,12 @@ namespace glz
 
 			 Double mTimeDelta;
 
-		 public:
-			 Spatial(Vec2d pos);
-			 Spatial(Vec2d pos, Vec2d heading, Double mass, Double maxSpeed, Double maxForce, Double maxTurnRate);
-			 
 			 void update(Double timeDelta);
+
+		 public:
+			 Spatial(Vec2d pos=Vec2d(0.0,0.0));
+			 Spatial(Vec2d pos, Vec2d heading, Double mass, Double maxSpeed, Double maxForce, Double maxTurnRate); 
+			 
 			 Bool rotateToHeading(Vec2d pos);
 			 void setHeading(Vec2d heading);
 

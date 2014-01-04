@@ -71,6 +71,12 @@
     <ClCompile Include="..\Src\World\Components\Spatial.cpp">
       <Filter>World\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\World\Components\AI.cpp">
+      <Filter>World\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\World\Components\SteeringBehaviors.cpp">
+      <Filter>World\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Core\Shader.h">
@@ -138,6 +144,12 @@
     </ClInclude>
     <ClInclude Include="..\Src\Utility\Mat3.h">
       <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\World\Components\AI.h">
+      <Filter>World\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\World\Components\SteeringBehaviors.h">
+      <Filter>World\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
