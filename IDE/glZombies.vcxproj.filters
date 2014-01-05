@@ -77,7 +77,9 @@
     <ClCompile Include="..\Src\World\Components\SteeringBehaviors.cpp">
       <Filter>World\Components</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\World\Systems\AISystem.cpp" />
+    <ClCompile Include="..\Src\World\Systems\AISystem.cpp">
+      <Filter>World\Systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Core\Shader.h">

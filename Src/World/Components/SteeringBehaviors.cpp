@@ -15,5 +15,20 @@ namespace glz
 		{
 			mSpatial = spatial;
 		}
+
+
+		Vec2d SteeringBehaviors::Seek(Vec2d pos)
+		{
+			Vec2d targetVelocity = Vec2d(pos-mSpatial.lock()->getPos()) * mSpatial.lock()->getMaxSpeed();
+			targetVelocity.normalize();
+
+			return targetVelocity - mSpatial.lock()->getVelocity();
+		}
+
+
+		Vec2d SteeringBehaviors::ComputeSteeringForce()
+		{
+
+		}
 	};
 };

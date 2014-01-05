@@ -18,10 +18,14 @@ namespace glz
 		{
 		private:
 			Weak<Spatial> mSpatial;
+			Vec2d mSteeringForce;
 
+			Vec2d Seek(Vec2d pos);
 
 		public:
 			SteeringBehaviors(Weak<Spatial> spatial);
+
+			Vec2d ComputeSteeringForce();
 
 		};
 	};

@@ -193,20 +193,36 @@ namespace glz
 		{
 			return Vec2<T>(x+vec.x, y+vec.y);
 		}
+		const Vec2<T> operator+(Double amount)
+		{
+			return Vec2<T>(x+amount, y+amount);
+		}
 
 		const Vec2<T> operator-(const Vec2<T> &vec)
 		{
 			return Vec2<T>(x-vec.x, y-vec.y);
+		}
+		const Vec2<T> operator-(Double amount)
+		{
+			return Vec2<T>(x-amount, y-amount);
 		}
 
 		const Vec2<T> operator*(const Vec2<T> &vec)
 		{
 			return Vec2<T>(x*vec.x, y*vec.y);
 		}
+		const Vec2<T> operator*(Double amount)
+		{
+			return Vec2<T>(x*amount, y*amount);
+		}
 
 		const Vec2<T> operator/(const Vec2<T> &vec)
 		{
 			return Vec2<T>(x/vec.x, y/vec.y);
+		}
+		const Vec2<T> operator/(Double amount)
+		{
+			return Vec2<T>(x/amount, y/amount);
 		}
 
 		Bool operator==(const Vec2<T> &vec)
