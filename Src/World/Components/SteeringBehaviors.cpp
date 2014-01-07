@@ -28,7 +28,7 @@ namespace glz
 
 		Vec2d SteeringBehaviors::ComputeSteeringForce()
 		{
-
+			return mSteeringForce;
 		}
 	};
 };

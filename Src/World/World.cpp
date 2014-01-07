@@ -51,7 +51,7 @@ namespace glz
 				if (String(token) == "#entity")
 				{	
 					file >> token;
-					Shared<Entity> entity = getTemplateEntity(token);
+					Shared<EntityTemplate> entity = getTemplateEntity(token);
 
 					Vec2d pos;
 					file >> token; pos.x = toFloat(token);
@@ -71,7 +71,7 @@ namespace glz
 		}
 
 		
-		Shared<Entity> World::getTemplateEntity(String name)
+		Shared<EntityTemplate> World::getTemplateEntity(String name)
 		{
 			for (Uint n=0; n<mTemplateEntities.size(); n++)
 			{
@@ -111,7 +111,7 @@ namespace glz
 			}
 
 			Char token[64];
-			Shared<Entity> templateEntity(new Entity);
+			Shared<EntityTemplate> templateEntity(new EntityTemplate);
 
 			while (!file.eof())
 			{
@@ -128,6 +128,11 @@ namespace glz
 				{
 					file >> token;
 					templateEntity->name = token;
+				}
+				else if (String(token) == "#type")
+				{
+					file >> token;
+					templateEntity->type = token;
 				}
 			}
 

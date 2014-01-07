@@ -80,6 +80,12 @@
     <ClCompile Include="..\Src\World\Systems\AISystem.cpp">
       <Filter>World\Systems</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\world\Components\Details.cpp">
+      <Filter>World\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\World\Systems\DetailsSystem.cpp">
+      <Filter>World\Systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Core\Shader.h">
@@ -133,9 +139,6 @@
     <ClInclude Include="..\src\world\components\Component.h">
       <Filter>World\Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\World\Entity.h">
-      <Filter>World</Filter>
-    </ClInclude>
     <ClInclude Include="..\Src\World\Systems\DrawableSystem.h">
       <Filter>World\Systems</Filter>
     </ClInclude>
@@ -156,6 +159,15 @@
     </ClInclude>
     <ClInclude Include="..\Src\World\Systems\AISystem.h">
       <Filter>World\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\world\Components\Details.h">
+      <Filter>World\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\World\Systems\DetailsSystem.h">
+      <Filter>World\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\World\EntityTemplate.h">
+      <Filter>World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

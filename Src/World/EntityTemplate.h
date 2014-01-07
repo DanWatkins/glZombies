@@ -5,10 +5,10 @@
 // This file is licensed under the MIT License.
 //=======================================================================================================================|
 
-#ifndef _glz_ENTITY_H
-#define _glz_ENTITY_H
+#ifndef _glz_ENTITY_TEMPLATE_H
+#define _glz_ENTITY_TEMPLATE_H
 
-#include "World.h"
+#include "../Main.h"
 
 namespace glz
 {
@@ -17,10 +17,12 @@ namespace glz
 		/**
 		 * Represents a template for creating entity instances
 		 */
-		struct Entity
+		struct EntityTemplate
 		{
-			Vec2d worldPos;
 			String name;
+			String type;
+			Vec2d worldPos;
+			
 			String meshFilepath;
 		};
 	}

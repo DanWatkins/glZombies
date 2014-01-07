@@ -15,7 +15,7 @@
 #include "./Systems/AISystem.h"
 #include "./Systems/DrawableSystem.h"
 #include "./Systems/SpatialSystem.h"
-#include "Entity.h"
+#include "EntityTemplate.h"
 
 namespace glz
 {
@@ -38,7 +38,7 @@ namespace glz
 			Int mIdTrack;
 			Uint mWidth, mHeight;
 			OpenGLWindow *mWindow;
-			std::vector<Shared<Entity>> mTemplateEntities;
+			std::vector<Shared<EntityTemplate>> mTemplateEntities;
 
 			Shared<AISystem> mAISystem;
 			Shared<SpatialSystem> mSpatialSystem;
@@ -60,7 +60,7 @@ namespace glz
 			void loadWorldFile(String filepath);
 			void update();
 
-			Shared<Entity> getTemplateEntity(String name);
+			Shared<EntityTemplate> getTemplateEntity(String name);
 
 			Uint getWidth() { return mWidth; }
 			Uint getHeight() { return mHeight; }
