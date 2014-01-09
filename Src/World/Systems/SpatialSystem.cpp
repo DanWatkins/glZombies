@@ -15,5 +15,11 @@ namespace glz
 		{
 			addComponent(entity, Shared<Spatial>(new Spatial(pos)));
 		}
+
+
+		void SpatialSystem::update(Double timeDelta)
+		{
+
+		}
 	};
 };

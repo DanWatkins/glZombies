@@ -37,6 +37,7 @@ namespace glz
 			friend Camera;
 
 			Shared<Component> getComponentForEntity(Int entity);
+			virtual void update(Double timeDelta) = 0;
 		};
 	};
 };

@@ -9,6 +9,7 @@
 #define _glz_AI_H
 
 #include "Spatial.h"
+#include "Details.h"
 #include "SteeringBehaviors.h"
 
 namespace glz
@@ -19,7 +20,7 @@ namespace glz
 		 * Represents an artificial intelligence component. It uses SteeringBehaviors to
 		 * get the entity to do certain actions.
 		 */
-		class AI : public Component
+		class AI : public Component, DetailsUser, SpatialUser
 		{
 		private:
 			SteeringBehaviors mSteeringBehaviors;
@@ -27,7 +28,14 @@ namespace glz
 			void update(Double timeDelta);
 
 		public:
-			AI(Weak<Spatial> spatial);
+			AI(Weak<Details>, Weak<Spatial> spatial);
+		};
+
+
+		class AIUser
+		{
+		protected:
+			Weak<AI> mAI;
 		};
 	};
 };

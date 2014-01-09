@@ -11,8 +11,10 @@ namespace glz
 {
 	namespace world
 	{
-		AI::AI(Weak<Spatial> spatial) : mSteeringBehaviors(spatial)
+		AI::AI(Weak<Details> details, Weak<Spatial> spatial) : mSteeringBehaviors(spatial)
 		{
+			mDetails = details;
+			mSpatial = spatial;
 		}
 
 

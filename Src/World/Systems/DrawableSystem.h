@@ -32,7 +32,9 @@ namespace glz
 		public:
 			friend Camera;
 			DrawableSystem(OpenGLWindow *window);
+
 			void createDrawable(Int entity, String meshFilepath);
+			void update(Double timeDelta) {}
 		};
 	};
 };

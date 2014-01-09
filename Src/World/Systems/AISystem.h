@@ -9,6 +9,7 @@
 #define _glz_AI_SYSTEM_H
 
 #include "System.h"
+#include "DetailsSystem.h"
 #include "../Components/AI.h"
 
 namespace glz
@@ -18,12 +19,15 @@ namespace glz
 		class AISystem : public System
 		{
 		private:
+			Weak<DetailsSystem> mDetailsSystem;
 			Weak<SpatialSystem> mSpatialSystem;
 
 		public:
-			AISystem(Weak<SpatialSystem> spatialSystem);
+			AISystem(Weak<DetailsSystem> detailsSystem,
+					 Weak<SpatialSystem> spatialSystem);
 
 			void createAI(Int entity);
+			void update(Double timeDelta);
 		};
 	};
 };

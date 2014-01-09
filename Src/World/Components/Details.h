@@ -35,6 +35,13 @@ namespace glz
 			String getInternalName() { return mInternalName; }
 			String getType() { return mType; }
 		};
+
+
+		class DetailsUser
+		{
+		protected:
+			Weak<Details> mDetails;
+		};
 	};
 };
 

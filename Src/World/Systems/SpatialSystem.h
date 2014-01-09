@@ -23,6 +23,7 @@ namespace glz
 		{
 		public:
 			void createSpatial(Int entity, Vec2d pos);
+			void update(Double timeDelta);
 		};
 	};
 };

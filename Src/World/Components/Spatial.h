@@ -56,6 +56,13 @@ namespace glz
 			 Double getMaxForce() { return mMaxForce; }
 			 Double getMaxTurnRate() { return mMaxTurnRate; }
 		 };
+
+
+		 class SpatialUser
+		 {
+		 protected:
+			 Weak<Spatial> mSpatial;
+		 };
 	};
 };
 

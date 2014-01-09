@@ -41,6 +41,7 @@ namespace glz
 			std::vector<Shared<EntityTemplate>> mTemplateEntities;
 
 			Shared<AISystem> mAISystem;
+			Shared<DetailsSystem> mDetailsSystem;
 			Shared<SpatialSystem> mSpatialSystem;
 			Shared<DrawableSystem> mDrawableSystem;
 

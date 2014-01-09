@@ -16,12 +16,13 @@ namespace glz
 {
 	namespace world
 	{
-		class DetailsSystem : System
+		class DetailsSystem : public System
 		{
 		private:
 
 		public:
 			void createDetail(Int entity, const EntityTemplate &et);
+			void update(Double timeDelta) {}
 		};
 	};
 };

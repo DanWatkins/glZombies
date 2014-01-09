@@ -20,7 +20,8 @@ namespace glz
 			mWindow = window;
 
 			mSpatialSystem = Shared<SpatialSystem>(new SpatialSystem);
-			mAISystem = Shared<AISystem>(new AISystem(mSpatialSystem));
+			mDetailsSystem = Shared<DetailsSystem>(new DetailsSystem);
+			mAISystem = Shared<AISystem>(new AISystem(mDetailsSystem, mSpatialSystem));
 			mDrawableSystem = Shared<DrawableSystem>(new DrawableSystem(mWindow));
 		}
 
@@ -67,7 +68,12 @@ namespace glz
 
 		void World::update()
 		{
-			
+			Double timeDelta = 0.0;
+
+			mDetailsSystem->update(timeDelta);
+			mDrawableSystem->update(timeDelta);
+			mAISystem->update(timeDelta);
+			mSpatialSystem->update(timeDelta);
 		}
 
 		

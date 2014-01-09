@@ -34,6 +34,13 @@ namespace glz
 			void draw(Float x, Float y);
 			void draw(Float x, Float y, OpenGLWindow *window);
 		};
+
+
+		class DrawableUser
+		{
+		protected:
+			Weak<Drawable> mDrawable;
+		};
 	};
 };
 
