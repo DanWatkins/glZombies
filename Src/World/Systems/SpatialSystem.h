@@ -15,6 +15,8 @@ namespace glz
 {
 	namespace world
 	{
+		class AISystem;
+
 		/**
 		 * Represents a spatial system that manages the spatial positioning of bodies and applies
 		 * simple physics to them.

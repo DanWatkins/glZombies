@@ -92,7 +92,7 @@ namespace glz
 
 		Double distance(const Vec2<T> &vec)
 		{
-			distance(vec.x, vec.y);
+			return distance(vec.x, vec.y);
 		}
 
 		Double distanceSq(T x, T y)

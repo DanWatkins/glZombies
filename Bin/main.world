@@ -1,2 +1,4 @@
 #entity zombie .5 0
 #entity zombie 1 1
+
+#entity dude 1 .5
