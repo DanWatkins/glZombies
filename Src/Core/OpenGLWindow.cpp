@@ -17,6 +17,7 @@ namespace glz
 		mTitle = gDefaultWindowTitle;
 		mWindow = NULL;
 		mAspectScale = Vec2f(1.0f, 1.0f);
+		mShouldTerminate = false;
 	}
 
 	
@@ -52,7 +53,7 @@ namespace glz
 		//get the aspect scale adjusted
 		_onResize(mWidth, mHeight);
 
-		while (!glfwWindowShouldClose(mWindow))
+		while (!glfwWindowShouldClose(mWindow)  &&  !mShouldTerminate)
 		{
 			onUpdate(0.0); //TODO get a time value for this call
 

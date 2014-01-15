@@ -28,7 +28,7 @@ namespace glz
 		void onUpdate(Double currentTime);
 		void onKey(Int key, Int action);
 		void onResize(Int width, Int height);
-		void onTerminate() {}
+		void onTerminate();
 
 		void loadShaders();
 

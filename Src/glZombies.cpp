@@ -41,7 +41,7 @@ namespace glz
 		{
 			case GLFW_KEY_ESCAPE:
 			{
-				exit(0);  //TODO do better with this lol
+				terminate();
 			}
 			case GLFW_KEY_A:
 			{
@@ -70,6 +70,11 @@ namespace glz
 	void glZombies::onResize(Int width, Int height)
 	{
 		glViewport(0, 0, (GLsizei)width, (GLsizei)height);
+	}
+
+
+	void glZombies::onTerminate()
+	{
 	}
 
 

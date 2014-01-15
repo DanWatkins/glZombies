@@ -26,6 +26,7 @@ namespace glz
 		String mTitle;
 		GLFWwindow *mWindow;
 		Vec2f mAspectScale;
+		Bool mShouldTerminate;
 
 	protected:
 		Uint mProgram;
@@ -43,6 +44,8 @@ namespace glz
 		String getTitle() { return mTitle; }
 		Bool isWindow(GLFWwindow *window) { return window == mWindow; }
 		Vec2f getAspectScale() { return mAspectScale; }
+
+		void terminate() { mShouldTerminate = true; }
 
 	protected:
 		virtual void onStartup() = 0;
