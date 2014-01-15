@@ -16,6 +16,8 @@ namespace glz
 {
 	namespace world
 	{
+		class AISystem;
+
 		/**
 		 * Represents an artificial intelligence component. It uses SteeringBehaviors to
 		 * get the entity to do certain actions.
@@ -28,14 +30,15 @@ namespace glz
 			void update(Double timeDelta);
 
 		public:
-			AI(Weak<Details>, Weak<Spatial> spatial);
+			friend AISystem;
+			AI(Details *details, Spatial *spatial);
 		};
 
 
 		class AIUser
 		{
 		protected:
-			Weak<AI> mAI;
+			AI *mAI;
 		};
 	};
 };

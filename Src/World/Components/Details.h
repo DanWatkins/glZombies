@@ -40,7 +40,7 @@ namespace glz
 		class DetailsUser
 		{
 		protected:
-			Weak<Details> mDetails;
+			Details *mDetails;
 		};
 	};
 };

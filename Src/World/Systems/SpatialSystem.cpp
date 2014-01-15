@@ -13,7 +13,7 @@ namespace glz
 	{
 		void SpatialSystem::createSpatial(Int entity, Vec2d pos)
 		{
-			addComponent(entity, Shared<Spatial>(new Spatial(pos)));
+			addComponent(entity, new Spatial(pos));
 		}
 
 

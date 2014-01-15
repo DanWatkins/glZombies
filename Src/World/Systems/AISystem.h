@@ -19,8 +19,8 @@ namespace glz
 		class AISystem : public System, DetailsSystemUser, SpatialSystemUser
 		{
 		public:
-			AISystem(Weak<DetailsSystem> detailsSystem,
-					 Weak<SpatialSystem> spatialSystem);
+			AISystem(DetailsSystem *detailsSystem,
+					 SpatialSystem *spatialSystem);
 
 			void createAI(Int entity);
 			void update(Double timeDelta);
@@ -30,7 +30,7 @@ namespace glz
 		class AISystemUser
 		{
 		protected:
-			Weak<AISystem> mAISystem;
+			AISystem *mAISystem;
 		};
 	};
 };

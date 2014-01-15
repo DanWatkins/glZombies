@@ -30,7 +30,7 @@ namespace glz
 		class SpatialSystemUser
 		{
 		protected:
-			Weak<SpatialSystem> mSpatialSystem;
+			SpatialSystem *mSpatialSystem;
 		};
 	};
 };

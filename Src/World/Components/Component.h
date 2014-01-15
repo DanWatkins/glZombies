@@ -28,7 +28,10 @@ namespace glz
 			virtual void update(Double timeDelta) = 0;
 
 		public:
-			virtual ~Component() {}
+			virtual ~Component()
+			{
+				std::cout << "Component destroyed" << std::endl;
+			}
 
 			void setHost(Int host) { mHost = host; }
 			Int getHost() { return mHost; }		

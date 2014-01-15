@@ -11,7 +11,7 @@ namespace glz
 {
 	namespace world
 	{
-		SteeringBehaviors::SteeringBehaviors(Weak<Spatial> spatial)
+		SteeringBehaviors::SteeringBehaviors(Spatial *spatial)
 		{
 			mSpatial = spatial;
 		}
@@ -19,10 +19,10 @@ namespace glz
 
 		Vec2d SteeringBehaviors::Seek(Vec2d pos)
 		{
-			Vec2d targetVelocity = Vec2d(pos-mSpatial.lock()->getPos()) * mSpatial.lock()->getMaxSpeed();
+			Vec2d targetVelocity = Vec2d(pos-mSpatial->getPos()) * mSpatial->getMaxSpeed();
 			targetVelocity.normalize();
 
-			return targetVelocity - mSpatial.lock()->getVelocity();
+			return targetVelocity - mSpatial->getVelocity();
 		}
 
 

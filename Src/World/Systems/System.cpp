@@ -11,14 +11,21 @@ namespace glz
 {
 	namespace world
 	{
-		void System::addComponent(Int entity, Shared<Component> component)
+		System::~System()
+		{
+			std::for_each(mComponents.begin(), mComponents.end(), std::default_delete<Component>());
+			std::cout << "System destroyed" << std::endl;
+		}
+
+
+		void System::addComponent(Int entity, Component *component)
 		{
 			component->setHost(entity);
 			mComponents.push_back(component);
 		}
 
 
-		Shared<Component> System::getComponentForEntity(Int entity)
+		Component *System::getComponentForEntity(Int entity)
 		{
 			ComponentList::iterator iter = mComponents.begin();
 			while (iter != mComponents.end())
@@ -29,7 +36,7 @@ namespace glz
 				++iter;
 			}
 
-			return Shared<Component>();
+			return NULL;
 		}
 	};
 };

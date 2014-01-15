@@ -19,7 +19,7 @@ namespace glz
 
 		void DrawableSystem::createDrawable(Int entity, String meshFilepath)
 		{
-			addComponent(entity, Shared<Drawable>(new Drawable(meshFilepath, mWindow)));
+			addComponent(entity, new Drawable(meshFilepath, mWindow));
 		}
 	};
 };

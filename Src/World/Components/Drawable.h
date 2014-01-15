@@ -39,7 +39,7 @@ namespace glz
 		class DrawableUser
 		{
 		protected:
-			Weak<Drawable> mDrawable;
+			Drawable *mDrawable;
 		};
 	};
 };

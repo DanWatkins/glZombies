@@ -19,10 +19,19 @@ namespace glz
 			mHeight = 2;
 			mWindow = window;
 
-			mSpatialSystem = Shared<SpatialSystem>(new SpatialSystem);
-			mDetailsSystem = Shared<DetailsSystem>(new DetailsSystem);
-			mAISystem = Shared<AISystem>(new AISystem(mDetailsSystem, mSpatialSystem));
-			mDrawableSystem = Shared<DrawableSystem>(new DrawableSystem(mWindow));
+			mSpatialSystem = new SpatialSystem;
+			mDetailsSystem = new DetailsSystem;
+			mAISystem = new AISystem(mDetailsSystem, mSpatialSystem);
+			mDrawableSystem = new DrawableSystem(mWindow);
+		}
+
+
+		World::~World()
+		{
+			delete mSpatialSystem;
+			delete mDetailsSystem;
+			delete mAISystem;
+			delete mDrawableSystem;
 		}
 
 
@@ -52,16 +61,16 @@ namespace glz
 				if (String(token) == "#entity")
 				{	
 					file >> token;
-					Shared<EntityTemplate> entity = getTemplateEntity(token);
+					EntityTemplate entity = getTemplateEntity(token);
 
 					Vec2d pos;
 					file >> token; pos.x = toFloat(token);
 					file >> token; pos.y = toFloat(token);
 					
 					mIdTrack++;
-					mDetailsSystem->createDetails(mIdTrack, *entity.get());
+					mDetailsSystem->createDetails(mIdTrack, entity);
 					mSpatialSystem->createSpatial(mIdTrack, pos);
-					mDrawableSystem->createDrawable(mIdTrack, entity->meshFilepath);
+					mDrawableSystem->createDrawable(mIdTrack, entity.meshFilepath);
 					mAISystem->createAI(mIdTrack);
 				}
 			}
@@ -79,15 +88,15 @@ namespace glz
 		}
 
 		
-		Shared<EntityTemplate> World::getTemplateEntity(String name)
+		EntityTemplate World::getTemplateEntity(String name)
 		{
 			for (Uint n=0; n<mTemplateEntities.size(); n++)
 			{
-				if (mTemplateEntities[n]->name == name)
+				if (mTemplateEntities[n].name == name)
 					return mTemplateEntities[n];
 			}
 
-			return NULL;
+			return EntityTemplate();
 		}
 
 		
@@ -119,7 +128,7 @@ namespace glz
 			}
 
 			Char token[64];
-			Shared<EntityTemplate> templateEntity(new EntityTemplate);
+			EntityTemplate templateEntity;
 
 			while (!file.eof())
 			{
@@ -130,17 +139,17 @@ namespace glz
 				if (String(token) == "#mesh")
 				{
 					file >> token;
-					templateEntity->meshFilepath = token;
+					templateEntity.meshFilepath = token;
 				}
 				else if (String(token) == "#name")
 				{
 					file >> token;
-					templateEntity->name = token;
+					templateEntity.name = token;
 				}
 				else if (String(token) == "#type")
 				{
 					file >> token;
-					templateEntity->type = token;
+					templateEntity.type = token;
 				}
 			}
 

@@ -15,7 +15,7 @@ namespace glz
 	namespace world
 	{
 		class Camera;
-		typedef std::list<Shared<Component>> ComponentList;
+		typedef std::list<Component*> ComponentList;
 
 		/**
 		 * Represents a component manager that is supposed to be derived to provide
@@ -30,12 +30,13 @@ namespace glz
 		protected:
 			ComponentList mComponents;
 
-			void addComponent(Int entity, Shared<Component> component);
+			void addComponent(Int entity, Component *component);
 
 		public:
 			friend Camera;
+			virtual ~System();
 
-			Shared<Component> getComponentForEntity(Int entity);
+			Component *getComponentForEntity(Int entity);
 			virtual void update(Double timeDelta) = 0;
 		};
 	};

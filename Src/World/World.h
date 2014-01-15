@@ -38,12 +38,12 @@ namespace glz
 			Int mIdTrack;
 			Uint mWidth, mHeight;
 			OpenGLWindow *mWindow;
-			std::vector<Shared<EntityTemplate>> mTemplateEntities;
+			std::vector<EntityTemplate> mTemplateEntities;
 
-			Shared<AISystem> mAISystem;
-			Shared<DetailsSystem> mDetailsSystem;
-			Shared<SpatialSystem> mSpatialSystem;
-			Shared<DrawableSystem> mDrawableSystem;
+			AISystem *mAISystem;
+			DetailsSystem *mDetailsSystem;
+			SpatialSystem *mSpatialSystem;
+			DrawableSystem *mDrawableSystem;
 
 			World() {}
 
@@ -54,14 +54,14 @@ namespace glz
 
 		public:
 			friend Camera;
-
 			World(OpenGLWindow *window);
+			~World();
 			
 			void init();
 			void loadWorldFile(String filepath);
 			void update();
 
-			Shared<EntityTemplate> getTemplateEntity(String name);
+			EntityTemplate getTemplateEntity(String name);
 
 			Uint getWidth() { return mWidth; }
 			Uint getHeight() { return mHeight; }

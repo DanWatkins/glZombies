@@ -61,7 +61,7 @@ namespace glz
 		 class SpatialUser
 		 {
 		 protected:
-			 Weak<Spatial> mSpatial;
+			 Spatial *mSpatial;
 		 };
 	};
 };

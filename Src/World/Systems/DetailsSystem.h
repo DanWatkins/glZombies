@@ -29,7 +29,7 @@ namespace glz
 		class DetailsSystemUser
 		{
 		protected:
-			Weak<DetailsSystem> mDetailsSystem;
+			DetailsSystem *mDetailsSystem;
 		};
 	};
 };

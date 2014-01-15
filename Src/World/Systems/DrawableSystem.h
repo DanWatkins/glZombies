@@ -41,7 +41,7 @@ namespace glz
 		class DrawableSystemUser
 		{
 		protected:
-			Weak<DrawableSystem> mDrawableSystem;
+			DrawableSystem *mDrawableSystem;
 		};
 	};
 };

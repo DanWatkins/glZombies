@@ -11,8 +11,8 @@ namespace glz
 {
 	namespace world
 	{
-		AISystem::AISystem(Weak<DetailsSystem> detailsSystem,
-						   Weak<SpatialSystem> spatialSystem)
+		AISystem::AISystem(DetailsSystem *detailsSystem,
+						   SpatialSystem *spatialSystem)
 		{
 			mDetailsSystem = detailsSystem;
 			mSpatialSystem = spatialSystem;
@@ -21,20 +21,14 @@ namespace glz
 
 		void AISystem::createAI(Int entity)
 		{
-			Weak<Details> details = std::dynamic_pointer_cast<Details>(mDetailsSystem.lock()->getComponentForEntity(entity));
-			Weak<Spatial> spatial = std::dynamic_pointer_cast<Spatial>(mSpatialSystem.lock()->getComponentForEntity(entity));
-			addComponent(entity, Shared<AI>(new AI(details, spatial)));
+			Details *details = (Details*)mDetailsSystem->getComponentForEntity(entity);
+			Spatial *spatial = (Spatial*)mSpatialSystem->getComponentForEntity(entity);
+			addComponent(entity, new AI(details, spatial));
 		}
 
 
 		void AISystem::update(Double timeDelta)
 		{
-			ComponentList::iterator iter = mComponents.begin();
-			while (iter != mComponents.end())
-			{
-
-				++iter;
-			}
 		}
 	};
 };

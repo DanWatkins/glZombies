@@ -13,8 +13,7 @@ namespace glz
 	{
 		void DetailsSystem::createDetails(Int entity, EntityTemplate &et)
 		{
-			Shared<Details> details(new Details(et.name, et.type));
-			addComponent(entity, details);
+			addComponent(entity, new Details(et.name, et.type));
 		}
 	};
 };

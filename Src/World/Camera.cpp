@@ -24,11 +24,11 @@ namespace glz
 			//draw every Entity that has something to draw
 			while (iter != components.end())
 			{
-				Shared<Spatial> spatial = std::dynamic_pointer_cast<Spatial>(*iter);
+				Spatial *spatial = (Spatial*)(*iter);
 				Float screenX = Float(spatial->getPos().x - mWorldPos.x);
 				Float screenY = -Float(spatial->getPos().y - mWorldPos.y);
 
-				Shared<Drawable> drawable = std::dynamic_pointer_cast<Drawable>(mWorld->mDrawableSystem->getComponentForEntity(spatial->getHost()));
+				Drawable *drawable = (Drawable*)(mWorld->mDrawableSystem->getComponentForEntity(spatial->getHost()));
 				drawable->draw(screenX, screenY);
 
 				++iter;
