@@ -11,10 +11,10 @@ namespace glz
 {
 	namespace world
 	{
-		void DetailsSystem::createDetail(Int entity, const EntityTemplate &et)
+		void DetailsSystem::createDetails(Int entity, EntityTemplate &et)
 		{
-			Shared<Details> detail(new Details(et.name, et.type));
-			addComponent(entity, detail);
+			Shared<Details> details(new Details(et.name, et.type));
+			addComponent(entity, details);
 		}
 	};
 };

@@ -16,18 +16,21 @@ namespace glz
 {
 	namespace world
 	{
-		class AISystem : public System
+		class AISystem : public System, DetailsSystemUser, SpatialSystemUser
 		{
-		private:
-			Weak<DetailsSystem> mDetailsSystem;
-			Weak<SpatialSystem> mSpatialSystem;
-
 		public:
 			AISystem(Weak<DetailsSystem> detailsSystem,
 					 Weak<SpatialSystem> spatialSystem);
 
 			void createAI(Int entity);
 			void update(Double timeDelta);
+		};
+
+
+		class AISystemUser
+		{
+		protected:
+			Weak<AISystem> mAISystem;
 		};
 	};
 };

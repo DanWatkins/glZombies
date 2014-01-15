@@ -27,10 +27,9 @@ namespace glz
 		 */
 		class System
 		{
-		private:
+		protected:
 			ComponentList mComponents;
 
-		protected:
 			void addComponent(Int entity, Shared<Component> component);
 
 		public:

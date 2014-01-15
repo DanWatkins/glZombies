@@ -36,6 +36,13 @@ namespace glz
 			void createDrawable(Int entity, String meshFilepath);
 			void update(Double timeDelta) {}
 		};
+
+
+		class DrawableSystemUser
+		{
+		protected:
+			Weak<DrawableSystem> mDrawableSystem;
+		};
 	};
 };
 

@@ -29,6 +29,12 @@ namespace glz
 
 		void AISystem::update(Double timeDelta)
 		{
+			ComponentList::iterator iter = mComponents.begin();
+			while (iter != mComponents.end())
+			{
+
+				++iter;
+			}
 		}
 	};
 };

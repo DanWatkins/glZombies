@@ -25,6 +25,13 @@ namespace glz
 			void createSpatial(Int entity, Vec2d pos);
 			void update(Double timeDelta);
 		};
+
+
+		class SpatialSystemUser
+		{
+		protected:
+			Weak<SpatialSystem> mSpatialSystem;
+		};
 	};
 };
 

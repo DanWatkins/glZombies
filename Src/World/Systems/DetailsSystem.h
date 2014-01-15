@@ -21,8 +21,15 @@ namespace glz
 		private:
 
 		public:
-			void createDetail(Int entity, const EntityTemplate &et);
+			void createDetails(Int entity, EntityTemplate &et);
 			void update(Double timeDelta) {}
+		};
+		
+
+		class DetailsSystemUser
+		{
+		protected:
+			Weak<DetailsSystem> mDetailsSystem;
 		};
 	};
 };

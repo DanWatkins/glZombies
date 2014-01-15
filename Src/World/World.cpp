@@ -59,8 +59,10 @@ namespace glz
 					file >> token; pos.y = toFloat(token);
 					
 					mIdTrack++;
+					mDetailsSystem->createDetails(mIdTrack, *entity.get());
 					mSpatialSystem->createSpatial(mIdTrack, pos);
 					mDrawableSystem->createDrawable(mIdTrack, entity->meshFilepath);
+					mAISystem->createAI(mIdTrack);
 				}
 			}
 		}
