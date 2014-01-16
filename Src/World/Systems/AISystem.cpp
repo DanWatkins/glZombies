@@ -63,7 +63,7 @@ namespace glz
 					}
 
 					if (foundClosest)
-						ai->mSteeringBehaviors.Seek(closestPos);
+						ai->mSteeringBehaviors.seek(closestPos);
 				}
 
 				++aiCmp;

@@ -17,19 +17,9 @@ namespace glz
 		}
 
 
-		void SteeringBehaviors::Seek(Vec2d pos)
+		Vec2d SteeringBehaviors::computeSteeringForce()
 		{
-			Vec2d targetVelocity = Vec2d(pos-mSpatial->getPos()) * mSpatial->getMaxSpeed();
-			targetVelocity.normalize();
-			targetVelocity -= mSpatial->getVelocity();
-
-			mSteeringBehaviorList.push_back({ SteeringBehavior::Seek, targetVelocity });
-		}
-
-
-		Vec2d SteeringBehaviors::ComputeSteeringForce()
-		{
-			SteeringBehaviorList::iterator iter = mSteeringBehaviorList.begin();
+			BehaviorList::iterator iter = mSteeringBehaviorList.begin();
 			while (iter != mSteeringBehaviorList.end())
 			{
 				mSteeringForce += (*iter).force;
@@ -38,6 +28,26 @@ namespace glz
 			}
 
 			return mSteeringForce;
+		}
+
+
+		void SteeringBehaviors::seek(Vec2d pos)
+		{
+			Vec2d targetVelocity = Vec2d(pos-mSpatial->getPos()) * mSpatial->getMaxSpeed();
+			targetVelocity.normalize();
+			targetVelocity -= mSpatial->getVelocity();
+
+			mSteeringBehaviorList.push_back({ Behavior::Seek, targetVelocity });
+		}
+
+
+		void SteeringBehaviors::flee(Vec2d pos)
+		{
+			Vec2d targetVelocity = Vec2d(mSpatial->getPos()-pos) * mSpatial->getMaxSpeed();
+			targetVelocity.normalize();
+			targetVelocity -= mSpatial->getVelocity();
+
+			mSteeringBehaviorList.push_back({ Behavior::Flee, targetVelocity });
 		}
 	};
 };

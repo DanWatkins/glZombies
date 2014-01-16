@@ -14,22 +14,6 @@ namespace glz
 {
 	namespace world
 	{
-		enum class SteeringBehavior
-		{
-			Seek			= 001,
-			Evade			= 002
-		};
-
-
-		struct SteeringBehaviorRequest
-		{
-			SteeringBehavior behavior;
-			Vec2d force;
-		};
-
-		typedef std::list<SteeringBehaviorRequest> SteeringBehaviorList;
-
-
 		/**
 		 * Combines various steering behaviors to provide a net steering force.
 		 * Calls to various behaviors such as Seek() cause a SteeringBehavior
@@ -40,17 +24,32 @@ namespace glz
 		 */
 		class SteeringBehaviors
 		{
+			enum class Behavior
+			{
+				Seek			= 001,
+				Flee			= 002
+			};
+
+			struct Request
+			{
+				Behavior behavior;
+				Vec2d force;
+			};
+
+			typedef std::list<Request> BehaviorList;
+
 		private:
 			Spatial *mSpatial;
-			SteeringBehaviorList mSteeringBehaviorList;
+			BehaviorList mSteeringBehaviorList;
 			Vec2d mSteeringForce;
 
 		public:
 			SteeringBehaviors(Spatial *spatial);
 
-			Vec2d ComputeSteeringForce();
+			Vec2d computeSteeringForce();
 
-			void Seek(Vec2d pos);
+			void seek(Vec2d pos);
+			void flee(Vec2d pos);
 		};
 	};
 };
