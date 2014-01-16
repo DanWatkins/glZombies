@@ -20,6 +20,7 @@
 
 #include <vector>
 #include <list>
+#include <deque>
 
 #include <cstdlib>
 #include <ctime>
