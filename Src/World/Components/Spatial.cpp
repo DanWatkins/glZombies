@@ -12,7 +12,7 @@ namespace glz
 	namespace world
 	{
 		Spatial::Spatial(Vec2d pos)
-		: mPos(pos), mMass(10.0), mMaxSpeed(2.0), mMaxForce(1.0), mMaxTurnRate(1.0)
+		: mPos(pos), mMass(1.0), mMaxSpeed(1.0), mMaxForce(1.0), mMaxTurnRate(1.0)
 		{
 			mTimeDelta = 0.0;
 		}
@@ -29,6 +29,8 @@ namespace glz
 		{
 			mTimeDelta = timeDelta;
 
+			mSteeringForce.truncate(mMaxForce);
+
 			Vec2d acceleration = mSteeringForce / mMass;
 			mVelocity += acceleration * mTimeDelta;
 			mVelocity.truncate(mMaxSpeed);
@@ -40,8 +42,6 @@ namespace glz
 				velocityNorm.normalize();
 				setHeading(velocityNorm);
 			}
-
-			mSteeringForce.clear();
 		}
 
 

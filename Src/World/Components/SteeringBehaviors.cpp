@@ -19,6 +19,8 @@ namespace glz
 
 		Vec2d SteeringBehaviors::computeSteeringForce()
 		{
+			mSteeringForce.clear();
+
 			BehaviorList::iterator iter = mSteeringBehaviorList.begin();
 			while (iter != mSteeringBehaviorList.end())
 			{
@@ -28,6 +30,12 @@ namespace glz
 			}
 
 			return mSteeringForce;
+		}
+
+
+		void SteeringBehaviors::clear()
+		{
+			mSteeringBehaviorList.clear();
 		}
 
 
@@ -48,6 +56,28 @@ namespace glz
 			targetVelocity -= mSpatial->getVelocity();
 
 			mSteeringBehaviorList.push_back({ Behavior::Flee, targetVelocity });
+		}
+
+
+		void SteeringBehaviors::arrive(Vec2d pos)
+		{
+			const Double deceleration = 2.0;
+			const Double decelerationTweaker = 0.3;
+
+			Vec2d toTarget = pos-mSpatial->getPos();
+			Double distance = toTarget.length();
+
+			if (distance > 0)
+			{
+				Double speed = distance / (deceleration*decelerationTweaker);
+				speed = speed < mSpatial->getMaxSpeed() ? speed : mSpatial->getMaxSpeed();
+
+				Vec2d desiredVelocity = toTarget * speed;
+				desiredVelocity /= distance;
+				desiredVelocity -= mSpatial->getVelocity();
+
+				mSteeringBehaviorList.push_back({Behavior::Arrive, desiredVelocity});
+			}
 		}
 	};
 };

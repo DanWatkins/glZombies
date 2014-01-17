@@ -63,8 +63,11 @@ namespace glz
 					}
 
 					if (foundClosest)
-						ai->mSteeringBehaviors.seek(closestPos);
+						ai->mSteeringBehaviors.arrive(closestPos);
 				}
+
+
+				ai->update(timeDelta);
 
 				++aiCmp;
 			}

@@ -20,7 +20,8 @@ namespace glz
 
 		void AI::update(Double timeDelta)
 		{
-
+			mSpatial->addSteeringForce(mSteeringBehaviors.computeSteeringForce());
+			mSteeringBehaviors.clear();
 		}
 	};
 };

@@ -79,7 +79,7 @@ namespace glz
 
 		void World::update()
 		{
-			Double timeDelta = 0.0;
+			Double timeDelta = 0.01;
 
 			mDetailsSystem->update(timeDelta);
 			mDrawableSystem->update(timeDelta);

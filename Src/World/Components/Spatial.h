@@ -14,6 +14,8 @@ namespace glz
 {
 	namespace world
 	{
+		class SpatialSystem;
+
 		/**
 		 * Represents a Component that keeps track of a spatial body.
 		 */
@@ -36,6 +38,7 @@ namespace glz
 			 void update(Double timeDelta);
 
 		 public:
+			 friend SpatialSystem;
 			 Spatial(Vec2d pos=Vec2d(0.0,0.0));
 			 Spatial(Vec2d pos, Vec2d heading, Double mass, Double maxSpeed, Double maxForce, Double maxTurnRate); 
 			 

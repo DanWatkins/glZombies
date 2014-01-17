@@ -6,6 +6,7 @@
 //=======================================================================================================================|
 
 #include "SpatialSystem.h"
+#include <functional>
 
 namespace glz
 {
@@ -19,7 +20,10 @@ namespace glz
 
 		void SpatialSystem::update(Double timeDelta)
 		{
-
+			std::for_each(mComponents.begin(), mComponents.end(), [&](Component* cmp)
+			{
+				((Spatial*)cmp)->update(timeDelta);
+			});
 		}
 	};
 };

@@ -27,7 +27,8 @@ namespace glz
 			enum class Behavior
 			{
 				Seek			= 001,
-				Flee			= 002
+				Flee			= 002,
+				Arrive			= 003
 			};
 
 			struct Request
@@ -47,9 +48,11 @@ namespace glz
 			SteeringBehaviors(Spatial *spatial);
 
 			Vec2d computeSteeringForce();
+			void clear();
 
 			void seek(Vec2d pos);
 			void flee(Vec2d pos);
+			void arrive(Vec2d pos);
 		};
 	};
 };

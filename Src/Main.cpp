@@ -12,6 +12,7 @@ using namespace glz;
 
 int main()
 {
+
 	glZombies *app = new glZombies;
 	return app->init();
 }
