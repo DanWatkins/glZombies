@@ -9,12 +9,6 @@
 
 namespace glz
 {
-	Mesh2D::Mesh2D()
-	{
-		mRotation	= 0.0f;
-	}
-
-
 	void Mesh2D::Part::configure()
 	{
 		std::vector<Float> combined;
@@ -53,8 +47,14 @@ namespace glz
 		return true;
 	}
 
-	
-	void Mesh2D::draw(OpenGLWindow *window)
+
+	void Mesh2D::draw(OpenGLWindow *window, Float rotation)
+	{
+		draw(window, mNdcPos.x, mNdcPos.y, rotation);
+	}
+
+
+	void Mesh2D::draw(OpenGLWindow *window, Float x, Float y, Float rotation)
 	{
 		Uint program = window->getProgram();
 		glUseProgram(program);
@@ -69,8 +69,8 @@ namespace glz
 			Vec2f aspectScale = window->getAspectScale();
 
 			glUniform4f(glGetUniformLocation(program, "aspectScale"), aspectScale.x, aspectScale.y, 1.0f, 1.0f);
-			glUniform4f(glGetUniformLocation(program, "offset"), mNdcPos.x, mNdcPos.y, 0.0, 0.0);
-			glUniform1f(glGetUniformLocation(program, "rotation"), mRotation);
+			glUniform4f(glGetUniformLocation(program, "offset"), x, y, 0.0, 0.0);
+			glUniform1f(glGetUniformLocation(program, "rotation"), rotation);
 
 			glDrawArrays(part->drawMode, 0, part->vertexData.size()/gValuesPerPoint);
 		}

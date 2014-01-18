@@ -15,6 +15,7 @@ namespace glz
 		: mPos(pos), mMass(1.0), mMaxSpeed(1.0), mMaxForce(1.0), mMaxTurnRate(1.0)
 		{
 			mTimeDelta = 0.0;
+			setHeading(Vec2d(0.0,-1.0));
 		}
 
 
@@ -22,6 +23,7 @@ namespace glz
 			: mPos(pos), mHeading(heading), mMass(mass), mMaxSpeed(maxSpeed), mMaxForce(maxForce), mMaxTurnRate(maxTurnRate)
 		{
 			mTimeDelta = 0.0;
+			setHeading(Vec2d(0.0,-1.0));
 		}
 
 

@@ -29,7 +29,8 @@ namespace glz
 				Float screenY = -Float(spatial->getPos().y - mWorldPos.y);
 
 				Drawable *drawable = (Drawable*)(mWorld->mDrawableSystem->getComponentForEntity(spatial->getHost()));
-				drawable->draw(screenX, screenY);
+				Float rotation = spatial->getHeading().angle(Vec2d());
+				drawable->draw(screenX, screenY, rotation-(PI/2));
 
 				++iter;
 			}

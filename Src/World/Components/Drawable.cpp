@@ -19,17 +19,15 @@ namespace glz
 		}
 
 
-		void Drawable::draw(Float x, Float y)
+		void Drawable::draw(Float x, Float y, Float rotation)
 		{
-			mMesh.setNdcPos(Vec2f(x,y));
-			mMesh.draw(mWindow);
+			mMesh.draw(mWindow, x, y, rotation);
 		}
 
 
-		void Drawable::draw(Float x, Float y, OpenGLWindow *window)
+		void Drawable::draw(OpenGLWindow *window, Float x, Float y, Float rotation)
 		{
-			mMesh.setNdcPos(Vec2f(x,y));
-			mMesh.draw(window);
+			mMesh.draw(window, x, y, rotation);
 		}
 	};
 };

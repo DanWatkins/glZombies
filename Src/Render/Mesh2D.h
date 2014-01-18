@@ -39,7 +39,6 @@ namespace glz
 	private:
 		std::vector<Part> mParts;
 		Vec2<Float> mNdcPos;					//position in NDC-space
-		Float mRotation;						//rotation value in radians
 
 		Bool loadComponentsFromGLZM2File(String filepath);
 
@@ -48,18 +47,13 @@ namespace glz
 		void addPart(Part part) { mParts.push_back(part); }
 
 	public:
-		Mesh2D();
-
 		//accessor and mutators
 		void setNdcPos(const Vec2<Float> &ndcPos) { mNdcPos = ndcPos; }
 		Vec2<Float> getNdcPos() { return mNdcPos; }
 
-		void setRotation(Float angleInRadians) { mRotation = angleInRadians; }
-		void addRotation(Float angleInRadians) { mRotation += angleInRadians; }
-		Float getRotation() { return mRotation; }
-
 		Bool loadFromFile(String filepath);
-		void draw(OpenGLWindow *window);
+		void draw(OpenGLWindow *window, Float rotation=0.0);
+		void draw(OpenGLWindow *window, Float x, Float y, Float rotation=0.0);
 	};
 };
 
