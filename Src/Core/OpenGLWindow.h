@@ -14,6 +14,8 @@ namespace glz
 {
 	class GLFWInput;
 
+
+
 	/**
 	 * Creates a cross-platform OpenGL 4.x rendering context
 	 * Provides a runtime loop and keyboard input callbacks

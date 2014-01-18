@@ -17,6 +17,10 @@ namespace glz
 
 	void Mesh2D::Part::configure()
 	{
+		std::vector<Float> combined;
+		combined.assign(vertexData.begin(), vertexData.end());
+		combined.insert(combined.end(), colorData.begin(), colorData.end());
+
 		glGenVertexArrays(1, &this->vao);
 		glBindVertexArray(this->vao);
 
@@ -24,12 +28,14 @@ namespace glz
 		glBindBuffer(GL_ARRAY_BUFFER, this->vbo);
 
 		glBufferData(	GL_ARRAY_BUFFER,
-						this->vertexData.size()*sizeof(Float),
-						&this->vertexData[0],
+						combined.size()*sizeof(Float),
+						&combined[0],
 						GL_STREAM_DRAW);
 
 		glEnableVertexAttribArray(0);
+		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(0, gValuesPerPoint, GL_FLOAT, GL_FALSE, 0, 0);
+		glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, (void*)(vertexData.size()*4));
 	}
 
 
@@ -56,6 +62,7 @@ namespace glz
 		for (Uint n=0; n<mParts.size(); n++)
 		{
 			Part *part = &mParts[n];
+			
 
 			glBindVertexArray(part->vao);
 
@@ -113,7 +120,22 @@ namespace glz
 
 				while (!file.eof()  &&  strcmp(token,"</triangle>") != 0)
 				{
-					newPart.vertexData.push_back(toFloat(token));
+					if (strcmp(token,"#vec2") == 0)
+					{
+						file >> token;
+						newPart.vertexData.push_back(toFloat(token));
+						file >> token;
+						newPart.vertexData.push_back(toFloat(token));
+					}
+					else if (strcmp(token,"#col4") == 0)
+					{
+						for (int n=0; n<4; n++)
+						{
+							file >> token;
+							newPart.colorData.push_back(toFloat(token));
+						}
+					}
+
 					file >> token;
 				}
 

@@ -26,10 +26,15 @@ namespace glz
 			Uint vbo, vao;
 			GLenum drawMode;
 			std::vector<Float> vertexData;
+			std::vector<Float> colorData;
 
+			Part()
+			{
+				vbo = vao = 0;
+				drawMode = GL_TRIANGLES;
+			}
 			void configure();
 		};
-
 
 	private:
 		std::vector<Part> mParts;

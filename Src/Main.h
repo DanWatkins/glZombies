@@ -71,6 +71,7 @@ typedef GLfloat				Float;
 typedef GLdouble			Double;
 typedef GLboolean			Bool;
 
+struct Color { Float r, g, b, a; };
 
 typedef std::string			String;
 
