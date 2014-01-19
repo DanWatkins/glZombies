@@ -63,6 +63,17 @@ namespace glz
 				mCamera.move(0.0, 0.1);
 				break;
 			}
+			case GLFW_KEY_EQUAL:
+			{
+				addZoom(Vec2f(0.005f, 0.005f));
+				break;
+			}
+			case GLFW_KEY_M:
+			{
+				addZoom(Vec2f(-0.005f, -0.005f));
+
+				break;
+			}
 		}
 	}
 

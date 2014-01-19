@@ -38,7 +38,7 @@ namespace glz
 
 	private:
 		std::vector<Part> mParts;
-		Vec2<Float> mNdcPos;					//position in NDC-space
+		Vec2<Float> mNdcPos;
 
 		Bool loadComponentsFromGLZM2File(String filepath);
 
@@ -47,7 +47,6 @@ namespace glz
 		void addPart(Part part) { mParts.push_back(part); }
 
 	public:
-		//accessor and mutators
 		void setNdcPos(const Vec2<Float> &ndcPos) { mNdcPos = ndcPos; }
 		Vec2<Float> getNdcPos() { return mNdcPos; }
 

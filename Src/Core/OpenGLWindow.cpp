@@ -17,6 +17,7 @@ namespace glz
 		mTitle = gDefaultWindowTitle;
 		mWindow = NULL;
 		mAspectScale = Vec2f(1.0f, 1.0f);
+		mZoom = Vec2f(1.0f, 1.0f);
 		mShouldTerminate = false;
 	}
 
@@ -67,10 +68,32 @@ namespace glz
 		return 0;
 	}
 
+
+	void OpenGLWindow::setZoom(Vec2f zoom)
+	{
+		mZoom = zoom;
+
+		if (mZoom.x < 0.0) mZoom.x = 0.0;
+		if (mZoom.y < 0.0) mZoom.y = 0.0;
+
+		_onResize(mWidth, mHeight);
+	}
+
+
+	void OpenGLWindow::addZoom(Vec2f zoom)
+	{
+		mZoom += zoom;
+
+		if (mZoom.x < 0.0) mZoom.x = 0.0;
+		if (mZoom.y < 0.0) mZoom.y = 0.0;
+
+		_onResize(mWidth, mHeight);
+	}
+
 	
 	void OpenGLWindow::_onResize(Int width, Int height)
 	{
-		mAspectScale = Vec2f(500.0f/width, 500.0f/height);
+		mAspectScale = Vec2f((500.0f/width)*mZoom.x, (500.0f/height)*mZoom.y);
 		mWidth = width;
 		mHeight = height;
 
