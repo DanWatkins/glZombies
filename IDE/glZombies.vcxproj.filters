@@ -19,11 +19,11 @@
     <Filter Include="World\Systems">
       <UniqueIdentifier>{de9eb7a0-a290-489d-beac-1ee482676958}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Ext">
+      <UniqueIdentifier>{30ac5327-5f31-4ffe-805a-4db9e0475281}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Src\Core\gl3w.c">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="..\Src\Core\Shader.cpp">
       <Filter>Core</Filter>
     </ClCompile>
@@ -85,6 +85,9 @@
     </ClCompile>
     <ClCompile Include="..\Src\World\Systems\DetailsSystem.cpp">
       <Filter>World\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ext\gl\gl3w.c">
+      <Filter>Ext</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

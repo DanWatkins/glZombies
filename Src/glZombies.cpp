@@ -9,6 +9,59 @@
 #include "./Core/Core.h"
 #include "./World/World.h"
 
+extern "C"
+{
+	#include <lua\lua.h>
+	#include <lua\lualib.h>
+	#include <lua\lauxlib.h>
+}
+
+#include <thread>
+
+std::thread luaBackground;
+
+void initLua()
+{
+	std::string buffer = "a=10";
+	int error;
+
+	lua_State *lua = luaL_newstate();
+	luaL_openlibs(lua);
+
+
+	while (buffer != "exit")
+	{
+		std::cin >> buffer;
+		
+		error = luaL_loadstring(lua, buffer.c_str()) || lua_pcall(lua, 0, 0, 0);
+		
+		if (error)
+		{
+			//fprintf(stderr, "%s\n", lua_tostring(lua, -1));
+
+			std::cout << lua_tostring(lua, -1);
+			
+			lua_pop(lua, 1);
+			
+		}
+	}
+
+
+	/*while (fgets(buff, sizeof(buff), stdin) != NULL)
+	{
+		error = luaL_loadstring(lua, buff) || lua_pcall(lua, 0, 0, 0);
+
+		if (error)
+		{
+			fprintf(stderr, "%s\n", lua_tostring(lua, -1));
+			lua_pop(lua, 1);
+		}
+	}*/
+
+	//lua_close(lua);
+};
+
+
 namespace glz
 {	
 	glZombies::glZombies() : mWorld(this), mCamera(&mWorld)
@@ -18,10 +71,12 @@ namespace glz
 	
 	void glZombies::onStartup()
 	{
+		luaBackground = std::thread(initLua);
 		loadShaders();
 
 		mWorld.init();
 		mWorld.loadWorldFile("main.world");
+		
 	}
 
 	
@@ -86,6 +141,7 @@ namespace glz
 
 	void glZombies::onTerminate()
 	{
+		luaBackground.detach();
 	}
 
 

@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Src\Core\gl3w.c" />
+    <ClCompile Include="..\ext\gl\gl3w.c" />
     <ClCompile Include="..\Src\Core\GLFWInput.cpp" />
     <ClCompile Include="..\Src\Core\OpenGLWindow.cpp" />
     <ClCompile Include="..\Src\Core\Shader.cpp" />

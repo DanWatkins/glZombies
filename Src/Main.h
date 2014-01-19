@@ -40,8 +40,10 @@
 
 	#ifdef _DEBUG
 		#pragma comment (lib, "glfw3-d.lib")
+		#pragma comment (lib, "lua-d.lib")
 	#else
 		#pragma comment (lib, "glfw3-r.lib")
+		#pragma comment (lib, "lua-r.lib")
 	#endif
 
 	#pragma comment (lib, "OpenGL32.lib")
