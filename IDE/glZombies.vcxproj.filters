@@ -22,6 +22,9 @@
     <Filter Include="Ext">
       <UniqueIdentifier>{30ac5327-5f31-4ffe-805a-4db9e0475281}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Script">
+      <UniqueIdentifier>{015dae54-bc72-4217-9304-043b07c9613e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\Core\Shader.cpp">
@@ -89,6 +92,7 @@
     <ClCompile Include="..\ext\gl\gl3w.c">
       <Filter>Ext</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\Script\Script.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Core\Shader.h">
@@ -171,6 +175,9 @@
     </ClInclude>
     <ClInclude Include="..\Src\World\EntityTemplate.h">
       <Filter>World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\Script\Script.h">
+      <Filter>Script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

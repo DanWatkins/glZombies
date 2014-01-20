@@ -20,6 +20,7 @@
     <ClCompile Include="..\src\render\Circle.cpp" />
     <ClCompile Include="..\src\render\Mesh2D.cpp" />
     <ClCompile Include="..\src\render\Rectangle.cpp" />
+    <ClCompile Include="..\Src\Script\Script.cpp" />
     <ClCompile Include="..\Src\Utility\Helper.cpp" />
     <ClCompile Include="..\Src\Utility\Timer.cpp" />
     <ClCompile Include="..\Src\World\Camera.cpp" />
@@ -47,6 +48,7 @@
     <ClInclude Include="..\src\render\Mesh2D.h" />
     <ClInclude Include="..\src\render\Rectangle.h" />
     <ClInclude Include="..\src\render\Render.h" />
+    <ClInclude Include="..\Src\Script\Script.h" />
     <ClInclude Include="..\Src\Utility\Helper.h" />
     <ClInclude Include="..\Src\Utility\Mat3.h" />
     <ClInclude Include="..\Src\Utility\Timer.h" />

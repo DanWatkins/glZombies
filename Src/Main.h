@@ -22,10 +22,19 @@
 #include <list>
 #include <deque>
 
+#include <thread>
+
 #include <cstdlib>
 #include <ctime>
 #include <cstdio>
 #include <cstdlib>
+
+extern "C"
+{
+	#include <lua\lua.h>
+	#include <lua\lualib.h>
+	#include <lua\lauxlib.h>
+}
 
 
 #define WIN32_LEAN_AND_MEAN 1
@@ -89,6 +98,7 @@ typedef std::string			String;
 #include "./Utility/Vec2.h"
 #include "./Utility/Mat3.h"
 #include "./Utility/Timer.h"
+#include "./Script/Script.h"
 
 #endif
 

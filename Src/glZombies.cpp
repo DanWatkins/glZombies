@@ -9,14 +9,6 @@
 #include "./Core/Core.h"
 #include "./World/World.h"
 
-extern "C"
-{
-	#include <lua\lua.h>
-	#include <lua\lualib.h>
-	#include <lua\lauxlib.h>
-}
-
-#include <thread>
 
 std::thread luaBackground;
 
@@ -37,28 +29,10 @@ void initLua()
 		
 		if (error)
 		{
-			//fprintf(stderr, "%s\n", lua_tostring(lua, -1));
-
-			std::cout << lua_tostring(lua, -1);
-			
-			lua_pop(lua, 1);
-			
+			std::cout << lua_tostring(lua, -1);	
+			lua_pop(lua, 1);	
 		}
 	}
-
-
-	/*while (fgets(buff, sizeof(buff), stdin) != NULL)
-	{
-		error = luaL_loadstring(lua, buff) || lua_pcall(lua, 0, 0, 0);
-
-		if (error)
-		{
-			fprintf(stderr, "%s\n", lua_tostring(lua, -1));
-			lua_pop(lua, 1);
-		}
-	}*/
-
-	//lua_close(lua);
 };
 
 
@@ -72,7 +46,10 @@ namespace glz
 	void glZombies::onStartup()
 	{
 		luaBackground = std::thread(initLua);
+
 		loadShaders();
+
+		Script script("sample.lua");
 
 		mWorld.init();
 		mWorld.loadWorldFile("main.world");
