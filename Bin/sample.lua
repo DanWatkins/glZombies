@@ -1,3 +1,13 @@
+theString = "Hey"
+theBoolean = false
+theInteger = 104
+theFloat = 5.264
+
+
+
+
+
+
 function add(a, b)
 	return a+b
 end
@@ -9,6 +19,3 @@ function divide(a,b)
 	
 	return a/b
 end
-
-print(add(5,6))
-print(divide(7,0))

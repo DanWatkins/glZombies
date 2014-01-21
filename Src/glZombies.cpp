@@ -50,6 +50,10 @@ namespace glz
 		loadShaders();
 
 		Script script("sample.lua");
+		std::cout << script.getGlobalString("theString") << std::endl
+					<< script.getGlobalBoolean("theBoolean") << std::endl
+					<< script.getGlobalInteger("theInteger") << std::endl
+					<< script.getGlobalFloat("theFloat") << std::endl;
 
 		mWorld.init();
 		mWorld.loadWorldFile("main.world");

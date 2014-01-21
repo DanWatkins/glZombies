@@ -17,6 +17,8 @@ namespace glz
 	private:
 		lua_State *mLuaState;
 
+		void putGlobalOnStack(String identifier);
+
 	public:
 		Script();
 		Script(String filepath);
@@ -25,6 +27,13 @@ namespace glz
 		Bool isOpen();
 		void execute();
 		void close();
+
+		
+		//global variable access
+		String getGlobalString(String identifier);
+		Bool getGlobalBoolean(String identifier);
+		Int getGlobalInteger(String identifier);
+		Float getGlobalFloat(String identifier);
 	};
 };
 

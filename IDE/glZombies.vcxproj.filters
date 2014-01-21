@@ -92,7 +92,9 @@
     <ClCompile Include="..\ext\gl\gl3w.c">
       <Filter>Ext</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\Script\Script.cpp" />
+    <ClCompile Include="..\Src\Script\Script.cpp">
+      <Filter>Script</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Core\Shader.h">
