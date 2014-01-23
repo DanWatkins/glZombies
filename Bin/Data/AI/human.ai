@@ -1,0 +1,5 @@
+function update()
+	a = 65;
+	b = a+6;
+	c = a*b;
+end

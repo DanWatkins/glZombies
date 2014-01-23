@@ -56,6 +56,8 @@ namespace glz
 
 		if (lua_isstring(mLuaState, 1))
 			return lua_tostring(mLuaState, 1);
+
+		return "";
 	}
 
 
@@ -65,6 +67,8 @@ namespace glz
 
 		if (lua_isboolean(mLuaState, 1))
 			return lua_toboolean(mLuaState, 1);
+
+		return false;
 	}
 
 
@@ -74,6 +78,8 @@ namespace glz
 
 		if (lua_isnumber(mLuaState, 1))
 			return (Int)lua_tonumber(mLuaState, 1);
+
+		return 0;
 	}
 
 
@@ -82,6 +88,8 @@ namespace glz
 		putGlobalOnStack(identifier);
 
 		if (lua_isnumber(mLuaState, 1))
-			return lua_tonumber(mLuaState, 1);
+			return (Float)lua_tonumber(mLuaState, 1);
+
+		return 0.0f;
 	}
 };

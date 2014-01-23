@@ -11,6 +11,7 @@
 #include "Spatial.h"
 #include "Details.h"
 #include "SteeringBehaviors.h"
+#include "AIScript.h"
 
 namespace glz
 {
@@ -26,7 +27,9 @@ namespace glz
 		{
 		private:
 			SteeringBehaviors mSteeringBehaviors;
+			AIScript mScript;
 
+			void init();
 			void update(Double timeDelta);
 
 		public:

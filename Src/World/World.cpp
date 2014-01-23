@@ -5,7 +5,6 @@
 // This file is licensed under the MIT License.
 //=======================================================================================================================|
 
-#include "Components\AIScript.h"
 #include "World.h"
 #include <dirent.h>
 
@@ -38,9 +37,6 @@ namespace glz
 
 		void World::init()
 		{
-			AIScript script("./Data/AI/zombie.ai");
-			script.script_update();
-
 			loadTemplateEntities();
 		}
 

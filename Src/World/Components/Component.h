@@ -14,6 +14,8 @@ namespace glz
 {
 	namespace world
 	{
+		class System;
+
 		/**
 		 * Represents a component or module that resides in a System instance.
 		 * Game entities are represented by various Components inside of System instances.
@@ -25,9 +27,12 @@ namespace glz
 		private:
 			Int mHost;
 
+			virtual void init() {}
 			virtual void update(Double timeDelta) = 0;
 
 		public:
+			friend System;
+
 			virtual ~Component()
 			{
 				std::cout << "Component destroyed" << std::endl;

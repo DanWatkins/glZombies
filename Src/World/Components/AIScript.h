@@ -9,7 +9,7 @@
 #define _glz_AI_SCRIPT
 
 #include "../../Script/Script.h"
-#include "AI.h"
+//#include "AI.h"
 
 namespace glz
 {
@@ -58,6 +58,7 @@ namespace glz
 
 		public:
 			friend AIScriptRelay;
+			AIScript() {}
 			AIScript(String filepath);
 			~AIScript();
 

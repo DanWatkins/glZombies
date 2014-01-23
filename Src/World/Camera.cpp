@@ -30,7 +30,7 @@ namespace glz
 
 				Drawable *drawable = (Drawable*)(mWorld->mDrawableSystem->getComponentForEntity(spatial->getHost()));
 				Float rotation = (Float)spatial->getHeading().angle(Vec2d());
-				drawable->draw(screenX, screenY, rotation-(PI/2.0f));
+				drawable->draw(screenX, screenY, rotation-((Float)PI/2.0f));
 
 				++iter;
 			}

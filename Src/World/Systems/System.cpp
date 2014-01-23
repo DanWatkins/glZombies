@@ -21,6 +21,7 @@ namespace glz
 		void System::addComponent(Int entity, Component *component)
 		{
 			component->setHost(entity);
+			component->init();
 			mComponents.push_back(component);
 		}
 

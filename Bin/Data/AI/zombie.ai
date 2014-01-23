@@ -1,3 +1,4 @@
 function update()
-	print("Update AI called")
+	a = 10;
+	b = a+5;
 end
