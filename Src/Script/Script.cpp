@@ -22,9 +22,8 @@ namespace glz
 	}
 
 
-	Script::Script(String filepath)
+	Script::Script(String filepath) : Script()
 	{
-		*this = Script();
 		load(filepath);
 	}
 
@@ -76,6 +75,7 @@ namespace glz
 		if (lua_isnumber(mLuaState, 1))
 			return (Int)lua_tonumber(mLuaState, 1);
 	}
+
 
 	Float Script::getGlobalFloat(String identifier)
 	{

@@ -95,6 +95,9 @@
     <ClCompile Include="..\Src\Script\Script.cpp">
       <Filter>Script</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\world\components\AIScript.cpp">
+      <Filter>World\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Core\Shader.h">
@@ -180,6 +183,9 @@
     </ClInclude>
     <ClInclude Include="..\Src\Script\Script.h">
       <Filter>Script</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\world\components\AIScript.h">
+      <Filter>World\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

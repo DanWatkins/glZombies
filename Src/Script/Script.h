@@ -14,7 +14,7 @@ namespace glz
 {
 	class Script
 	{
-	private:
+	protected:
 		lua_State *mLuaState;
 
 		void putGlobalOnStack(String identifier);
@@ -22,12 +22,14 @@ namespace glz
 	public:
 		Script();
 		Script(String filepath);
+		virtual ~Script() {}
 
 		Bool load(String filepath);
 		Bool isOpen();
 		void execute();
 		void close();
 
+		virtual void bindToLua() = 0;
 		
 		//global variable access
 		String getGlobalString(String identifier);
