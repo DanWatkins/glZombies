@@ -26,7 +26,9 @@ namespace glz
 		void AIScriptRelay::lock(AIScript *script)
 		{
 			if (!isLocked())
+			{
 				mCurrentScript = script;
+			}
 		}
 
 
@@ -39,7 +41,7 @@ namespace glz
 
 		void AIScriptRelay::bindToLua(AIScript *script)
 		{
-			lua_register(script->mLuaState, "setEntityName", setEntityName);
+			lua_register(script->mLuaState, "ai_seek", cpp_seek);
 		}
 
 		
@@ -77,6 +79,25 @@ namespace glz
 		}
 
 
+		Int AIScriptRelay::cpp_seek(lua_State *lua)
+		{
+			int n = lua_gettop(lua);
+
+			if (n != 2)
+			{
+				std::cout << "Lua: Wrong number of arguments for setEntityName" << std::endl;
+				return 0;
+			}
+
+			if (!lua_isnumber(lua, 1)  ||  !lua_isnumber(lua, 2))
+				return 0;
+
+			mCurrentScript->mSteeringBehaviors->seek(Vec2d(lua_tonumber(lua, 1), lua_tonumber(lua, 1))); 
+
+			return 0;
+		}
+
+
 
 		/**
 		 * EntityScript stuff
@@ -95,15 +116,15 @@ namespace glz
 		void AIScript::bindToLua()
 		{
 			AIScriptRelay::instance().bindToLua(this);
-			AIScriptRelay::instance().lock(this);
 		}
 
 
-		void AIScript::script_update()
+		void AIScript::script_update(SteeringBehaviors *behaviors)
 		{
 			if (!AIScriptRelay::instance().isLocked())
 			{
 				AIScriptRelay::instance().lock(this);
+				mSteeringBehaviors = behaviors; //TODO this should just be set in the constructor
 				AIScriptRelay::instance().script_update();
 				AIScriptRelay::instance().unlock(this);
 			}

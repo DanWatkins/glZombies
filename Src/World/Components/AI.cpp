@@ -21,12 +21,13 @@ namespace glz
 		void AI::init()
 		{
 			mScript.load(String("./Data/AI/") + mDetails->getType() + ".ai");
+			mScript.bindToLua();
 		}
 
 
 		void AI::update(Double timeDelta)
 		{
-			mScript.script_update();
+			mScript.script_update(&mSteeringBehaviors);
 			mSpatial->addSteeringForce(mSteeringBehaviors.computeSteeringForce());
 			mSteeringBehaviors.clear();
 		}

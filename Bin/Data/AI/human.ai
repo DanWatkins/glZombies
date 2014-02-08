@@ -1,5 +1,3 @@
 function update()
-	a = 65;
-	b = a+6;
-	c = a*b;
+	ai_seek(0,0);
 end

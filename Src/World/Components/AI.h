@@ -34,6 +34,8 @@ namespace glz
 
 		public:
 			friend AISystem;
+			friend AIScript;
+
 			AI(Details *details, Spatial *spatial);
 		};
 

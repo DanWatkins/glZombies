@@ -33,7 +33,7 @@ namespace glz
 			while (aiCmp != mComponents.end())
 			{
 				AI *ai = (AI*)*aiCmp;
-				String type = ai->mDetails->getType();
+				/*String type = ai->mDetails->getType();
 				Vec2d pos = ai->mSpatial->getPos();
 
 				if (type == "zombie")
@@ -64,7 +64,7 @@ namespace glz
 
 					if (foundClosest)
 						ai->mSteeringBehaviors.arrive(closestPos);
-				}
+				}*/
 
 
 				ai->update(timeDelta);

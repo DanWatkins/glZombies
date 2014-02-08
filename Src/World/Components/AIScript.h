@@ -9,7 +9,7 @@
 #define _glz_AI_SCRIPT
 
 #include "../../Script/Script.h"
-//#include "AI.h"
+#include "SteeringBehaviors.h"
 
 namespace glz
 {
@@ -31,7 +31,7 @@ namespace glz
 			/**
 			 * Callbacks from Lua scripts
 			 */
-			static Int setEntityName(lua_State *lua) { return 1; }
+			static Int cpp_seek(lua_State *lua);
 
 		public:
 			static AIScriptRelay &instance();
@@ -48,13 +48,12 @@ namespace glz
 			static void script_update();
 		};
 
-
-
+		class AI;
 
 		class AIScript : public Script
 		{
 		private:
-			
+			SteeringBehaviors *mSteeringBehaviors;
 
 		public:
 			friend AIScriptRelay;
@@ -64,7 +63,7 @@ namespace glz
 
 			void bindToLua();
 
-			void script_update();
+			void script_update(SteeringBehaviors *behaviors);
 		};
 	};
 };
