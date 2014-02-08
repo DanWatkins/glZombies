@@ -98,6 +98,9 @@
     <ClCompile Include="..\src\world\components\AIScript.cpp">
       <Filter>World\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\World\Components\AIScriptRelay.cpp">
+      <Filter>World\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Core\Shader.h">
@@ -185,6 +188,9 @@
       <Filter>Script</Filter>
     </ClInclude>
     <ClInclude Include="..\src\world\components\AIScript.h">
+      <Filter>World\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\World\Components\AIScriptRelay.h">
       <Filter>World\Components</Filter>
     </ClInclude>
   </ItemGroup>

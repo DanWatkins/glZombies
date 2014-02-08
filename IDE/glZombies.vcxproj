@@ -26,6 +26,7 @@
     <ClCompile Include="..\Src\World\Camera.cpp" />
     <ClCompile Include="..\Src\World\Components\AI.cpp" />
     <ClCompile Include="..\src\world\components\AIScript.cpp" />
+    <ClCompile Include="..\Src\World\Components\AIScriptRelay.cpp" />
     <ClCompile Include="..\src\world\Components\Details.cpp" />
     <ClCompile Include="..\Src\World\Components\Drawable.cpp" />
     <ClCompile Include="..\Src\World\Components\Spatial.cpp" />
@@ -57,6 +58,7 @@
     <ClInclude Include="..\Src\World\Camera.h" />
     <ClInclude Include="..\Src\World\Components\AI.h" />
     <ClInclude Include="..\src\world\components\AIScript.h" />
+    <ClInclude Include="..\Src\World\Components\AIScriptRelay.h" />
     <ClInclude Include="..\src\world\components\Component.h" />
     <ClInclude Include="..\src\world\Components\Details.h" />
     <ClInclude Include="..\src\world\Components\Drawable.h" />

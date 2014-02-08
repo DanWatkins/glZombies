@@ -8,48 +8,22 @@
 #ifndef _glz_AI_SCRIPT
 #define _glz_AI_SCRIPT
 
-#include "../../Script/Script.h"
+#include "AIScriptRelay.h"
 #include "SteeringBehaviors.h"
 
 namespace glz
 {
 	namespace world
 	{
-		class AIScript;
-
-		class AIScriptRelay
-		{
-		private:
-			static AIScript *mCurrentScript;
-
-			AIScriptRelay() {}
-			AIScriptRelay(const AIScriptRelay &relay) {}
-			void operator ==(const AIScriptRelay &relay) {}
-
-			static String getTopString(lua_State *lua);
-
-			/**
-			 * Callbacks from Lua scripts
-			 */
-			static Int cpp_seek(lua_State *lua);
-
-		public:
-			static AIScriptRelay &instance();
-
-			void lock(AIScript *script);
-			void unlock(AIScript *script);
-			Bool isLocked() { return (Bool)mCurrentScript; }
-
-			void bindToLua(AIScript *script);
-
-			/**
-			 * Methods to call from C++ to Lua
-			 */
-			static void script_update();
-		};
-
 		class AI;
 
+		/**
+		 * Represents a script for artificial intelligence updates.
+		 * bindToLua() must be called to bind CPP methods to the script.
+		 * Calling script_update() will call "update()" in the script.
+		 * The script will call methods such as "ai_seek(x, y)" to add steering forces
+		 * to the SteeringBehaviors object passed to script_update.
+		 */
 		class AIScript : public Script
 		{
 		private:
