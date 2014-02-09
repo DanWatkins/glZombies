@@ -8,7 +8,7 @@
 #ifndef _glz_STEERING_BEHAVIORS_H
 #define _glz_STEERING_BEHAVIORS_H
 
-#include "Spatial.h"
+#include "../Spatial.h"
 
 namespace glz
 {

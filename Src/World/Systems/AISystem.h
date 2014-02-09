@@ -10,7 +10,7 @@
 
 #include "System.h"
 #include "DetailsSystem.h"
-#include "../Components/AI.h"
+#include "../Components/AI/AI.h"
 
 namespace glz
 {

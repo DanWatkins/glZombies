@@ -8,7 +8,7 @@
 #ifndef _glz_AI_SCRIPT_RELAY_H
 #define _glz_AI_SCRIPT_RELAY_H
 
-#include "../../Script/Script.h"
+#include "../../../Script/Script.h"
 
 namespace glz
 {

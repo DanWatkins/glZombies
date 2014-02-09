@@ -8,8 +8,8 @@
 #ifndef _glz_AI_H
 #define _glz_AI_H
 
-#include "Spatial.h"
-#include "Details.h"
+#include "../Spatial.h"
+#include "../Details.h"
 #include "SteeringBehaviors.h"
 #include "AIScript.h"
 

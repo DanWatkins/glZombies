@@ -25,6 +25,9 @@
     <Filter Include="Script">
       <UniqueIdentifier>{015dae54-bc72-4217-9304-043b07c9613e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="World\Components\AI">
+      <UniqueIdentifier>{936d46a6-91c4-40bd-8136-de6425be11e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\Core\Shader.cpp">
@@ -74,12 +77,6 @@
     <ClCompile Include="..\Src\World\Components\Spatial.cpp">
       <Filter>World\Components</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\World\Components\AI.cpp">
-      <Filter>World\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Src\World\Components\SteeringBehaviors.cpp">
-      <Filter>World\Components</Filter>
-    </ClCompile>
     <ClCompile Include="..\Src\World\Systems\AISystem.cpp">
       <Filter>World\Systems</Filter>
     </ClCompile>
@@ -95,11 +92,17 @@
     <ClCompile Include="..\Src\Script\Script.cpp">
       <Filter>Script</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\world\components\AIScript.cpp">
-      <Filter>World\Components</Filter>
+    <ClCompile Include="..\Src\World\Components\AI\AI.cpp">
+      <Filter>World\Components\AI</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\World\Components\AIScriptRelay.cpp">
-      <Filter>World\Components</Filter>
+    <ClCompile Include="..\Src\World\Components\AI\AIScript.cpp">
+      <Filter>World\Components\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\World\Components\AI\AIScriptRelay.cpp">
+      <Filter>World\Components\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\World\Components\AI\SteeringBehaviors.cpp">
+      <Filter>World\Components\AI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -166,12 +169,6 @@
     <ClInclude Include="..\Src\Utility\Mat3.h">
       <Filter>Utility</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\World\Components\AI.h">
-      <Filter>World\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\World\Components\SteeringBehaviors.h">
-      <Filter>World\Components</Filter>
-    </ClInclude>
     <ClInclude Include="..\Src\World\Systems\AISystem.h">
       <Filter>World\Systems</Filter>
     </ClInclude>
@@ -187,11 +184,17 @@
     <ClInclude Include="..\Src\Script\Script.h">
       <Filter>Script</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\world\components\AIScript.h">
-      <Filter>World\Components</Filter>
+    <ClInclude Include="..\Src\World\Components\AI\AI.h">
+      <Filter>World\Components\AI</Filter>
     </ClInclude>
-    <ClInclude Include="..\Src\World\Components\AIScriptRelay.h">
-      <Filter>World\Components</Filter>
+    <ClInclude Include="..\Src\World\Components\AI\AIScript.h">
+      <Filter>World\Components\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\World\Components\AI\AIScriptRelay.h">
+      <Filter>World\Components\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\World\Components\AI\SteeringBehaviors.h">
+      <Filter>World\Components\AI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
