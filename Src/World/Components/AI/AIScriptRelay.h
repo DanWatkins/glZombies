@@ -17,6 +17,15 @@ namespace glz
 		class AIScript;
 
 
+		class Point
+		{
+		public:
+			Double x, y;
+			Point() { x = y = 0.0; }
+			Point(Double sx, Double sy) { x = sx; y = sy; }
+		};
+
+
 		/**
 		 * Manages binding of AIScript instances to Lua's C-API.
 		 * AIScripts using this class must call lock(this) before using anything
@@ -35,6 +44,10 @@ namespace glz
 
 			//Lua to CPP
 			static Int cpp_seek(lua_State *lua);
+			static Int cpp_flee(lua_State *lua);
+			static Int cpp_arrive(lua_State *lua);
+
+			static 
 
 		public:
 			static AIScriptRelay &instance();

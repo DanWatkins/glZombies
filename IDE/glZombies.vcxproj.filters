@@ -104,6 +104,9 @@
     <ClCompile Include="..\Src\World\Components\AI\SteeringBehaviors.cpp">
       <Filter>World\Components\AI</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\world\components\ai\AIScriptRelay_Exposed.cpp">
+      <Filter>World\Components\AI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\Core\Shader.h">

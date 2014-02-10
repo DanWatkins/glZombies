@@ -14,9 +14,6 @@ namespace glz
 	{
 		AIScript *AIScriptRelay::mCurrentScript = NULL;
 
-		/**
-		 * _EntityScriptRelay stuff
-		 */
 		AIScriptRelay& AIScriptRelay::instance()
 		{
 			static AIScriptRelay instance;
@@ -43,6 +40,8 @@ namespace glz
 		void AIScriptRelay::bindToLua(AIScript *script)
 		{
 			lua_register(script->mLuaState, "ai_seek", cpp_seek);
+			lua_register(script->mLuaState, "ai_flee", cpp_flee);
+			lua_register(script->mLuaState, "ai_arrive", cpp_arrive);
 		}
 
 		
@@ -77,25 +76,6 @@ namespace glz
 			}
 
 			return lua_tostring(lua, 1);
-		}
-
-
-		Int AIScriptRelay::cpp_seek(lua_State *lua)
-		{
-			int n = lua_gettop(lua);
-
-			if (n != 2)
-			{
-				std::cout << "Lua: Wrong number of arguments for setEntityName" << std::endl;
-				return 0;
-			}
-
-			if (!lua_isnumber(lua, 1)  ||  !lua_isnumber(lua, 2))
-				return 0;
-
-			mCurrentScript->mSteeringBehaviors->seek(Vec2d(lua_tonumber(lua, 1), lua_tonumber(lua, 1))); 
-
-			return 0;
 		}
 	};
 };

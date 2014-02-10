@@ -27,6 +27,7 @@
     <ClCompile Include="..\Src\World\Components\AI\AI.cpp" />
     <ClCompile Include="..\Src\World\Components\AI\AIScript.cpp" />
     <ClCompile Include="..\Src\World\Components\AI\AIScriptRelay.cpp" />
+    <ClCompile Include="..\src\world\components\ai\AIScriptRelay_Exposed.cpp" />
     <ClCompile Include="..\Src\World\Components\AI\SteeringBehaviors.cpp" />
     <ClCompile Include="..\src\world\Components\Details.cpp" />
     <ClCompile Include="..\Src\World\Components\Drawable.cpp" />
