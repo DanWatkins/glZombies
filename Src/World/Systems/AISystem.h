@@ -24,6 +24,8 @@ namespace glz
 
 			void createAI(Int entity);
 			void update(Double timeDelta);
+
+			AI *findNearestAi(Vec2d pos);
 		};
 
 

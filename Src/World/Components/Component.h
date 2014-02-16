@@ -26,9 +26,13 @@ namespace glz
 		{
 		private:
 			Int mHost;
+			System *mSystem;
 
 			virtual void init() {}
 			virtual void update(Double timeDelta) = 0;
+
+			void setHost(Int host) { mHost = host; }
+			void setSystem(System *system) { mSystem = system; }
 
 		public:
 			friend System;
@@ -38,8 +42,8 @@ namespace glz
 				std::cout << "Component destroyed" << std::endl;
 			}
 
-			void setHost(Int host) { mHost = host; }
-			Int getHost() { return mHost; }		
+			Int getHost() { return mHost; }
+			System *getSystem() { return mSystem; }
 		};
 	};
 };

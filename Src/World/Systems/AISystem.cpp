@@ -72,5 +72,35 @@ namespace glz
 				++aiCmp;
 			}
 		}
+
+
+
+		AI *AISystem::findNearestAi(Vec2d pos)
+		{
+			#undef max
+			Double closest = std::numeric_limits<Double>::max();
+			Vec2d closestPos;
+			Bool foundClosest = false;
+
+			ComponentList::iterator aiSearchCmp = mComponents.begin();
+			while (aiSearchCmp != mComponents.end())
+			{
+				AI *aiSearch = (AI*)*aiSearchCmp;
+				if (aiSearch->mDetails->getType() == "human")
+				{
+					Double testDistance = pos.distance(aiSearch->mSpatial->getPos());
+					if (testDistance < closest)
+					{
+						closest = testDistance;
+						closestPos = aiSearch->mSpatial->getPos();
+						foundClosest = true;
+					}
+				}
+
+				++aiSearchCmp;
+			}
+
+			return NULL;
+		}
 	};
 };

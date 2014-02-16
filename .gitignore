@@ -21,3 +21,4 @@
 *.Build.CppClean.log
 *.vcxproj.user
 IDE/Obj/
+*.sdf

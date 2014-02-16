@@ -42,6 +42,8 @@ namespace glz
 			lua_register(script->mLuaState, "ai_seek", cpp_seek);
 			lua_register(script->mLuaState, "ai_flee", cpp_flee);
 			lua_register(script->mLuaState, "ai_arrive", cpp_arrive);
+
+			lua_register(script->mLuaState, "ai_nearestEntity", cpp_nearestEntity);
 		}
 
 		

@@ -6,12 +6,13 @@
 //=======================================================================================================================|
 
 #include "AI.h"
+#include "../../Systems/AISystem.h"
 
 namespace glz
 {
 	namespace world
 	{
-		AI::AI(Details *details, Spatial *spatial) : mSteeringBehaviors(spatial)
+		AI::AI(Details *details, Spatial *spatial) : mSteeringBehaviors(spatial), mScript(this)
 		{
 			mDetails = details;
 			mSpatial = spatial;
@@ -30,6 +31,12 @@ namespace glz
 			mScript.script_update(&mSteeringBehaviors);
 			mSpatial->addSteeringForce(mSteeringBehaviors.computeSteeringForce());
 			mSteeringBehaviors.clear();
+		}
+
+
+		AI *AI::findNearestAI()
+		{
+			return ((AISystem*)getSystem())->findNearestAi(this->mSpatial->getPos());
 		}
 	};
 };

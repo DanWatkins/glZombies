@@ -7,6 +7,7 @@
 
 #include "AIScriptRelay.h"
 #include "AIScript.h"
+#include "AI.h"
 
 namespace glz
 {
@@ -47,6 +48,28 @@ namespace glz
 		Int AIScriptRelay::cpp_arrive(lua_State *lua)
 		{
 			mCurrentScript->mSteeringBehaviors->arrive(cppArgLua_2d(lua)); 
+			return 0;
+		}
+
+
+		Int AIScriptRelay::cpp_nearestEntity(lua_State *lua)
+		{
+			AI *nearest = mCurrentScript->mAI->findNearestAI();
+
+			lua_pushnumber(lua, 1);
+			lua_pushnumber(lua, 2);
+			
+
+
+			
+
+			return 0;
+		}
+
+
+		Int AIScriptRelay::cpp_nearestEntityOfType(lua_State *lua)
+		{
+
 			return 0;
 		}
 	};

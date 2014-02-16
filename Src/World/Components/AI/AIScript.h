@@ -28,11 +28,12 @@ namespace glz
 		{
 		private:
 			SteeringBehaviors *mSteeringBehaviors;
+			AI *mAI;
 
 		public:
 			friend AIScriptRelay;
-			AIScript() {}
-			AIScript(String filepath);
+			AIScript(AI *ai) { mAI = ai; }
+			AIScript(AI *ai, String filepath);
 			~AIScript();
 
 			void bindToLua();

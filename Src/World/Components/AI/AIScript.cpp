@@ -15,8 +15,9 @@ namespace glz
 		 * EntityScript stuff
 		 */
 
-		AIScript::AIScript(String filepath) : Script(filepath)
+		AIScript::AIScript(AI *ai, String filepath) : Script(filepath)
 		{
+			mAI = ai;
 		}
 
 		AIScript::~AIScript()

@@ -1,3 +1,6 @@
 function update()
-	ai_flee(0,0);
+	print("Update");
+	x, y = ai_nearestEntity();
+	
+	print(x,y);
 end
