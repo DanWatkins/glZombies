@@ -1,6 +1,9 @@
 function update()
-	print("Update");
 	x, y = ai_nearestEntity();
 	
-	print(x,y);
+	if ((x == nil) or (y == nil)) then
+		print("BAD")
+	else
+		print("GOOD");
+	end
 end

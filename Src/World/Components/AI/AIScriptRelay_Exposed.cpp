@@ -56,12 +56,15 @@ namespace glz
 		{
 			AI *nearest = mCurrentScript->mAI->findNearestAI();
 
-			lua_pushnumber(lua, 1);
-			lua_pushnumber(lua, 2);
-			
+			if (nearest)
+			{
+				Vec2d pos = nearest->mSpatial->getPos();
+				lua_pushnumber(lua, pos.x);
+				lua_pushnumber(lua, pos.y);
 
+				return 2;
+			}
 
-			
 
 			return 0;
 		}
