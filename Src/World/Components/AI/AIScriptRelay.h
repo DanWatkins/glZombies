@@ -39,7 +39,7 @@ namespace glz
 			static Int cpp_arrive(lua_State *lua);
 
 			static Int cpp_nearestEntity(lua_State *lua);
-			static Int cpp_nearestEntityOfType(lua_State *lua);
+			static Int cpp_nearestEntity(lua_State *lua, String type);
 
 		public:
 			static AIScriptRelay &instance();

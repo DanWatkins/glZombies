@@ -19,14 +19,31 @@ namespace glz
 
 			if (n != 2)
 			{
-				std::cout << "Lua: Wrong number of arguments for setEntityName" << std::endl;
+				//std::cout << "Lua: Wrong number of arguments for function" << std::endl;
 				return Vec2d();
 			}
 
 			if (!lua_isnumber(lua, 1)  ||  !lua_isnumber(lua, 2))
 				return Vec2d();
 
-			return Vec2d(lua_tonumber(lua, 1), lua_tonumber(lua, 1));
+			return Vec2d(lua_tonumber(lua, 1), lua_tonumber(lua, 2));
+		}
+
+
+		String cppArgLua_s(lua_State *lua)
+		{
+			int n = lua_gettop(lua);
+
+			if (n != 1)
+			{
+				//std::cout << "Lua: Wrong number of arguments for function" << std::endl;
+				return "";
+			}
+
+			if (!lua_isstring(lua, 1))
+				return "";
+
+			return lua_tostring(lua, 1);
 		}
 
 
@@ -54,7 +71,12 @@ namespace glz
 
 		Int AIScriptRelay::cpp_nearestEntity(lua_State *lua)
 		{
-			AI *nearest = mCurrentScript->mAI->findNearestAI();
+			String arg = cppArgLua_s(lua);
+
+			if (arg != "")
+				return cpp_nearestEntity(lua, arg);
+
+			AI *nearest = mCurrentScript->mAI->findNearestAi();
 
 			if (nearest)
 			{
@@ -70,8 +92,19 @@ namespace glz
 		}
 
 
-		Int AIScriptRelay::cpp_nearestEntityOfType(lua_State *lua)
+		Int AIScriptRelay::cpp_nearestEntity(lua_State *lua, String type)
 		{
+			AI *nearest = mCurrentScript->mAI->findNearestAi(type);
+
+			if (nearest)
+			{
+				Vec2d pos = nearest->mSpatial->getPos();
+				lua_pushnumber(lua, pos.x);
+				lua_pushnumber(lua, pos.y);
+
+				return 2;
+			}
+
 
 			return 0;
 		}

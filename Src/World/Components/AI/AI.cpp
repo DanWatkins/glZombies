@@ -34,9 +34,15 @@ namespace glz
 		}
 
 
-		AI *AI::findNearestAI()
+		AI *AI::findNearestAi()
 		{
 			return ((AISystem*)getSystem())->findNearestAi(this->mSpatial->getPos());
+		}
+
+
+		AI *AI::findNearestAi(String type)
+		{
+			return ((AISystem*)getSystem())->findNearestAi(this->mSpatial->getPos(), type);
 		}
 	};
 };

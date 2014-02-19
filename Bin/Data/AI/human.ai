@@ -1,9 +1,4 @@
 function update()
-	x, y = ai_nearestEntity();
-	
-	if ((x == nil) or (y == nil)) then
-		print("BAD")
-	else
-		print("GOOD");
-	end
+	x, y = ai_nearestEntity("zombie");	
+	ai_flee(x, y);
 end

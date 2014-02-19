@@ -16,8 +16,13 @@ namespace glz
 {
 	namespace world
 	{
+		typedef std::list<AI*> AIList;
+
 		class AISystem : public System, DetailsSystemUser, SpatialSystemUser
 		{
+		private:
+
+
 		public:
 			AISystem(DetailsSystem *detailsSystem,
 					 SpatialSystem *spatialSystem);
@@ -26,6 +31,7 @@ namespace glz
 			void update(Double timeDelta);
 
 			AI *findNearestAi(Vec2d pos);
+			AI *findNearestAi(Vec2d pos, String type);
 		};
 
 

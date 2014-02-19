@@ -33,40 +33,6 @@ namespace glz
 			while (aiCmp != mComponents.end())
 			{
 				AI *ai = (AI*)*aiCmp;
-				/*String type = ai->mDetails->getType();
-				Vec2d pos = ai->mSpatial->getPos();
-
-				if (type == "zombie")
-				{
-					#undef max
-					Double closest = std::numeric_limits<Double>::max();
-					Vec2d closestPos;
-					Bool foundClosest = false;
-
-					//seek nearest human
-					ComponentList::iterator aiSearchCmp = mComponents.begin();
-					while (aiSearchCmp != mComponents.end())
-					{
-						AI *aiSearch = (AI*)*aiSearchCmp;
-						if (aiSearch->mDetails->getType() == "human")
-						{
-							Double testDistance = pos.distance(aiSearch->mSpatial->getPos());
-							if (testDistance < closest)
-							{
-								closest = testDistance;
-								closestPos = aiSearch->mSpatial->getPos();
-								foundClosest = true;
-							}
-						}
-
-						++aiSearchCmp;
-					}
-
-					if (foundClosest)
-						ai->mSteeringBehaviors.arrive(closestPos);
-				}*/
-
-
 				ai->update(timeDelta);
 
 				++aiCmp;
@@ -79,20 +45,47 @@ namespace glz
 		{
 			#undef max
 			Double closest = std::numeric_limits<Double>::max();
-			Vec2d closestPos;
+			AI *closestAi = NULL;
 			Bool foundClosest = false;
 
 			ComponentList::iterator aiSearchCmp = mComponents.begin();
 			while (aiSearchCmp != mComponents.end())
 			{
 				AI *aiSearch = (AI*)*aiSearchCmp;
-				if (aiSearch->mDetails->getType() == "human")
+				Double testDistance = pos.distance(aiSearch->mSpatial->getPos());
+				if (testDistance < closest)
+				{
+					closest = testDistance;
+					closestAi = aiSearch;
+					foundClosest = true;
+				}
+				++aiSearchCmp;
+			}
+
+
+
+			return closestAi;
+		}
+
+
+		AI *AISystem::findNearestAi(Vec2d pos, String type)
+		{
+			#undef max
+			Double closest = std::numeric_limits<Double>::max();
+			AI *closestAi;
+			Bool foundClosest = false;
+
+			ComponentList::iterator aiSearchCmp = mComponents.begin();
+			while (aiSearchCmp != mComponents.end())
+			{
+				AI *aiSearch = (AI*)*aiSearchCmp;
+				if (aiSearch->mDetails->getType() == type)
 				{
 					Double testDistance = pos.distance(aiSearch->mSpatial->getPos());
 					if (testDistance < closest)
 					{
 						closest = testDistance;
-						closestPos = aiSearch->mSpatial->getPos();
+						closestAi = aiSearch;
 						foundClosest = true;
 					}
 				}
@@ -100,7 +93,9 @@ namespace glz
 				++aiSearchCmp;
 			}
 
-			return NULL;
+			return closestAi;
 		}
+
+
 	};
 };
