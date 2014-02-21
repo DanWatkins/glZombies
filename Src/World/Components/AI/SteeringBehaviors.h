@@ -50,6 +50,9 @@ namespace glz
 			Vec2d computeSteeringForce();
 			void clear();
 
+			/**
+			 * Generates a steering behavior request that 
+			 */
 			void seek(Vec2d pos);
 			void flee(Vec2d pos);
 			void arrive(Vec2d pos);

@@ -19,7 +19,6 @@ namespace glz
 
 			if (n != 2)
 			{
-				//std::cout << "Lua: Wrong number of arguments for function" << std::endl;
 				return Vec2d();
 			}
 
@@ -36,7 +35,6 @@ namespace glz
 
 			if (n != 1)
 			{
-				//std::cout << "Lua: Wrong number of arguments for function" << std::endl;
 				return "";
 			}
 
