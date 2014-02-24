@@ -10,7 +10,7 @@
 
 using namespace glz;
 
-int main()
+Int main()
 {
 
 	glZombies *app = new glZombies;

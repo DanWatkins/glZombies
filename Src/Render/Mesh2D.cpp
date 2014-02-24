@@ -129,7 +129,7 @@ namespace glz
 					}
 					else if (strcmp(token,"#col4") == 0)
 					{
-						for (int n=0; n<4; n++)
+						for (Int n=0; n<4; n++)
 						{
 							file >> token;
 							newPart.colorData.push_back(toFloat(token));

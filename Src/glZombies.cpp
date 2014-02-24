@@ -15,7 +15,7 @@ std::thread luaBackground;
 void initLua()
 {
 	std::string buffer = "a=10";
-	int error;
+	Int error;
 
 	lua_State *lua = luaL_newstate();
 	luaL_openlibs(lua);

@@ -15,7 +15,7 @@ namespace glz
 	{
 		Vec2d cppArgLua_2d(lua_State *lua)
 		{
-			int n = lua_gettop(lua);
+			Int n = lua_gettop(lua);
 
 			if (n != 2)
 			{
@@ -31,7 +31,7 @@ namespace glz
 
 		String cppArgLua_s(lua_State *lua)
 		{
-			int n = lua_gettop(lua);
+			Int n = lua_gettop(lua);
 
 			if (n != 1)
 			{

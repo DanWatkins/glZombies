@@ -135,7 +135,7 @@ namespace glz
 			return length() * length();
 		}
 
-		int sign(const Vec2<T> vec)
+		Int sign(const Vec2<T> vec)
 		{
 			if (y*vec.x > x*vec.y)
 				return -1;
