@@ -70,7 +70,7 @@ namespace glz
 					mIdTrack++;
 					mDetailsSystem->createDetails(mIdTrack, entity);
 					mSpatialSystem->createSpatial(mIdTrack, pos);
-					mDrawableSystem->createDrawable(mIdTrack, entity.meshFilepath);
+					mDrawableSystem->createDrawable(mIdTrack, String(gDefaultPathMesh)+entity.meshFilepath);
 					mAISystem->createAI(mIdTrack);
 				}
 			}
@@ -105,12 +105,12 @@ namespace glz
 			DIR *dir;
 			struct dirent *ent;
 			std::vector<String> files;
-			if ((dir = opendir ("./Data/Entities/")) != NULL)
+			if ((dir = opendir (gDefaultPathEntity)) != NULL)
 			{
 				while ((ent = readdir (dir)) != NULL)
 				{
-					files.push_back(String("./Data/Entities/") + String(ent->d_name));
-					loadTemplateEntity(String("./Data/Entities/") + String(ent->d_name));
+					files.push_back(String(gDefaultPathEntity) + String(ent->d_name));
+					loadTemplateEntity(String(gDefaultPathEntity) + String(ent->d_name));
 				}
 				closedir (dir);
 			}

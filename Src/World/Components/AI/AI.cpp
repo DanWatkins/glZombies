@@ -21,7 +21,7 @@ namespace glz
 
 		void AI::init()
 		{
-			mScript.load(String("./Data/AI/") + mDetails->getType() + ".ai");
+			mScript.load(String(gDefaultPathAi) + mDetails->getType() + ".ai");
 			mScript.bindToLua();
 		}
 
@@ -36,13 +36,13 @@ namespace glz
 
 		AI *AI::findNearestAi()
 		{
-			return ((AISystem*)getSystem())->findNearestAi(this->mSpatial->getPos());
+			return ((AISystem*)getSystem())->findNearestAi(mSpatial->getPos());
 		}
 
 
 		AI *AI::findNearestAi(String type)
 		{
-			return ((AISystem*)getSystem())->findNearestAi(this->mSpatial->getPos(), type);
+			return ((AISystem*)getSystem())->findNearestAi(mSpatial->getPos(), type);
 		}
 	};
 };

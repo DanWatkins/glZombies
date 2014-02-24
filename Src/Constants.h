@@ -12,7 +12,14 @@
 
 const Int			gDefaultWindowWidth				= 800;
 const Int			gDefaultWindowHeight			= 600;
-const String		gDefaultWindowTitle				= "glZombies";
+
+#define				gDefaultWindowTitle				"glZombies"
+
+#define				gDefaultPathAi					"./Data/AI/"
+#define				gDefaultPathEntity				"./Data/Entity/"
+#define				gDefaultPathMesh				"./Data/Mesh/"
+
+#define				gDefaultPathShaders				 "./Shaders/"
 
 #endif
 
