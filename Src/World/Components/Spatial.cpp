@@ -11,9 +11,14 @@ namespace glz
 {
 	namespace world
 	{
-		Spatial::Spatial(Vec2d pos)
-		: mPos(pos), mMass(1.0), mMaxSpeed(1.0), mMaxForce(1.0), mMaxTurnRate(1.0)
+		Spatial::Spatial(Vec2d pos, const EntityTemplate &et)
+		: mPos(pos)
 		{
+			mMass					= et.mass;
+			mMaxSpeed				= et.maxSpeed;
+			mMaxForce				= et.maxForce;
+			mMaxTurnRate			= et.maxTurnRate;
+
 			mTimeDelta = 0.0;
 			setHeading(Vec2d(0.0,-1.0));
 		}
@@ -35,7 +40,12 @@ namespace glz
 
 			Vec2d acceleration = mSteeringForce / mMass;
 			mVelocity += acceleration * mTimeDelta;
+
+
 			mVelocity.truncate(mMaxSpeed);
+
+
+
 			mPos += mVelocity * mTimeDelta;
 
 			if (mVelocity.lengthSq() > 0.00000001)

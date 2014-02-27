@@ -1,3 +1,8 @@
 #name zombie
 #type zombie
 #mesh zombie.glzm2
+
+#sp_mass 1.0
+#sp_maxSpeed 1.0
+#sp_maxForce 1.0
+#sp_maxTurnRate 1.0

@@ -10,6 +10,7 @@
 
 #include "System.h"
 #include "../Components/Spatial.h"
+#include "../EntityTemplate.h"
 
 namespace glz
 {
@@ -24,7 +25,7 @@ namespace glz
 		class SpatialSystem : public System
 		{
 		public:
-			void createSpatial(Int entity, Vec2d pos);
+			void createSpatial(Int entity, Vec2d pos, const EntityTemplate &entityTemplate);
 			void update(Double timeDelta);
 		};
 

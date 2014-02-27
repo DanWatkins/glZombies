@@ -35,6 +35,8 @@ namespace glz
 			AI *findNearestAi();
 			AI *findNearestAi(String type);
 
+
+
 		public:
 			friend AISystem;
 			friend AIScript;
