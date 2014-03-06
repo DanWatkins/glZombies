@@ -66,11 +66,11 @@ namespace glz
 					Vec2d pos;
 					file >> token; pos.x = toFloat(token);
 					file >> token; pos.y = toFloat(token);
-					
+
 					mIdTrack++;
 					mDetailsSystem->createDetails(mIdTrack, entity);
-					mSpatialSystem->createSpatial(mIdTrack, pos);
-					mDrawableSystem->createDrawable(mIdTrack, entity.meshFilepath);
+					mSpatialSystem->createSpatial(mIdTrack, pos, entity);
+					mDrawableSystem->createDrawable(mIdTrack, String(gDefaultPathMesh)+entity.meshFilepath);
 					mAISystem->createAI(mIdTrack);
 				}
 			}
@@ -105,15 +105,32 @@ namespace glz
 			DIR *dir;
 			struct dirent *ent;
 			std::vector<String> files;
-			if ((dir = opendir ("./Data/Entities/")) != NULL)
+			if ((dir = opendir (gDefaultPathEntity)) != NULL)
 			{
 				while ((ent = readdir (dir)) != NULL)
 				{
-					files.push_back(String("./Data/Entities/") + String(ent->d_name));
-					loadTemplateEntity(String("./Data/Entities/") + String(ent->d_name));
+					files.push_back(String(gDefaultPathEntity) + String(ent->d_name));
+					loadTemplateEntity(String(gDefaultPathEntity) + String(ent->d_name));
 				}
 				closedir (dir);
 			}
+		}
+
+
+
+
+#define parse(token, term, assign)				\
+		if (String(token) == term)					\
+		{											\
+		file >> token;							\
+		assign = token;							\
+		}
+
+#define parseDouble(token, term, assign)				\
+		if (String(token) == term)					\
+		{											\
+		file >> token;							\
+		assign = toDouble(token);							\
 		}
 
 		
@@ -128,32 +145,25 @@ namespace glz
 			}
 
 			Char token[64];
-			EntityTemplate templateEntity;
+			EntityTemplate te;
 
 			while (!file.eof())
 			{
 				file >> token;
 
 
-				//add a mesh to the entity?
-				if (String(token) == "#mesh")
-				{
-					file >> token;
-					templateEntity.meshFilepath = token;
-				}
-				else if (String(token) == "#name")
-				{
-					file >> token;
-					templateEntity.name = token;
-				}
-				else if (String(token) == "#type")
-				{
-					file >> token;
-					templateEntity.type = token;
-				}
+
+				parse(token, "#mesh", te.meshFilepath)
+				parse(token, "#name", te.name)
+				parse(token, "#type", te.type)
+
+				parseDouble(token, "#sp_mass", te.mass)
+				parseDouble(token, "#sp_maxSpeed", te.maxSpeed)
+				parseDouble(token, "#sp_maxForce", te.maxForce)
+				parseDouble(token, "#sp_maxTurnRate", te.maxTurnRate)
 			}
 
-			mTemplateEntities.push_back(templateEntity);
+			mTemplateEntities.push_back(te);
 		}
 	};
 };

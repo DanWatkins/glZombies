@@ -123,8 +123,8 @@ namespace glz
 	void glZombies::loadShaders()
 	{
 		Uint shaders[2];
-		shaders[0] = Shader::loadShader("standard.vert", GL_VERTEX_SHADER);
-		shaders[1] = Shader::loadShader("standard.frag", GL_FRAGMENT_SHADER);
+		shaders[0] = Shader::loadShader(String(gDefaultPathShaders)+"standard.vert", GL_VERTEX_SHADER);
+		shaders[1] = Shader::loadShader(String(gDefaultPathShaders)+"standard.frag", GL_FRAGMENT_SHADER);
 
 		mProgram = Shader::linkFromShaders(shaders, 2);
 	}

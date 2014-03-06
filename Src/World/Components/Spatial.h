@@ -9,6 +9,7 @@
 #define _glz_SPATIAL_H
 
 #include "Component.h"
+#include "../EntityTemplate.h"
 
 namespace glz
 {
@@ -39,7 +40,7 @@ namespace glz
 
 		 public:
 			 friend SpatialSystem;
-			 Spatial(Vec2d pos=Vec2d(0.0,0.0));
+			 Spatial(Vec2d pos, const EntityTemplate &et);
 			 Spatial(Vec2d pos, Vec2d heading, Double mass, Double maxSpeed, Double maxForce, Double maxTurnRate); 
 			 
 			 Bool rotateToHeading(Vec2d pos);
@@ -51,6 +52,8 @@ namespace glz
 			 Vec2d getVelocity() { return mVelocity; }
 			 Vec2d getHeading() { return mHeading; }
 			 Vec2d getSide() { return mSide; }
+
+			 void setSteeringForce(Vec2d steeringForce) { mSteeringForce = steeringForce; }
 			 void addSteeringForce(Vec2d steeringForce) { mSteeringForce += steeringForce; }
 			 Vec2d getSteeringForce() { return mSteeringForce; }
 

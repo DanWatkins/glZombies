@@ -21,7 +21,7 @@ namespace glz
 
 		void AI::init()
 		{
-			mScript.load(String("./Data/AI/") + mDetails->getType() + ".ai");
+			mScript.load(String(gDefaultPathAi) + mDetails->getType() + ".ai");
 			mScript.bindToLua();
 		}
 
@@ -29,20 +29,20 @@ namespace glz
 		void AI::update(Double timeDelta)
 		{
 			mScript.script_update(&mSteeringBehaviors);
-			mSpatial->addSteeringForce(mSteeringBehaviors.computeSteeringForce());
+			mSpatial->setSteeringForce(mSteeringBehaviors.computeSteeringForce());
 			mSteeringBehaviors.clear();
 		}
 
 
 		AI *AI::findNearestAi()
 		{
-			return ((AISystem*)getSystem())->findNearestAi(this->mSpatial->getPos());
+			return ((AISystem*)getSystem())->findNearestAi(mSpatial->getPos());
 		}
 
 
 		AI *AI::findNearestAi(String type)
 		{
-			return ((AISystem*)getSystem())->findNearestAi(this->mSpatial->getPos(), type);
+			return ((AISystem*)getSystem())->findNearestAi(mSpatial->getPos(), type);
 		}
 	};
 };

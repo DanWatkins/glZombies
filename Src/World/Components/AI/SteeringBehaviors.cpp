@@ -41,8 +41,9 @@ namespace glz
 
 		void SteeringBehaviors::seek(Vec2d pos)
 		{
-			Vec2d targetVelocity = Vec2d(pos-mSpatial->getPos()) * mSpatial->getMaxSpeed();
+			Vec2d targetVelocity = Vec2d(pos-mSpatial->getPos());
 			targetVelocity.normalize();
+			targetVelocity * mSpatial->getMaxSpeed();
 			targetVelocity -= mSpatial->getVelocity();
 
 			mSteeringBehaviorList.push_back({ Behavior::Seek, targetVelocity });
@@ -51,8 +52,9 @@ namespace glz
 
 		void SteeringBehaviors::flee(Vec2d pos)
 		{
-			Vec2d targetVelocity = Vec2d(mSpatial->getPos()-pos) * mSpatial->getMaxSpeed();
+			Vec2d targetVelocity = Vec2d(mSpatial->getPos()-pos);
 			targetVelocity.normalize();
+			targetVelocity *= mSpatial->getMaxSpeed();
 			targetVelocity -= mSpatial->getVelocity();
 
 			mSteeringBehaviorList.push_back({ Behavior::Flee, targetVelocity });

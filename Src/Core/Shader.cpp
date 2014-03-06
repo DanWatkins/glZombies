@@ -11,7 +11,7 @@ namespace glz
 {
 	namespace Shader
 	{
-		GLuint loadShader(const char *filename, GLenum shaderType)
+		GLuint loadShader(String filename, GLenum shaderType)
 		{
 			Uint result = 0;
 			FILE *file;
@@ -19,7 +19,7 @@ namespace glz
 			size_t filesize;
 
 
-			file = fopen(filename, "rb");
+			file = fopen(filename.c_str(), "rb");
 
 			if (!file)
 				return 0;
