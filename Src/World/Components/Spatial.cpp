@@ -41,6 +41,11 @@ namespace glz
 			Vec2d acceleration = mSteeringForce / mMass;
 			mVelocity += acceleration * mTimeDelta;
 
+			if (mMaxSpeed >= 3.0)
+			{
+				std::cout << "Force=[" << mSteeringForce.x << "," << mSteeringForce.y << "]\t\t\tAcceleration=[" << acceleration.x*mTimeDelta << "," << acceleration.y*mTimeDelta << "]\t\t\tVeclocity=[" << mVelocity.x << "," << mVelocity.y << "]" << std::endl;
+			}
+
 
 			mVelocity.truncate(mMaxSpeed);
 
@@ -59,6 +64,7 @@ namespace glz
 
 		void Spatial::setHeading(Vec2d heading)
 		{
+			//TODO  maybe have this auto-normalize?
 			mHeading = heading;
 			mSide = mHeading.perp();
 		}

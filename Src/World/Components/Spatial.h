@@ -52,6 +52,8 @@ namespace glz
 			 Vec2d getVelocity() { return mVelocity; }
 			 Vec2d getHeading() { return mHeading; }
 			 Vec2d getSide() { return mSide; }
+
+			 void setSteeringForce(Vec2d steeringForce) { mSteeringForce = steeringForce; }
 			 void addSteeringForce(Vec2d steeringForce) { mSteeringForce += steeringForce; }
 			 Vec2d getSteeringForce() { return mSteeringForce; }
 
