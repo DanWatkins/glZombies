@@ -10,8 +10,8 @@
 
 #include "Main.h"
 
-const Int			gDefaultWindowWidth				= 800;
-const Int			gDefaultWindowHeight			= 600;
+const Int			gDefaultWindowWidth				= 1600;
+const Int			gDefaultWindowHeight			= 900;
 
 #define				gDefaultWindowTitle				"glZombies"
 

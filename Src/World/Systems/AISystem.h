@@ -16,11 +16,16 @@ namespace glz
 {
 	namespace world
 	{
-		typedef std::list<AI*> AIList;
+		
+		
 
 		class AISystem : public System, DetailsSystemUser, SpatialSystemUser
 		{
 		private:
+			typedef std::list<AI*> Bucket;
+			std::list<Bucket> mUpdateBuckets;
+
+			void generateBuckets();
 
 
 		public:

@@ -21,6 +21,7 @@ namespace glz
 
 		void AI::init()
 		{
+			mTimesUpdated = 0;
 			mScript.load(String(gDefaultPathAi) + mDetails->getType() + ".ai");
 			mScript.bindToLua();
 		}
@@ -31,6 +32,7 @@ namespace glz
 			mScript.script_update(&mSteeringBehaviors);
 			mSpatial->setSteeringForce(mSteeringBehaviors.computeSteeringForce());
 			mSteeringBehaviors.clear();
+			++mTimesUpdated;
 		}
 
 
