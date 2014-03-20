@@ -14,6 +14,9 @@ namespace glz
 {
 	namespace world
 	{
+		class AI;
+
+
 		/**
 		 * Combines various steering behaviors to provide a net steering force.
 		 * Calls to various behaviors such as Seek() cause a SteeringBehavior
@@ -28,7 +31,8 @@ namespace glz
 			{
 				Seek			= 001,
 				Flee			= 002,
-				Arrive			= 003
+				Arrive			= 003,
+				Pursuit			= 004
 			};
 
 			struct Request
@@ -56,6 +60,7 @@ namespace glz
 			void seek(Vec2d pos);
 			void flee(Vec2d pos);
 			void arrive(Vec2d pos);
+			void pursuit(AI *target);
 		};
 	};
 };

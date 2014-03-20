@@ -67,12 +67,12 @@ namespace glz
 		}
 
 
-		Int AIScriptRelay::cpp_nearestEntity(lua_State *lua)
+		Int AIScriptRelay::cpp_nearestEntityPos(lua_State *lua)
 		{
 			String arg = cppArgLua_s(lua);
 
 			if (arg != "")
-				return cpp_nearestEntity(lua, arg);
+				return cpp_nearestEntityPos(lua, arg);
 
 			AI *nearest = mCurrentScript->mAI->findNearestAi();
 
@@ -85,12 +85,11 @@ namespace glz
 				return 2;
 			}
 
-
 			return 0;
 		}
 
 
-		Int AIScriptRelay::cpp_nearestEntity(lua_State *lua, String type)
+		Int AIScriptRelay::cpp_nearestEntityPos(lua_State *lua, String type)
 		{
 			AI *nearest = mCurrentScript->mAI->findNearestAi(type);
 
@@ -103,6 +102,41 @@ namespace glz
 				return 2;
 			}
 
+			return 0;
+		}
+
+
+
+		Int AIScriptRelay::cpp_nearestEntityId(lua_State *lua)
+		{
+			String arg = cppArgLua_s(lua);
+
+			if (arg != "")
+				return cpp_nearestEntityId(lua, arg);
+
+			AI *nearest = mCurrentScript->mAI->findNearestAi();
+
+			if (nearest)
+			{
+				lua_pushnumber(lua, nearest->getHost());
+
+				return 1;
+			}
+
+			return 0;
+		}
+
+
+		Int AIScriptRelay::cpp_nearestEntityId(lua_State *lua, String type)
+		{
+			AI *nearest = mCurrentScript->mAI->findNearestAi(type);
+
+			if (nearest)
+			{
+				lua_pushnumber(lua, nearest->getHost());
+
+				return 1;
+			}
 
 			return 0;
 		}

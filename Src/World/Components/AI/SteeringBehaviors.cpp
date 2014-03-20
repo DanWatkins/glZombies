@@ -6,6 +6,7 @@
 //=======================================================================================================================|
 
 #include "SteeringBehaviors.h"
+#include "AI.h"
 
 namespace glz
 {
@@ -80,6 +81,12 @@ namespace glz
 
 				mSteeringBehaviorList.push_back({Behavior::Arrive, desiredVelocity});
 			}
+		}
+
+
+		void SteeringBehaviors::pursuit(AI *target)
+		{
+			printf("Pursuiting ...\n");
 		}
 	};
 };

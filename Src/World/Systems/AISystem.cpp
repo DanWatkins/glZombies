@@ -29,7 +29,7 @@ namespace glz
 
 		void AISystem::generateBuckets()
 		{
-			const Int updatesPerSecond = 60;
+			const Int updatesPerSecond = 10;
 			const Int targetFPS = 60;
 			Int aiCount = mComponents.size();
 			Double bucketSize = (Double)aiCount / targetFPS * updatesPerSecond;

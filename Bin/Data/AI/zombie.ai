@@ -1,4 +1,8 @@
 function update()
-	x, y = ai_nearestEntity("human");
+	x, y = ai_nearestEntityPos("human");
 	ai_arrive(x, y);
+	
+	
+	id = ai_nearestEntityId("human");
+	print(id);
 end
