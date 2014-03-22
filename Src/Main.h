@@ -85,7 +85,6 @@ struct Color { Float r, g, b, a; };
 
 typedef std::string			String;
 
-
 #ifdef WIN32
 	#include <memory>
 #endif

@@ -14,7 +14,7 @@ namespace glz
 		mProgram = -1;
 		mWidth = gDefaultWindowWidth;
 		mHeight = gDefaultWindowHeight;
-		mTitle = gDefaultWindowTitle;
+		mTitle = gWindowTitle;
 		mWindow = NULL;
 		mAspectScale = Vec2f(1.0f, 1.0f);
 		mZoom = Vec2f(1.0f, 1.0f);

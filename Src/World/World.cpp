@@ -105,7 +105,7 @@ namespace glz
 			DIR *dir;
 			struct dirent *ent;
 			std::vector<String> files;
-			if ((dir = opendir (gDefaultPathEntity)) != NULL)
+			if ((dir = opendir (gDefaultPathEntity.c_str())) != NULL)
 			{
 				while ((ent = readdir (dir)) != NULL)
 				{
