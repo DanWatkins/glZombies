@@ -20,17 +20,17 @@ namespace glz
 
 		Vec2d SteeringBehaviors::computeSteeringForce()
 		{
-			mSteeringForce.clear();
+			Vec2d steeringForce;
 
 			BehaviorList::iterator iter = mSteeringBehaviorList.begin();
 			while (iter != mSteeringBehaviorList.end())
 			{
-				mSteeringForce += (*iter).force;
+				steeringForce += (*iter).force;
 
 				++iter;
 			}
 
-			return mSteeringForce;
+			return steeringForce;
 		}
 
 
@@ -38,6 +38,7 @@ namespace glz
 		{
 			mSteeringBehaviorList.clear();
 		}
+
 
 
 		void SteeringBehaviors::seek(Vec2d pos)

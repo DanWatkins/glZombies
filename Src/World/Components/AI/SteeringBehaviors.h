@@ -35,6 +35,10 @@ namespace glz
 				Pursuit			= 004
 			};
 
+
+			/**
+			* A request for a steering behavior
+			*/
 			struct Request
 			{
 				Behavior behavior;
@@ -46,20 +50,42 @@ namespace glz
 		private:
 			Spatial *mSpatial;
 			BehaviorList mSteeringBehaviorList;
-			Vec2d mSteeringForce;
+
 
 		public:
 			SteeringBehaviors(Spatial *spatial);
 
+			/**
+			* Creates a net steering force from all of the current behavior requests.
+			*/
 			Vec2d computeSteeringForce();
+
+			/**
+			* Clears out the behavior requests.
+			*/
 			void clear();
 
 			/**
-			 * Generates a steering behavior request that 
+			 * Creates a steering force that steers the agent directly toward the target position.
 			 */
 			void seek(Vec2d pos);
+
+			/**
+			* Creates a steering force that steers the agent directly away from the target position.
+			*/
 			void flee(Vec2d pos);
+
+			/**
+			* Creates a steering force that steers the agent directly toward the target position.
+			* When close enough to the target position, this will generate a force to slow to a gentle
+			* stop on the target position.
+			*/
 			void arrive(Vec2d pos);
+
+			/**
+			* Seeks to a leading position to the target. If the agent is ahead of the target, then it
+			* just seeks to the target.
+			*/
 			void pursuit(AI *target);
 		};
 	};

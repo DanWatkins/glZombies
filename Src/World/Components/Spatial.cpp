@@ -40,17 +40,7 @@ namespace glz
 
 			Vec2d acceleration = mSteeringForce / mMass;
 			mVelocity += acceleration * mTimeDelta;
-
-			if (mMaxSpeed >= 3.0)
-			{
-				std::cout << "Force=[" << mSteeringForce.x << "," << mSteeringForce.y << "]\t\t\tAcceleration=[" << acceleration.x*mTimeDelta << "," << acceleration.y*mTimeDelta << "]\t\t\tVeclocity=[" << mVelocity.x << "," << mVelocity.y << "]" << std::endl;
-			}
-
-
 			mVelocity.truncate(mMaxSpeed);
-
-
-
 			mPos += mVelocity * mTimeDelta;
 
 			if (mVelocity.lengthSq() > 0.00000001)
