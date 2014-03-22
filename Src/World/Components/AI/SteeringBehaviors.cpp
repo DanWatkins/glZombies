@@ -86,7 +86,7 @@ namespace glz
 
 		void SteeringBehaviors::pursuit(AI *target)
 		{
-			printf("Pursuiting ...\n");
+			
 		}
 	};
 };

@@ -13,6 +13,22 @@ namespace glz
 {
 	namespace world
 	{
+		Double cppArgLua_1d(lua_State *lua)
+		{
+			Int n = lua_gettop(lua);
+
+			if (n != 1)
+			{
+				return 0.0;
+			}
+
+			if (!lua_isnumber(lua, 1))
+				return 0.0;
+
+			return lua_tonumber(lua, 1);
+		}
+
+
 		Vec2d cppArgLua_2d(lua_State *lua)
 		{
 			Int n = lua_gettop(lua);
@@ -63,6 +79,17 @@ namespace glz
 		Int AIScriptRelay::cpp_arrive(lua_State *lua)
 		{
 			mCurrentScript->mSteeringBehaviors->arrive(cppArgLua_2d(lua)); 
+			return 0;
+		}
+
+
+		Int AIScriptRelay::cpp_pursuit(lua_State *lua)
+		{
+			AI *ai = mCurrentScript->getRecentAiReference((Int)cppArgLua_1d(lua));
+
+			if (ai)
+				mCurrentScript->mSteeringBehaviors->pursuit(ai);
+
 			return 0;
 		}
 
@@ -118,6 +145,7 @@ namespace glz
 
 			if (nearest)
 			{
+				mCurrentScript->addRecentAiReference(nearest);
 				lua_pushnumber(lua, nearest->getHost());
 
 				return 1;
@@ -133,6 +161,7 @@ namespace glz
 
 			if (nearest)
 			{
+				mCurrentScript->addRecentAiReference(nearest);
 				lua_pushnumber(lua, nearest->getHost());
 
 				return 1;

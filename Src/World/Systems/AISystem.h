@@ -16,9 +16,6 @@ namespace glz
 {
 	namespace world
 	{
-		
-		
-
 		class AISystem : public System, DetailsSystemUser, SpatialSystemUser
 		{
 		private:

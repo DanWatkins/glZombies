@@ -6,6 +6,7 @@
 //=======================================================================================================================|
 
 #include "AIScript.h"
+#include "AI.h"
 
 namespace glz
 {
@@ -40,7 +41,38 @@ namespace glz
 				mSteeringBehaviors = behaviors; //TODO this should just be set in the constructor
 				AIScriptRelay::instance().script_update();
 				AIScriptRelay::instance().unlock(this);
+
+				//references are only needed during the update
+				mRecentAiReferences.clear();
 			}
+		}
+
+
+		void AIScript::addRecentAiReference(AI *aiReference)
+		{
+			if (aiReference)
+			{
+				//TODO should we check for duplicates?
+				mRecentAiReferences.push_back(aiReference);
+			}
+		}
+
+
+		AI *AIScript::getRecentAiReference(Int id)
+		{
+			std::list<AI*>::iterator iter = mRecentAiReferences.begin();
+
+			while (iter != mRecentAiReferences.end())
+			{
+				AI *ai = *iter;
+
+				if (ai->getHost() == id)
+					return ai;
+
+				++iter;
+			}
+
+			return NULL;
 		}
 	};
 };
