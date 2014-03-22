@@ -1,4 +1,0 @@
-function update()
-	x, y = ai_nearestEntity("dude");	
-	ai_pursuit(x, y);
-end

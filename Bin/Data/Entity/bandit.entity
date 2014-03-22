@@ -1,8 +1,0 @@
-#name bandit
-#type bandit
-#mesh bandit.glzm2
-
-#sp_mass 1.0
-#sp_maxSpeed 1.2
-#sp_maxForce 0.9
-#sp_maxTurnRate 0.8

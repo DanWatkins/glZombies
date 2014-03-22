@@ -5,5 +5,4 @@ function update()
 	
 	id = ai_nearestEntityId("human");
 	ai_pursuit(id);
-	print(id);
 end

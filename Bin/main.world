@@ -25,6 +25,6 @@
 
 
 
-#entity dude 1 .5
+#entity human 4 4
 
-#entity dude 1 -.5
+#entity human 1 -.5

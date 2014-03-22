@@ -123,7 +123,7 @@ namespace glz
 		{
 			#undef max
 			Double closest = std::numeric_limits<Double>::max();
-			AI *closestAi;
+			AI *closestAi = NULL;
 			Bool foundClosest = false;
 
 			ComponentList::iterator aiSearchCmp = mComponents.begin();

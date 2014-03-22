@@ -86,7 +86,17 @@ namespace glz
 
 		void SteeringBehaviors::pursuit(AI *target)
 		{
+			Spatial *spatial = target->mSpatial;
+			Vec2d toTarget = spatial->getPos();
+			toTarget.normalize();
+			Double relativeHeading = mSpatial->getHeading().dot(spatial->getHeading());
+
+			if (toTarget.dot(mSpatial->getHeading()) > 0.0  &&  relativeHeading < -0.95)
+				return seek(spatial->getPos());
+
+			Double lookAheadTime = toTarget.length() / (mSpatial->getMaxSpeed() + spatial->getVelocity().length());
 			
+			return seek(spatial->getPos() + spatial->getVelocity()* lookAheadTime);
 		}
 	};
 };

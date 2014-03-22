@@ -41,6 +41,7 @@ namespace glz
 			friend AISystem;
 			friend AIScript;
 			friend AIScriptRelay;
+			friend SteeringBehaviors;
 
 			AI(Details *details, Spatial *spatial);
 		};
