@@ -6,6 +6,7 @@
 //=======================================================================================================================|
 
 #include "SteeringBehaviors.h"
+#include "AI.h"
 
 namespace glz
 {
@@ -19,17 +20,17 @@ namespace glz
 
 		Vec2d SteeringBehaviors::computeSteeringForce()
 		{
-			mSteeringForce.clear();
+			Vec2d steeringForce;
 
 			BehaviorList::iterator iter = mSteeringBehaviorList.begin();
 			while (iter != mSteeringBehaviorList.end())
 			{
-				mSteeringForce += (*iter).force;
+				steeringForce += (*iter).force;
 
 				++iter;
 			}
 
-			return mSteeringForce;
+			return steeringForce;
 		}
 
 
@@ -39,10 +40,12 @@ namespace glz
 		}
 
 
+
 		void SteeringBehaviors::seek(Vec2d pos)
 		{
-			Vec2d targetVelocity = Vec2d(pos-mSpatial->getPos()) * mSpatial->getMaxSpeed();
+			Vec2d targetVelocity = Vec2d(pos-mSpatial->getPos());
 			targetVelocity.normalize();
+			targetVelocity * mSpatial->getMaxSpeed();
 			targetVelocity -= mSpatial->getVelocity();
 
 			mSteeringBehaviorList.push_back({ Behavior::Seek, targetVelocity });
@@ -51,8 +54,9 @@ namespace glz
 
 		void SteeringBehaviors::flee(Vec2d pos)
 		{
-			Vec2d targetVelocity = Vec2d(mSpatial->getPos()-pos) * mSpatial->getMaxSpeed();
+			Vec2d targetVelocity = Vec2d(mSpatial->getPos()-pos);
 			targetVelocity.normalize();
+			targetVelocity *= mSpatial->getMaxSpeed();
 			targetVelocity -= mSpatial->getVelocity();
 
 			mSteeringBehaviorList.push_back({ Behavior::Flee, targetVelocity });
@@ -78,6 +82,22 @@ namespace glz
 
 				mSteeringBehaviorList.push_back({Behavior::Arrive, desiredVelocity});
 			}
+		}
+
+
+		void SteeringBehaviors::pursuit(AI *target)
+		{
+			Spatial *spatial = target->mSpatial;
+			Vec2d toTarget = spatial->getPos();
+			toTarget.normalize();
+			Double relativeHeading = mSpatial->getHeading().dot(spatial->getHeading());
+
+			if (toTarget.dot(mSpatial->getHeading()) > 0.0  &&  relativeHeading < -0.95)
+				return seek(spatial->getPos());
+
+			Double lookAheadTime = toTarget.length() / (mSpatial->getMaxSpeed() + spatial->getVelocity().length());
+			
+			return seek(spatial->getPos() + spatial->getVelocity()* lookAheadTime);
 		}
 	};
 };

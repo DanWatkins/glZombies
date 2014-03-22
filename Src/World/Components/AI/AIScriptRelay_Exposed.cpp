@@ -8,11 +8,45 @@
 #include "AIScriptRelay.h"
 #include "AIScript.h"
 #include "AI.h"
+#include "../../Systems/AISystem.h"
 
 namespace glz
 {
 	namespace world
 	{
+		AI *AIScriptRelay::nearestEntity()
+		{
+			AI *current = mCurrentScript->mAI;
+			AISystem *system = (AISystem*)current->getSystem();
+			return system->findNearestAi(current->mSpatial->getPos());
+		}
+
+
+		AI *AIScriptRelay::nearestEntity(String type)
+		{
+			AI *current = mCurrentScript->mAI;
+			AISystem *system = (AISystem*)current->getSystem();
+			return system->findNearestAi(current->mSpatial->getPos(), type);
+		}
+
+
+
+		Double cppArgLua_1d(lua_State *lua)
+		{
+			Int n = lua_gettop(lua);
+
+			if (n != 1)
+			{
+				return 0.0;
+			}
+
+			if (!lua_isnumber(lua, 1))
+				return 0.0;
+
+			return lua_tonumber(lua, 1);
+		}
+
+
 		Vec2d cppArgLua_2d(lua_State *lua)
 		{
 			Int n = lua_gettop(lua);
@@ -67,32 +101,25 @@ namespace glz
 		}
 
 
-		Int AIScriptRelay::cpp_nearestEntity(lua_State *lua)
+		Int AIScriptRelay::cpp_pursuit(lua_State *lua)
 		{
-			String arg = cppArgLua_s(lua);
+			AI *ai = mCurrentScript->getRecentAiReference((Int)cppArgLua_1d(lua));
 
-			if (arg != "")
-				return cpp_nearestEntity(lua, arg);
-
-			AI *nearest = mCurrentScript->mAI->findNearestAi();
-
-			if (nearest)
-			{
-				Vec2d pos = nearest->mSpatial->getPos();
-				lua_pushnumber(lua, pos.x);
-				lua_pushnumber(lua, pos.y);
-
-				return 2;
-			}
-
+			if (ai)
+				mCurrentScript->mSteeringBehaviors->pursuit(ai);
 
 			return 0;
 		}
 
 
-		Int AIScriptRelay::cpp_nearestEntity(lua_State *lua, String type)
+		Int AIScriptRelay::cpp_nearestEntityPos(lua_State *lua)
 		{
-			AI *nearest = mCurrentScript->mAI->findNearestAi(type);
+			String arg = cppArgLua_s(lua);
+
+			if (arg != "")
+				return cpp_nearestEntityPos(lua, arg);
+
+			AI *nearest = nearestEntity();
 
 			if (nearest)
 			{
@@ -103,6 +130,59 @@ namespace glz
 				return 2;
 			}
 
+			return 0;
+		}
+
+
+		Int AIScriptRelay::cpp_nearestEntityPos(lua_State *lua, String type)
+		{
+			AI *nearest = nearestEntity(type);
+
+			if (nearest)
+			{
+				Vec2d pos = nearest->mSpatial->getPos();
+				lua_pushnumber(lua, pos.x);
+				lua_pushnumber(lua, pos.y);
+
+				return 2;
+			}
+
+			return 0;
+		}
+
+
+		Int AIScriptRelay::cpp_nearestEntityId(lua_State *lua)
+		{
+			String arg = cppArgLua_s(lua);
+
+			if (arg != "")
+				return cpp_nearestEntityId(lua, arg);
+
+			AI *nearest = nearestEntity();
+
+			if (nearest)
+			{
+				mCurrentScript->addRecentAiReference(nearest);
+				lua_pushnumber(lua, nearest->getHost());
+
+				return 1;
+			}
+
+			return 0;
+		}
+
+
+		Int AIScriptRelay::cpp_nearestEntityId(lua_State *lua, String type)
+		{
+			AI *nearest = nearestEntity(type);
+
+			if (nearest)
+			{
+				mCurrentScript->addRecentAiReference(nearest);
+				lua_pushnumber(lua, nearest->getHost());
+
+				return 1;
+			}
 
 			return 0;
 		}

@@ -15,7 +15,7 @@ namespace glz
 	namespace world
 	{
 		class AIScript;
-
+		class AI;
 
 		/**
 		 * Manages binding of AIScript instances to Lua's C-API.
@@ -33,13 +33,20 @@ namespace glz
 
 			static String getTopString(lua_State *lua);
 
+			static AI *nearestEntity();
+			static AI *nearestEntity(String type);
+
 			//Lua to CPP
 			static Int cpp_seek(lua_State *lua);
 			static Int cpp_flee(lua_State *lua);
 			static Int cpp_arrive(lua_State *lua);
+			static Int cpp_pursuit(lua_State *lua);
 
-			static Int cpp_nearestEntity(lua_State *lua);
-			static Int cpp_nearestEntity(lua_State *lua, String type);
+			static Int cpp_nearestEntityPos(lua_State *lua);
+			static Int cpp_nearestEntityPos(lua_State *lua, String type);
+
+			static Int cpp_nearestEntityId(lua_State *lua);
+			static Int cpp_nearestEntityId(lua_State *lua, String type);
 
 		public:
 			static AIScriptRelay &instance();

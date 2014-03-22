@@ -29,6 +29,7 @@ namespace glz
 		private:
 			SteeringBehaviors *mSteeringBehaviors;
 			AI *mAI;
+			std::list<AI*> mRecentAiReferences;
 
 		public:
 			friend AIScriptRelay;
@@ -37,8 +38,10 @@ namespace glz
 			~AIScript();
 
 			void bindToLua();
-
 			void script_update(SteeringBehaviors *behaviors);
+
+			void addRecentAiReference(AI *aiReference);
+			AI *getRecentAiReference(Int id);
 		};
 	};
 };

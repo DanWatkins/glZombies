@@ -38,7 +38,7 @@ namespace glz
 		friend GLFWInput;
 
 		OpenGLWindow();
-		Int init(Int width=gDefaultWindowWidth, Int height=gDefaultWindowHeight, String title=gDefaultWindowTitle);
+		Int init(Int width=gDefaultWindowWidth, Int height=gDefaultWindowHeight, String title=gWindowTitle);
 
 		Uint getProgram() { return mProgram; }
 		Int getWidth() { return mWidth; }

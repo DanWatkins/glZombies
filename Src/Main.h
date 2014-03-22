@@ -39,7 +39,6 @@ extern "C"
 
 #define WIN32_LEAN_AND_MEAN 1
 
-//OpenGL related
 #ifdef WIN32
 	#pragma once
 	#define _CRT_SECURE_NO_WARNINGS 1
@@ -86,11 +85,8 @@ struct Color { Float r, g, b, a; };
 
 typedef std::string			String;
 
-
 #ifdef WIN32
-
-#include <memory>
-
+	#include <memory>
 #endif
 
 #include "Constants.h"

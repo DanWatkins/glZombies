@@ -32,13 +32,14 @@ namespace glz
 			void init();
 			void update(Double timeDelta);
 
-			AI *findNearestAi();
-			AI *findNearestAi(String type);
+
+			Int mTimesUpdated;
 
 		public:
 			friend AISystem;
 			friend AIScript;
 			friend AIScriptRelay;
+			friend SteeringBehaviors;
 
 			AI(Details *details, Spatial *spatial);
 		};

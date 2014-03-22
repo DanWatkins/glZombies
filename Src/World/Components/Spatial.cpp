@@ -11,9 +11,14 @@ namespace glz
 {
 	namespace world
 	{
-		Spatial::Spatial(Vec2d pos)
-		: mPos(pos), mMass(1.0), mMaxSpeed(1.0), mMaxForce(1.0), mMaxTurnRate(1.0)
+		Spatial::Spatial(Vec2d pos, const EntityTemplate &et)
+		: mPos(pos)
 		{
+			mMass					= et.mass;
+			mMaxSpeed				= et.maxSpeed;
+			mMaxForce				= et.maxForce;
+			mMaxTurnRate			= et.maxTurnRate;
+
 			mTimeDelta = 0.0;
 			setHeading(Vec2d(0.0,-1.0));
 		}
@@ -49,6 +54,7 @@ namespace glz
 
 		void Spatial::setHeading(Vec2d heading)
 		{
+			//TODO  maybe have this auto-normalize?
 			mHeading = heading;
 			mSide = mHeading.perp();
 		}

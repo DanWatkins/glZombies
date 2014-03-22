@@ -20,10 +20,26 @@ namespace glz
 		struct EntityTemplate
 		{
 			String name;
-			String type;
-			Vec2d worldPos;
-			
+			String type;			
 			String meshFilepath;
+
+
+			//spatial
+			Double mass, maxSpeed, maxForce, maxTurnRate;
+
+
+
+			EntityTemplate()
+			{
+				name				= "";
+				type				= "";
+				meshFilepath		= "";
+
+				mass				= 1.0;
+				maxSpeed			= 1.0;
+				maxForce			= 1.0;
+				maxTurnRate			= 1.0;
+			}
 		};
 	}
 };

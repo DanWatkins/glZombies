@@ -10,9 +10,18 @@
 
 #include "Main.h"
 
-const Int			gDefaultWindowWidth				= 800;
-const Int			gDefaultWindowHeight			= 600;
-const String		gDefaultWindowTitle				= "glZombies";
+const String		gVersion						= "0.10";
+
+const Int			gDefaultWindowWidth				= 1600;
+const Int			gDefaultWindowHeight			= 900;
+
+const String		gWindowTitle					= String("glZombies ") + gVersion;
+
+const String		gDefaultPathAi					= "./Data/AI/";
+const String		gDefaultPathEntity				= "./Data/Entity/";
+const String		gDefaultPathMesh				= "./Data/Mesh/";
+
+const String		gDefaultPathShaders				 = "./Shaders/";
 
 #endif
 

@@ -1,0 +1,8 @@
+#name human
+#type human
+#mesh human.glzm2
+
+#sp_mass 1.0
+#sp_maxSpeed 1.4
+#sp_maxForce 1.3
+#sp_maxTurnRate 1.0

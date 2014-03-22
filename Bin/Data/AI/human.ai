@@ -1,4 +1,4 @@
 function update()
-	x, y = ai_nearestEntity("zombie");	
+	x, y = ai_nearestEntityPos("zombie");
 	ai_flee(x, y);
 end
