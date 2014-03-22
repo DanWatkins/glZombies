@@ -103,17 +103,18 @@ namespace glz
 			while (aiSearchCmp != mComponents.end())
 			{
 				AI *aiSearch = (AI*)*aiSearchCmp;
-				Double testDistance = pos.distance(aiSearch->mSpatial->getPos());
-				if (testDistance < closest)
+				Vec2d testPos = aiSearch->mSpatial->getPos();
+				Double testDistance = pos.distance(testPos);
+
+				if (testDistance < closest  &&  pos != testPos)
 				{
 					closest = testDistance;
 					closestAi = aiSearch;
 					foundClosest = true;
 				}
+
 				++aiSearchCmp;
 			}
-
-
 
 			return closestAi;
 		}

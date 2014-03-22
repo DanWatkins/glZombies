@@ -8,11 +8,29 @@
 #include "AIScriptRelay.h"
 #include "AIScript.h"
 #include "AI.h"
+#include "../../Systems/AISystem.h"
 
 namespace glz
 {
 	namespace world
 	{
+		AI *AIScriptRelay::nearestEntity()
+		{
+			AI *current = mCurrentScript->mAI;
+			AISystem *system = (AISystem*)current->getSystem();
+			return system->findNearestAi(current->mSpatial->getPos());
+		}
+
+
+		AI *AIScriptRelay::nearestEntity(String type)
+		{
+			AI *current = mCurrentScript->mAI;
+			AISystem *system = (AISystem*)current->getSystem();
+			return system->findNearestAi(current->mSpatial->getPos(), type);
+		}
+
+
+
 		Double cppArgLua_1d(lua_State *lua)
 		{
 			Int n = lua_gettop(lua);
@@ -101,7 +119,7 @@ namespace glz
 			if (arg != "")
 				return cpp_nearestEntityPos(lua, arg);
 
-			AI *nearest = mCurrentScript->mAI->findNearestAi();
+			AI *nearest = nearestEntity();
 
 			if (nearest)
 			{
@@ -118,7 +136,7 @@ namespace glz
 
 		Int AIScriptRelay::cpp_nearestEntityPos(lua_State *lua, String type)
 		{
-			AI *nearest = mCurrentScript->mAI->findNearestAi(type);
+			AI *nearest = nearestEntity(type);
 
 			if (nearest)
 			{
@@ -133,7 +151,6 @@ namespace glz
 		}
 
 
-
 		Int AIScriptRelay::cpp_nearestEntityId(lua_State *lua)
 		{
 			String arg = cppArgLua_s(lua);
@@ -141,7 +158,7 @@ namespace glz
 			if (arg != "")
 				return cpp_nearestEntityId(lua, arg);
 
-			AI *nearest = mCurrentScript->mAI->findNearestAi();
+			AI *nearest = nearestEntity();
 
 			if (nearest)
 			{
@@ -157,7 +174,7 @@ namespace glz
 
 		Int AIScriptRelay::cpp_nearestEntityId(lua_State *lua, String type)
 		{
-			AI *nearest = mCurrentScript->mAI->findNearestAi(type);
+			AI *nearest = nearestEntity(type);
 
 			if (nearest)
 			{

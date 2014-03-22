@@ -34,17 +34,5 @@ namespace glz
 			mSteeringBehaviors.clear();
 			++mTimesUpdated;
 		}
-
-
-		AI *AI::findNearestAi()
-		{
-			return ((AISystem*)getSystem())->findNearestAi(mSpatial->getPos());
-		}
-
-
-		AI *AI::findNearestAi(String type)
-		{
-			return ((AISystem*)getSystem())->findNearestAi(mSpatial->getPos(), type);
-		}
 	};
 };

@@ -32,8 +32,6 @@ namespace glz
 			void init();
 			void update(Double timeDelta);
 
-			AI *findNearestAi();
-			AI *findNearestAi(String type);
 
 			Int mTimesUpdated;
 
