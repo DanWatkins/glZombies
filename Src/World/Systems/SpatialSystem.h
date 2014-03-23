@@ -26,7 +26,7 @@ namespace glz
 		{
 		public:
 			void createSpatial(Int entity, Vec2d pos, const EntityTemplate &entityTemplate);
-			void update(Double timeDelta);
+			void update();
 		};
 
 

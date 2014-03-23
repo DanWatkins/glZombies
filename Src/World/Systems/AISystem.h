@@ -30,10 +30,12 @@ namespace glz
 					 SpatialSystem *spatialSystem);
 
 			void createAI(Int entity);
-			void update(Double timeDelta);
+			void update();
 
 			AI *findNearestAi(Vec2d pos);
 			AI *findNearestAi(Vec2d pos, String type);
+
+			Vec2d findLeastDenseSector(AI *target, Int sectors, std::vector<String> typeMasks, Bool subdivideOnCollision);
 		};
 
 

@@ -29,7 +29,7 @@ namespace glz
 
 		void AISystem::generateBuckets()
 		{
-			const Int updatesPerSecond = 10;
+			const Int updatesPerSecond = 6;
 			const Int targetFPS = 60;
 			Int aiCount = mComponents.size();
 			Double bucketSize = (Double)aiCount / targetFPS * updatesPerSecond;
@@ -60,7 +60,7 @@ namespace glz
 		}
 
 
-		void AISystem::update(Double timeDelta)
+		void AISystem::update()
 		{
 			if (mUpdateBuckets.empty())
 				generateBuckets();
@@ -72,7 +72,7 @@ namespace glz
 
 				while (iter != currentBucket.end())
 				{
-					(*iter)->update(timeDelta);
+					(*iter)->update();
 					//TODO instead of a time delta, just use a current time to calculate the time delta since the time delta wont be accurate
 
 					++iter;
@@ -80,15 +80,6 @@ namespace glz
 
 				mUpdateBuckets.pop_front();
 			}
-
-			/*ComponentList::iterator aiCmp = mComponents.begin();
-			while (aiCmp != mComponents.end())
-			{
-				AI *ai = (AI*)*aiCmp;
-				ai->update(timeDelta);
-
-				++aiCmp;
-			}*/
 		}
 
 

@@ -27,7 +27,7 @@ namespace glz
 		}
 
 
-		void AI::update(Double timeDelta)
+		void AI::update()
 		{
 			mScript.script_update(&mSteeringBehaviors);
 			mSpatial->setSteeringForce(mSteeringBehaviors.computeSteeringForce());

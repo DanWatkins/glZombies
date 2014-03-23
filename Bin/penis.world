@@ -1,0 +1,30 @@
+#entity zombie 9 3
+#entity zombie -14 4
+#entity zombie 1 12
+#entity zombie 6 14
+#entity zombie 2 0
+#entity zombie 9 1
+#entity zombie 1 11
+#entity zombie -9 11
+#entity zombie 3 6
+#entity zombie -11 12
+#entity zombie 7 12
+#entity zombie 14 9
+#entity zombie 4 14
+#entity zombie 13 12
+#entity zombie -6 7
+#entity zombie 7 14
+#entity zombie 3 2
+#entity zombie 13 8
+#entity zombie -3 11
+#entity zombie 11 6
+#entity zombie 15 3
+#entity zombie -10 13
+#entity zombie 9 8
+#entity zombie 5 15
+
+
+
+#entity human 4 4
+
+#entity human 1 -.5

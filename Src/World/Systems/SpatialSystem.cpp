@@ -18,11 +18,11 @@ namespace glz
 		}
 
 
-		void SpatialSystem::update(Double timeDelta)
+		void SpatialSystem::update()
 		{
 			std::for_each(mComponents.begin(), mComponents.end(), [&](Component* cmp)
 			{
-				((Spatial*)cmp)->update(timeDelta);
+				((Spatial*)cmp)->update();
 			});
 		}
 	};

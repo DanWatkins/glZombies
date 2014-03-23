@@ -30,7 +30,7 @@ namespace glz
 			AIScript mScript;
 
 			void init();
-			void update(Double timeDelta);
+			void update();
 
 
 			Int mTimesUpdated;
