@@ -6,6 +6,10 @@
 //=======================================================================================================================|
 
 #include "AISystem.h"
+#include "../Components/AI/AI.h"
+
+//TODO consider grouping System and Component pairs in the same folder instead of
+//grouping all Systems into one folder and all Components in another
 
 namespace glz
 {
@@ -75,6 +79,14 @@ namespace glz
 					(*iter)->update();
 					//TODO instead of a time delta, just use a current time to calculate the time delta since the time delta wont be accurate
 
+					if ((*iter)->mDetails->getType() == "human")
+					{
+						std::vector<String> types;
+						types.push_back("zombie");
+
+						Vec2d d = this->findLeastDenseSector(*iter, 4, types, true);
+					}
+
 					++iter;
 				}
 
@@ -140,5 +152,53 @@ namespace glz
 		}
 
 
+		Vec2d AISystem::findLeastDenseSector(AI *target, Int sectors, std::vector<String> typeMasks, Bool subdivideOnCollision)
+		{
+			typedef std::list<AI*> Sector;
+			typedef std::vector<Sector> SectorList;
+			SectorList sectorList;
+			Double sectorSize = TWO_PI/sectors;
+			Vec2d targetPos = target->mSpatial->getPos();
+
+
+			//populate the sectorList
+			for (Int n=0; n<sectors; n++)
+				sectorList.push_back(Sector());
+
+
+			//go through each AI and see which sector it belongs in (if it matches a type in @typeMasks)
+			ComponentList::iterator iter = mComponents.begin();
+			while (iter != mComponents.end())
+			{
+				AI *ai = (AI*)*iter;
+				String type = ai->mDetails->getType();
+
+				//only consider this AI if has a type to consider
+				if (std::find(typeMasks.begin(), typeMasks.end(), type) != typeMasks.end())
+				{
+					Vec2d aiPos = ai->mSpatial->getPos();
+
+
+					// 1) Get local space position
+					Vec2d localPos = aiPos - targetPos;
+
+					// 2) Normalize local space position
+					localPos.normalize();
+
+					// 3) Calculate angle relative to (1,0)
+					Double angle = localPos.angle(Vec2d(1.0,0.0));
+
+					// 4) Get sector index
+					Int sectorIndex = (Int)(angle/sectorSize);
+
+					// 5) Add to appropriate sector
+					sectorList[sectorIndex].push_back(ai);
+				}
+
+				++iter;
+			}
+
+			return Vec2d(0.0, 0.0);
+		}
 	};
 };

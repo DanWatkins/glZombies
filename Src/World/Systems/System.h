@@ -25,6 +25,10 @@ namespace glz
 		 * specialized type of Component in the form of this:
 		 *   void createSpecificComponentName(Type attribute);
 		 */
+
+		//TODO there is no reason to have this base class. It's just annoying.
+		//At least remove the component list from here an let derived systems implement that
+
 		class System
 		{
 		protected:

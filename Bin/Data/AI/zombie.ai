@@ -3,6 +3,6 @@ function update()
 	--ai_arrive(x, y);
 	
 	
-	id = ai_nearestEntityId("human");
-	ai_pursuit(id);
+	--id = ai_nearestEntityId("human");
+	--ai_pursuit(id);
 end
