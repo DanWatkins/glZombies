@@ -186,7 +186,10 @@ namespace glz
 					localPos.normalize();
 
 					// 3) Calculate angle relative to (1,0)
-					Double angle = localPos.angle(Vec2d(1.0,0.0));
+					Double angle = acos(localPos.dot(Vec2d(1.0,0.0)));
+
+					if (localPos.y < 0)
+						angle = TWO_PI-angle;
 
 					// 4) Get sector index
 					Int sectorIndex = (Int)(angle/sectorSize);
