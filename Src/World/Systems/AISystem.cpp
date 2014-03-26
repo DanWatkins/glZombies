@@ -152,10 +152,24 @@ namespace glz
 		}
 
 
+		Double AISystem::lds_calculateSectorDesnity(Sector &sector, AI *target)
+		{
+			Sector::iterator iter = sector.begin();
+			Double density = 0.0;
+			Vec2d targetPos = target->mSpatial->getPos();
+
+			while (iter != sector.end())
+			{
+				density += (1 / (targetPos.distanceSq((*iter)->mSpatial->getPos())));
+				++iter;
+			}
+			 
+			return density;
+		}
+
+
 		Vec2d AISystem::findLeastDenseSector(AI *target, Int sectors, std::vector<String> typeMasks, Bool subdivideOnCollision)
 		{
-			typedef std::list<AI*> Sector;
-			typedef std::vector<Sector> SectorList;
 			SectorList sectorList;
 			Double sectorSize = TWO_PI/sectors;
 			Vec2d targetPos = target->mSpatial->getPos();
@@ -173,35 +187,51 @@ namespace glz
 				AI *ai = (AI*)*iter;
 				String type = ai->mDetails->getType();
 
-				//only consider this AI if has a type to consider
+				//only consider this AI if it has a type to consider
 				if (std::find(typeMasks.begin(), typeMasks.end(), type) != typeMasks.end())
 				{
 					Vec2d aiPos = ai->mSpatial->getPos();
-
-
-					// 1) Get local space position
 					Vec2d localPos = aiPos - targetPos;
-
-					// 2) Normalize local space position
 					localPos.normalize();
-
-					// 3) Calculate angle relative to (1,0)
 					Double angle = acos(localPos.dot(Vec2d(1.0,0.0)));
 
 					if (localPos.y < 0)
 						angle = TWO_PI-angle;
 
-					// 4) Get sector index
-					Int sectorIndex = (Int)(angle/sectorSize);
-
-					// 5) Add to appropriate sector
-					sectorList[sectorIndex].push_back(ai);
+					sectorList[(Int)(angle / sectorSize)].push_back(ai);
 				}
 
 				++iter;
 			}
 
-			return Vec2d(0.0, 0.0);
+
+			//find the least dense sector
+			Int leastDenseSectorIndex = 0;
+			Double minimumDensity = std::numeric_limits<Double>::max();
+
+			for (Int n=0; n<sectors; n++)
+			{
+				Double density = lds_calculateSectorDesnity(sectorList.at(n), target);
+
+				if (density < minimumDensity)
+				{
+					minimumDensity = density;
+					leastDenseSectorIndex = n;
+				}
+			}
+
+
+			//determine a seek point on the least dense sector
+			Double centerAngleMeasure = (sectorSize*leastDenseSectorIndex) + (sectorSize/2.0);
+			Vec2d seekPoint(cos(centerAngleMeasure), sin(centerAngleMeasure));
+			
+			//lengthen the seek point so it last's a while
+			seekPoint *= 4.0;
+
+			//convert to world-space
+			seekPoint += targetPos;
+
+			return seekPoint;
 		}
 	};
 };

@@ -20,10 +20,13 @@ namespace glz
 		{
 		private:
 			typedef std::list<AI*> Bucket;
+			typedef std::list<AI*> Sector;
+			typedef std::vector<Sector> SectorList;
+
 			std::list<Bucket> mUpdateBuckets;
 
 			void generateBuckets();
-
+			Double lds_calculateSectorDesnity(Sector &sector, AI *target);
 
 		public:
 			AISystem(DetailsSystem *detailsSystem,
