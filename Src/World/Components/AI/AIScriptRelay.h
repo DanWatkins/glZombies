@@ -48,6 +48,9 @@ namespace glz
 			static Int cpp_nearestEntityId(lua_State *lua);
 			static Int cpp_nearestEntityId(lua_State *lua, String type);
 
+			static Int cpp_leastDenseSector(lua_State *lua);
+			static Int cpp_leastDenseSector(lua_State *lua, std::vector<String> typeMask, Int sectors);
+
 		public:
 			static AIScriptRelay &instance();
 

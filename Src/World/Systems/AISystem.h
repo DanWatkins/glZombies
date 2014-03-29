@@ -38,7 +38,7 @@ namespace glz
 			AI *findNearestAi(Vec2d pos);
 			AI *findNearestAi(Vec2d pos, String type);
 
-			Vec2d findLeastDenseSector(AI *target, Int sectors, std::vector<String> typeMasks, Bool subdivideOnCollision);
+			Vec2d findLeastDenseSector(AI *target, std::vector<String> typeMasks, Int sectors=8);
 		};
 
 

@@ -79,14 +79,6 @@ namespace glz
 					(*iter)->update();
 					//TODO instead of a time delta, just use a current time to calculate the time delta since the time delta wont be accurate
 
-					if ((*iter)->mDetails->getType() == "human")
-					{
-						std::vector<String> types;
-						types.push_back("zombie");
-
-						Vec2d d = this->findLeastDenseSector(*iter, 4, types, true);
-					}
-
 					++iter;
 				}
 
@@ -168,7 +160,7 @@ namespace glz
 		}
 
 
-		Vec2d AISystem::findLeastDenseSector(AI *target, Int sectors, std::vector<String> typeMasks, Bool subdivideOnCollision)
+		Vec2d AISystem::findLeastDenseSector(AI *target, std::vector<String> typeMasks, Int sectors)
 		{
 			SectorList sectorList;
 			Double sectorSize = TWO_PI/sectors;

@@ -36,9 +36,7 @@ namespace glz
 			Int n = lua_gettop(lua);
 
 			if (n != 1)
-			{
 				return 0.0;
-			}
 
 			if (!lua_isnumber(lua, 1))
 				return 0.0;
@@ -52,9 +50,7 @@ namespace glz
 			Int n = lua_gettop(lua);
 
 			if (n != 2)
-			{
 				return Vec2d();
-			}
 
 			if (!lua_isnumber(lua, 1)  ||  !lua_isnumber(lua, 2))
 				return Vec2d();
@@ -68,16 +64,13 @@ namespace glz
 			Int n = lua_gettop(lua);
 
 			if (n != 1)
-			{
 				return "";
-			}
 
 			if (!lua_isstring(lua, 1))
 				return "";
 
 			return lua_tostring(lua, 1);
 		}
-
 
 
 		Int AIScriptRelay::cpp_seek(lua_State *lua)
@@ -185,6 +178,38 @@ namespace glz
 			}
 
 			return 0;
+		}
+
+
+		Int AIScriptRelay::cpp_leastDenseSector(lua_State *lua)
+		{
+			Int n = lua_gettop(lua);
+
+			if (n != 2  ||  !lua_isstring(lua, 1)  ||  !lua_isnumber(lua, 2))
+			{
+				std::cout << "LuaCpp: Wrong arguments for leastDenseSector" << std::endl;
+				lua_pushnumber(lua, 0);
+				lua_pushnumber(lua, 0);
+
+				return 2;
+			}
+
+			std::vector<String> typeMask;
+			typeMask.push_back(lua_tostring(lua, 1));
+			Int sectors = lua_tonumber(lua, 2);
+
+
+			return cpp_leastDenseSector(lua, typeMask, sectors);
+		}
+
+
+		Int AIScriptRelay::cpp_leastDenseSector(lua_State *lua, std::vector<String> typeMask, Int sectors)
+		{
+			Vec2d pos = ((AISystem*)mCurrentScript->mAI->getSystem())->findLeastDenseSector( mCurrentScript->mAI, typeMask, sectors);
+			lua_pushnumber(lua, pos.x);
+			lua_pushnumber(lua, pos.y);
+			
+			return 2;
 		}
 	};
 };
