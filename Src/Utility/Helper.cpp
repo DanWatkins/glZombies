@@ -172,4 +172,40 @@ namespace glz
 	{
 		return fabs(a-b) < 1E-12;
 	}
+
+
+	Bool randBool()
+	{
+		return randFloat() > 0.5;
+	}
+
+
+	Int randInt()
+	{
+		return rand();
+	}
+
+
+	Int randInt(Int a, Int b)
+	{
+		return rand() % (b-a+1) + a;
+	}
+
+
+	Double randFloat()
+	{
+		return rand() / (RAND_MAX + 1.0);
+	}
+
+
+	Double randFloat(Double a, Double b)
+	{
+		return a + randFloat() * (b-a);
+	}
+
+
+	Double randClamped()
+	{
+		return randFloat() - randFloat();
+	}
 };

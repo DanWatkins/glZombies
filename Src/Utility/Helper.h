@@ -45,6 +45,13 @@ namespace glz
 
 	Bool isEqual(Float a, Float b);
 	Bool isEqual(Double a, Double b);
+
+	Bool randBool();
+	Int randInt();
+	Int randInt(Int a, Int b);
+	Double randFloat();
+	Double randFloat(Double a, Double b);
+	Double randClamped();
 };
 
 
