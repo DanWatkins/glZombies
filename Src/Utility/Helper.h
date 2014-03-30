@@ -14,7 +14,9 @@
 namespace glz
 {
 	const Double PI = 3.141592654;
-	const Double TWO_PI = PI*2;
+	const Double TWO_PI = PI * 2.0;
+	const Double PI_OVER_TWO = PI / 2.0;
+	const Double THREE_PI_OVER_TWO = 3.0 * PI / 2.0;
     const Double PI_OVER_180 = 0.0174532925;
     const Double PI_UNDER_180 = 57.29577951;
 

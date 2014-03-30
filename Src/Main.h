@@ -36,6 +36,8 @@ extern "C"
 	#include <lua\lauxlib.h>
 }
 
+#define SFML_STATIC
+#include <SFML/System.hpp>
 
 #define WIN32_LEAN_AND_MEAN 1
 
@@ -43,15 +45,19 @@ extern "C"
 	#pragma once
 	#define _CRT_SECURE_NO_WARNINGS 1
 
-	
+
+
 	#include <Windows.h>
 
 	#ifdef _DEBUG
 		#pragma comment (lib, "glfw3-d.lib")
 		#pragma comment (lib, "lua-d.lib")
+		#pragma comment (lib, "sfml-system-d.lib")
+		//#pragma comment (lib, "sfml-main-d.lib")
 	#else
 		#pragma comment (lib, "glfw3-r.lib")
 		#pragma comment (lib, "lua-r.lib")
+		#pragma comment (lib, "sfml-system-r.lib")
 	#endif
 
 	#pragma comment (lib, "OpenGL32.lib")

@@ -46,6 +46,7 @@ namespace glz
 
 			lua_register(script->mLuaState, "ai_nearestEntityPos", cpp_nearestEntityPos);
 			lua_register(script->mLuaState, "ai_nearestEntityId", cpp_nearestEntityId);
+			lua_register(script->mLuaState, "ai_leastDenseSectorPos", cpp_leastDenseSector);
 		}
 
 		

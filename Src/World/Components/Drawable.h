@@ -25,7 +25,7 @@ namespace glz
 			OpenGLWindow *mWindow;
 
 			Drawable() {}
-			void update(Double timeDelta) {}
+			void update() {}
 
 		public:
 			Drawable(String meshFilepath, OpenGLWindow *window);

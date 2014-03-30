@@ -19,7 +19,6 @@ namespace glz
 			mMaxForce				= et.maxForce;
 			mMaxTurnRate			= et.maxTurnRate;
 
-			mTimeDelta = 0.0;
 			setHeading(Vec2d(0.0,-1.0));
 		}
 
@@ -27,21 +26,19 @@ namespace glz
 		Spatial::Spatial(Vec2d pos, Vec2d heading, Double mass, Double maxSpeed, Double maxForce, Double maxTurnRate)
 			: mPos(pos), mHeading(heading), mMass(mass), mMaxSpeed(maxSpeed), mMaxForce(maxForce), mMaxTurnRate(maxTurnRate)
 		{
-			mTimeDelta = 0.0;
 			setHeading(Vec2d(0.0,-1.0));
 		}
 
 
-		void Spatial::update(Double timeDelta)
+		void Spatial::update()
 		{
-			mTimeDelta = timeDelta;
-
+			Double timeDelta = mTimeDelta.getElapsedTime().asSeconds();
 			mSteeringForce.truncate(mMaxForce);
 
 			Vec2d acceleration = mSteeringForce / mMass;
-			mVelocity += acceleration * mTimeDelta;
+			mVelocity += acceleration * timeDelta;
 			mVelocity.truncate(mMaxSpeed);
-			mPos += mVelocity * mTimeDelta;
+			mPos += mVelocity * timeDelta;
 
 			if (mVelocity.lengthSq() > 0.00000001)
 			{
@@ -49,6 +46,8 @@ namespace glz
 				velocityNorm.normalize();
 				setHeading(velocityNorm);
 			}
+
+			mTimeDelta.restart();
 		}
 
 

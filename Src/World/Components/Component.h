@@ -29,7 +29,7 @@ namespace glz
 			System *mSystem;
 
 			virtual void init() {}
-			virtual void update(Double timeDelta) = 0;
+			virtual void update() = 0;
 
 			void setHost(Int host) { mHost = host; }
 			void setSystem(System *system) { mSystem = system; }

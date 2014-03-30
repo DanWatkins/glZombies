@@ -1,4 +1,16 @@
-function update()
+function findEscapeRoute()
+	x, y = ai_leastDenseSectorPos("zombie", 8);
+	ai_seek(x, y);
+end
+
+
+function escapeImmediate()
 	x, y = ai_nearestEntityPos("zombie");
 	ai_flee(x, y);
+end
+
+
+function update()
+	--escapeImmediate();	
+	findEscapeRoute();
 end

@@ -97,7 +97,7 @@ namespace glz
 
 		Double distanceSq(T x, T y)
 		{
-			return (this->x-x)*(this->x-x) + (this->y-y)*(this->y-y)
+			return (this->x-x)*(this->x-x) + (this->y-y)*(this->y-y);
 		}
 
 		Double distanceSq(const Vec2<T> &vec)
