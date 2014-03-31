@@ -41,6 +41,7 @@ namespace glz
 			static Int cpp_flee(lua_State *lua);
 			static Int cpp_arrive(lua_State *lua);
 			static Int cpp_pursuit(lua_State *lua);
+			static Int cpp_wander(lua_State *lua);
 
 			static Int cpp_nearestEntityPos(lua_State *lua);
 			static Int cpp_nearestEntityPos(lua_State *lua, String type);

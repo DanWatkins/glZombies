@@ -1,4 +1,5 @@
 function update()
 	id = ai_nearestEntityId("human");
-	ai_pursuit(id);
+	--ai_pursuit(id);
+	ai_wander();
 end

@@ -45,6 +45,8 @@ namespace glz
 	
 	void glZombies::onStartup()
 	{
+		sf::Clock seedTime;
+
 		luaBackground = std::thread(initLua);
 
 		loadShaders();
@@ -52,6 +54,8 @@ namespace glz
 		mWorld.init();
 		mWorld.loadWorldFile("main.world");
 		
+
+		srand((Uint)seedTime.getElapsedTime().asMicroseconds());
 	}
 
 	

@@ -12,7 +12,7 @@ namespace glz
 {
 	namespace world
 	{
-		AI::AI(Details *details, Spatial *spatial) : mSteeringBehaviors(spatial), mScript(this)
+		AI::AI(Details *details, Spatial *spatial) : mSteeringBehaviors(this, spatial), mScript(this)
 		{
 			mDetails = details;
 			mSpatial = spatial;
@@ -33,6 +33,9 @@ namespace glz
 			mSpatial->setSteeringForce(mSteeringBehaviors.computeSteeringForce());
 			mSteeringBehaviors.clear();
 			++mTimesUpdated;
+
+			//std::cout << "Timedelta is " << mTimeDelta.getElapsedTime().asSeconds() << std::endl;
+			mTimeDelta.restart();
 		}
 	};
 };

@@ -32,7 +32,8 @@ namespace glz
 				Seek			= 001,
 				Flee			= 002,
 				Arrive			= 003,
-				Pursuit			= 004
+				Pursuit			= 004,
+				Wander			= 005
 			};
 
 
@@ -48,12 +49,14 @@ namespace glz
 			typedef std::list<Request> BehaviorList;
 
 		private:
+			AI *mAi;
 			Spatial *mSpatial;
 			BehaviorList mSteeringBehaviorList;
 
+			Vec2d mWanderTarget;  //saves the target position betwen frames
 
 		public:
-			SteeringBehaviors(Spatial *spatial);
+			SteeringBehaviors(AI *ai, Spatial *spatial);
 
 			/**
 			* Creates a net steering force from all of the current behavior requests.
@@ -87,6 +90,11 @@ namespace glz
 			* just seeks to the target.
 			*/
 			void pursuit(AI *target);
+
+			/**
+			* Creates a steering force that makes the agent wander aimlessly.
+			*/
+			void wander();
 		};
 	};
 };

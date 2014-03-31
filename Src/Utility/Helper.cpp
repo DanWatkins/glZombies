@@ -208,4 +208,17 @@ namespace glz
 	{
 		return randFloat() - randFloat();
 	}
+
+
+	Vec2d pointToWorldSpace(Vec2d localPoint, Vec2d heading, Vec2d side, Vec2d worldPos)
+	{
+		Vec2d transPoint = localPoint;
+		Mat3d matTransform;
+
+		matTransform.rotate(heading, side);
+		matTransform.translate(worldPos.x, worldPos.y);
+		matTransform.transformVec2d(transPoint);
+
+		return transPoint;
+	}
 };

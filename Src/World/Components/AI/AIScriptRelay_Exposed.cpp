@@ -105,6 +105,14 @@ namespace glz
 		}
 
 
+		Int AIScriptRelay::cpp_wander(lua_State *lua)
+		{
+			mCurrentScript->mSteeringBehaviors->wander();
+
+			return 0;
+		}
+
+
 		Int AIScriptRelay::cpp_nearestEntityPos(lua_State *lua)
 		{
 			String arg = cppArgLua_s(lua);
@@ -196,7 +204,7 @@ namespace glz
 
 			std::vector<String> typeMask;
 			typeMask.push_back(lua_tostring(lua, 1));
-			Int sectors = lua_tonumber(lua, 2);
+			Int sectors = (Int)lua_tonumber(lua, 2);
 
 
 			return cpp_leastDenseSector(lua, typeMask, sectors);

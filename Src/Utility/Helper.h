@@ -52,6 +52,8 @@ namespace glz
 	Double randFloat();
 	Double randFloat(Double a, Double b);
 	Double randClamped();
+
+	Vec2d pointToWorldSpace(Vec2d localPoint, Vec2d heading, Vec2d side, Vec2d worldPos);
 };
 
 

@@ -12,8 +12,9 @@ namespace glz
 {
 	namespace world
 	{
-		SteeringBehaviors::SteeringBehaviors(Spatial *spatial)
+		SteeringBehaviors::SteeringBehaviors(AI *ai, Spatial *spatial)
 		{
+			mAi = ai;
 			mSpatial = spatial;
 		}
 
@@ -98,6 +99,45 @@ namespace glz
 			Double lookAheadTime = toTarget.length() / (mSpatial->getMaxSpeed() + spatial->getVelocity().length());
 			
 			return seek(spatial->getPos() + spatial->getVelocity()* lookAheadTime);
+		}
+
+
+		void SteeringBehaviors::wander()
+		{
+			Double wanderRadius = 1.2;
+			Double wanderDistance = 2.0;
+			Double wanderJitterPerSec = 80.0;
+
+			Double jitterAmount = wanderJitterPerSec * mAi->mTimeDelta.getElapsedTime().asSeconds();
+
+			mWanderTarget += Vec2d(randClamped() * jitterAmount,
+									randClamped() * jitterAmount);
+
+			mWanderTarget.normalize();
+			mWanderTarget *= wanderRadius;
+
+			Vec2d targetLocal = mWanderTarget + Vec2d(wanderDistance, 0.0);
+			//Vec2d targetWorld = targetLocal += mSpatial->getPos();
+
+			//return targetWorld - mSpatial->getPos();
+
+			//to world space
+			Vec2d transPoint = targetLocal;
+			Mat3d matTransform;
+			matTransform.rotate(mSpatial->getHeading(), mSpatial->getSide());
+			matTransform.translate(mSpatial->getPos().x, mSpatial->getPos().y);
+			matTransform.transformVec2d(transPoint);
+
+			std::cout << "Wander target " << mWanderTarget.x << ",  " << mWanderTarget.y << std::endl;
+			std::cout << "Trans point " << transPoint.x << ",  " << transPoint.y << std::endl;
+
+			Vec2d totalPoint = transPoint - mSpatial->getPos();
+			mSteeringBehaviorList.push_back({ Behavior::Wander, totalPoint });
+
+			std::cout << "Total point " << totalPoint.x << ",  " << totalPoint.y << std::endl;
+
+
+			printf("\n");
 		}
 	};
 };
