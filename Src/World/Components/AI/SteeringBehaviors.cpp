@@ -5,6 +5,7 @@
 // This file is licensed under the MIT License.
 //=======================================================================================================================|
 
+#include "SteeringBehaviorRequestPriorities.h"
 #include "SteeringBehaviors.h"
 #include "AI.h"
 
@@ -42,29 +43,29 @@ namespace glz
 
 
 
-		void SteeringBehaviors::seek(Vec2d pos)
+		void SteeringBehaviors::seek(Vec2d pos, RequestPriority priority)
 		{
 			Vec2d targetVelocity = Vec2d(pos-mSpatial->getPos());
 			targetVelocity.normalize();
 			targetVelocity * mSpatial->getMaxSpeed();
 			targetVelocity -= mSpatial->getVelocity();
 
-			mSteeringBehaviorList.push_back({ Behavior::Seek, targetVelocity });
+			mSteeringBehaviorList.push_back({ targetVelocity, priority });
 		}
 
 
-		void SteeringBehaviors::flee(Vec2d pos)
+		void SteeringBehaviors::flee(Vec2d pos, RequestPriority priority)
 		{
 			Vec2d targetVelocity = Vec2d(mSpatial->getPos()-pos);
 			targetVelocity.normalize();
 			targetVelocity *= mSpatial->getMaxSpeed();
 			targetVelocity -= mSpatial->getVelocity();
 
-			mSteeringBehaviorList.push_back({ Behavior::Flee, targetVelocity });
+			mSteeringBehaviorList.push_back({ targetVelocity, priority });
 		}
 
 
-		void SteeringBehaviors::arrive(Vec2d pos)
+		void SteeringBehaviors::arrive(Vec2d pos, RequestPriority priority)
 		{
 			const Double deceleration = 2.0;
 			const Double decelerationTweaker = 0.3;
@@ -81,12 +82,12 @@ namespace glz
 				desiredVelocity /= distance;
 				desiredVelocity -= mSpatial->getVelocity();
 
-				mSteeringBehaviorList.push_back({Behavior::Arrive, desiredVelocity});
+				mSteeringBehaviorList.push_back({ desiredVelocity, priority });
 			}
 		}
 
 
-		void SteeringBehaviors::pursuit(AI *target)
+		void SteeringBehaviors::pursuit(AI *target, RequestPriority priority)
 		{
 			Spatial *spatial = target->mSpatial;
 			Vec2d toTarget = spatial->getPos();
@@ -102,7 +103,7 @@ namespace glz
 		}
 
 
-		void SteeringBehaviors::wander()
+		void SteeringBehaviors::wander(RequestPriority priority)
 		{
 			Double wanderRadius = 1.2;
 			Double wanderDistance = 2.0;
@@ -132,7 +133,7 @@ namespace glz
 			std::cout << "Trans point " << transPoint.x << ",  " << transPoint.y << std::endl;
 
 			Vec2d totalPoint = transPoint - mSpatial->getPos();
-			mSteeringBehaviorList.push_back({ Behavior::Wander, totalPoint });
+			mSteeringBehaviorList.push_back({ totalPoint, priority });
 
 			std::cout << "Total point " << totalPoint.x << ",  " << totalPoint.y << std::endl;
 

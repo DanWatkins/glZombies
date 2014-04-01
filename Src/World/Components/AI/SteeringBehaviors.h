@@ -15,7 +15,7 @@ namespace glz
 	namespace world
 	{
 		class AI;
-
+		typedef Uint8 RequestPriority;
 
 		/**
 		 * Combines various steering behaviors to provide a net steering force.
@@ -27,24 +27,22 @@ namespace glz
 		 */
 		class SteeringBehaviors
 		{
-			enum class Behavior
-			{
-				Seek			= 001,
-				Flee			= 002,
-				Arrive			= 003,
-				Pursuit			= 004,
-				Wander			= 005
-			};
-
-
 			/**
-			* A request for a steering behavior
+			* A request for a steering force
 			*/
 			struct Request
 			{
-				Behavior behavior;
 				Vec2d force;
+				RequestPriority priority;		//0-highest 255-lowest
 			};
+
+
+			//priorities
+			const static Uint8 mPriorityMax = 0;
+			const static Uint8 mPriorityHigh = 64;
+			const static Uint8 mPriorityNormal = 128;
+			const static Uint8 mPriorityLow = 192;
+			const static Uint8 mPriorityMin = 255;
 
 			typedef std::list<Request> BehaviorList;
 
@@ -71,30 +69,30 @@ namespace glz
 			/**
 			 * Creates a steering force that steers the agent directly toward the target position.
 			 */
-			void seek(Vec2d pos);
+			void seek(Vec2d pos, RequestPriority priority=mPriorityNormal);
 
 			/**
 			* Creates a steering force that steers the agent directly away from the target position.
 			*/
-			void flee(Vec2d pos);
+			void flee(Vec2d pos, RequestPriority priority = mPriorityNormal);
 
 			/**
 			* Creates a steering force that steers the agent directly toward the target position.
 			* When close enough to the target position, this will generate a force to slow to a gentle
 			* stop on the target position.
 			*/
-			void arrive(Vec2d pos);
+			void arrive(Vec2d pos, RequestPriority priority = mPriorityNormal);
 
 			/**
 			* Seeks to a leading position to the target. If the agent is ahead of the target, then it
 			* just seeks to the target.
 			*/
-			void pursuit(AI *target);
+			void pursuit(AI *target, RequestPriority priority = mPriorityNormal);
 
 			/**
 			* Creates a steering force that makes the agent wander aimlessly.
 			*/
-			void wander();
+			void wander(RequestPriority priority = mPriorityNormal);
 		};
 	};
 };
