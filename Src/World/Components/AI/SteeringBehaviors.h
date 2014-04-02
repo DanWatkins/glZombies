@@ -63,6 +63,11 @@ namespace glz
 			SteeringBehaviors(AI *ai, Spatial *spatial);
 
 			/**
+			* 
+			*/
+			Bool accumulateForce(Vec2d &totalForce, Vec2d forceToAdd);
+
+			/**
 			* Creates a net steering force from all of the current behavior requests.
 			*/
 			Vec2d computeSteeringForce();

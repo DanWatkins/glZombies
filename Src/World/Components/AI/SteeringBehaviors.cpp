@@ -19,6 +19,29 @@ namespace glz
 		}
 
 
+		Bool SteeringBehaviors::accumulateForce(Vec2d &totalForce, Vec2d forceToAdd)
+		{
+			Double magnitudeRemaining = mSpatial->getMaxForce() - totalForce.length();
+
+			if (magnitudeRemaining <= 0.0)
+				return false;
+
+			Double magnitudeToAdd = forceToAdd.length();
+
+			if (magnitudeToAdd < magnitudeRemaining)
+				totalForce += forceToAdd;
+			else
+			{
+				Vec2d truncated(forceToAdd);
+				truncated.normalize();
+				truncated *= magnitudeRemaining;
+				totalForce += truncated;
+			}
+
+			return true;
+		}
+
+
 		Vec2d SteeringBehaviors::computeSteeringForce()
 		{
 			Vec2d steeringForce;
@@ -29,8 +52,7 @@ namespace glz
 			BehaviorList::iterator iter = mSteeringBehaviorList.begin();
 			while (iter != mSteeringBehaviorList.end())
 			{
-				steeringForce += (*iter).force;
-
+				accumulateForce(steeringForce, iter->force);
 				++iter;
 			}
 
@@ -42,7 +64,6 @@ namespace glz
 		{
 			mSteeringBehaviorList.clear();
 		}
-
 
 
 		void SteeringBehaviors::seek(Vec2d pos, RequestPriority priority)
@@ -101,7 +122,7 @@ namespace glz
 
 			Double lookAheadTime = toTarget.length() / (mSpatial->getMaxSpeed() + spatial->getVelocity().length());
 			
-			return seek(spatial->getPos() + spatial->getVelocity()* lookAheadTime);
+			return seek(spatial->getPos() + spatial->getVelocity()* lookAheadTime, priority);
 		}
 
 
