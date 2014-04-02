@@ -17,6 +17,29 @@ namespace glz
 		class AI;
 		typedef Uint8 RequestPriority;
 
+		//priorities
+		const static Uint8 mPriorityMax = 0;
+		const static Uint8 mPriorityHigh = 64;
+		const static Uint8 mPriorityNormal = 128;
+		const static Uint8 mPriorityLow = 192;
+		const static Uint8 mPriorityMin = 255;
+
+
+		/**
+		* A request for a steering force
+		*/
+		struct Request
+		{
+			Vec2d force;
+			RequestPriority priority;		//0-highest 255-lowest
+
+			bool operator < (const Request &request) const
+			{
+				return priority < request.priority;
+			}
+		};
+
+
 		/**
 		 * Combines various steering behaviors to provide a net steering force.
 		 * Calls to various behaviors such as Seek() cause a SteeringBehavior
@@ -27,23 +50,6 @@ namespace glz
 		 */
 		class SteeringBehaviors
 		{
-			/**
-			* A request for a steering force
-			*/
-			struct Request
-			{
-				Vec2d force;
-				RequestPriority priority;		//0-highest 255-lowest
-			};
-
-
-			//priorities
-			const static Uint8 mPriorityMax = 0;
-			const static Uint8 mPriorityHigh = 64;
-			const static Uint8 mPriorityNormal = 128;
-			const static Uint8 mPriorityLow = 192;
-			const static Uint8 mPriorityMin = 255;
-
 			typedef std::list<Request> BehaviorList;
 
 		private:

@@ -5,7 +5,6 @@
 // This file is licensed under the MIT License.
 //=======================================================================================================================|
 
-#include "SteeringBehaviorRequestPriorities.h"
 #include "SteeringBehaviors.h"
 #include "AI.h"
 
@@ -23,6 +22,9 @@ namespace glz
 		Vec2d SteeringBehaviors::computeSteeringForce()
 		{
 			Vec2d steeringForce;
+
+			//sort with descending priority
+			mSteeringBehaviorList.sort();
 
 			BehaviorList::iterator iter = mSteeringBehaviorList.begin();
 			while (iter != mSteeringBehaviorList.end())
@@ -129,16 +131,8 @@ namespace glz
 			matTransform.translate(mSpatial->getPos().x, mSpatial->getPos().y);
 			matTransform.transformVec2d(transPoint);
 
-			std::cout << "Wander target " << mWanderTarget.x << ",  " << mWanderTarget.y << std::endl;
-			std::cout << "Trans point " << transPoint.x << ",  " << transPoint.y << std::endl;
-
 			Vec2d totalPoint = transPoint - mSpatial->getPos();
 			mSteeringBehaviorList.push_back({ totalPoint, priority });
-
-			std::cout << "Total point " << totalPoint.x << ",  " << totalPoint.y << std::endl;
-
-
-			printf("\n");
 		}
 	};
 };
