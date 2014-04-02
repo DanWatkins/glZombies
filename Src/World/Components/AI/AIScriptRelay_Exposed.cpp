@@ -75,31 +75,108 @@ namespace glz
 
 		Int AIScriptRelay::cpp_seek(lua_State *lua)
 		{
-			mCurrentScript->mSteeringBehaviors->seek(cppArgLua_2d(lua)); 
+			Vec2d pos;
+			RequestPriority priority = mPriorityNormal;
+			Int n = lua_gettop(lua);
+
+			if (n != 2  &&  n != 3)
+				return 0;
+
+			else if (n >=2)
+			{
+				if (!lua_isnumber(lua, 1) || !lua_isnumber(lua, 2))
+					return 0;
+
+				pos = Vec2d(lua_tonumber(lua, 1), lua_tonumber(lua, 2));
+			}
+
+			if (n == 3)
+			{
+				if (!lua_isnumber(lua, 3))
+					return 0;
+
+				priority = (RequestPriority)lua_tonumber(lua, 3);
+			}
+
+
+			mCurrentScript->mSteeringBehaviors->seek(pos, priority);
+
 			return 0;
 		}
 
 
 		Int AIScriptRelay::cpp_flee(lua_State *lua)
 		{
-			mCurrentScript->mSteeringBehaviors->flee(cppArgLua_2d(lua)); 
+			Vec2d pos;
+			RequestPriority priority = mPriorityNormal;
+			Int n = lua_gettop(lua);
+
+			if (n != 2 && n != 3)
+				return 0;
+
+			else if (n >= 2)
+			{
+				if (!lua_isnumber(lua, 1) || !lua_isnumber(lua, 2))
+					return 0;
+
+				pos = Vec2d(lua_tonumber(lua, 1), lua_tonumber(lua, 2));
+			}
+
+			if (n == 3)
+			{
+				if (!lua_isnumber(lua, 3))
+					return 0;
+
+				priority = (RequestPriority)lua_tonumber(lua, 3);
+			}
+
+
+			mCurrentScript->mSteeringBehaviors->flee(pos, priority);
+
 			return 0;
 		}
 
-
+		//TODO make a system that allows for better parameter retrieval from bound lua functions
 		Int AIScriptRelay::cpp_arrive(lua_State *lua)
 		{
-			mCurrentScript->mSteeringBehaviors->arrive(cppArgLua_2d(lua)); 
+			Vec2d pos;
+			RequestPriority priority = mPriorityNormal;
+			Int n = lua_gettop(lua);
+
+			if (n != 2 && n != 3)
+				return 0;
+
+			else if (n >= 2)
+			{
+				if (!lua_isnumber(lua, 1) || !lua_isnumber(lua, 2))
+					return 0;
+
+				pos = Vec2d(lua_tonumber(lua, 1), lua_tonumber(lua, 2));
+			}
+
+			if (n == 3)
+			{
+				if (!lua_isnumber(lua, 3))
+					return 0;
+
+				priority = (RequestPriority)lua_tonumber(lua, 3);
+			}
+
+
+			mCurrentScript->mSteeringBehaviors->arrive(pos, priority);
+
 			return 0;
 		}
 
 
 		Int AIScriptRelay::cpp_pursuit(lua_State *lua)
 		{
-			AI *ai = mCurrentScript->getRecentAiReference((Int)cppArgLua_1d(lua));
+			Vec2d arg = cppArgLua_2d(lua);
+
+			AI *ai = mCurrentScript->getRecentAiReference((Int)arg.x);
 
 			if (ai)
-				mCurrentScript->mSteeringBehaviors->pursuit(ai);
+				mCurrentScript->mSteeringBehaviors->pursuit(ai, (RequestPriority)arg.y);
 
 			return 0;
 		}
@@ -107,8 +184,7 @@ namespace glz
 
 		Int AIScriptRelay::cpp_wander(lua_State *lua)
 		{
-			mCurrentScript->mSteeringBehaviors->wander();
-
+			mCurrentScript->mSteeringBehaviors->wander((RequestPriority)cppArgLua_1d(lua));
 			return 0;
 		}
 
