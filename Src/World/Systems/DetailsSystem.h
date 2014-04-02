@@ -22,7 +22,7 @@ namespace glz
 
 		public:
 			void createDetails(Int entity, EntityTemplate &et);
-			void update(Double timeDelta) {}
+			void update() {}
 		};
 		
 

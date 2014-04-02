@@ -20,20 +20,25 @@ namespace glz
 		{
 		private:
 			typedef std::list<AI*> Bucket;
+			typedef std::list<AI*> Sector;
+			typedef std::vector<Sector> SectorList;
+
 			std::list<Bucket> mUpdateBuckets;
 
 			void generateBuckets();
-
+			Double lds_calculateSectorDesnity(Sector &sector, AI *target);
 
 		public:
 			AISystem(DetailsSystem *detailsSystem,
 					 SpatialSystem *spatialSystem);
 
 			void createAI(Int entity);
-			void update(Double timeDelta);
+			void update();
 
 			AI *findNearestAi(Vec2d pos);
 			AI *findNearestAi(Vec2d pos, String type);
+
+			Vec2d findLeastDenseSector(AI *target, std::vector<String> typeMasks, Int sectors=8);
 		};
 
 

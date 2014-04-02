@@ -34,9 +34,9 @@ namespace glz
 			 Double mMaxForce;
 			 Double mMaxTurnRate;
 
-			 Double mTimeDelta;
+			 sf::Clock mTimeDelta;
 
-			 void update(Double timeDelta);
+			 void update();
 
 		 public:
 			 friend SpatialSystem;

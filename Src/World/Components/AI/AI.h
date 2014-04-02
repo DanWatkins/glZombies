@@ -28,9 +28,10 @@ namespace glz
 		private:
 			SteeringBehaviors mSteeringBehaviors;
 			AIScript mScript;
+			sf::Clock mTimeDelta;
 
 			void init();
-			void update(Double timeDelta);
+			void update();
 
 
 			Int mTimesUpdated;

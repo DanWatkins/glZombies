@@ -22,3 +22,7 @@
 *.vcxproj.user
 IDE/Obj/
 *.sdf
+
+*.exe
+*.pdb
+*ilk

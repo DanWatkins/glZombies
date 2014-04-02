@@ -24,6 +24,12 @@ namespace glz
 		T _31, _32, _33;
 
 	public:
+		Mat3()
+		{
+			identity();
+		}
+
+
 		void identity()
 		{
 			_11 = T(1); _12 = T(0); _13 = T(0);

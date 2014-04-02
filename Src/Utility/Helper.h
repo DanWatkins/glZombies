@@ -14,7 +14,9 @@
 namespace glz
 {
 	const Double PI = 3.141592654;
-	const Double TWO_PI = PI*2;
+	const Double TWO_PI = PI * 2.0;
+	const Double PI_OVER_TWO = PI / 2.0;
+	const Double THREE_PI_OVER_TWO = 3.0 * PI / 2.0;
     const Double PI_OVER_180 = 0.0174532925;
     const Double PI_UNDER_180 = 57.29577951;
 
@@ -43,6 +45,15 @@ namespace glz
 
 	Bool isEqual(Float a, Float b);
 	Bool isEqual(Double a, Double b);
+
+	Bool randBool();
+	Int randInt();
+	Int randInt(Int a, Int b);
+	Double randFloat();
+	Double randFloat(Double a, Double b);
+	Double randClamped();
+
+	Vec2d pointToWorldSpace(Vec2d localPoint, Vec2d heading, Vec2d side, Vec2d worldPos);
 };
 
 

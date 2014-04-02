@@ -34,7 +34,7 @@ namespace glz
 			DrawableSystem(OpenGLWindow *window);
 
 			void createDrawable(Int entity, String meshFilepath);
-			void update(Double timeDelta) {}
+			void update() {}
 		};
 
 

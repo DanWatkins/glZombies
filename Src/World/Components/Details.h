@@ -23,7 +23,7 @@ namespace glz
 		private:
 			String mDisplayName, mInternalName, mType;
 
-			void update(Double timeDelta) {}
+			void update() {}
 
 		public:
 			Details() {}

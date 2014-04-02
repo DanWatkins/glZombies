@@ -81,10 +81,10 @@ namespace glz
 		{
 			Double timeDelta = 0.01;
 
-			mDetailsSystem->update(timeDelta);
-			mDrawableSystem->update(timeDelta);
-			mAISystem->update(timeDelta);
-			mSpatialSystem->update(timeDelta);
+			mDetailsSystem->update();
+			mDrawableSystem->update();
+			mAISystem->update();
+			mSpatialSystem->update();
 		}
 
 		
