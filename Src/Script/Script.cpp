@@ -50,6 +50,45 @@ namespace glz
 	}
 
 
+	Bool Script::validArgPos(Int pos)
+	{
+		return !(pos > lua_gettop(mLuaState));
+	}
+
+
+	String Script::getArgString(Int pos)
+	{
+		if (!validArgPos(pos) || !lua_isnumber(mLuaState, pos))
+			return "";
+
+		return lua_tostring(mLuaState, pos);
+	}
+	
+
+	Bool Script::getArgBoolean(Int pos)
+	{
+		if (!validArgPos(pos) || !lua_isboolean(mLuaState, pos))
+			return false;
+
+		return lua_toboolean(mLuaState, pos);
+	}
+
+
+	Int Script::getArgInteger(Int pos)
+	{
+		return (Int)getArgFloat(pos);
+	}
+
+
+	Float Script::getArgFloat(Int pos)
+	{
+		if (!validArgPos(pos) || !lua_isnumber(mLuaState, pos))
+			return 0.0f;
+
+		return lua_tonumber(mLuaState, pos);
+	}
+
+
 	String Script::getGlobalString(String identifier)
 	{
 		putGlobalOnStack(identifier);

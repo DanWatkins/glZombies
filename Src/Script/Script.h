@@ -31,6 +31,14 @@ namespace glz
 
 		virtual void bindToLua() = 0;
 		
+		//argument access
+		Bool validArgPos(Int pos);
+		String getArgString(Int pos);
+		Bool getArgBoolean(Int pos);
+		Int getArgInteger(Int pos);
+		Float getArgFloat(Int pos);
+		
+
 		//global variable access
 		String getGlobalString(String identifier);
 		Bool getGlobalBoolean(String identifier);
