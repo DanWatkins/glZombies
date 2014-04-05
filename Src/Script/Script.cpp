@@ -56,6 +56,12 @@ namespace glz
 	}
 
 
+	Int Script::argsOnStack()
+	{
+		return lua_gettop(mLuaState);
+	}
+
+
 	String Script::getArgString(Int pos)
 	{
 		if (!validArgPos(pos) || !lua_isnumber(mLuaState, pos))

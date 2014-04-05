@@ -31,8 +31,10 @@ namespace glz
 
 		virtual void bindToLua() = 0;
 		
-		//argument access
 		Bool validArgPos(Int pos);
+		Int argsOnStack();
+
+		//argument access
 		String getArgString(Int pos);
 		Bool getArgBoolean(Int pos);
 		Int getArgInteger(Int pos);
