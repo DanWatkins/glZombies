@@ -99,7 +99,6 @@ typedef std::string			String;
 #include "./Utility/Helper.h"
 #include "./Utility/Vec2.h"
 #include "./Utility/Mat3.h"
-#include "./Utility/Timer.h"
 #include "./Script/Script.h"
 
 #endif
