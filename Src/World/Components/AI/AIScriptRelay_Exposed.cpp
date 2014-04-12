@@ -76,7 +76,7 @@ namespace glz
 			return 0;
 		}
 
-		//TODO make a system that allows for better parameter retrieval from bound lua functions
+		
 		Int AIScriptRelay::cpp_arrive(lua_State *lua)
 		{
 			Vec2d pos;

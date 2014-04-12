@@ -34,7 +34,6 @@ namespace glz
 			mSteeringBehaviors.clear();
 			++mTimesUpdated;
 
-			//std::cout << "Timedelta is " << mTimeDelta.getElapsedTime().asSeconds() << std::endl;
 			mTimeDelta.restart();
 		}
 	};

@@ -53,10 +53,11 @@ namespace glz
 
 		//get the aspect scale adjusted
 		_onResize(mWidth, mHeight);
+		sf::Clock clock;
 
 		while (!glfwWindowShouldClose(mWindow)  &&  !mShouldTerminate)
 		{
-			onUpdate(0.0); //TODO get a time value for this call
+			onUpdate((Double)clock.getElapsedTime().asSeconds());
 
 			glfwSwapBuffers(mWindow);
 			glfwPollEvents();

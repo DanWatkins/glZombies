@@ -59,8 +59,10 @@ namespace glz
 	}
 
 	
-	void glZombies::onUpdate(Double currentTime)
+	void glZombies::onUpdate(Double timeSinceStartup)
 	{
+		printf("Time = %g", timeSinceStartup);
+
 		static const Float clearColor[] = { 1.0f, 1.0f, 0.9f, 1.0f };
 		glClearBufferfv(GL_COLOR, 0, clearColor);
 

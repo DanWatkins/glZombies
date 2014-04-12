@@ -54,7 +54,7 @@ namespace glz
 
 	protected:
 		virtual void onStartup() = 0;
-		virtual void onUpdate(Double currentTime) = 0;
+		virtual void onUpdate(Double timeSinceStartup) = 0;
 		virtual void onKey(Int key, Int action) = 0;
 		virtual void onResize(Int width, Int height) = 0;
 		virtual void onTerminate() = 0;
