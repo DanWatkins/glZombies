@@ -29,7 +29,7 @@ void initLua()
 		
 		if (error)
 		{
-			std::cout << lua_tostring(lua, -1);	
+			std::cout << lua_tostring(lua, -1);
 			lua_pop(lua, 1);	
 		}
 	}
@@ -61,8 +61,6 @@ namespace glz
 	
 	void glZombies::onUpdate(Double timeSinceStartup)
 	{
-		printf("Time = %g", timeSinceStartup);
-
 		static const Float clearColor[] = { 1.0f, 1.0f, 0.9f, 1.0f };
 		glClearBufferfv(GL_COLOR, 0, clearColor);
 
