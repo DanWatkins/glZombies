@@ -30,6 +30,9 @@ namespace glz
 
 		if (!glfwInit())
 			return -1;
+		
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
 
 		mWindow = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
 		if (!mWindow)
@@ -53,10 +56,11 @@ namespace glz
 
 		//get the aspect scale adjusted
 		_onResize(mWidth, mHeight);
+		sf::Clock clock;
 
 		while (!glfwWindowShouldClose(mWindow)  &&  !mShouldTerminate)
 		{
-			onUpdate(0.0); //TODO get a time value for this call
+			onUpdate((Double)clock.getElapsedTime().asSeconds());
 
 			glfwSwapBuffers(mWindow);
 			glfwPollEvents();

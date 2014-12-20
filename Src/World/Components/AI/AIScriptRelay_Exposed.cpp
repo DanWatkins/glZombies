@@ -31,73 +31,22 @@ namespace glz
 
 
 
-		Double cppArgLua_1d(lua_State *lua)
-		{
-			Int n = lua_gettop(lua);
-
-			if (n != 1)
-				return 0.0;
-
-			if (!lua_isnumber(lua, 1))
-				return 0.0;
-
-			return lua_tonumber(lua, 1);
-		}
-
-
-		Vec2d cppArgLua_2d(lua_State *lua)
-		{
-			Int n = lua_gettop(lua);
-
-			if (n != 2)
-				return Vec2d();
-
-			if (!lua_isnumber(lua, 1)  ||  !lua_isnumber(lua, 2))
-				return Vec2d();
-
-			return Vec2d(lua_tonumber(lua, 1), lua_tonumber(lua, 2));
-		}
-
-
-		String cppArgLua_s(lua_State *lua)
-		{
-			Int n = lua_gettop(lua);
-
-			if (n != 1)
-				return "";
-
-			if (!lua_isstring(lua, 1))
-				return "";
-
-			return lua_tostring(lua, 1);
-		}
-
-
 		Int AIScriptRelay::cpp_seek(lua_State *lua)
 		{
 			Vec2d pos;
 			RequestPriority priority = mPriorityNormal;
 			Int n = lua_gettop(lua);
 
-			if (n != 2  &&  n != 3)
+			if (n >= 2)
+			{
+				pos.x = mCurrentScript->getArgFloat(1);
+				pos.y = mCurrentScript->getArgFloat(2);
+			}
+			else
 				return 0;
 
-			else if (n >=2)
-			{
-				if (!lua_isnumber(lua, 1) || !lua_isnumber(lua, 2))
-					return 0;
-
-				pos = Vec2d(lua_tonumber(lua, 1), lua_tonumber(lua, 2));
-			}
-
 			if (n == 3)
-			{
-				if (!lua_isnumber(lua, 3))
-					return 0;
-
-				priority = (RequestPriority)lua_tonumber(lua, 3);
-			}
-
+				priority = (RequestPriority)mCurrentScript->getArgInteger(3);
 
 			mCurrentScript->mSteeringBehaviors->seek(pos, priority);
 
@@ -111,56 +60,39 @@ namespace glz
 			RequestPriority priority = mPriorityNormal;
 			Int n = lua_gettop(lua);
 
-			if (n != 2 && n != 3)
+			if (n >= 2)
+			{
+				pos.x = mCurrentScript->getArgFloat(1);
+				pos.y = mCurrentScript->getArgFloat(2);
+			}
+			else
 				return 0;
 
-			else if (n >= 2)
-			{
-				if (!lua_isnumber(lua, 1) || !lua_isnumber(lua, 2))
-					return 0;
-
-				pos = Vec2d(lua_tonumber(lua, 1), lua_tonumber(lua, 2));
-			}
-
 			if (n == 3)
-			{
-				if (!lua_isnumber(lua, 3))
-					return 0;
-
-				priority = (RequestPriority)lua_tonumber(lua, 3);
-			}
-
+				priority = (RequestPriority)mCurrentScript->getArgInteger(3);
 
 			mCurrentScript->mSteeringBehaviors->flee(pos, priority);
 
 			return 0;
 		}
 
-		//TODO make a system that allows for better parameter retrieval from bound lua functions
+		
 		Int AIScriptRelay::cpp_arrive(lua_State *lua)
 		{
 			Vec2d pos;
 			RequestPriority priority = mPriorityNormal;
 			Int n = lua_gettop(lua);
 
-			if (n != 2 && n != 3)
+			if (n >= 2)
+			{
+				pos.x = mCurrentScript->getArgFloat(1);
+				pos.y = mCurrentScript->getArgFloat(2);
+			}
+			else
 				return 0;
 
-			else if (n >= 2)
-			{
-				if (!lua_isnumber(lua, 1) || !lua_isnumber(lua, 2))
-					return 0;
-
-				pos = Vec2d(lua_tonumber(lua, 1), lua_tonumber(lua, 2));
-			}
-
 			if (n == 3)
-			{
-				if (!lua_isnumber(lua, 3))
-					return 0;
-
-				priority = (RequestPriority)lua_tonumber(lua, 3);
-			}
+				priority = (RequestPriority)mCurrentScript->getArgInteger(3);
 
 
 			mCurrentScript->mSteeringBehaviors->arrive(pos, priority);
@@ -171,12 +103,22 @@ namespace glz
 
 		Int AIScriptRelay::cpp_pursuit(lua_State *lua)
 		{
-			Vec2d arg = cppArgLua_2d(lua);
+			Int id;
+			RequestPriority priority = mPriorityNormal;
+			Int n = lua_gettop(lua);
 
-			AI *ai = mCurrentScript->getRecentAiReference((Int)arg.x);
+			if (n >= 1)
+				id = mCurrentScript->getArgInteger(1);
+			else
+				return 0;
+
+			if (n == 2)
+				priority = (RequestPriority)mCurrentScript->getArgInteger(2);
+
+			AI *ai = mCurrentScript->getRecentAiReference(id);
 
 			if (ai)
-				mCurrentScript->mSteeringBehaviors->pursuit(ai, (RequestPriority)arg.y);
+				mCurrentScript->mSteeringBehaviors->pursuit(ai, priority);
 
 			return 0;
 		}
@@ -184,14 +126,14 @@ namespace glz
 
 		Int AIScriptRelay::cpp_wander(lua_State *lua)
 		{
-			mCurrentScript->mSteeringBehaviors->wander((RequestPriority)cppArgLua_1d(lua));
+			mCurrentScript->mSteeringBehaviors->wander((RequestPriority)mCurrentScript->getArgInteger(1));
 			return 0;
 		}
 
 
 		Int AIScriptRelay::cpp_nearestEntityPos(lua_State *lua)
 		{
-			String arg = cppArgLua_s(lua);
+			String arg = mCurrentScript->getArgString(1);
 
 			if (arg != "")
 				return cpp_nearestEntityPos(lua, arg);
@@ -230,7 +172,7 @@ namespace glz
 
 		Int AIScriptRelay::cpp_nearestEntityId(lua_State *lua)
 		{
-			String arg = cppArgLua_s(lua);
+			String arg = mCurrentScript->getArgString(1);
 
 			if (arg != "")
 				return cpp_nearestEntityId(lua, arg);
@@ -269,7 +211,7 @@ namespace glz
 		{
 			Int n = lua_gettop(lua);
 
-			if (n != 2  ||  !lua_isstring(lua, 1)  ||  !lua_isnumber(lua, 2))
+			if (n != 2)
 			{
 				std::cout << "LuaCpp: Wrong arguments for leastDenseSector" << std::endl;
 				lua_pushnumber(lua, 0);
@@ -279,9 +221,8 @@ namespace glz
 			}
 
 			std::vector<String> typeMask;
-			typeMask.push_back(lua_tostring(lua, 1));
-			Int sectors = (Int)lua_tonumber(lua, 2);
-
+			typeMask.push_back(mCurrentScript->getArgString(1));
+			Int sectors = mCurrentScript->getArgInteger(2);
 
 			return cpp_leastDenseSector(lua, typeMask, sectors);
 		}

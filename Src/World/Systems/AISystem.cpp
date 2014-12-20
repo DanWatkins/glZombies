@@ -8,8 +8,6 @@
 #include "AISystem.h"
 #include "../Components/AI/AI.h"
 
-//TODO consider grouping System and Component pairs in the same folder instead of
-//grouping all Systems into one folder and all Components in another
 
 namespace glz
 {
@@ -77,7 +75,6 @@ namespace glz
 				while (iter != currentBucket.end())
 				{
 					(*iter)->update();
-					//TODO instead of a time delta, just use a current time to calculate the time delta since the time delta wont be accurate
 
 					++iter;
 				}

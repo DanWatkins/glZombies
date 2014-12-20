@@ -62,9 +62,6 @@
     <ClCompile Include="..\Src\World\Camera.cpp">
       <Filter>World</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\Utility\Timer.cpp">
-      <Filter>Utility</Filter>
-    </ClCompile>
     <ClCompile Include="..\Src\World\Systems\DrawableSystem.cpp">
       <Filter>World\Systems</Filter>
     </ClCompile>
@@ -150,9 +147,6 @@
     </ClInclude>
     <ClInclude Include="..\Src\World\Camera.h">
       <Filter>World</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Src\Utility\Timer.h">
-      <Filter>Utility</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\World\Systems\System.h">
       <Filter>World\Systems</Filter>

@@ -13,10 +13,10 @@ namespace glz
 	{
 		void Camera::draw()
 		{
-			glz::Rectangle background;
-			background.init(Vec2f(-(Float)mWorldPos.x, (Float)mWorldPos.y),
-							Vec2f(Float(mWorld->mWidth - mWorldPos.x), Float(mWorldPos.y - mWorld->mHeight)));
-			background.draw(mWorld->mWindow);
+			//glz::Rectangle background;
+			//background.init(Vec2f(-(Float)mWorldPos.x, (Float)mWorldPos.y),
+			//				Vec2f(Float(mWorld->mWidth - mWorldPos.x), Float(mWorldPos.y - mWorld->mHeight)));
+			//background.draw(mWorld->mWindow);
 
 			ComponentList components = mWorld->mSpatialSystem->mComponents;
 			ComponentList::iterator iter = components.begin();
