@@ -12,6 +12,5 @@ using namespace glz;
 
 Int main()
 {
-	glZombies *app = new glZombies;
-	return app->init(1600, 900, gWindowTitle);
+	return glZombies().init(1600, 900, gWindowTitle);
 }

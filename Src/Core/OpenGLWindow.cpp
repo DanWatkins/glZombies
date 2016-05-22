@@ -17,7 +17,7 @@ namespace glz
 		mTitle = gWindowTitle;
 		mWindow = NULL;
 		mAspectScale = Vec2f(1.0f, 1.0f);
-		mZoom = Vec2f(1.0f, 1.0f);
+		mZoom = Vec2f(0.2f, 0.2f);
 		mShouldTerminate = false;
 	}
 
