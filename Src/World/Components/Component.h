@@ -39,7 +39,6 @@ namespace glz
 
 			virtual ~Component()
 			{
-				std::cout << "Component destroyed" << std::endl;
 			}
 
 			int getHost() const { return mHost; }

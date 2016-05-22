@@ -8,6 +8,7 @@
 #include "glZombies.h"
 #include "./Core/Core.h"
 #include "./World/World.h"
+#include <dirent.h>
 
 
 std::thread luaBackground;
@@ -42,19 +43,17 @@ namespace glz
 	{
 	}
 
-	
+
 	void glZombies::onStartup()
 	{
 		sf::Clock seedTime;
-
 		luaBackground = std::thread(initLua);
 
 		loadShaders();
 
 		mWorld.init();
-		mWorld.loadWorldFile("main.world");
+		mWorld.loadWorldFile(gDefaultPathMaps + mFileToOpen);
 		
-
 		srand(unsigned int(seedTime.getElapsedTime().asMicroseconds()));
 	}
 

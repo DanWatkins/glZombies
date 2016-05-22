@@ -11,6 +11,5 @@ end
 
 
 function update()
-	--escapeImmediate();	
 	findEscapeRoute();
 end

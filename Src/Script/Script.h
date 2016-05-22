@@ -21,7 +21,7 @@ namespace glz
 
 	public:
 		Script();
-		Script(String filepath);
+		explicit Script(String filepath);
 		virtual ~Script() {}
 
 		bool load(String filepath);

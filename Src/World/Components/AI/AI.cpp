@@ -22,7 +22,7 @@ namespace glz
 		void AI::init()
 		{
 			mTimesUpdated = 0;
-			mScript.load(String(gDefaultPathAi) + mDetails->getType() + ".ai");
+			mScript.load(String(g_default_path_data_g_default_path_ai) + mDetails->getType() + ".ai");
 			mScript.bindToLua();
 		}
 

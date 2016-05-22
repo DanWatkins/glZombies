@@ -23,6 +23,7 @@ namespace glz
 	private:
 		world::World mWorld;
 		world::Camera mCamera;
+		String mFileToOpen;
 
 		void onStartup() override;
 		void onUpdate(double currentTime) override;
@@ -34,6 +35,8 @@ namespace glz
 
 	public:
 		glZombies();
+
+		void setFileToOpen(const String& fileToOpen) { mFileToOpen = fileToOpen; }
 	};
 };
 
