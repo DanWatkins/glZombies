@@ -65,7 +65,7 @@ namespace glz
 			/**
 			* 
 			*/
-			Bool accumulateForce(Vec2d &totalForce, Vec2d forceToAdd);
+			Bool accumulateForce(Vec2d &totalForce, Vec2d forceToAdd) const;
 
 			/**
 			* Creates a net steering force from all of the current behavior requests.

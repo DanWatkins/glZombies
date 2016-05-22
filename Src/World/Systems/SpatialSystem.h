@@ -26,14 +26,14 @@ namespace glz
 		{
 		public:
 			void createSpatial(Int entity, Vec2d pos, const EntityTemplate &entityTemplate);
-			void update();
+			void update() override;
 		};
 
 
 		class SpatialSystemUser
 		{
 		protected:
-			SpatialSystem *mSpatialSystem;
+			SpatialSystem *mSpatialSystem = nullptr;
 		};
 	};
 };

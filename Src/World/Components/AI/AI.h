@@ -30,11 +30,10 @@ namespace glz
 			AIScript mScript;
 			sf::Clock mTimeDelta;
 
-			void init();
-			void update();
+			void init() override;
+			void update() override;
 
-
-			Int mTimesUpdated;
+			Int mTimesUpdated = 0;
 
 		public:
 			friend AISystem;
@@ -45,11 +44,10 @@ namespace glz
 			AI(Details *details, Spatial *spatial);
 		};
 
-
 		class AIUser
 		{
 		protected:
-			AI *mAI;
+			AI *mAI = nullptr;
 		};
 	};
 };

@@ -50,21 +50,19 @@ namespace glz
 			void loadTemplateEntities();
 			void loadTemplateEntity(String filepath);
 
-			Int createEntityFromTemplate(String templateName);
-
 		public:
 			friend Camera;
-			World(OpenGLWindow *window);
+			explicit World(OpenGLWindow *window);
 			~World();
 			
 			void init();
 			void loadWorldFile(String filepath);
-			void update();
+			void update() const;
 
 			EntityTemplate getTemplateEntity(String name);
 
-			Uint getWidth() { return mWidth; }
-			Uint getHeight() { return mHeight; }
+			Uint getWidth() const { return mWidth; }
+			Uint getHeight() const { return mHeight; }
 		};
 	};
 };

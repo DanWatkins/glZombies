@@ -26,7 +26,7 @@ namespace glz
 	private:
 		Int mWidth, mHeight;
 		String mTitle;
-		GLFWwindow *mWindow;
+		GLFWwindow *mWindow = nullptr;
 		Vec2f mAspectScale, mZoom;
 		Bool mShouldTerminate;
 
@@ -35,17 +35,21 @@ namespace glz
 
 
 	public:
+		virtual ~OpenGLWindow()
+		{
+		}
+
 		friend GLFWInput;
 
 		OpenGLWindow();
 		Int init(Int width=gDefaultWindowWidth, Int height=gDefaultWindowHeight, String title=gWindowTitle);
 
-		Uint getProgram() { return mProgram; }
-		Int getWidth() { return mWidth; }
-		Int getHeight() { return mHeight; }
-		String getTitle() { return mTitle; }
-		Bool isWindow(GLFWwindow *window) { return window == mWindow; }
-		Vec2f getAspectScale() { return mAspectScale; }
+		Uint getProgram() const { return mProgram; }
+		Int getWidth() const { return mWidth; }
+		Int getHeight() const { return mHeight; }
+		String getTitle() const { return mTitle; }
+		Bool isWindow(GLFWwindow *window) const { return window == mWindow; }
+		Vec2f getAspectScale() const { return mAspectScale; }
 
 		void setZoom(Vec2f zoom);
 		void addZoom(Vec2f zoom);

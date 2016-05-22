@@ -80,7 +80,7 @@ namespace glz
         Double result = 0.0;
 
         //get the decimal part
-        Double n2 = n - (Int)n;
+        Double n2 = n - Int(n);
 
         //see if the decimal part is closer to 0 or 1
         if (1.0-n2 <= 0.0+n2)
@@ -88,37 +88,37 @@ namespace glz
         else if (1.0-n2 > 0.0+n2)
             result = n-n2;
 
-        return (Int)result;
+        return Int(result);
     }
 
 
     Int round(Float n)
     {
-        return (Int)round((Double)n);
+        return Int(round(Double(n)));
     }
 
 
     Int roundUp(Double n)
     {
-        return (Int)std::ceil(n);
+        return Int(std::ceil(n));
     }
 
 	
     Int roundUp(Float n)
     {
-        return (Int)std::ceil(n);
+        return Int(std::ceil(n));
     }
 	
 
     Int roundDown(Double n)
     {
-        return (Int)std::floor(n);
+        return Int(std::floor(n));
     }
 
 	
     Int roundDown(Float n)
     {
-        return (Int)std::floor(n);
+        return Int(std::floor(n));
     }
 
 	
@@ -130,13 +130,13 @@ namespace glz
 	
     Float degToRad(Float deg)
     {
-        return deg*(Float)PI_OVER_180;
+        return deg*Float(PI_OVER_180);
     }
 
 	
     Int degToRad(Int deg)
     {
-        return round((Double)deg*PI_OVER_180);
+        return round(Double(deg)*PI_OVER_180);
     }
 	
 
@@ -148,13 +148,13 @@ namespace glz
 	
     Float radToDeg(Float rad)
     {
-        return rad*(Float)PI_UNDER_180;
+        return rad*Float(PI_UNDER_180);
     }
 
 
     Int radToDeg(Int rad)
     {
-        return round((Double)rad*PI_UNDER_180);
+        return round(Double(rad)*PI_UNDER_180);
 	}
 
 	

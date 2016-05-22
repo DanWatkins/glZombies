@@ -22,10 +22,10 @@ namespace glz
 		{
 		private:
 			Mesh2D mMesh;
-			OpenGLWindow *mWindow;
+			OpenGLWindow *mWindow = nullptr;
 
 			Drawable() {}
-			void update() {}
+			void update() override {}
 
 		public:
 			Drawable(String meshFilepath, OpenGLWindow *window);
@@ -39,7 +39,7 @@ namespace glz
 		class DrawableUser
 		{
 		protected:
-			Drawable *mDrawable;
+			Drawable *mDrawable = nullptr;
 		};
 	};
 };

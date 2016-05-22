@@ -27,7 +27,7 @@ namespace glz
 
 		GLFWInput() {};
 		GLFWInput(GLFWInput const&) {}
-		void operator=(GLFWInput const&) {}
+		void operator=(GLFWInput const&) const {}
 
 
 	public:

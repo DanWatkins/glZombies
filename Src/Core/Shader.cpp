@@ -42,7 +42,7 @@ namespace glz
 			if (!result)
 				return result;
 
-			glShaderSource(result, 1, &data, NULL);
+			glShaderSource(result, 1, &data, nullptr);
 			delete[] data;
 
 			glCompileShader(result);
@@ -55,7 +55,7 @@ namespace glz
 			if (!status)
 			{
 				char buffer[8192];
-				glGetShaderInfoLog(result, 8192, NULL, buffer);
+				glGetShaderInfoLog(result, 8192, nullptr, buffer);
 
 				std::cout << filename << ":" << buffer << std::endl;
 
@@ -84,7 +84,7 @@ namespace glz
 			if (!status)
 			{
 				char buffer[8192];
-				glGetProgramInfoLog(program, 8192, NULL, buffer);
+				glGetProgramInfoLog(program, 8192, nullptr, buffer);
 				std::cout << buffer << std::endl;
 
 				glDeleteProgram(program);

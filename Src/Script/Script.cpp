@@ -9,7 +9,7 @@
 
 namespace glz
 {
-	void Script::putGlobalOnStack(String identifier)
+	void Script::putGlobalOnStack(String identifier) const
 	{
 		lua_settop(mLuaState, 0);
 		lua_getglobal(mLuaState, identifier.c_str());
@@ -34,35 +34,19 @@ namespace glz
 	}
 
 
-	Bool Script::isOpen()
-	{
-		return false;
-	}
-
-
-	void Script::execute()
-	{
-	}
-
-
-	void Script::close()
-	{
-	}
-
-
-	Bool Script::validArgPos(Int pos)
+	Bool Script::validArgPos(Int pos) const
 	{
 		return !(pos > lua_gettop(mLuaState));
 	}
 
 
-	Int Script::argsOnStack()
+	Int Script::argsOnStack() const
 	{
 		return lua_gettop(mLuaState);
 	}
 
 
-	String Script::getArgString(Int pos)
+	String Script::getArgString(Int pos) const
 	{
 		if (!validArgPos(pos) || !lua_isnumber(mLuaState, pos))
 			return "";
@@ -71,7 +55,7 @@ namespace glz
 	}
 	
 
-	Bool Script::getArgBoolean(Int pos)
+	Bool Script::getArgBoolean(Int pos) const
 	{
 		if (!validArgPos(pos) || !lua_isboolean(mLuaState, pos))
 			return false;
@@ -80,22 +64,22 @@ namespace glz
 	}
 
 
-	Int Script::getArgInteger(Int pos)
+	Int Script::getArgInteger(Int pos) const
 	{
-		return (Int)getArgFloat(pos);
+		return Int(getArgFloat(pos));
 	}
 
 
-	Float Script::getArgFloat(Int pos)
+	Float Script::getArgFloat(Int pos) const
 	{
 		if (!validArgPos(pos) || !lua_isnumber(mLuaState, pos))
 			return 0.0f;
 
-		return lua_tonumber(mLuaState, pos);
+		return static_cast<Float>(lua_tonumber(mLuaState, pos));
 	}
 
 
-	String Script::getGlobalString(String identifier)
+	String Script::getGlobalString(String identifier) const
 	{
 		putGlobalOnStack(identifier);
 
@@ -106,7 +90,7 @@ namespace glz
 	}
 
 
-	Bool Script::getGlobalBoolean(String identifier)
+	Bool Script::getGlobalBoolean(String identifier) const
 	{
 		putGlobalOnStack(identifier);
 
@@ -117,23 +101,23 @@ namespace glz
 	}
 
 
-	Int Script::getGlobalInteger(String identifier)
+	Int Script::getGlobalInteger(String identifier) const
 	{
 		putGlobalOnStack(identifier);
 
 		if (lua_isnumber(mLuaState, 1))
-			return (Int)lua_tonumber(mLuaState, 1);
+			return Int(lua_tonumber(mLuaState, 1));
 
 		return 0;
 	}
 
 
-	Float Script::getGlobalFloat(String identifier)
+	Float Script::getGlobalFloat(String identifier) const
 	{
 		putGlobalOnStack(identifier);
 
 		if (lua_isnumber(mLuaState, 1))
-			return (Float)lua_tonumber(mLuaState, 1);
+			return Float(lua_tonumber(mLuaState, 1));
 
 		return 0.0f;
 	}

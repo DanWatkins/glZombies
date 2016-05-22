@@ -22,14 +22,14 @@ namespace glz
 
 		public:
 			void createDetails(Int entity, EntityTemplate &et);
-			void update() {}
+			void update() override {}
 		};
 		
 
 		class DetailsSystemUser
 		{
 		protected:
-			DetailsSystem *mDetailsSystem;
+			DetailsSystem *mDetailsSystem = nullptr;
 		};
 	};
 };

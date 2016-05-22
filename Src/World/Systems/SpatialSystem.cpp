@@ -22,7 +22,7 @@ namespace glz
 		{
 			std::for_each(mComponents.begin(), mComponents.end(), [&](Component* cmp)
 			{
-				((Spatial*)cmp)->update();
+				static_cast<Spatial*>(cmp)->update();
 			});
 		}
 	};

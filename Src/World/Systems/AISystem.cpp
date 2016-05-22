@@ -23,8 +23,8 @@ namespace glz
 
 		void AISystem::createAI(Int entity)
 		{
-			Details *details = (Details*)mDetailsSystem->getComponentForEntity(entity);
-			Spatial *spatial = (Spatial*)mSpatialSystem->getComponentForEntity(entity);
+			Details *details = static_cast<Details*>(mDetailsSystem->getComponentForEntity(entity));
+			Spatial *spatial = static_cast<Spatial*>(mSpatialSystem->getComponentForEntity(entity));
 			addComponent(entity, new AI(details, spatial));
 		}
 
@@ -34,7 +34,7 @@ namespace glz
 			const Int updatesPerSecond = 6;
 			const Int targetFPS = 60;
 			Int aiCount = mComponents.size();
-			Double bucketSize = (Double)aiCount / targetFPS * updatesPerSecond;
+			Double bucketSize = static_cast<Double>(aiCount) / targetFPS * updatesPerSecond;
 		
 			ComponentList::iterator iter = mComponents.begin();
 			Bucket currentBucket; 
@@ -42,7 +42,7 @@ namespace glz
 
 			while (iter != mComponents.end())
 			{
-				AI *ai = (AI*)(*iter);
+				AI *ai = static_cast<AI*>(*iter);
 				currentBucket.push_back(ai);
 
 				currentSize += 1.0;
@@ -88,13 +88,13 @@ namespace glz
 		{
 			#undef max
 			Double closest = std::numeric_limits<Double>::max();
-			AI *closestAi = NULL;
+			AI *closestAi = nullptr;
 			Bool foundClosest = false;
 
 			ComponentList::iterator aiSearchCmp = mComponents.begin();
 			while (aiSearchCmp != mComponents.end())
 			{
-				AI *aiSearch = (AI*)*aiSearchCmp;
+				AI *aiSearch = static_cast<AI*>(*aiSearchCmp);
 				Vec2d testPos = aiSearch->mSpatial->getPos();
 				Double testDistance = pos.distance(testPos);
 
@@ -116,13 +116,13 @@ namespace glz
 		{
 			#undef max
 			Double closest = std::numeric_limits<Double>::max();
-			AI *closestAi = NULL;
+			AI *closestAi = nullptr;
 			Bool foundClosest = false;
 
 			ComponentList::iterator aiSearchCmp = mComponents.begin();
 			while (aiSearchCmp != mComponents.end())
 			{
-				AI *aiSearch = (AI*)*aiSearchCmp;
+				AI *aiSearch = static_cast<AI*>(*aiSearchCmp);
 				if (aiSearch->mDetails->getType() == type)
 				{
 					Double testDistance = pos.distance(aiSearch->mSpatial->getPos());
@@ -156,16 +156,11 @@ namespace glz
 			return density;
 		}
 
-
-
-
 		struct SectorNode
 		{
 			Int sector;
 			Double density;
 		};
-
-
 
 		struct MergeNode
 		{
@@ -186,7 +181,6 @@ namespace glz
 
 				return densitySum / sectors.size();
 			}
-
 
 			Int calculateAverageSectorIndex()
 			{
@@ -209,26 +203,21 @@ namespace glz
 			}
 		};
 
-
-
-
 		Vec2d AISystem::findLeastDenseSector(AI *target, std::vector<String> typeMasks, Int sectors)
 		{
 			SectorList sectorList;
 			Double sectorSize = TWO_PI/sectors;
 			Vec2d targetPos = target->mSpatial->getPos();
 
-
 			//populate the sectorList
 			for (Int n=0; n<sectors; n++)
 				sectorList.push_back(Sector());
-
 
 			//go through each AI and see which sector it belongs in (if it matches a type in @typeMasks)
 			ComponentList::iterator iter = mComponents.begin();
 			while (iter != mComponents.end())
 			{
-				AI *ai = (AI*)*iter;
+				AI *ai = static_cast<AI*>(*iter);
 				String type = ai->mDetails->getType();
 
 				//only consider this AI if it has a type to consider
@@ -242,16 +231,11 @@ namespace glz
 					if (localPos.y < 0)
 						angle = TWO_PI-angle;
 
-					sectorList[(Int)(angle / sectorSize)].push_back(ai);
+					sectorList[Int(angle / sectorSize)].push_back(ai);
 				}
 
 				++iter;
 			}
-
-
-			
-
-
 
 			//find the least dense sector
 			std::list<SectorNode> baseNodes;
@@ -277,8 +261,6 @@ namespace glz
 			}
 
 			mergeNodes.push_back(*mergeNode);
-
-
 
 			//use the least dense mergeNode
 			Double minimumDensity = std::numeric_limits<Double>::max();
@@ -306,7 +288,6 @@ namespace glz
 				++mergeIter;
 			}
 
-
 			//resolve ties by setting score equal to size
 			Uint score = 0;
 			std::list<MergeNode>::iterator tieIter = mergeNodeTies.begin();
@@ -320,9 +301,6 @@ namespace glz
 
 				++tieIter;
 			}
-
-
-
 
 			//determine a seek point on the least dense sector
 			Double centerAngleMeasure = (sectorSize*leastDenseMergeNode.calculateAverageSectorIndex()) + (sectorSize/2.0);

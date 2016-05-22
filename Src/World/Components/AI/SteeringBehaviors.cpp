@@ -19,7 +19,7 @@ namespace glz
 		}
 
 
-		Bool SteeringBehaviors::accumulateForce(Vec2d &totalForce, Vec2d forceToAdd)
+		Bool SteeringBehaviors::accumulateForce(Vec2d &totalForce, Vec2d forceToAdd) const
 		{
 			Double magnitudeRemaining = mSpatial->getMaxForce() - totalForce.length();
 

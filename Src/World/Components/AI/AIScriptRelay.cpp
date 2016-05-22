@@ -12,7 +12,7 @@ namespace glz
 {
 	namespace world
 	{
-		AIScript *AIScriptRelay::mCurrentScript = NULL;
+		AIScript *AIScriptRelay::mCurrentScript = nullptr;
 
 		AIScriptRelay& AIScriptRelay::instance()
 		{
@@ -33,11 +33,11 @@ namespace glz
 		void AIScriptRelay::unlock(AIScript *script)
 		{
 			if (mCurrentScript == script)
-				mCurrentScript = NULL;
+				mCurrentScript = nullptr;
 		}
 
 
-		void AIScriptRelay::bindToLua(AIScript *script)
+		void AIScriptRelay::bindToLua(AIScript *script) const
 		{
 			lua_register(script->mLuaState, "ai_seek", cpp_seek);
 			lua_register(script->mLuaState, "ai_flee", cpp_flee);

@@ -15,7 +15,7 @@ namespace glz
 		mWidth = gDefaultWindowWidth;
 		mHeight = gDefaultWindowHeight;
 		mTitle = gWindowTitle;
-		mWindow = NULL;
+		mWindow = nullptr;
 		mAspectScale = Vec2f(1.0f, 1.0f);
 		mZoom = Vec2f(0.2f, 0.2f);
 		mShouldTerminate = false;
@@ -34,7 +34,7 @@ namespace glz
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
 
-		mWindow = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
+		mWindow = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
 		if (!mWindow)
 		{
 			terminate();
@@ -60,7 +60,7 @@ namespace glz
 
 		while (!glfwWindowShouldClose(mWindow)  &&  !mShouldTerminate)
 		{
-			onUpdate((Double)clock.getElapsedTime().asSeconds());
+			onUpdate(Double(clock.getElapsedTime().asSeconds()));
 
 			glfwSwapBuffers(mWindow);
 			glfwPollEvents();

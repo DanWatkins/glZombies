@@ -27,17 +27,18 @@ namespace glz
 		class AIScript : public Script
 		{
 		private:
-			SteeringBehaviors *mSteeringBehaviors;
+			SteeringBehaviors *mSteeringBehaviors = nullptr;
 			AI *mAI;
 			std::list<AI*> mRecentAiReferences;
 
 		public:
 			friend AIScriptRelay;
-			AIScript(AI *ai) { mAI = ai; }
+
+			explicit AIScript(AI *ai) { mAI = ai; }
 			AIScript(AI *ai, String filepath);
 			~AIScript();
 
-			void bindToLua();
+			void bindToLua() override;
 			void script_update(SteeringBehaviors *behaviors);
 
 			void addRecentAiReference(AI *aiReference);

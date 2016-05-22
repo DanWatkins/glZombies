@@ -17,7 +17,7 @@ namespace glz
 	protected:
 		lua_State *mLuaState;
 
-		void putGlobalOnStack(String identifier);
+		void putGlobalOnStack(String identifier) const;
 
 	public:
 		Script();
@@ -25,27 +25,24 @@ namespace glz
 		virtual ~Script() {}
 
 		Bool load(String filepath);
-		Bool isOpen();
-		void execute();
-		void close();
 
 		virtual void bindToLua() = 0;
 		
-		Bool validArgPos(Int pos);
-		Int argsOnStack();
+		Bool validArgPos(Int pos) const;
+		Int argsOnStack() const;
 
 		//argument access
-		String getArgString(Int pos);
-		Bool getArgBoolean(Int pos);
-		Int getArgInteger(Int pos);
-		Float getArgFloat(Int pos);
+		String getArgString(Int pos) const;
+		Bool getArgBoolean(Int pos) const;
+		Int getArgInteger(Int pos) const;
+		Float getArgFloat(Int pos) const;
 		
 
 		//global variable access
-		String getGlobalString(String identifier);
-		Bool getGlobalBoolean(String identifier);
-		Int getGlobalInteger(String identifier);
-		Float getGlobalFloat(String identifier);
+		String getGlobalString(String identifier) const;
+		Bool getGlobalBoolean(String identifier) const;
+		Int getGlobalInteger(String identifier) const;
+		Float getGlobalFloat(String identifier) const;
 	};
 };
 

@@ -77,7 +77,7 @@ namespace glz
 		}
 
 
-		void World::update()
+		void World::update() const
 		{
 			Double timeDelta = 0.01;
 
@@ -105,9 +105,9 @@ namespace glz
 			DIR *dir;
 			struct dirent *ent;
 			std::vector<String> files;
-			if ((dir = opendir (gDefaultPathEntity.c_str())) != NULL)
+			if ((dir = opendir (gDefaultPathEntity.c_str())) != nullptr)
 			{
-				while ((ent = readdir (dir)) != NULL)
+				while ((ent = readdir (dir)) != nullptr)
 				{
 					files.push_back(String(gDefaultPathEntity) + String(ent->d_name));
 					loadTemplateEntity(String(gDefaultPathEntity) + String(ent->d_name));

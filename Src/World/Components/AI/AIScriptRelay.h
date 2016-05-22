@@ -29,7 +29,6 @@ namespace glz
 
 			AIScriptRelay() {}
 			AIScriptRelay(const AIScriptRelay &relay) {}
-			void operator ==(const AIScriptRelay &relay) {}
 
 			static String getTopString(lua_State *lua);
 
@@ -55,11 +54,12 @@ namespace glz
 		public:
 			static AIScriptRelay &instance();
 
-			void lock(AIScript *script);
-			void unlock(AIScript *script);
-			Bool isLocked() { return (Bool)mCurrentScript; }
+			static void lock(AIScript *script);
+			static void unlock(AIScript *script);
 
-			void bindToLua(AIScript *script);
+			static Bool isLocked() { return mCurrentScript != nullptr; }
+
+			void bindToLua(AIScript *script) const;
 
 			//CPP to Lua
 			static void script_update();

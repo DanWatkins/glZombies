@@ -36,7 +36,7 @@ namespace glz
 
 			 sf::Clock mTimeDelta;
 
-			 void update();
+			 void update() override;
 
 		 public:
 			 friend SpatialSystem;
@@ -48,26 +48,26 @@ namespace glz
 
 			 void setPos(Vec2d pos) { mPos = pos; }
 			 void addPos(Vec2d pos) { mPos += pos; }
-			 Vec2d getPos() { return mPos; }
-			 Vec2d getVelocity() { return mVelocity; }
-			 Vec2d getHeading() { return mHeading; }
-			 Vec2d getSide() { return mSide; }
+			 Vec2d getPos() const { return mPos; }
+			 Vec2d getVelocity() const { return mVelocity; }
+			 Vec2d getHeading() const { return mHeading; }
+			 Vec2d getSide() const { return mSide; }
 
 			 void setSteeringForce(Vec2d steeringForce) { mSteeringForce = steeringForce; }
 			 void addSteeringForce(Vec2d steeringForce) { mSteeringForce += steeringForce; }
-			 Vec2d getSteeringForce() { return mSteeringForce; }
+			 Vec2d getSteeringForce() const { return mSteeringForce; }
 
-			 Double getMass() { return mMass; }
-			 Double getMaxSpeed() { return mMaxSpeed; }
-			 Double getMaxForce() { return mMaxForce; }
-			 Double getMaxTurnRate() { return mMaxTurnRate; }
+			 Double getMass() const { return mMass; }
+			 Double getMaxSpeed() const { return mMaxSpeed; }
+			 Double getMaxForce() const { return mMaxForce; }
+			 Double getMaxTurnRate() const { return mMaxTurnRate; }
 		 };
 
 
 		 class SpatialUser
 		 {
 		 protected:
-			 Spatial *mSpatial;
+			 Spatial *mSpatial = nullptr;
 		 };
 	};
 };

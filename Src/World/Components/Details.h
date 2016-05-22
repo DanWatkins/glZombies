@@ -23,7 +23,7 @@ namespace glz
 		private:
 			String mDisplayName, mInternalName, mType;
 
-			void update() {}
+			void update() override {}
 
 		public:
 			Details() {}
@@ -31,9 +31,9 @@ namespace glz
 
 
 			void setDisplayName(String displayName) { mDisplayName = displayName; }
-			String getDisplayName() { return mDisplayName; }
-			String getInternalName() { return mInternalName; }
-			String getType() { return mType; }
+			String getDisplayName() const { return mDisplayName; }
+			String getInternalName() const { return mInternalName; }
+			String getType() const { return mType; }
 		};
 
 

@@ -38,7 +38,7 @@ namespace glz
 				++iter;
 			}
 
-			return NULL;
+			return nullptr;
 		}
 	};
 };

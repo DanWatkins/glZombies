@@ -48,7 +48,7 @@ namespace glz
 
 	public:
 		void setNdcPos(const Vec2<Float> &ndcPos) { mNdcPos = ndcPos; }
-		Vec2<Float> getNdcPos() { return mNdcPos; }
+		Vec2<Float> getNdcPos() const { return mNdcPos; }
 
 		Bool loadFromFile(String filepath);
 		void draw(OpenGLWindow *window, Float rotation=0.0);

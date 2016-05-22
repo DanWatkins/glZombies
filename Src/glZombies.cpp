@@ -55,7 +55,7 @@ namespace glz
 		mWorld.loadWorldFile("main.world");
 		
 
-		srand((Uint)seedTime.getElapsedTime().asMicroseconds());
+		srand(Uint(seedTime.getElapsedTime().asMicroseconds()));
 	}
 
 	
@@ -114,7 +114,7 @@ namespace glz
 	
 	void glZombies::onResize(Int width, Int height)
 	{
-		glViewport(0, 0, (GLsizei)width, (GLsizei)height);
+		glViewport(0, 0, GLsizei(width), GLsizei(height));
 	}
 
 

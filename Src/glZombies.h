@@ -24,11 +24,11 @@ namespace glz
 		world::World mWorld;
 		world::Camera mCamera;
 
-		void onStartup();
-		void onUpdate(Double currentTime);
-		void onKey(Int key, Int action);
-		void onResize(Int width, Int height);
-		void onTerminate();
+		void onStartup() override;
+		void onUpdate(Double currentTime) override;
+		void onKey(Int key, Int action) override;
+		void onResize(Int width, Int height) override;
+		void onTerminate() override;
 
 		void loadShaders();
 

@@ -8,8 +8,6 @@
 #ifndef _glz_VEC2_H
 #define _glz_VEC2_H
 
-#include "..\Main.h"
-
 namespace glz
 {
 	/**

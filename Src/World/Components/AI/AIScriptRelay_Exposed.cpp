@@ -17,7 +17,7 @@ namespace glz
 		AI *AIScriptRelay::nearestEntity()
 		{
 			AI *current = mCurrentScript->mAI;
-			AISystem *system = (AISystem*)current->getSystem();
+			AISystem *system = static_cast<AISystem*>(current->getSystem());
 			return system->findNearestAi(current->mSpatial->getPos());
 		}
 
@@ -25,7 +25,7 @@ namespace glz
 		AI *AIScriptRelay::nearestEntity(String type)
 		{
 			AI *current = mCurrentScript->mAI;
-			AISystem *system = (AISystem*)current->getSystem();
+			AISystem *system = static_cast<AISystem*>(current->getSystem());
 			return system->findNearestAi(current->mSpatial->getPos(), type);
 		}
 
@@ -46,7 +46,7 @@ namespace glz
 				return 0;
 
 			if (n == 3)
-				priority = (RequestPriority)mCurrentScript->getArgInteger(3);
+				priority = RequestPriority(mCurrentScript->getArgInteger(3));
 
 			mCurrentScript->mSteeringBehaviors->seek(pos, priority);
 
@@ -69,7 +69,7 @@ namespace glz
 				return 0;
 
 			if (n == 3)
-				priority = (RequestPriority)mCurrentScript->getArgInteger(3);
+				priority = RequestPriority(mCurrentScript->getArgInteger(3));
 
 			mCurrentScript->mSteeringBehaviors->flee(pos, priority);
 
@@ -92,7 +92,7 @@ namespace glz
 				return 0;
 
 			if (n == 3)
-				priority = (RequestPriority)mCurrentScript->getArgInteger(3);
+				priority = RequestPriority(mCurrentScript->getArgInteger(3));
 
 
 			mCurrentScript->mSteeringBehaviors->arrive(pos, priority);
@@ -113,7 +113,7 @@ namespace glz
 				return 0;
 
 			if (n == 2)
-				priority = (RequestPriority)mCurrentScript->getArgInteger(2);
+				priority = RequestPriority(mCurrentScript->getArgInteger(2));
 
 			AI *ai = mCurrentScript->getRecentAiReference(id);
 
@@ -126,7 +126,7 @@ namespace glz
 
 		Int AIScriptRelay::cpp_wander(lua_State *lua)
 		{
-			mCurrentScript->mSteeringBehaviors->wander((RequestPriority)mCurrentScript->getArgInteger(1));
+			mCurrentScript->mSteeringBehaviors->wander(RequestPriority(mCurrentScript->getArgInteger(1)));
 			return 0;
 		}
 
@@ -230,7 +230,7 @@ namespace glz
 
 		Int AIScriptRelay::cpp_leastDenseSector(lua_State *lua, std::vector<String> typeMask, Int sectors)
 		{
-			Vec2d pos = ((AISystem*)mCurrentScript->mAI->getSystem())->findLeastDenseSector( mCurrentScript->mAI, typeMask, sectors);
+			Vec2d pos = static_cast<AISystem*>(mCurrentScript->mAI->getSystem())->findLeastDenseSector( mCurrentScript->mAI, typeMask, sectors);
 			lua_pushnumber(lua, pos.x);
 			lua_pushnumber(lua, pos.y);
 			

@@ -23,7 +23,7 @@ namespace glz
 		class DrawableSystem : public System
 		{
 		private:
-			OpenGLWindow *mWindow;
+			OpenGLWindow *mWindow = nullptr;
 
 		protected:
 			DrawableSystem() {}
@@ -31,10 +31,10 @@ namespace glz
 
 		public:
 			friend Camera;
-			DrawableSystem(OpenGLWindow *window);
+			explicit DrawableSystem(OpenGLWindow *window);
 
 			void createDrawable(Int entity, String meshFilepath);
-			void update() {}
+			void update() override {}
 		};
 
 

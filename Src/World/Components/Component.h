@@ -25,8 +25,8 @@ namespace glz
 		class Component
 		{
 		private:
-			Int mHost;
-			System *mSystem;
+			Int mHost = -1;
+			System *mSystem = nullptr;
 
 			virtual void init() {}
 			virtual void update() = 0;
@@ -42,8 +42,8 @@ namespace glz
 				std::cout << "Component destroyed" << std::endl;
 			}
 
-			Int getHost() { return mHost; }
-			System *getSystem() { return mSystem; }
+			Int getHost() const { return mHost; }
+			System *getSystem() const { return mSystem; }
 		};
 	};
 };
