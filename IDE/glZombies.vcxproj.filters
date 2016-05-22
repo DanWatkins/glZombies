@@ -194,4 +194,7 @@
       <Filter>World\Components\AI</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>

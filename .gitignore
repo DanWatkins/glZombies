@@ -26,3 +26,8 @@ IDE/Obj/
 *.exe
 *.pdb
 *ilk
+packages/
+*.dll
+*.suo
+glZombies.VC.VC.opendb
+glZombies.VC.db

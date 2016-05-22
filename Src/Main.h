@@ -31,46 +31,31 @@
 
 extern "C"
 {
-	#include <lua\lua.h>
-	#include <lua\lualib.h>
-	#include <lua\lauxlib.h>
+#include <lua.h>
+#include <lualib.h>
+#include <lauxlib.h>
 }
 
-#define SFML_STATIC
 #include <SFML/System.hpp>
 
 #define WIN32_LEAN_AND_MEAN 1
 
 #ifdef WIN32
-	#pragma once
-	#define _CRT_SECURE_NO_WARNINGS 1
+#pragma once
+#define _CRT_SECURE_NO_WARNINGS 1
 
+#include <Windows.h>
+#pragma comment (lib, "OpenGL32.lib")
 
-
-	#include <Windows.h>
-
-	#ifdef _DEBUG
-		#pragma comment (lib, "glfw3-d.lib")
-		#pragma comment (lib, "lua-d.lib")
-		#pragma comment (lib, "sfml-system-d.lib")
-		//#pragma comment (lib, "sfml-main-d.lib")
-	#else
-		#pragma comment (lib, "glfw3-r.lib")
-		#pragma comment (lib, "lua-r.lib")
-		#pragma comment (lib, "sfml-system-r.lib")
-	#endif
-
-	#pragma comment (lib, "OpenGL32.lib")
 #else
-	#error "Non Windows toolchain detected"
+#error "Non Windows toolchain detected"
 #endif
 
 
 #define GLFW_NO_GLU 1
 #define GLFW_INCLUDE_GLCOREARB 1
-#include "GL/glfw3.h"
-#include "GL/gl3w.h"
-
+#include <GLFW/glfw3.h>
+#include <GL/gl3w.h>
 
 //typedef common types
 typedef char				Char;
@@ -92,7 +77,7 @@ struct Color { Float r, g, b, a; };
 typedef std::string			String;
 
 #ifdef WIN32
-	#include <memory>
+#include <memory>
 #endif
 
 #include "Constants.h"
