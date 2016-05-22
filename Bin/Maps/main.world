@@ -1,3 +1,7 @@
+#entity human 3 3
+#entity human 4 6
+#entity human 6 1
+
 #entity zombie 9 3
 #entity zombie -14 4
 #entity zombie 1 12
@@ -98,8 +102,3 @@
 #entity zombie -15 5
 #entity zombie -6 9
 #entity zombie -13 10
-
-
-#entity human 3 3
-
-#entity human 4 6

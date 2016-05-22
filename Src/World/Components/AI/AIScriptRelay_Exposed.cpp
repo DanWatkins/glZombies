@@ -172,7 +172,6 @@ namespace glz
 
 		int AIScriptRelay::cpp_nearestEntityId(lua_State *lua)
 		{
-			int argCount = mCurrentScript->argsOnStack();
 			String arg = mCurrentScript->getArgString(1);
 
 			if (arg != "")

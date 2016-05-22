@@ -48,7 +48,7 @@ namespace glz
 
 	String Script::getArgString(int pos) const
 	{
-		if (!validArgPos(pos) || !lua_isnumber(mLuaState, pos))
+		if (!validArgPos(pos))
 			return "";
 
 		return lua_tostring(mLuaState, pos);
