@@ -11,7 +11,7 @@ namespace glz
 {
 	namespace world
 	{
-		void DetailsSystem::createDetails(Int entity, EntityTemplate &et)
+		void DetailsSystem::createDetails(int entity, EntityTemplate &et)
 		{
 			addComponent(entity, new Details(et.name, et.type));
 		}

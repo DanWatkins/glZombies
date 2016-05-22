@@ -78,8 +78,8 @@ namespace glz
 		{
 			Mat3 mat;
 
-			Double rotationSin = sin(rotation);
-			Double rotationCos = cos(rotation);
+			double rotationSin = sin(rotation);
+			double rotationCos = cos(rotation);
 
 			mat._11 = rotationCos; mat._12 = rotationSin; mat._13 = T(0);
 			mat._21 = -rotationSin; mat._22 = rotationCos; mat._23 = T(0);
@@ -108,8 +108,8 @@ namespace glz
 		}
 	};
 
-	typedef Mat3<Float> Mat3f;
-	typedef Mat3<Double> Mat3d;
+	typedef Mat3<float> Mat3f;
+	typedef Mat3<double> Mat3d;
 };
 
 

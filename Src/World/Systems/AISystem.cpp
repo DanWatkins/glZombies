@@ -21,7 +21,7 @@ namespace glz
 		}
 
 
-		void AISystem::createAI(Int entity)
+		void AISystem::createAI(int entity)
 		{
 			Details *details = static_cast<Details*>(mDetailsSystem->getComponentForEntity(entity));
 			Spatial *spatial = static_cast<Spatial*>(mSpatialSystem->getComponentForEntity(entity));
@@ -31,14 +31,14 @@ namespace glz
 
 		void AISystem::generateBuckets()
 		{
-			const Int updatesPerSecond = 6;
-			const Int targetFPS = 60;
-			Int aiCount = mComponents.size();
-			Double bucketSize = static_cast<Double>(aiCount) / targetFPS * updatesPerSecond;
+			const int updatesPerSecond = 6;
+			const int targetFPS = 60;
+			int aiCount = mComponents.size();
+			double bucketSize = static_cast<double>(aiCount) / targetFPS * updatesPerSecond;
 		
 			ComponentList::iterator iter = mComponents.begin();
 			Bucket currentBucket; 
-			Double currentSize = 0.0;
+			double currentSize = 0.0;
 
 			while (iter != mComponents.end())
 			{
@@ -87,16 +87,16 @@ namespace glz
 		AI *AISystem::findNearestAi(Vec2d pos)
 		{
 			#undef max
-			Double closest = std::numeric_limits<Double>::max();
+			double closest = std::numeric_limits<double>::max();
 			AI *closestAi = nullptr;
-			Bool foundClosest = false;
+			bool foundClosest = false;
 
 			ComponentList::iterator aiSearchCmp = mComponents.begin();
 			while (aiSearchCmp != mComponents.end())
 			{
 				AI *aiSearch = static_cast<AI*>(*aiSearchCmp);
 				Vec2d testPos = aiSearch->mSpatial->getPos();
-				Double testDistance = pos.distance(testPos);
+				double testDistance = pos.distance(testPos);
 
 				if (testDistance < closest  &&  pos != testPos)
 				{
@@ -115,9 +115,9 @@ namespace glz
 		AI *AISystem::findNearestAi(Vec2d pos, String type)
 		{
 			#undef max
-			Double closest = std::numeric_limits<Double>::max();
+			double closest = std::numeric_limits<double>::max();
 			AI *closestAi = nullptr;
-			Bool foundClosest = false;
+			bool foundClosest = false;
 
 			ComponentList::iterator aiSearchCmp = mComponents.begin();
 			while (aiSearchCmp != mComponents.end())
@@ -125,7 +125,7 @@ namespace glz
 				AI *aiSearch = static_cast<AI*>(*aiSearchCmp);
 				if (aiSearch->mDetails->getType() == type)
 				{
-					Double testDistance = pos.distance(aiSearch->mSpatial->getPos());
+					double testDistance = pos.distance(aiSearch->mSpatial->getPos());
 					if (testDistance < closest)
 					{
 						closest = testDistance;
@@ -141,10 +141,10 @@ namespace glz
 		}
 
 
-		Double AISystem::lds_calculateSectorDesnity(Sector &sector, AI *target)
+		double AISystem::lds_calculateSectorDesnity(Sector &sector, AI *target)
 		{
 			Sector::iterator iter = sector.begin();
-			Double density = 0.0;
+			double density = 0.0;
 			Vec2d targetPos = target->mSpatial->getPos();
 
 			while (iter != sector.end())
@@ -158,20 +158,20 @@ namespace glz
 
 		struct SectorNode
 		{
-			Int sector;
-			Double density;
+			int sector;
+			double density;
 		};
 
 		struct MergeNode
 		{
 			std::list<SectorNode> sectors;
 
-			Double calculateDensity()
+			double calculateDensity()
 			{
 				if (sectors.size() == 0)
 					return 0.0;
 
-				Double densitySum = 0.0;
+				double densitySum = 0.0;
 				std::list<SectorNode>::iterator iter = sectors.begin();
 				while (iter != sectors.end())
 				{
@@ -182,12 +182,12 @@ namespace glz
 				return densitySum / sectors.size();
 			}
 
-			Int calculateAverageSectorIndex()
+			int calculateAverageSectorIndex()
 			{
 				if (sectors.size() == 0)
 					return 0;
 
-				Int sum = 0;;
+				int sum = 0;;
 				std::list<SectorNode>::iterator iter = sectors.begin();
 
 				while (iter != sectors.end())
@@ -203,14 +203,14 @@ namespace glz
 			}
 		};
 
-		Vec2d AISystem::findLeastDenseSector(AI *target, std::vector<String> typeMasks, Int sectors)
+		Vec2d AISystem::findLeastDenseSector(AI *target, std::vector<String> typeMasks, int sectors)
 		{
 			SectorList sectorList;
-			Double sectorSize = TWO_PI/sectors;
+			double sectorSize = TWO_PI/sectors;
 			Vec2d targetPos = target->mSpatial->getPos();
 
 			//populate the sectorList
-			for (Int n=0; n<sectors; n++)
+			for (int n=0; n<sectors; n++)
 				sectorList.push_back(Sector());
 
 			//go through each AI and see which sector it belongs in (if it matches a type in @typeMasks)
@@ -226,12 +226,12 @@ namespace glz
 					Vec2d aiPos = ai->mSpatial->getPos();
 					Vec2d localPos = aiPos - targetPos;
 					localPos.normalize();
-					Double angle = acos(localPos.dot(Vec2d(1.0,0.0)));
+					double angle = acos(localPos.dot(Vec2d(1.0,0.0)));
 
 					if (localPos.y < 0)
 						angle = TWO_PI-angle;
 
-					sectorList[Int(angle / sectorSize)].push_back(ai);
+					sectorList[int(angle / sectorSize)].push_back(ai);
 				}
 
 				++iter;
@@ -243,7 +243,7 @@ namespace glz
 			std::list<MergeNode> mergeNodes;
 			SectorNode previousSectorNode;
 
-			for (Int n=0; n<sectors; n++)
+			for (int n=0; n<sectors; n++)
 			{
 				SectorNode node;
 				node.density = lds_calculateSectorDesnity(sectorList.at(n), target);
@@ -263,14 +263,14 @@ namespace glz
 			mergeNodes.push_back(*mergeNode);
 
 			//use the least dense mergeNode
-			Double minimumDensity = std::numeric_limits<Double>::max();
+			double minimumDensity = std::numeric_limits<double>::max();
 			MergeNode leastDenseMergeNode = mergeNodes.front();
 			std::list<MergeNode> mergeNodeTies;
 
 			std::list<MergeNode>::iterator mergeIter = mergeNodes.begin();
 			while (mergeIter != mergeNodes.end())
 			{
-				Double density = mergeIter->calculateDensity();
+				double density = mergeIter->calculateDensity();
 
 				if (density == minimumDensity)
 				{
@@ -289,7 +289,7 @@ namespace glz
 			}
 
 			//resolve ties by setting score equal to size
-			Uint score = 0;
+			unsigned int score = 0;
 			std::list<MergeNode>::iterator tieIter = mergeNodeTies.begin();
 			while (tieIter != mergeNodeTies.end())
 			{
@@ -303,7 +303,7 @@ namespace glz
 			}
 
 			//determine a seek point on the least dense sector
-			Double centerAngleMeasure = (sectorSize*leastDenseMergeNode.calculateAverageSectorIndex()) + (sectorSize/2.0);
+			double centerAngleMeasure = (sectorSize*leastDenseMergeNode.calculateAverageSectorIndex()) + (sectorSize/2.0);
 			Vec2d seekPoint(cos(centerAngleMeasure), sin(centerAngleMeasure));
 			
 			//lengthen the seek point so it last's a while

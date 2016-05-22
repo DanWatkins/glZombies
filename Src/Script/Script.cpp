@@ -28,25 +28,25 @@ namespace glz
 	}
 
 
-	Bool Script::load(String filepath)
+	bool Script::load(String filepath)
 	{
 		return luaL_dofile(mLuaState, filepath.c_str());
 	}
 
 
-	Bool Script::validArgPos(Int pos) const
+	bool Script::validArgPos(int pos) const
 	{
 		return !(pos > lua_gettop(mLuaState));
 	}
 
 
-	Int Script::argsOnStack() const
+	int Script::argsOnStack() const
 	{
 		return lua_gettop(mLuaState);
 	}
 
 
-	String Script::getArgString(Int pos) const
+	String Script::getArgString(int pos) const
 	{
 		if (!validArgPos(pos) || !lua_isnumber(mLuaState, pos))
 			return "";
@@ -55,7 +55,7 @@ namespace glz
 	}
 	
 
-	Bool Script::getArgBoolean(Int pos) const
+	bool Script::getArgBoolean(int pos) const
 	{
 		if (!validArgPos(pos) || !lua_isboolean(mLuaState, pos))
 			return false;
@@ -64,18 +64,18 @@ namespace glz
 	}
 
 
-	Int Script::getArgInteger(Int pos) const
+	int Script::getArgInteger(int pos) const
 	{
-		return Int(getArgFloat(pos));
+		return int(getArgFloat(pos));
 	}
 
 
-	Float Script::getArgFloat(Int pos) const
+	float Script::getArgFloat(int pos) const
 	{
 		if (!validArgPos(pos) || !lua_isnumber(mLuaState, pos))
 			return 0.0f;
 
-		return static_cast<Float>(lua_tonumber(mLuaState, pos));
+		return static_cast<float>(lua_tonumber(mLuaState, pos));
 	}
 
 
@@ -90,7 +90,7 @@ namespace glz
 	}
 
 
-	Bool Script::getGlobalBoolean(String identifier) const
+	bool Script::getGlobalBoolean(String identifier) const
 	{
 		putGlobalOnStack(identifier);
 
@@ -101,23 +101,23 @@ namespace glz
 	}
 
 
-	Int Script::getGlobalInteger(String identifier) const
+	int Script::getGlobalInteger(String identifier) const
 	{
 		putGlobalOnStack(identifier);
 
 		if (lua_isnumber(mLuaState, 1))
-			return Int(lua_tonumber(mLuaState, 1));
+			return int(lua_tonumber(mLuaState, 1));
 
 		return 0;
 	}
 
 
-	Float Script::getGlobalFloat(String identifier) const
+	float Script::getGlobalFloat(String identifier) const
 	{
 		putGlobalOnStack(identifier);
 
 		if (lua_isnumber(mLuaState, 1))
-			return Float(lua_tonumber(mLuaState, 1));
+			return float(lua_tonumber(mLuaState, 1));
 
 		return 0.0f;
 	}

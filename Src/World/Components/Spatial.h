@@ -29,10 +29,10 @@ namespace glz
 			 Vec2d mSide;
 			 Vec2d mSteeringForce;
 
-			 Double mMass;
-			 Double mMaxSpeed;
-			 Double mMaxForce;
-			 Double mMaxTurnRate;
+			 double mMass;
+			 double mMaxSpeed;
+			 double mMaxForce;
+			 double mMaxTurnRate;
 
 			 sf::Clock mTimeDelta;
 
@@ -41,9 +41,9 @@ namespace glz
 		 public:
 			 friend SpatialSystem;
 			 Spatial(Vec2d pos, const EntityTemplate &et);
-			 Spatial(Vec2d pos, Vec2d heading, Double mass, Double maxSpeed, Double maxForce, Double maxTurnRate); 
+			 Spatial(Vec2d pos, Vec2d heading, double mass, double maxSpeed, double maxForce, double maxTurnRate); 
 			 
-			 Bool rotateToHeading(Vec2d pos);
+			 bool rotateToHeading(Vec2d pos);
 			 void setHeading(Vec2d heading);
 
 			 void setPos(Vec2d pos) { mPos = pos; }
@@ -57,10 +57,10 @@ namespace glz
 			 void addSteeringForce(Vec2d steeringForce) { mSteeringForce += steeringForce; }
 			 Vec2d getSteeringForce() const { return mSteeringForce; }
 
-			 Double getMass() const { return mMass; }
-			 Double getMaxSpeed() const { return mMaxSpeed; }
-			 Double getMaxForce() const { return mMaxForce; }
-			 Double getMaxTurnRate() const { return mMaxTurnRate; }
+			 double getMass() const { return mMass; }
+			 double getMaxSpeed() const { return mMaxSpeed; }
+			 double getMaxForce() const { return mMaxForce; }
+			 double getMaxTurnRate() const { return mMaxTurnRate; }
 		 };
 
 

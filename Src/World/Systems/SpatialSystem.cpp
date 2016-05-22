@@ -12,7 +12,7 @@ namespace glz
 {
 	namespace world
 	{
-		void SpatialSystem::createSpatial(Int entity, Vec2d pos, const EntityTemplate &entityTemplate)
+		void SpatialSystem::createSpatial(int entity, Vec2d pos, const EntityTemplate &entityTemplate)
 		{
 			addComponent(entity, new Spatial(pos, entityTemplate));
 		}

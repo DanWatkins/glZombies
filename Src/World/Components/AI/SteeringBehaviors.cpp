@@ -19,14 +19,14 @@ namespace glz
 		}
 
 
-		Bool SteeringBehaviors::accumulateForce(Vec2d &totalForce, Vec2d forceToAdd) const
+		bool SteeringBehaviors::accumulateForce(Vec2d &totalForce, Vec2d forceToAdd) const
 		{
-			Double magnitudeRemaining = mSpatial->getMaxForce() - totalForce.length();
+			double magnitudeRemaining = mSpatial->getMaxForce() - totalForce.length();
 
 			if (magnitudeRemaining <= 0.0)
 				return false;
 
-			Double magnitudeToAdd = forceToAdd.length();
+			double magnitudeToAdd = forceToAdd.length();
 
 			if (magnitudeToAdd < magnitudeRemaining)
 				totalForce += forceToAdd;
@@ -90,15 +90,15 @@ namespace glz
 
 		void SteeringBehaviors::arrive(Vec2d pos, RequestPriority priority)
 		{
-			const Double deceleration = 2.0;
-			const Double decelerationTweaker = 0.3;
+			const double deceleration = 2.0;
+			const double decelerationTweaker = 0.3;
 
 			Vec2d toTarget = pos-mSpatial->getPos();
-			Double distance = toTarget.length();
+			double distance = toTarget.length();
 
 			if (distance > 0)
 			{
-				Double speed = distance / (deceleration*decelerationTweaker);
+				double speed = distance / (deceleration*decelerationTweaker);
 				speed = speed < mSpatial->getMaxSpeed() ? speed : mSpatial->getMaxSpeed();
 
 				Vec2d desiredVelocity = toTarget * speed;
@@ -115,12 +115,12 @@ namespace glz
 			Spatial *spatial = target->mSpatial;
 			Vec2d toTarget = spatial->getPos();
 			toTarget.normalize();
-			Double relativeHeading = mSpatial->getHeading().dot(spatial->getHeading());
+			double relativeHeading = mSpatial->getHeading().dot(spatial->getHeading());
 
 			if (toTarget.dot(mSpatial->getHeading()) > 0.0  &&  relativeHeading < -0.95)
 				return seek(spatial->getPos());
 
-			Double lookAheadTime = toTarget.length() / (mSpatial->getMaxSpeed() + spatial->getVelocity().length());
+			double lookAheadTime = toTarget.length() / (mSpatial->getMaxSpeed() + spatial->getVelocity().length());
 			
 			return seek(spatial->getPos() + spatial->getVelocity()* lookAheadTime, priority);
 		}
@@ -128,11 +128,11 @@ namespace glz
 
 		void SteeringBehaviors::wander(RequestPriority priority)
 		{
-			Double wanderRadius = 1.2;
-			Double wanderDistance = 2.0;
-			Double wanderJitterPerSec = 80.0;
+			double wanderRadius = 1.2;
+			double wanderDistance = 2.0;
+			double wanderJitterPerSec = 80.0;
 
-			Double jitterAmount = wanderJitterPerSec * mAi->mTimeDelta.getElapsedTime().asSeconds();
+			double jitterAmount = wanderJitterPerSec * mAi->mTimeDelta.getElapsedTime().asSeconds();
 
 			mWanderTarget += Vec2d(randClamped() * jitterAmount,
 									randClamped() * jitterAmount);

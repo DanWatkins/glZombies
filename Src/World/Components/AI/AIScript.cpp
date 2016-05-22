@@ -58,7 +58,7 @@ namespace glz
 		}
 
 
-		AI *AIScript::getRecentAiReference(Int id)
+		AI *AIScript::getRecentAiReference(int id)
 		{
 			std::list<AI*>::iterator iter = mRecentAiReferences.begin();
 

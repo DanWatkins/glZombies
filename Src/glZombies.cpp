@@ -15,7 +15,7 @@ std::thread luaBackground;
 void initLua()
 {
 	std::string buffer = "a=10";
-	Int error;
+	int error;
 
 	lua_State *lua = luaL_newstate();
 	luaL_openlibs(lua);
@@ -55,13 +55,13 @@ namespace glz
 		mWorld.loadWorldFile("main.world");
 		
 
-		srand(Uint(seedTime.getElapsedTime().asMicroseconds()));
+		srand(unsigned int(seedTime.getElapsedTime().asMicroseconds()));
 	}
 
 	
-	void glZombies::onUpdate(Double timeSinceStartup)
+	void glZombies::onUpdate(double timeSinceStartup)
 	{
-		static const Float clearColor[] = { 1.0f, 1.0f, 0.9f, 1.0f };
+		static const float clearColor[] = { 1.0f, 1.0f, 0.9f, 1.0f };
 		glClearBufferfv(GL_COLOR, 0, clearColor);
 
 		mWorld.update();
@@ -69,7 +69,7 @@ namespace glz
 	}
 
 
-	void glZombies::onKey(Int key, Int action)
+	void glZombies::onKey(int key, int action)
 	{
 		switch (key)
 		{
@@ -112,7 +112,7 @@ namespace glz
 	}
 
 	
-	void glZombies::onResize(Int width, Int height)
+	void glZombies::onResize(int width, int height)
 	{
 		glViewport(0, 0, GLsizei(width), GLsizei(height));
 	}
@@ -126,7 +126,7 @@ namespace glz
 
 	void glZombies::loadShaders()
 	{
-		Uint shaders[2];
+		unsigned int shaders[2];
 		shaders[0] = Shader::loadShader(String(gDefaultPathShaders)+"standard.vert", GL_VERTEX_SHADER);
 		shaders[1] = Shader::loadShader(String(gDefaultPathShaders)+"standard.frag", GL_FRAGMENT_SHADER);
 

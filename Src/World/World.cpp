@@ -51,7 +51,7 @@ namespace glz
 				return;
 			}
 
-			Char token[64];
+			char token[64];
 
 			while (!file.eof())
 			{
@@ -79,7 +79,7 @@ namespace glz
 
 		void World::update() const
 		{
-			Double timeDelta = 0.01;
+			double timeDelta = 0.01;
 
 			mDetailsSystem->update();
 			mDrawableSystem->update();
@@ -90,7 +90,7 @@ namespace glz
 		
 		EntityTemplate World::getTemplateEntity(String name)
 		{
-			for (Uint n=0; n<mTemplateEntities.size(); n++)
+			for (unsigned int n=0; n<mTemplateEntities.size(); n++)
 			{
 				if (mTemplateEntities[n].name == name)
 					return mTemplateEntities[n];
@@ -144,7 +144,7 @@ namespace glz
 				return;
 			}
 
-			Char token[64];
+			char token[64];
 			EntityTemplate te;
 
 			while (!file.eof())

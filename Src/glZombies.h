@@ -25,9 +25,9 @@ namespace glz
 		world::Camera mCamera;
 
 		void onStartup() override;
-		void onUpdate(Double currentTime) override;
-		void onKey(Int key, Int action) override;
-		void onResize(Int width, Int height) override;
+		void onUpdate(double currentTime) override;
+		void onKey(int key, int action) override;
+		void onResize(int width, int height) override;
 		void onTerminate() override;
 
 		void loadShaders();

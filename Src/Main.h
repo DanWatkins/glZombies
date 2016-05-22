@@ -57,24 +57,9 @@ extern "C"
 #include <GLFW/glfw3.h>
 #include <GL/gl3w.h>
 
-//typedef common types
-typedef char				Char;
-typedef GLbyte				Int8;
-typedef GLubyte				Uint8;
-typedef GLshort				Int16;
-typedef GLushort			Uint16;
-typedef GLint				Int;
-typedef GLuint				Uint;
-typedef long long			Int64;
-typedef unsigned long long	Uint64;
+struct Color { float r, g, b, a; };
 
-typedef GLfloat				Float;
-typedef GLdouble			Double;
-typedef GLboolean			Bool;
-
-struct Color { Float r, g, b, a; };
-
-typedef std::string			String;
+typedef std::string String;
 
 #ifdef WIN32
 #include <memory>

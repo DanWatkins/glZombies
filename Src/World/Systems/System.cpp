@@ -18,7 +18,7 @@ namespace glz
 		}
 
 
-		void System::addComponent(Int entity, Component *component)
+		void System::addComponent(int entity, Component *component)
 		{
 			component->setHost(entity);
 			component->setSystem(this);
@@ -27,7 +27,7 @@ namespace glz
 		}
 
 
-		Component *System::getComponentForEntity(Int entity)
+		Component *System::getComponentForEntity(int entity)
 		{
 			ComponentList::iterator iter = mComponents.begin();
 			while (iter != mComponents.end())

@@ -15,7 +15,7 @@ namespace glz
 	class Circle : public Mesh2D
 	{
 	public:
-		void init(Float radius, Int segments=60);
+		void init(float radius, int segments=60);
 	};
 };
 

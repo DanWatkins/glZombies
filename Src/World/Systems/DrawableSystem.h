@@ -33,7 +33,7 @@ namespace glz
 			friend Camera;
 			explicit DrawableSystem(OpenGLWindow *window);
 
-			void createDrawable(Int entity, String meshFilepath);
+			void createDrawable(int entity, String meshFilepath);
 			void update() override {}
 		};
 

@@ -25,13 +25,13 @@ namespace glz
 		class Component
 		{
 		private:
-			Int mHost = -1;
+			int mHost = -1;
 			System *mSystem = nullptr;
 
 			virtual void init() {}
 			virtual void update() = 0;
 
-			void setHost(Int host) { mHost = host; }
+			void setHost(int host) { mHost = host; }
 			void setSystem(System *system) { mSystem = system; }
 
 		public:
@@ -42,7 +42,7 @@ namespace glz
 				std::cout << "Component destroyed" << std::endl;
 			}
 
-			Int getHost() const { return mHost; }
+			int getHost() const { return mHost; }
 			System *getSystem() const { return mSystem; }
 		};
 	};

@@ -42,7 +42,7 @@ namespace glz
 			void script_update(SteeringBehaviors *behaviors);
 
 			void addRecentAiReference(AI *aiReference);
-			AI *getRecentAiReference(Int id);
+			AI *getRecentAiReference(int id);
 		};
 	};
 };

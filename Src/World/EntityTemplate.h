@@ -25,7 +25,7 @@ namespace glz
 
 
 			//spatial
-			Double mass, maxSpeed, maxForce, maxTurnRate;
+			double mass, maxSpeed, maxForce, maxTurnRate;
 
 
 

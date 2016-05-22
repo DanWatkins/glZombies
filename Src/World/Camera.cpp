@@ -14,8 +14,8 @@ namespace glz
 		void Camera::draw() const
 		{
 			//glz::Rectangle background;
-			//background.init(Vec2f(-(Float)mWorldPos.x, (Float)mWorldPos.y),
-			//				Vec2f(Float(mWorld->mWidth - mWorldPos.x), Float(mWorldPos.y - mWorld->mHeight)));
+			//background.init(Vec2f(-(float)mWorldPos.x, (float)mWorldPos.y),
+			//				Vec2f(float(mWorld->mWidth - mWorldPos.x), float(mWorldPos.y - mWorld->mHeight)));
 			//background.draw(mWorld->mWindow);
 
 			ComponentList components = mWorld->mSpatialSystem->mComponents;
@@ -25,12 +25,12 @@ namespace glz
 			while (iter != components.end())
 			{
 				Spatial *spatial = static_cast<Spatial*>(*iter);
-				Float screenX = Float(spatial->getPos().x - mWorldPos.x);
-				Float screenY = -Float(spatial->getPos().y - mWorldPos.y);
+				float screenX = float(spatial->getPos().x - mWorldPos.x);
+				float screenY = -float(spatial->getPos().y - mWorldPos.y);
 
 				Drawable *drawable = static_cast<Drawable*>(mWorld->mDrawableSystem->getComponentForEntity(spatial->getHost()));
-				Float rotation = static_cast<Float>(spatial->getHeading().angle(Vec2d()));
-				drawable->draw(screenX, screenY, rotation-(static_cast<Float>(PI)/2.0f));
+				float rotation = static_cast<float>(spatial->getHeading().angle(Vec2d()));
+				drawable->draw(screenX, screenY, rotation-(static_cast<float>(PI)/2.0f));
 
 				++iter;
 			}

@@ -14,8 +14,8 @@ namespace glz
 {
 	namespace Shader
 	{
-		Uint loadShader(String filename, GLenum shaderType);
-		Uint linkFromShaders(const Uint *shaders, Int shaderCount);
+		unsigned int loadShader(String filename, GLenum shaderType);
+		unsigned int linkFromShaders(const unsigned int *shaders, int shaderCount);
 	};
 };
 

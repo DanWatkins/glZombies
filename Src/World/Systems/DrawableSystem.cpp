@@ -17,7 +17,7 @@ namespace glz
 		}
 
 
-		void DrawableSystem::createDrawable(Int entity, String meshFilepath)
+		void DrawableSystem::createDrawable(int entity, String meshFilepath)
 		{
 			addComponent(entity, new Drawable(meshFilepath, mWindow));
 		}

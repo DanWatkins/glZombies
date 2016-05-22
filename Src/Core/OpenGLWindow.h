@@ -24,14 +24,14 @@ namespace glz
 	class OpenGLWindow
 	{
 	private:
-		Int mWidth, mHeight;
+		int mWidth, mHeight;
 		String mTitle;
 		GLFWwindow *mWindow = nullptr;
 		Vec2f mAspectScale, mZoom;
-		Bool mShouldTerminate;
+		bool mShouldTerminate;
 
 	protected:
-		Uint mProgram;
+		unsigned int mProgram;
 
 
 	public:
@@ -42,13 +42,13 @@ namespace glz
 		friend GLFWInput;
 
 		OpenGLWindow();
-		Int init(Int width=gDefaultWindowWidth, Int height=gDefaultWindowHeight, String title=gWindowTitle);
+		int init(int width=gDefaultWindowWidth, int height=gDefaultWindowHeight, String title=gWindowTitle);
 
-		Uint getProgram() const { return mProgram; }
-		Int getWidth() const { return mWidth; }
-		Int getHeight() const { return mHeight; }
+		unsigned int getProgram() const { return mProgram; }
+		int getWidth() const { return mWidth; }
+		int getHeight() const { return mHeight; }
 		String getTitle() const { return mTitle; }
-		Bool isWindow(GLFWwindow *window) const { return window == mWindow; }
+		bool isWindow(GLFWwindow *window) const { return window == mWindow; }
 		Vec2f getAspectScale() const { return mAspectScale; }
 
 		void setZoom(Vec2f zoom);
@@ -58,13 +58,13 @@ namespace glz
 
 	protected:
 		virtual void onStartup() = 0;
-		virtual void onUpdate(Double timeSinceStartup) = 0;
-		virtual void onKey(Int key, Int action) = 0;
-		virtual void onResize(Int width, Int height) = 0;
+		virtual void onUpdate(double timeSinceStartup) = 0;
+		virtual void onKey(int key, int action) = 0;
+		virtual void onResize(int width, int height) = 0;
 		virtual void onTerminate() = 0;
 
 	private:
-		void _onResize(Int width, Int height);
+		void _onResize(int width, int height);
 	};
 };
 

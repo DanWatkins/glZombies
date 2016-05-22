@@ -14,8 +14,8 @@
 
 namespace glz
 {
-	typedef std::vector<Float> VertexData;
-	const Int gValuesPerPoint = 2;
+	typedef std::vector<float> VertexData;
+	const int gValuesPerPoint = 2;
 
 	class Mesh2D
 	{
@@ -23,10 +23,10 @@ namespace glz
 		struct Part
 		{
 		public:
-			Uint vbo, vao;
+			unsigned int vbo, vao;
 			GLenum drawMode;
-			std::vector<Float> vertexData;
-			std::vector<Float> colorData;
+			std::vector<float> vertexData;
+			std::vector<float> colorData;
 
 			Part()
 			{
@@ -38,21 +38,21 @@ namespace glz
 
 	private:
 		std::vector<Part> mParts;
-		Vec2<Float> mNdcPos;
+		Vec2<float> mNdcPos;
 
-		Bool loadComponentsFromGLZM2File(String filepath);
+		bool loadComponentsFromGLZM2File(String filepath);
 
 	protected:
 		void clearParts() { mParts.clear(); }
 		void addPart(Part part) { mParts.push_back(part); }
 
 	public:
-		void setNdcPos(const Vec2<Float> &ndcPos) { mNdcPos = ndcPos; }
-		Vec2<Float> getNdcPos() const { return mNdcPos; }
+		void setNdcPos(const Vec2<float> &ndcPos) { mNdcPos = ndcPos; }
+		Vec2<float> getNdcPos() const { return mNdcPos; }
 
-		Bool loadFromFile(String filepath);
-		void draw(OpenGLWindow *window, Float rotation=0.0);
-		void draw(OpenGLWindow *window, Float x, Float y, Float rotation=0.0);
+		bool loadFromFile(String filepath);
+		void draw(OpenGLWindow *window, float rotation=0.0);
+		void draw(OpenGLWindow *window, float x, float y, float rotation=0.0);
 	};
 };
 

@@ -11,7 +11,7 @@ namespace glz
 {
 	void Mesh2D::Part::configure()
 	{
-		std::vector<Float> combined;
+		std::vector<float> combined;
 		combined.assign(vertexData.begin(), vertexData.end());
 		combined.insert(combined.end(), colorData.begin(), colorData.end());
 
@@ -22,7 +22,7 @@ namespace glz
 		glBindBuffer(GL_ARRAY_BUFFER, this->vbo);
 
 		glBufferData(	GL_ARRAY_BUFFER,
-						combined.size()*sizeof(Float),
+						combined.size()*sizeof(float),
 						&combined[0],
 						GL_STREAM_DRAW);
 
@@ -33,13 +33,13 @@ namespace glz
 	}
 
 
-	Bool Mesh2D::loadFromFile(String filepath)
+	bool Mesh2D::loadFromFile(String filepath)
 	{
 		if (!loadComponentsFromGLZM2File(filepath))
 			return false;
 
 		//set up vertex buffer object and vertex array object for each component
-		for (Uint n=0; n<mParts.size(); n++)
+		for (unsigned int n=0; n<mParts.size(); n++)
 			(&mParts[n])->configure();
 
 		glBindVertexArray(0);
@@ -48,18 +48,18 @@ namespace glz
 	}
 
 
-	void Mesh2D::draw(OpenGLWindow *window, Float rotation)
+	void Mesh2D::draw(OpenGLWindow *window, float rotation)
 	{
 		draw(window, mNdcPos.x, mNdcPos.y, rotation);
 	}
 
 
-	void Mesh2D::draw(OpenGLWindow *window, Float x, Float y, Float rotation)
+	void Mesh2D::draw(OpenGLWindow *window, float x, float y, float rotation)
 	{
-		Uint program = window->getProgram();
+		unsigned int program = window->getProgram();
 		glUseProgram(program);
 
-		for (Uint n=0; n<mParts.size(); n++)
+		for (unsigned int n=0; n<mParts.size(); n++)
 		{
 			Part *part = &mParts[n];
 			
@@ -80,7 +80,7 @@ namespace glz
 	}
 
 
-	Bool Mesh2D::loadComponentsFromGLZM2File(String filepath)
+	bool Mesh2D::loadComponentsFromGLZM2File(String filepath)
 	{
 		std::ifstream file(filepath, std::ifstream::in);
 
@@ -129,7 +129,7 @@ namespace glz
 					}
 					else if (strcmp(token,"#col4") == 0)
 					{
-						for (Int n=0; n<4; n++)
+						for (int n=0; n<4; n++)
 						{
 							file >> token;
 							newPart.colorData.push_back(toFloat(token));

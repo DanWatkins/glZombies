@@ -26,19 +26,19 @@ namespace glz
 			std::list<Bucket> mUpdateBuckets;
 
 			void generateBuckets();
-			static Double lds_calculateSectorDesnity(Sector &sector, AI *target);
+			static double lds_calculateSectorDesnity(Sector &sector, AI *target);
 
 		public:
 			AISystem(DetailsSystem *detailsSystem,
 					 SpatialSystem *spatialSystem);
 
-			void createAI(Int entity);
+			void createAI(int entity);
 			void update() override;
 
 			AI *findNearestAi(Vec2d pos);
 			AI *findNearestAi(Vec2d pos, String type);
 
-			Vec2d findLeastDenseSector(AI *target, std::vector<String> typeMasks, Int sectors=8);
+			Vec2d findLeastDenseSector(AI *target, std::vector<String> typeMasks, int sectors=8);
 		};
 
 

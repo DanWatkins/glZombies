@@ -27,19 +27,19 @@ namespace glz
 		private:
 			Vec2d mWorldPos;
 			World *mWorld;
-			Int mTarget = 0;
+			int mTarget = 0;
 
 		public:
 			explicit Camera(World *world) { mWorld = world; }
 
 			void draw() const;
-			void move(Double x, Double y) { mWorldPos.add(x, y); }
+			void move(double x, double y) { mWorldPos.add(x, y); }
 
 			void setWorldPos(Vec2d worldPos) { mWorldPos = worldPos; }
 			Vec2d getWorldPos() const { return mWorldPos; }
 
-			void setTarget(Int target) { mTarget = target; }
-			Int getTarget() const
+			void setTarget(int target) { mTarget = target; }
+			int getTarget() const
 			{
 				return mTarget;
 			}

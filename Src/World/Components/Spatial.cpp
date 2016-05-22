@@ -23,7 +23,7 @@ namespace glz
 		}
 
 
-		Spatial::Spatial(Vec2d pos, Vec2d heading, Double mass, Double maxSpeed, Double maxForce, Double maxTurnRate)
+		Spatial::Spatial(Vec2d pos, Vec2d heading, double mass, double maxSpeed, double maxForce, double maxTurnRate)
 			: mPos(pos), mHeading(heading), mMass(mass), mMaxSpeed(maxSpeed), mMaxForce(maxForce), mMaxTurnRate(maxTurnRate)
 		{
 			setHeading(Vec2d(0.0,-1.0));
@@ -32,7 +32,7 @@ namespace glz
 
 		void Spatial::update()
 		{
-			Double timeDelta = mTimeDelta.getElapsedTime().asSeconds();
+			double timeDelta = mTimeDelta.getElapsedTime().asSeconds();
 			mSteeringForce.truncate(mMaxForce);
 
 			Vec2d acceleration = mSteeringForce / mMass;
@@ -59,12 +59,12 @@ namespace glz
 		}
 
 
-		Bool Spatial::rotateToHeading(Vec2d pos)
+		bool Spatial::rotateToHeading(Vec2d pos)
 		{
 			Vec2d toTarget = Vec2d(pos-mPos);
 			toTarget.normalize();
 
-			Double angle = acos(mHeading.dot(pos));
+			double angle = acos(mHeading.dot(pos));
 
 			if (angle < 0.000001)
 				return true;

@@ -25,7 +25,7 @@ namespace glz
 		class SpatialSystem : public System
 		{
 		public:
-			void createSpatial(Int entity, Vec2d pos, const EntityTemplate &entityTemplate);
+			void createSpatial(int entity, Vec2d pos, const EntityTemplate &entityTemplate);
 			void update() override;
 		};
 

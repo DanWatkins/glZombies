@@ -36,20 +36,20 @@ namespace glz
 			static AI *nearestEntity(String type);
 
 			//Lua to CPP
-			static Int cpp_seek(lua_State *lua);
-			static Int cpp_flee(lua_State *lua);
-			static Int cpp_arrive(lua_State *lua);
-			static Int cpp_pursuit(lua_State *lua);
-			static Int cpp_wander(lua_State *lua);
+			static int cpp_seek(lua_State *lua);
+			static int cpp_flee(lua_State *lua);
+			static int cpp_arrive(lua_State *lua);
+			static int cpp_pursuit(lua_State *lua);
+			static int cpp_wander(lua_State *lua);
 
-			static Int cpp_nearestEntityPos(lua_State *lua);
-			static Int cpp_nearestEntityPos(lua_State *lua, String type);
+			static int cpp_nearestEntityPos(lua_State *lua);
+			static int cpp_nearestEntityPos(lua_State *lua, String type);
 
-			static Int cpp_nearestEntityId(lua_State *lua);
-			static Int cpp_nearestEntityId(lua_State *lua, String type);
+			static int cpp_nearestEntityId(lua_State *lua);
+			static int cpp_nearestEntityId(lua_State *lua, String type);
 
-			static Int cpp_leastDenseSector(lua_State *lua);
-			static Int cpp_leastDenseSector(lua_State *lua, std::vector<String> typeMask, Int sectors);
+			static int cpp_leastDenseSector(lua_State *lua);
+			static int cpp_leastDenseSector(lua_State *lua, std::vector<String> typeMask, int sectors);
 
 		public:
 			static AIScriptRelay &instance();
@@ -57,7 +57,7 @@ namespace glz
 			static void lock(AIScript *script);
 			static void unlock(AIScript *script);
 
-			static Bool isLocked() { return mCurrentScript != nullptr; }
+			static bool isLocked() { return mCurrentScript != nullptr; }
 
 			void bindToLua(AIScript *script) const;
 

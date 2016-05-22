@@ -33,7 +33,7 @@ namespace glz
 			void init() override;
 			void update() override;
 
-			Int mTimesUpdated = 0;
+			int mTimesUpdated = 0;
 
 		public:
 			friend AISystem;

@@ -24,25 +24,25 @@ namespace glz
 		Script(String filepath);
 		virtual ~Script() {}
 
-		Bool load(String filepath);
+		bool load(String filepath);
 
 		virtual void bindToLua() = 0;
 		
-		Bool validArgPos(Int pos) const;
-		Int argsOnStack() const;
+		bool validArgPos(int pos) const;
+		int argsOnStack() const;
 
 		//argument access
-		String getArgString(Int pos) const;
-		Bool getArgBoolean(Int pos) const;
-		Int getArgInteger(Int pos) const;
-		Float getArgFloat(Int pos) const;
+		String getArgString(int pos) const;
+		bool getArgBoolean(int pos) const;
+		int getArgInteger(int pos) const;
+		float getArgFloat(int pos) const;
 		
 
 		//global variable access
 		String getGlobalString(String identifier) const;
-		Bool getGlobalBoolean(String identifier) const;
-		Int getGlobalInteger(String identifier) const;
-		Float getGlobalFloat(String identifier) const;
+		bool getGlobalBoolean(String identifier) const;
+		int getGlobalInteger(String identifier) const;
+		float getGlobalFloat(String identifier) const;
 	};
 };
 

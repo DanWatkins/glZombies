@@ -33,8 +33,8 @@ namespace glz
 	public:
 		static GLFWInput& instance();
 		static void addWindow(OpenGLWindow *window);
-		static void keyboardCallback(Int action, Int key, Int a, Int b, Int c);
-		static void windowResizeCallback(GLFWwindow *window, Int width, Int height);
+		static void keyboardCallback(int action, int key, int a, int b, int c);
+		static void windowResizeCallback(GLFWwindow *window, int width, int height);
 	};
 };
 

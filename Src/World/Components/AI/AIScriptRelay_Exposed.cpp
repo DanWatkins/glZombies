@@ -31,11 +31,11 @@ namespace glz
 
 
 
-		Int AIScriptRelay::cpp_seek(lua_State *lua)
+		int AIScriptRelay::cpp_seek(lua_State *lua)
 		{
 			Vec2d pos;
-			RequestPriority priority = mPriorityNormal;
-			Int n = lua_gettop(lua);
+			RequestPriority priority = PriorityNormal;
+			int n = lua_gettop(lua);
 
 			if (n >= 2)
 			{
@@ -54,11 +54,11 @@ namespace glz
 		}
 
 
-		Int AIScriptRelay::cpp_flee(lua_State *lua)
+		int AIScriptRelay::cpp_flee(lua_State *lua)
 		{
 			Vec2d pos;
-			RequestPriority priority = mPriorityNormal;
-			Int n = lua_gettop(lua);
+			RequestPriority priority = PriorityNormal;
+			int n = lua_gettop(lua);
 
 			if (n >= 2)
 			{
@@ -77,11 +77,11 @@ namespace glz
 		}
 
 		
-		Int AIScriptRelay::cpp_arrive(lua_State *lua)
+		int AIScriptRelay::cpp_arrive(lua_State *lua)
 		{
 			Vec2d pos;
-			RequestPriority priority = mPriorityNormal;
-			Int n = lua_gettop(lua);
+			RequestPriority priority = PriorityNormal;
+			int n = lua_gettop(lua);
 
 			if (n >= 2)
 			{
@@ -101,11 +101,11 @@ namespace glz
 		}
 
 
-		Int AIScriptRelay::cpp_pursuit(lua_State *lua)
+		int AIScriptRelay::cpp_pursuit(lua_State *lua)
 		{
-			Int id;
-			RequestPriority priority = mPriorityNormal;
-			Int n = lua_gettop(lua);
+			int id;
+			RequestPriority priority = PriorityNormal;
+			int n = lua_gettop(lua);
 
 			if (n >= 1)
 				id = mCurrentScript->getArgInteger(1);
@@ -124,14 +124,14 @@ namespace glz
 		}
 
 
-		Int AIScriptRelay::cpp_wander(lua_State *lua)
+		int AIScriptRelay::cpp_wander(lua_State *lua)
 		{
 			mCurrentScript->mSteeringBehaviors->wander(RequestPriority(mCurrentScript->getArgInteger(1)));
 			return 0;
 		}
 
 
-		Int AIScriptRelay::cpp_nearestEntityPos(lua_State *lua)
+		int AIScriptRelay::cpp_nearestEntityPos(lua_State *lua)
 		{
 			String arg = mCurrentScript->getArgString(1);
 
@@ -153,7 +153,7 @@ namespace glz
 		}
 
 
-		Int AIScriptRelay::cpp_nearestEntityPos(lua_State *lua, String type)
+		int AIScriptRelay::cpp_nearestEntityPos(lua_State *lua, String type)
 		{
 			AI *nearest = nearestEntity(type);
 
@@ -170,7 +170,7 @@ namespace glz
 		}
 
 
-		Int AIScriptRelay::cpp_nearestEntityId(lua_State *lua)
+		int AIScriptRelay::cpp_nearestEntityId(lua_State *lua)
 		{
 			String arg = mCurrentScript->getArgString(1);
 
@@ -191,7 +191,7 @@ namespace glz
 		}
 
 
-		Int AIScriptRelay::cpp_nearestEntityId(lua_State *lua, String type)
+		int AIScriptRelay::cpp_nearestEntityId(lua_State *lua, String type)
 		{
 			AI *nearest = nearestEntity(type);
 
@@ -207,9 +207,9 @@ namespace glz
 		}
 
 
-		Int AIScriptRelay::cpp_leastDenseSector(lua_State *lua)
+		int AIScriptRelay::cpp_leastDenseSector(lua_State *lua)
 		{
-			Int n = lua_gettop(lua);
+			int n = lua_gettop(lua);
 
 			if (n != 2)
 			{
@@ -222,13 +222,13 @@ namespace glz
 
 			std::vector<String> typeMask;
 			typeMask.push_back(mCurrentScript->getArgString(1));
-			Int sectors = mCurrentScript->getArgInteger(2);
+			int sectors = mCurrentScript->getArgInteger(2);
 
 			return cpp_leastDenseSector(lua, typeMask, sectors);
 		}
 
 
-		Int AIScriptRelay::cpp_leastDenseSector(lua_State *lua, std::vector<String> typeMask, Int sectors)
+		int AIScriptRelay::cpp_leastDenseSector(lua_State *lua, std::vector<String> typeMask, int sectors)
 		{
 			Vec2d pos = static_cast<AISystem*>(mCurrentScript->mAI->getSystem())->findLeastDenseSector( mCurrentScript->mAI, typeMask, sectors);
 			lua_pushnumber(lua, pos.x);

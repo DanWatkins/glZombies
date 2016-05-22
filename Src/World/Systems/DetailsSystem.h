@@ -21,7 +21,7 @@ namespace glz
 		private:
 
 		public:
-			void createDetails(Int entity, EntityTemplate &et);
+			void createDetails(int entity, EntityTemplate &et);
 			void update() override {}
 		};
 		

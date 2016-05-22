@@ -13,7 +13,7 @@ namespace glz
 	{
 		GLuint loadShader(String filename, GLenum shaderType)
 		{
-			Uint result = 0;
+			unsigned int result = 0;
 			FILE *file;
 			char *data;
 			size_t filesize;
@@ -49,7 +49,7 @@ namespace glz
 
 
 			//check for errors
-			Int status = 0;
+			int status = 0;
 			glGetShaderiv(result, GL_COMPILE_STATUS, &status);
 
 			if (!status)
@@ -66,19 +66,19 @@ namespace glz
 		}
 
 		
-		Uint linkFromShaders(const Uint *shaders, Int shaderCount)
+		unsigned int linkFromShaders(const unsigned int *shaders, int shaderCount)
 		{
-			Uint program;
+			unsigned int program;
 			program = glCreateProgram();
 
-			for (Int n = 0; n < shaderCount; n++)
+			for (int n = 0; n < shaderCount; n++)
 				glAttachShader(program, shaders[n]);
 
 			glLinkProgram(program);
 
 
 			//check for errors
-			Int status;
+			int status;
 			glGetProgramiv(program, GL_LINK_STATUS, &status);
 
 			if (!status)
@@ -93,7 +93,7 @@ namespace glz
 
 
 			//delete shaders
-			for (Int n = 0; n < shaderCount; n++)
+			for (int n = 0; n < shaderCount; n++)
 				glDeleteShader(shaders[n]);
 
 			return program;

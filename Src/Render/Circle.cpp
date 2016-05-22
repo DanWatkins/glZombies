@@ -9,21 +9,21 @@
 
 namespace glz
 {
-	void Circle::init(Float radius, Int segments)
+	void Circle::init(float radius, int segments)
 	{
 		clearParts();
 
-		Float theta = 2.0f * Float(glz::PI) / Float(segments);
-		Float cs = std::cosf(theta);
-		Float sn = std::sinf(theta);
-		Float t = 0.0f;
+		float theta = 2.0f * float(glz::PI) / float(segments);
+		float cs = std::cosf(theta);
+		float sn = std::sinf(theta);
+		float t = 0.0f;
 
-		Float x = radius;
-		Float y = 0.0f;
+		float x = radius;
+		float y = 0.0f;
 
 		Part part;
 
-		for (Int i=0; i<segments; i++)
+		for (int i=0; i<segments; i++)
 		{
 			part.vertexData.push_back(x);
 			part.vertexData.push_back(y);

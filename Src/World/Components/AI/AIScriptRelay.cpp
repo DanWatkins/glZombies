@@ -67,7 +67,7 @@ namespace glz
 
 		String AIScriptRelay::getTopString(lua_State *lua)
 		{
-			Int n = lua_gettop(lua);
+			int n = lua_gettop(lua);
 
 			if (n != 1)
 			{

@@ -10,7 +10,7 @@
 
 using namespace glz;
 
-Int main()
+int main()
 {
 	return glZombies().init(1600, 900, gWindowTitle);
 }

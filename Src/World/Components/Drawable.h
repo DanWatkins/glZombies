@@ -31,8 +31,8 @@ namespace glz
 			Drawable(String meshFilepath, OpenGLWindow *window);
 			~Drawable() {}
 
-			void draw(Float x, Float y, Float rotation);
-			void draw(OpenGLWindow *window, Float x, Float y, Float rotation);
+			void draw(float x, float y, float rotation);
+			void draw(OpenGLWindow *window, float x, float y, float rotation);
 		};
 
 

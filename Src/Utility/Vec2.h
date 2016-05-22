@@ -55,7 +55,7 @@ namespace glz
 			y += vec.y;
 		}
 
-		void truncate(Double max)
+		void truncate(double max)
 		{
 			if (length() > max)
 			{
@@ -71,7 +71,7 @@ namespace glz
 
 		void normalize()
 		{
-			Double lng = length();
+			double lng = length();
 			if (lng > 0.0)
 			{
 				x /= lng;
@@ -83,22 +83,22 @@ namespace glz
 		/**
 		 * Calculations
 		 */
-		Double distance(T x, T y)
+		double distance(T x, T y)
 		{
 			return std::sqrt((this->x-x)*(this->x-x) + (this->y-y)*(this->y-y));
 		}
 
-		Double distance(const Vec2<T> &vec)
+		double distance(const Vec2<T> &vec)
 		{
 			return distance(vec.x, vec.y);
 		}
 
-		Double distanceSq(T x, T y)
+		double distanceSq(T x, T y)
 		{
 			return (this->x-x)*(this->x-x) + (this->y-y)*(this->y-y);
 		}
 
-		Double distanceSq(const Vec2<T> &vec)
+		double distanceSq(const Vec2<T> &vec)
 		{
 			return distanceSq(vec.x, vec.y);
 		}
@@ -113,27 +113,27 @@ namespace glz
 			return dot(vec.x, vec.y);
 		}
 
-		Double angle(T x, T y)
+		double angle(T x, T y)
 		{
 			return std::atan2((y-this->y), (x-this->x));
 		}
 
-		Double angle(const Vec2<T> &vec)
+		double angle(const Vec2<T> &vec)
 		{
 			return angle(vec.x, vec.y);
 		}
 
-		Double length()
+		double length()
 		{
 			return std::sqrt(x*x + y*y);
 		}
 
-		Double lengthSq()
+		double lengthSq()
 		{
 			return length() * length();
 		}
 
-		Int sign(const Vec2<T> vec)
+		int sign(const Vec2<T> vec)
 		{
 			if (y*vec.x > x*vec.y)
 				return -1;
@@ -191,7 +191,7 @@ namespace glz
 		{
 			return Vec2<T>(x+vec.x, y+vec.y);
 		}
-		const Vec2<T> operator+(Double amount)
+		const Vec2<T> operator+(double amount)
 		{
 			return Vec2<T>(x+amount, y+amount);
 		}
@@ -200,7 +200,7 @@ namespace glz
 		{
 			return Vec2<T>(x-vec.x, y-vec.y);
 		}
-		const Vec2<T> operator-(Double amount)
+		const Vec2<T> operator-(double amount)
 		{
 			return Vec2<T>(x-amount, y-amount);
 		}
@@ -209,7 +209,7 @@ namespace glz
 		{
 			return Vec2<T>(x*vec.x, y*vec.y);
 		}
-		const Vec2<T> operator*(Double amount)
+		const Vec2<T> operator*(double amount)
 		{
 			return Vec2<T>(x*amount, y*amount);
 		}
@@ -218,26 +218,26 @@ namespace glz
 		{
 			return Vec2<T>(x/vec.x, y/vec.y);
 		}
-		const Vec2<T> operator/(Double amount)
+		const Vec2<T> operator/(double amount)
 		{
 			return Vec2<T>(x/amount, y/amount);
 		}
 
-		Bool operator==(const Vec2<T> &vec)
+		bool operator==(const Vec2<T> &vec)
 		{
 			return isEqual(x, vec.x) && isEqual(y, vec.y);
 		}
 
-		Bool operator!=(const Vec2<T> &vec)
+		bool operator!=(const Vec2<T> &vec)
 		{
 			return x != vec.x || y != vec.y;
 		}
 	};
 
 
-	typedef Vec2<Int> Vec2i;
-	typedef Vec2<Float> Vec2f;
-	typedef Vec2<Double> Vec2d;
+	typedef Vec2<int> Vec2i;
+	typedef Vec2<float> Vec2f;
+	typedef Vec2<double> Vec2d;
 };
 
 #endif

@@ -34,13 +34,13 @@ namespace glz
 		protected:
 			ComponentList mComponents;
 
-			void addComponent(Int entity, Component *component);
+			void addComponent(int entity, Component *component);
 
 		public:
 			friend Camera;
 			virtual ~System();
 
-			Component *getComponentForEntity(Int entity);
+			Component *getComponentForEntity(int entity);
 			virtual void update() = 0;
 		};
 	};

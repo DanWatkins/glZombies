@@ -35,8 +35,8 @@ namespace glz
 		class World
 		{
 		private:
-			Int mIdTrack;
-			Uint mWidth, mHeight;
+			int mIdTrack;
+			unsigned int mWidth, mHeight;
 			OpenGLWindow *mWindow;
 			std::vector<EntityTemplate> mTemplateEntities;
 
@@ -61,8 +61,8 @@ namespace glz
 
 			EntityTemplate getTemplateEntity(String name);
 
-			Uint getWidth() const { return mWidth; }
-			Uint getHeight() const { return mHeight; }
+			unsigned int getWidth() const { return mWidth; }
+			unsigned int getHeight() const { return mHeight; }
 		};
 	};
 };
